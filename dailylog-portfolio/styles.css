@@ -50,10 +50,56 @@ body::before {
   padding: 28px 0 56px;
 }
 
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 16px;
+  margin-bottom: 16px;
+  border-radius: 999px;
+  color: var(--accent-deep);
+  text-decoration: none;
+  border: 1px solid rgba(115, 67, 36, 0.14);
+  background: rgba(255, 251, 247, 0.86);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
 .hero,
 .section {
   position: relative;
   z-index: 1;
+}
+
+.language-switch {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.lang-button {
+  min-width: 52px;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(115, 67, 36, 0.14);
+  background: rgba(255, 251, 247, 0.9);
+  color: var(--accent-deep);
+  font: inherit;
+  cursor: pointer;
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.lang-button:hover {
+  transform: translateY(-1px);
+}
+
+.lang-button.is-active {
+  background: linear-gradient(135deg, rgba(180, 112, 64, 0.95), rgba(115, 56, 24, 0.92));
+  border-color: transparent;
+  color: #fff7f0;
 }
 
 .hero {
@@ -316,11 +362,14 @@ body::before {
   padding: 24px;
 }
 
-.flow-stage-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  align-items: center;
+.flow-nav-panel {
+  width: 100%;
+  display: grid;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 22px;
+  background: rgba(255, 251, 247, 0.74);
+  border: 1px solid rgba(118, 70, 38, 0.12);
 }
 
 .flow-stage-top h3 {
@@ -353,7 +402,13 @@ body::before {
 }
 
 .flow-preview-shell {
-  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.flow-content-row {
   display: grid;
   grid-template-columns: minmax(280px, 370px) minmax(0, 1fr);
   gap: 20px;
@@ -361,6 +416,7 @@ body::before {
 }
 
 .phone-frame {
+  width: min(100%, 370px);
   padding: 14px;
   border-radius: 32px;
   background: linear-gradient(180deg, #4d2a17, #24120a);
@@ -1162,11 +1218,11 @@ body::before {
 }
 
 .flow-detail-card {
+  width: 100%;
   padding: 22px;
   border-radius: 24px;
   background: rgba(255, 251, 247, 0.76);
   border: 1px solid rgba(118, 70, 38, 0.12);
-  min-height: 100%;
 }
 
 .flow-description {
@@ -1189,9 +1245,12 @@ body::before {
 
 .flow-title-sequence {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 10px;
-  margin-top: 12px;
+  margin-bottom: 0;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
 }
 
 .flow-title-step,
@@ -1207,11 +1266,13 @@ body::before {
   border: 1px solid rgba(115, 67, 36, 0.14);
   background: rgba(255, 251, 247, 0.84);
   color: var(--accent-deep);
-  font-size: 1.13rem;
+  font-size: 1rem;
   line-height: 1;
   font-family: inherit;
   cursor: pointer;
   transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 .flow-title-step:hover:not(.is-current) {
@@ -1495,9 +1556,12 @@ button.stack-chip:hover {
   .architecture-layout,
   .feature-grid,
   .flow-layout,
-  .flow-preview-shell,
   .screen-explorer,
   .screen-preview-body {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-content-row {
     grid-template-columns: 1fr;
   }
 
@@ -1534,8 +1598,4 @@ button.stack-chip:hover {
     grid-template-columns: 1fr;
   }
 
-  .flow-stage-top {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }

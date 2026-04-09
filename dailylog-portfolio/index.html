@@ -8,8 +8,14 @@
 </head>
 <body>
   <div class="page-shell">
+    <a class="back-link" href="../index.html">← Back</a>
     <header class="hero">
       <div class="hero-copy">
+        <div class="language-switch" aria-label="Language switcher">
+          <button class="lang-button is-active" type="button" data-lang="ko">KO</button>
+          <button class="lang-button" type="button" data-lang="en">EN</button>
+          <button class="lang-button" type="button" data-lang="ja">JP</button>
+        </div>
         <p class="eyebrow">Emotion Diary Android Project</p>
         <h1>DailyLog</h1>
         <p class="hero-summary">
@@ -92,28 +98,27 @@
         </div>
         <div class="flow-layout">
           <section class="flow-stage panel">
-            <div class="flow-stage-top">
-              <div>
+            <div class="flow-preview-shell">
+              <div class="flow-nav-panel">
                 <h3 id="flow-title" class="visually-hidden">로그인</h3>
                 <div class="flow-title-sequence" id="flow-title-sequence" aria-label="현재 화면 순차 경로"></div>
               </div>
-            </div>
-
-            <div class="flow-preview-shell">
-              <div class="phone-frame">
-                <div class="phone-screen phone-screen-demo" id="flow-stage-canvas" aria-live="polite"></div>
+              <div class="flow-content-row">
+                <div class="phone-frame">
+                  <div class="phone-screen phone-screen-demo" id="flow-stage-canvas" aria-live="polite"></div>
+                </div>
+                <article class="flow-detail-card">
+                  <p class="flow-screen-type" id="flow-type">Main Entry</p>
+                  <p class="flow-description" id="flow-description">
+                    사용자는 홈 화면에서 오늘의 기록 상태를 보고, 고양이와 상호작용하거나 메뉴를 열어 다음 화면으로 이동합니다.
+                  </p>
+                  <p class="flow-interaction-hint" id="flow-hint">
+                    화면 안의 강조된 버튼을 직접 눌러도 같은 흐름으로 이동합니다.
+                  </p>
+                  <ul class="flat-list flow-points" id="flow-points"></ul>
+                  <div class="flow-actions" id="flow-actions"></div>
+                </article>
               </div>
-              <article class="flow-detail-card">
-                <p class="flow-screen-type" id="flow-type">Main Entry</p>
-                <p class="flow-description" id="flow-description">
-                  사용자는 홈 화면에서 오늘의 기록 상태를 보고, 고양이와 상호작용하거나 메뉴를 열어 다음 화면으로 이동합니다.
-                </p>
-                <p class="flow-interaction-hint" id="flow-hint">
-                  화면 안의 강조된 버튼을 직접 눌러도 같은 흐름으로 이동합니다.
-                </p>
-                <ul class="flat-list flow-points" id="flow-points"></ul>
-                <div class="flow-actions" id="flow-actions"></div>
-              </article>
             </div>
           </section>
         </div>

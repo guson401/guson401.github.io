@@ -15,7 +15,7 @@ const flowData = {
       { label: "최근 일기 확인", target: "read" },
     ],
     hotspots: [
-      { label: "메뉴", target: "menu", x: 78.2, y: 4.7, w: 14.1, h: 6.5, shape: "circle" },
+      { label: "메뉴", target: "menu", x: 77.8, y: 1.9, w: 16.0, h: 9.0, shape: "circle" },
       { label: "고양이", target: "write", x: 5.5, y: 52.0, w: 48.0, h: 33.0, shape: "rounded" },
       { label: "일기장", target: "read", x: 43.4, y: 73.5, w: 44.8, h: 9.8, shape: "rounded" },
       { label: "캘린더", target: "calendar", x: 7.3, y: 13.3, w: 85.5, h: 36.8, shape: "frame" },
@@ -41,7 +41,7 @@ const flowData = {
       { label: "일기 작성", target: "write", x: 46.7, y: 34.0, w: 45.6, h: 6.6, shape: "rounded" },
       { label: "일기 확인", target: "read", x: 46.7, y: 41.5, w: 45.6, h: 6.6, shape: "rounded" },
       { label: "캘린더", target: "calendar", x: 46.7, y: 49.1, w: 45.6, h: 6.6, shape: "rounded" },
-      { label: "홈", target: "home", x: 78.2, y: 4.7, w: 14.1, h: 6.5, shape: "circle" },
+      { label: "홈", target: "home", x: 77.8, y: 1.9, w: 16.0, h: 9.0, shape: "circle" },
     ],
   },
   write: {
@@ -472,6 +472,306 @@ tutorialStepMeta.forEach(([key, title, type, file, description], index) => {
   };
 });
 
+const staticTranslations = {
+  ko: {
+    heroEyebrow: "Emotion Diary Android Project",
+    heroSummary: "STT/TTS 기반 일기 작성 어플리케이션 프로젝트입니다.",
+    heroPrimary: "화면 보기",
+    heroSecondary: "구조 보기",
+    heroCardLabel: "Project Snapshot",
+    statLabels: ["Jetpack Compose UI", "감정 기록과 결과 화면 구성", "Calendar Provider 유지", "실사용 흐름 기반 화면 구성"],
+    introTitles: ["문제 정의", "핵심 구현 포인트"],
+    introCopies: [
+      "모두가 중요성을 느끼는 하루의 정리를 대화 기반으로 더 간단하게 기록하고, 그 결과를 바탕으로 일정 추천과 일정 관리까지 자연스럽게 이어질 수 있는 경험을 만들고자 했습니다.",
+      "Compose 기반 화면 설계, Repository 계층 정리, Room DB 기반 로컬 데이터 저장, 캘린더 프로바이더 연동 유지, 결과 페이지와 프로필 그래프 흐름 검증을 중심으로 작업했습니다.",
+    ],
+    sectionTitles: ["프로젝트 핵심 기능", "실제 사용 흐름으로 따라가는 화면 구성", "담당 역할", "개발 과정에서 신경 쓴 점", "트러블슈팅", "구조 설계", "사용한 라이브러리/기술", "포트폴리오용 검증 상태"],
+    featureTitles: ["일기 작성", "일기 기반 감정 분석", "감정 기반 일정 추천", "캘린더 연동"],
+    featureCopies: [
+      "질문형 흐름을 따라 하루의 감정과 상황을 기록하고, 결과 화면까지 자연스럽게 이어지도록 구성했습니다.",
+      "작성한 일기 내용을 바탕으로 감정 결과를 분석하고, 사용자가 자신의 하루를 돌아볼 수 있도록 피드백을 제공합니다.",
+      "분석된 감정 결과를 바탕으로 추천 활동을 제안하고, 이를 일정과 연결해 다음 행동으로 이어질 수 있게 했습니다.",
+      "앱 내부 기록과 기기 Calendar Provider 이벤트를 함께 보여주어 감정 기록과 일정 관리를 한 흐름으로 연결합니다.",
+    ],
+    roleTitles: ["화면 흐름 설계", "Compose 기반 UI 구현", "로컬 데이터 구조 정리", "캘린더 및 프로필 흐름 검증"],
+    roleCopies: [
+      "로그인, 회원가입, 튜토리얼, 홈, 일기 작성, 결과, 캘린더, 프로필까지 이어지는 주요 사용자 흐름을 설계하고 연결했습니다.",
+      "앱의 감성적인 화면 구성을 유지하면서 각 화면의 레이아웃과 상호작용이 자연스럽게 이어지도록 Compose UI를 구현했습니다.",
+      "Room DB와 Repository 구조를 통해 일기와 사용자 데이터를 저장하고, 화면 코드와 데이터 계층이 분리되도록 정리했습니다.",
+      "Calendar Provider 연동, 일정 수정/추가, 감정 그래프, 프로필 편집까지 실제 사용 흐름 기준으로 화면 동작을 점검했습니다.",
+    ],
+    processTitles: ["화면 감성 유지", "서버 연동 흐름 검증", "기기 기능 연결", "로컬 데이터 구조 정리"],
+    processCopies: [
+      "일반적인 앱 레이아웃 대신 방, 다이어리, 종이 질감 같은 오브젝트 중심 인터페이스를 유지했습니다.",
+      "서버가 정상적으로 동작하는 환경을 기준으로 일기 작성, 감정 분석 결과, 추천 흐름이 자연스럽게 이어지도록 화면 구성을 점검했습니다.",
+      "Calendar Provider는 유지해 실제 기기 일정과 앱 데이터를 함께 확인할 수 있도록 했습니다.",
+      "Room DB를 활용해 일기와 사용자 정보를 안정적으로 저장하고, 화면에서 필요한 데이터를 일관된 흐름으로 불러올 수 있도록 구조를 정리했습니다.",
+    ],
+    troubleTitles: ["리소스 최적화를 통한 성능 개선", "디자인 방향성에 대한 팀 의견 조율", "브랜치 통합 과정의 충돌 해결"],
+    troubleCopies: [
+      "초기에는 개별 리소스 수가 많고 해상도도 높아 화면 전환 시 앱이 무거워지는 문제가 있었습니다. 이를 해결하기 위해 전체 리소스 해상도를 조정하고, 분산되어 있던 개별 리소스를 통합하는 방식으로 구조를 정리해 렉 유발을 줄이고 보다 안정적인 동작 흐름을 만들었습니다.",
+      "초기 디자인을 구체화하는 과정에서 팀원들의 다양한 의견이 나왔고, 타당한 이유가 있는 제안은 적극적으로 수용해 화면에 반영했습니다. 반대로 방향성이 다르다고 판단한 경우에는 제 의견의 근거를 설명해 이해를 맞췄고, 양쪽 의견 모두 애매한 경우에는 팀장의 조율을 통해 기준을 정한 뒤 작업을 진행했습니다.",
+      "AI 파트에서 작업한 페이지와 제가 구현한 페이지가 브랜치 통합 과정에서 충돌하면서 일정이 지연되는 이슈가 있었습니다. 변경 범위를 다시 분리해 충돌 지점을 정리하고, 필요한 부분은 재확인 후 병합해 기능 흐름이 끊기지 않도록 통합 작업을 마무리했습니다.",
+    ],
+    architectureLead: "화면은 UI에 집중하고, 데이터 처리는 ViewModel과 Repository가 분리해 담당하도록 설계했습니다.",
+    architectureCaption: "데이터 흐름을 계층별로 분리해 화면 코드가 네트워크와 직접 결합되지 않도록 설계했습니다.",
+    stackIntro: "프로젝트에 적용한 주요 기술과 라이브러리를 영역별로 정리했습니다. 핵심 기술은 강조 색상으로 구분했고, 기술명을 누르면 아래에서 사용 이유를 바로 확인할 수 있도록 구성했습니다.",
+    stackSummaries: ["UI / Android", "Data / Local Storage", "Network / Security", "Device / Background"],
+    closingTitle: "포트폴리오용 검증 상태",
+    closingCopy: "현재 이 페이지는 프로젝트 개요와 실제 화면을 한 번에 보여주는 발표용 요약 페이지 역할을 합니다.",
+    closingMeta: ["Compose", "Calendar Provider", "Portfolio Ready"],
+    flowCategories: {
+      auth: "인증",
+      home: "홈",
+      diary: "일기",
+      calendar: "캘린더",
+      profile: "프로필",
+      tutorial: "튜토리얼",
+    },
+    flowHint: "스크린샷 위 강조 영역을 누르면 다음 화면으로 이동합니다.",
+  },
+  en: {
+    heroEyebrow: "Emotion Diary Android Project",
+    heroSummary: "A diary-writing application project built around STT/TTS-based interaction.",
+    heroPrimary: "View Screens",
+    heroSecondary: "View Architecture",
+    heroCardLabel: "Project Snapshot",
+    statLabels: ["Jetpack Compose UI", "Emotion logging and result screens", "Calendar Provider integration", "Real usage flow-centered screens"],
+    introTitles: ["Problem", "Implementation Focus"],
+    introCopies: [
+      "The goal was to make daily reflection easier through conversation-based journaling, then connect the result naturally to activity recommendations and schedule management.",
+      "The work focused on Compose-based screen design, repository-layer organization, Room DB-based local storage, keeping Calendar Provider integration, and validating result and profile graph flows.",
+    ],
+    sectionTitles: ["Core Features", "Screen Flow Through Actual Usage", "My Role", "What I Focused On During Development", "Troubleshooting", "Architecture", "Libraries / Technologies Used", "Portfolio Validation Status"],
+    featureTitles: ["Diary Writing", "Emotion Analysis from Diary", "Emotion-Based Recommendations", "Calendar Integration"],
+    featureCopies: [
+      "The app guides users through a question-based flow so daily emotions and situations can be recorded naturally and connected to the result screen.",
+      "It analyzes emotional results from diary content and provides feedback so users can reflect on their day.",
+      "It suggests recommended activities based on the analyzed emotional result and connects them to scheduling.",
+      "It shows app records together with Calendar Provider events so journaling and schedule management become one connected flow.",
+    ],
+    roleTitles: ["Flow Design", "Compose UI Implementation", "Local Data Structure", "Calendar and Profile Flow Validation"],
+    roleCopies: [
+      "Designed and connected the main user flow from login and signup to tutorial, home, diary writing, result, calendar, and profile.",
+      "Implemented Compose UI so the app's emotional visual tone and the interaction flow between screens stayed natural.",
+      "Organized diary and user data through Room DB and a repository structure so screen code and data layers remained separated.",
+      "Checked actual usage flows including Calendar Provider, schedule add/edit, emotion graph, and profile editing.",
+    ],
+    processTitles: ["Keeping the Visual Mood", "Validating Server Flow", "Connecting Device Features", "Structuring Local Data"],
+    processCopies: [
+      "Instead of a typical app layout, the interface kept an object-centered style built around a room, diary, and paper-like textures.",
+      "Using an environment where the server worked properly, the team verified that diary writing, emotion analysis, and recommendation flows connected naturally.",
+      "Calendar Provider was kept so real device schedules and app data could be checked together.",
+      "Room DB was used to store diary and user information reliably and to keep screen data flow consistent.",
+    ],
+    troubleTitles: ["Performance Improvement Through Resource Optimization", "Aligning Team Opinions on Design Direction", "Resolving Conflicts During Branch Integration"],
+    troubleCopies: [
+      "At first, many individual assets and high resolutions made transitions heavy. To solve this, the overall asset resolution was adjusted and scattered resources were consolidated to reduce lag and improve stability.",
+      "During early design refinement, the team had many opinions. Valid suggestions were accepted and reflected, while different directions were discussed with clear reasoning until alignment was reached.",
+      "Conflicts between pages from the AI part and pages I implemented delayed integration. The change scope was reorganized and merge points were resolved so the flow could stay intact.",
+    ],
+    architectureLead: "The screen layer was focused on UI, while data handling was separated into ViewModel and Repository.",
+    architectureCaption: "The data flow was separated by layer so screen code would not be directly coupled to networking.",
+    stackIntro: "This section organizes the main technologies and libraries used in the project. Core technologies are highlighted, and each item can be clicked to see why it was used.",
+    stackSummaries: ["UI / Android", "Data / Local Storage", "Network / Security", "Device / Background"],
+    stackReasons: {
+      "reason-kotlin": "For a voice-based diary app with ASR and TTS, response speed and device resource control were important. Kotlin made it easier to integrate Android-native audio handling with stable screen performance.",
+      "reason-compose": "Used to build object-centered custom UI quickly and manage login, home, diary, calendar, and profile flows consistently as screen state changes.",
+      "reason-material3": "Used as a stable component base in Compose while still allowing the interface to be customized to the project's tone.",
+      "reason-activity-compose": "Used to connect Compose screens naturally from the Android Activity entry point and keep the app start structure simple.",
+      "reason-lifecycle-compose": "Used so lifecycle and state changes could be reflected safely inside Compose screens during navigation and state updates.",
+      "reason-room": "Used to store diary and user data locally in a stable way while keeping screen code separated from direct data storage access.",
+      "reason-repository": "Applied to separate screens from data sources and reduce coupling by organizing network, local DB, and device features in one layer.",
+      "reason-serialization": "Used to serialize app data structures and handle internal state and response values in Kotlin-centered form.",
+      "reason-jackson": "Used to map server responses safely into Kotlin objects and structure API response handling with Retrofit.",
+      "reason-retrofit": "Used to separate API communication through interfaces and manage response handling in a consistent structure.",
+      "reason-okhttp": "Used to process request and response flow reliably and extend communication behavior with interceptors.",
+      "reason-logging": "Used to inspect API request and response logs and speed up debugging during server integration.",
+      "reason-security": "Used as a security layer for storing sensitive information and authentication-related data more safely.",
+      "reason-calendar-provider": "Used to connect emotional records with real device schedules so app records and schedule management could be reviewed together.",
+      "reason-workmanager": "Used to process delayed or background work in a stable way suited to Android.",
+      "reason-sherpa": "Used as a speech-processing library to support the app's voice-based input flow.",
+    },
+    closingTitle: "Portfolio Validation Status",
+    closingCopy: "This page currently works as a presentation-ready summary page that shows the project overview and actual screens together.",
+    closingMeta: ["Compose", "Calendar Provider", "Portfolio Ready"],
+    flowCategories: {
+      auth: "Auth",
+      home: "Home",
+      diary: "Diary",
+      calendar: "Calendar",
+      profile: "Profile",
+      tutorial: "Tutorial",
+    },
+    flowHint: "You can move to the next screen by clicking the highlighted area on the screenshot.",
+  },
+  ja: {
+    heroEyebrow: "Emotion Diary Android Project",
+    heroSummary: "STT/TTSベースの対話を中心に構成した日記作成アプリプロジェクトです。",
+    heroPrimary: "画面を見る",
+    heroSecondary: "構造を見る",
+    heroCardLabel: "Project Snapshot",
+    statLabels: ["Jetpack Compose UI", "感情記録と結果画面構成", "Calendar Provider連携維持", "実使用フロー中心の画面構成"],
+    introTitles: ["課題定義", "実装の焦点"],
+    introCopies: [
+      "一日の振り返りを対話ベースでより簡単に記録し、その結果をもとにおすすめ活動や予定管理へ自然につなげる体験を目指しました。",
+      "Composeベースの画面設計、Repository層の整理、Room DBによるローカル保存、Calendar Provider連携維持、結果画面とプロフィールグラフの流れ検証を中心に進めました。",
+    ],
+    sectionTitles: ["主要機能", "実際の利用フローで見る画面構成", "担当内容", "開発時に意識した点", "トラブルシューティング", "構造設計", "使用ライブラリ / 技術", "ポートフォリオ確認状態"],
+    featureTitles: ["日記作成", "日記ベースの感情分析", "感情ベースのおすすめ提案", "カレンダー連携"],
+    featureCopies: [
+      "質問型フローに沿って一日の感情や状況を記録し、結果画面へ自然につながるように構成しました。",
+      "作成した日記内容をもとに感情結果を分析し、ユーザーが一日を振り返られるようにフィードバックを提供します。",
+      "分析された感情結果をもとにおすすめ活動を提案し、それを予定につなげて次の行動へ導きます。",
+      "アプリ内記録とCalendar Providerイベントを一緒に見せることで、感情記録と予定管理を一つの流れで扱います。",
+    ],
+    roleTitles: ["画面フロー設計", "Compose UI実装", "ローカルデータ構造整理", "カレンダー / プロフィール検証"],
+    roleCopies: [
+      "ログイン、会員登録、チュートリアル、ホーム、日記作成、結果、カレンダー、プロフィールまで続く主要フローを設計して接続しました。",
+      "アプリの感性的な画面構成を保ちながら、各画面のレイアウトと相互作用が自然につながるようCompose UIを実装しました。",
+      "Room DBとRepository構造を通じて日記とユーザーデータを保存し、画面コードとデータ層が分離されるよう整理しました。",
+      "Calendar Provider、予定追加 / 修正、感情グラフ、プロフィール編集まで実使用フロー基準で確認しました。",
+    ],
+    processTitles: ["画面の感性維持", "サーバーフロー検証", "端末機能連携", "ローカルデータ構造整理"],
+    processCopies: [
+      "一般的なアプリレイアウトではなく、部屋、日記、紙の質感のようなオブジェクト中心インターフェースを維持しました。",
+      "サーバーが正常に動く環境を基準に、日記作成、感情分析結果、おすすめフローが自然につながるように確認しました。",
+      "Calendar Providerを維持し、実際の端末予定とアプリデータを一緒に確認できるようにしました。",
+      "Room DBを活用して日記とユーザー情報を安定的に保存し、画面で必要なデータを一貫して読み込めるよう整理しました。",
+    ],
+    troubleTitles: ["リソース最適化による性能改善", "デザイン方向性に対するチーム調整", "ブランチ統合作業の衝突解決"],
+    troubleCopies: [
+      "初期は個別リソース数と解像度が高く、画面遷移時にアプリが重くなる問題がありました。全体解像度を調整し、散在していたリソースを統合してラグを減らしました。",
+      "初期デザインを具体化する過程でさまざまな意見が出ました。妥当な提案は積極的に反映し、方向が異なる場合は根拠を説明して調整しました。",
+      "AIパートのページと私が実装したページが統合時に衝突し、日程が遅れる問題がありました。変更範囲を整理し直し、必要部分を再確認して統合作業を終えました。",
+    ],
+    architectureLead: "画面はUIに集中し、データ処理はViewModelとRepositoryが分離して担当するように設計しました。",
+    architectureCaption: "データフローを層別に分け、画面コードがネットワークと直接結合しないようにしました。",
+    stackIntro: "このセクションではプロジェクトに適用した主要技術とライブラリを整理しています。重要技術は強調表示し、クリックすると使用理由を確認できます。",
+    stackSummaries: ["UI / Android", "Data / Local Storage", "Network / Security", "Device / Background"],
+    stackReasons: {
+      "reason-kotlin": "ASRとTTSを含む音声ベースの日記アプリでは応答速度と端末資源活用が重要でした。Kotlinを選ぶことでAndroidネイティブ機能へのアクセスと画面性能をより安定して構成できました。",
+      "reason-compose": "オブジェクト中心のカスタムUIを素早く構成し、ログイン、ホーム、日記、カレンダー、プロフィールの流れを一貫して管理するために使用しました。",
+      "reason-material3": "Compose UIで安定した基本コンポーネントを活用しながら、プロジェクトのトーンに合わせてカスタマイズするために使用しました。",
+      "reason-activity-compose": "Android Activityの入口からCompose画面を自然につなぎ、開始構造を簡潔に保つために使用しました。",
+      "reason-lifecycle-compose": "ライフサイクルと状態変化をCompose画面内で安定的に反映するために使用しました。",
+      "reason-room": "日記とユーザー情報をローカルに安定して保存し、画面コードが保存処理を直接扱わないようにするために使用しました。",
+      "reason-repository": "画面とデータソースを分離し、ネットワーク、ローカルDB、端末機能を一つの層で整理するために適用しました。",
+      "reason-serialization": "アプリ内部データ構造を直列化し、状態や応答値をKotlin中心で扱うために使用しました。",
+      "reason-jackson": "サーバー応答をKotlinオブジェクトへ安定的に変換し、Retrofitと連携するために使用しました。",
+      "reason-retrofit": "API通信をインターフェース基盤で分離し、応答処理を一貫した構造で管理するために使用しました。",
+      "reason-okhttp": "リクエストとレスポンスの流れを安定して処理し、インターセプターで拡張できるようにするために使用しました。",
+      "reason-logging": "API通信ログを確認し、サーバー連携時のデバッグを素早く行うために使用しました。",
+      "reason-security": "機密情報と認証関連データをより安全に保存するためのセキュリティ層として活用しました。",
+      "reason-calendar-provider": "感情記録と実際の端末予定をつなぎ、一つの流れで確認できるようにするために使用しました。",
+      "reason-workmanager": "遅延実行やバックグラウンド作業をAndroid環境で安定的に処理するために使用しました。",
+      "reason-sherpa": "音声ベース入力フローを実装するための音声処理ライブラリとして活用しました。",
+    },
+    closingTitle: "ポートフォリオ確認状態",
+    closingCopy: "このページは現在、プロジェクト概要と実際の画面を一度に見せる発表用サマリーページとして機能しています。",
+    closingMeta: ["Compose", "Calendar Provider", "Portfolio Ready"],
+    flowCategories: {
+      auth: "認証",
+      home: "ホーム",
+      diary: "日記",
+      calendar: "カレンダー",
+      profile: "プロフィール",
+      tutorial: "チュートリアル",
+    },
+    flowHint: "スクリーンショット上の強調領域を押すと次の画面へ移動できます。",
+  },
+};
+
+const flowTranslations = {
+  en: {
+    home: { title: "Home", description: "The first main screen after login. It works as the starting point for opening the menu, starting a diary, checking a recent diary, and opening the calendar.", points: ["Shows the actual first-entry experience through a real screenshot.", "Only the main movement points are highlighted so the presentation flow stays easy to follow.", "Lets viewers understand the object-centered room UI structure."], actions: ["Open Top Menu", "Start Talking with the Cat", "View Recent Diary"], hotspots: ["Menu", "Cat", "Diary", "Calendar"] },
+    menu: { title: "Home Menu", description: "An overlay opened from the top-right menu button on the home screen, providing quick entry to profile, tutorial, diary writing, diary review, and calendar.", points: ["Shows the actual menu overlay displayed above the home screen.", "Makes it easy to explain branch flow from the menu button.", "Acts as the hub of the home experience."], actions: ["Start Diary Writing", "Go to Calendar"], hotspots: ["Profile", "Tutorial", "Write", "Diary", "Calendar", "Home"] },
+    write: { title: "Diary Writing", description: "A question-based input screen where users record their feelings and situations, then move to the result screen with the complete action.", points: ["Shows the question-centered input structure.", "Naturally continues to the result screen after completion.", "Conveys the actual mood of the writing UI."], actions: ["View Result", "Go Home"], hotspots: ["Back", "Done"] },
+    read: { title: "Diary Review", description: "A screen for reviewing a completed diary title, body text, and recommended activity, with bottom actions leading to graph popup or calendar flow.", points: ["Shows the reading experience after writing.", "Reveals the bottom actions that connect to graph and calendar.", "Keeps the content-centered screen composition visible."], actions: ["View Graph Popup", "Go to Calendar"], hotspots: ["Back", "More", "Graph", "Add Schedule"] },
+    result: { title: "Diary Result", description: "A result screen that shows emotional analysis, diary content, and recommended activities in one place after writing is finished.", points: ["Shows the information density of the result screen with a real screenshot.", "Graph popup and calendar linkage are the main follow-up actions.", "Acts as the destination of the writing flow."], actions: ["Open Graph Popup", "Go to Calendar"], hotspots: ["Graph", "Home", "Calendar"] },
+    graph: { title: "Daily Feedback Popup", description: "An overlay popup opened above the result screen, allowing users to focus on emotional feedback and recommendations and move directly to calendar flow.", points: ["Shows the expanded result UI in overlay form.", "Provides additional information while keeping result-screen context.", "Good for connecting to schedule or profile flow afterward."], actions: ["Go Back", "Go to Calendar"], hotspots: ["Close", "Add"] },
+    calendar: { title: "Calendar", description: "A screen that shows schedules for the selected date together with a diary button, so diary records and device calendar events can be managed in one flow.", points: ["Shows schedule list and diary linkage with a real capture.", "Leads from date selection to detailed schedule management.", "Represents the meeting point of app data and calendar browsing."], actions: ["View Edit/Add Popup", "View Profile"], hotspots: ["Back", "Add Schedule", "Edit Schedule", "View Diary"] },
+    calendarEdit: { title: "Edit/Add Schedule Popup", description: "A popup opened above the calendar for editing or adding schedules, including title, time, place, and alarm information before returning to the calendar.", points: ["Shows the popup structure opened above the calendar.", "Good for explaining both schedule input and edit UX.", "Makes the return-to-calendar step after saving easy to explain."], actions: ["Back to Calendar", "Save and Return"], hotspots: ["Cancel", "Save"] },
+    profile: { title: "Profile / Graph", description: "A page where users can review their profile information together with weekly and monthly emotion graphs, then move to edit flow.", points: ["Shows profile and emotion statistics on one screen.", "Naturally connects to settings and editing.", "Clearly represents a cumulative user-data screen."], actions: ["Open Profile Edit", "View Login"], hotspots: ["Back", "Logout", "Edit"] },
+    profileEdit: { title: "Profile Edit 1", description: "The first edit screen for basic profile details such as nickname, job, and region.", points: ["Shows a real form-centered edit screen.", "Makes the separation between profile view and edit clear.", "Moves to the second edit screen with the next button."], actions: ["Back to Profile", "Go to Edit 2"], hotspots: ["Back", "Save", "Next"] },
+    profileEditDetail: { title: "Profile Edit 2", description: "The second edit screen for detailed profile items such as password change, interests, purpose, and notification settings.", points: ["Shows the second profile edit page.", "Handles password, interests, purpose, and diary alarms in one screen.", "Allows returning to the first edit page."], actions: ["Back to Edit 1", "Back to Profile"], hotspots: ["Back", "Previous", "Delete Account"] },
+    login: { title: "Login", description: "The authentication screen users first see when starting the app, branching to password recovery and signup as well as login.", points: ["Completes the overall user journey by including auth.", "Makes the start and return points of member flow clear.", "Strengthens the completeness of the app in the portfolio."], actions: ["Go to Signup", "Go to Password Recovery"], hotspots: ["Login", "Forgot Password", "Signup"] },
+    forgotPassword: { title: "Forgot Password", description: "An account recovery screen entered from login, where users provide email to receive a new password and return to login.", points: ["Directly reachable from the login screen.", "Shows an auxiliary authentication recovery flow.", "Useful for explaining temporary password delivery by email."], actions: ["Back to Login", "Send and Return to Login"], hotspots: ["Back", "Send New Password"] },
+    signup01: { title: "Signup 1", description: "The first signup step where users enter basic account information such as email and password.", points: ["The starting screen of the signup flow.", "Collects basic account information.", "Shows the structure leading to the next step."], actions: ["Go to Signup 2", "Back to Login"], hotspots: ["Previous", "Next"] },
+    signup02: { title: "Signup 2", description: "The second signup step where users enter basic profile information such as nickname.", points: ["Sets nickname and profile data.", "Second step in the signup flow.", "Continues to purpose selection."], actions: ["Go to Signup 3", "Back to Signup 1"], hotspots: ["Previous", "Next"] },
+    signup03: { title: "Signup 3", description: "The third signup step where users select their purpose of use.", points: ["Purpose selection stage.", "A middle step before interest selection.", "Good for explaining choice-based signup flow."], actions: ["Go to Signup 4", "Back to Signup 2"], hotspots: ["Previous", "Next"] },
+    signup04: { title: "Signup 4", description: "The fourth signup step where users select their interests.", points: ["Interest selection stage.", "Shows a choice-based screen in the signup flow.", "Leads to notification settings."], actions: ["Go to Signup 5", "Back to Signup 3"], hotspots: ["Previous", "Next"] },
+    signup05: { title: "Signup 5", description: "The fifth signup step for notification settings.", points: ["Adjusts notification-related settings.", "Shows post-signup usability preparation.", "Leads to terms consent."], actions: ["Go to Signup 6", "Back to Signup 4"], hotspots: ["Previous", "Next"] },
+    signup06: { title: "Signup 6", description: "The sixth signup step where required terms are confirmed before completion.", points: ["The final step before signup completion.", "Shows the required terms-consent flow.", "Moves to the completion screen."], actions: ["Go to Signup Complete", "Back to Signup 5"], hotspots: ["Previous", "Next"] },
+    signup07: { title: "Signup Complete", description: "The final screen showing that signup has been completed successfully.", points: ["The last stage of the signup flow.", "Can explain returning to login after completion.", "Works as a closing screen in the user journey."], actions: ["Back to Signup 6", "Complete and Go to Login"], hotspots: ["Previous", "Complete"] },
+    tutorial01: { title: "Tutorial 1", description: "The opening tutorial screen that introduces the basic app flow with the character.", points: ["Entered from the tutorial button in the home menu.", "Shows the real tutorial opening screen.", "Acts as the starting point for later tutorial screens."], actions: ["Go to Tutorial 2", "Back to Home Menu"], hotspots: ["Exit", "Next"] },
+  },
+  ja: {
+    home: { title: "ホーム", description: "ログイン後に最初に表示されるメイン画面で、メニュー、日記作成、最近の日記確認、カレンダー確認へ進む出発点です。", points: ["実際のホーム画面で最初の利用体験を見せます。", "主要移動ポイントだけを強調して流れを追いやすくしています。", "部屋オブジェクト中心のUI構造を確認できます。"], actions: ["上部メニューを開く", "猫と会話を始める", "最近の日記を見る"], hotspots: ["メニュー", "猫", "日記帳", "カレンダー"] },
+    menu: { title: "ホームメニュー", description: "ホーム画面右上メニューボタンから開くオーバーレイ画面で、プロフィール、チュートリアル、日記作成、日記確認、カレンダーへ素早く移動できます。", points: ["ホーム上に開く実際のメニューオーバーレイです。", "メニューボタンからの分岐フローを説明しやすいです。", "ホーム体験のハブになる画面です。"], actions: ["日記作成を始める", "カレンダーへ移動"], hotspots: ["プロフィール", "チュートリアル", "日記作成", "日記確認", "カレンダー", "ホーム"] },
+    write: { title: "日記作成", description: "質問型入力フローに沿って今日の感情と状況を記録し、完了ボタンで結果画面へ進む画面です。", points: ["質問中心の入力構造を見せます。", "完了後に結果画面へ自然につながります。", "実際の作成UIの雰囲気を伝えます。"], actions: ["結果を見る", "ホームへ移動"], hotspots: ["戻る", "完了"] },
+    read: { title: "日記確認", description: "作成済みの日記タイトル、本文、おすすめ活動を再確認する画面で、下部アクションからグラフポップアップやカレンダーへ進めます。", points: ["作成後の閲覧体験を実際の画面で確認できます。", "グラフとカレンダーにつながる下部アクションが見えます。", "コンテンツ中心の画面構成をそのまま見せます。"], actions: ["グラフポップアップを見る", "カレンダーへ移動"], hotspots: ["戻る", "もっと見る", "グラフ", "予定追加"] },
+    result: { title: "日記結果", description: "日記作成後に感情分析結果、本文、おすすめ活動を一画面で確認できる結果画面です。", points: ["結果画面の情報密度を実際のスクリーンショットで見せます。", "グラフポップアップとカレンダー連携が主要な次アクションです。", "作成フローの到着点になる画面です."] , actions: ["グラフを開く", "カレンダーへ移動"], hotspots: ["グラフ", "ホーム", "カレンダー"] },
+    graph: { title: "デイリーフィードバックポップアップ", description: "結果画面上に開くオーバーレイポップアップで、感情フィードバックとおすすめ活動をより集中して確認できます。", points: ["結果拡張UIをオーバーレイ形式で見せます。", "結果画面の文脈を保ったまま追加情報を提供します。", "その後の予定追加やプロフィールフローにつなげやすいです。"], actions: ["前の画面へ戻る", "カレンダーへ移動"], hotspots: ["閉じる", "追加"] },
+    calendar: { title: "カレンダー", description: "選択した日の予定一覧と日記確認ボタンを一緒に見せる画面で、感情記録と端末カレンダーを一つの流れで管理できます。", points: ["予定一覧と日記連携構造を実画面で見せます。", "日付選択後に詳細予定管理へ進みます。", "アプリデータと予定探索が出会う画面です。"], actions: ["追加 / 修正ポップアップを見る", "プロフィールを見る"], hotspots: ["戻る", "予定追加", "予定修正", "日記確認"] },
+    calendarEdit: { title: "予定修正 / 追加ポップアップ", description: "カレンダー上で開く予定修正・追加ポップアップで、タイトル、時間、場所、通知情報を入力して保存できます。", points: ["カレンダー上で開くポップアップ構造を見せます。", "入力と修正UXを一緒に説明できます。", "保存後にカレンダーへ戻る流れを説明できます。"], actions: ["カレンダーへ戻る", "保存して戻る"], hotspots: ["キャンセル", "保存"] },
+    profile: { title: "プロフィール / グラフ", description: "基本情報と週間・月間感情グラフを確認できる画面で、累積記録を振り返りプロフィール編集へ進めます。", points: ["プロフィールと感情統計を一画面で確認できます。", "設定と編集フローへ自然につながります。", "累積データ観点の画面であることが明確です。"], actions: ["プロフィール編集を開く", "ログインを見る"], hotspots: ["戻る", "ログアウト", "編集"] },
+    profileEdit: { title: "プロフィール編集 1", description: "ニックネーム、職業、地域など基本プロフィール情報を修正する最初の編集画面です。", points: ["フォーム中心の実際の編集画面です。", "プロフィール閲覧と修正が分離されていることが分かります。", "次ボタンで2ページ目へ移動します。"], actions: ["プロフィールへ戻る", "編集2へ移動"], hotspots: ["戻る", "保存", "次へ"] },
+    profileEditDetail: { title: "プロフィール編集 2", description: "パスワード変更、興味、使用目的、通知設定など詳細項目を扱う2ページ目の編集画面です。", points: ["プロフィール編集2ページ目の実画面です。", "複数の詳細設定を一画面で扱います。", "前のページへ戻れます。"], actions: ["編集1へ戻る", "プロフィールへ戻る"], hotspots: ["戻る", "前へ", "退会"] },
+    login: { title: "ログイン", description: "アプリ利用開始時に最初に表示される認証画面で、パスワード再設定や会員登録への分岐も提供します。", points: ["認証画面を含めて全体旅程を完成させます。", "会員フローの開始点と復帰点を説明できます。", "アプリ全体の完成度を補強する画面です。"], actions: ["会員登録へ移動", "パスワード再設定へ移動"], hotspots: ["ログイン", "パスワード忘れ", "会員登録"] },
+    forgotPassword: { title: "パスワード再設定", description: "ログイン画面から入るアカウント復旧画面で、メール入力後に新しいパスワード送信フローへ進みます。", points: ["ログイン画面からすぐ移動できます。", "認証補助フローを見せます。", "メール入力後の仮パスワード送信を説明できます。"], actions: ["ログインへ戻る", "送信後ログインへ"], hotspots: ["戻る", "新しいパスワード送信"] },
+    signup01: { title: "会員登録 1", description: "メールとパスワードなど基本アカウント情報を入力する会員登録最初の画面です。", points: ["会員登録の開始画面です。", "基本アカウント情報を入力します。", "次段階へ進む構造を見せます。"], actions: ["会員登録2へ", "ログインへ戻る"], hotspots: ["前へ", "次へ"] },
+    signup02: { title: "会員登録 2", description: "ニックネームなど基本プロフィール情報を入力する二番目の会員登録画面です。", points: ["ニックネームとプロフィールを設定します。", "会員登録フローの2段階目です。", "次は使用目的選択へ続きます。"], actions: ["会員登録3へ", "会員登録1へ戻る"], hotspots: ["前へ", "次へ"] },
+    signup03: { title: "会員登録 3", description: "使用目的を選択する三番目の会員登録画面です。", points: ["利用目的を選ぶ段階です。", "関心事選択へ進む中間段階です。", "選択型フローの説明に向いています。"], actions: ["会員登録4へ", "会員登録2へ戻る"], hotspots: ["前へ", "次へ"] },
+    signup04: { title: "会員登録 4", description: "関心事を選択する四番目の会員登録画面です。", points: ["関心事選択段階です。", "選択型UIを含む会員登録フローを見せます。", "次は通知設定です。"], actions: ["会員登録5へ", "会員登録3へ戻る"], hotspots: ["前へ", "次へ"] },
+    signup05: { title: "会員登録 5", description: "通知受信設定を調整する五番目の会員登録画面です。", points: ["通知関連設定を調整します。", "会員登録後の使用性準備を見せます。", "次は約款同意です。"], actions: ["会員登録6へ", "会員登録4へ戻る"], hotspots: ["前へ", "次へ"] },
+    signup06: { title: "会員登録 6", description: "必要な約款同意を確認する六番目の会員登録画面です。", points: ["会員登録完了直前の段階です。", "必須約款同意フローを見せます。", "完了画面へ進みます。"], actions: ["完了画面へ", "会員登録5へ戻る"], hotspots: ["前へ", "次へ"] },
+    signup07: { title: "会員登録完了", description: "会員登録が正常に完了したことを示す最後の画面です。", points: ["会員登録フローの最後です。", "完了後ログインへ戻る流れを説明できます。", "ユーザー旅程の締めくくり画面です。"], actions: ["会員登録6へ戻る", "完了してログインへ"], hotspots: ["前へ", "完了"] },
+    tutorial01: { title: "チュートリアル 1", description: "キャラクターと一緒にアプリの基本利用フローを紹介するチュートリアル開始画面です。", points: ["ホームメニューのチュートリアルボタンから入ります。", "実際のチュートリアル開始画面を見せます。", "後続のチュートリアル画面への出発点です。"], actions: ["チュートリアル2へ", "ホームメニューへ戻る"], hotspots: ["終了", "次へ"] },
+  },
+};
+
+function getLocalizedStep(stepKey) {
+  const base = flowData[stepKey];
+  if (!base || currentLang === "ko") return base;
+  const localized = flowTranslations[currentLang]?.[stepKey];
+  if (!localized && stepKey.startsWith("tutorial")) {
+    const tutorialNumber = stepKey.replace("tutorial", "");
+    const title = currentLang === "en" ? `Tutorial ${Number(tutorialNumber)}` : `チュートリアル ${Number(tutorialNumber)}`;
+    const description = currentLang === "en"
+      ? "A tutorial screen that explains a part of the app flow."
+      : "アプリフローの一部を案内するチュートリアル画面です。";
+    const points = currentLang === "en"
+      ? ["Shows a real tutorial screen.", "Helps explain the guided onboarding flow.", "Can be navigated with previous and next actions."]
+      : ["実際のチュートリアル画面を見せます。", "ガイド型オンボーディングフローの説明に役立ちます。", "前後移動で流れを確認できます。"];
+    const actions = currentLang === "en" ? ["Previous Tutorial", "Next Tutorial"] : ["前のチュートリアルへ", "次のチュートリアルへ"];
+    const hotspots = currentLang === "en" ? ["Exit", "Previous", "Next"] : ["終了", "前へ", "次へ"];
+    return {
+      ...base,
+      title,
+      description,
+      points,
+      actions: base.actions.map((action, index) => ({ ...action, label: actions[index] ?? action.label })),
+      hotspots: base.hotspots.map((hotspot, index) => ({ ...hotspot, label: hotspots[index] ?? hotspot.label })),
+    };
+  }
+  if (!localized) return base;
+  return {
+    ...base,
+    title: localized.title ?? base.title,
+    description: localized.description ?? base.description,
+    points: localized.points ?? base.points,
+    actions: base.actions.map((action, index) => ({
+      ...action,
+      label: localized.actions?.[index] ?? action.label,
+    })),
+    hotspots: base.hotspots.map((hotspot, index) => ({
+      ...hotspot,
+      label: localized.hotspots?.[index] ?? hotspot.label,
+    })),
+  };
+}
+
 const titleNode = document.getElementById("flow-title");
 const typeNode = document.getElementById("flow-type");
 const descriptionNode = document.getElementById("flow-description");
@@ -481,6 +781,7 @@ const actionsNode = document.getElementById("flow-actions");
 const stageCanvasNode = document.getElementById("flow-stage-canvas");
 const flowTitleSequenceNode = document.getElementById("flow-title-sequence");
 
+let currentLang = "ko";
 let currentStep = "login";
 let currentPath = ["login"];
 
@@ -529,7 +830,7 @@ function hotspotClass(shape) {
 }
 
 function stageMarkup(stepKey) {
-  const step = flowData[stepKey];
+  const step = getLocalizedStep(stepKey);
   if (!step) return "";
 
   const hotspots = [...(step.hotspots || [])]
@@ -610,7 +911,7 @@ function computePath(nextStep) {
 
 function currentPathText() {
   return currentPath
-    .map((stepKey) => flowData[stepKey]?.title)
+    .map((stepKey) => getLocalizedStep(stepKey)?.title)
     .filter(Boolean)
     .join(" > ");
 }
@@ -619,13 +920,13 @@ function renderTitleSequence() {
   flowTitleSequenceNode.innerHTML = "";
 
   currentPath.forEach((stepKey, index) => {
-    const step = flowData[stepKey];
+    const step = getLocalizedStep(stepKey);
     if (!step) return;
 
     const item = document.createElement("button");
     item.type = "button";
     item.className = "flow-title-step";
-    if (index === currentPath.length - 1) {
+    if (stepKey === currentStep) {
       item.classList.add("is-current");
       item.disabled = true;
     } else {
@@ -649,7 +950,7 @@ function renderTitleSequence() {
 }
 
 function renderStep(stepKey) {
-  const step = flowData[stepKey];
+  const step = getLocalizedStep(stepKey);
   if (!step) return;
 
   currentPath = computePath(stepKey);
@@ -657,7 +958,7 @@ function renderStep(stepKey) {
   titleNode.textContent = currentPathText();
   typeNode.textContent = step.type;
   descriptionNode.textContent = step.description;
-  hintNode.textContent = "스크린샷 위 강조 영역을 누르면 다음 화면으로 이동합니다.";
+  hintNode.textContent = staticTranslations[currentLang].flowHint;
 
   pointsNode.innerHTML = "";
   step.points.forEach((point) => {
@@ -688,6 +989,61 @@ function renderStep(stepKey) {
   renderTitleSequence();
 }
 
+function applyStaticTranslations() {
+  const t = staticTranslations[currentLang];
+  const setText = (selector, value) => {
+    const node = document.querySelector(selector);
+    if (node && value !== undefined) node.textContent = value;
+  };
+  const setByIndex = (selector, values = []) => {
+    document.querySelectorAll(selector).forEach((node, index) => {
+      if (values[index] !== undefined) node.textContent = values[index];
+    });
+  };
+
+  setText(".hero .eyebrow", t.heroEyebrow);
+  setText(".hero-summary", t.heroSummary);
+  setText(".primary-link", t.heroPrimary);
+  setText(".secondary-link", t.heroSecondary);
+  setText(".hero-card-label", t.heroCardLabel);
+  setByIndex(".stat-label", t.statLabels);
+  setByIndex(".intro-strip .panel h2", t.introTitles);
+  setByIndex(".intro-strip .panel p", t.introCopies);
+  setByIndex(".section-heading h2", t.sectionTitles);
+  setByIndex("#highlights .feature-card h3", t.featureTitles);
+  setByIndex("#highlights .feature-card p", t.featureCopies);
+  setByIndex("#role .feature-card h3", t.roleTitles);
+  setByIndex("#role .feature-card p", t.roleCopies);
+  setByIndex("#process .timeline-item h3", t.processTitles);
+  setByIndex("#process .timeline-item p", t.processCopies);
+  setByIndex("#troubleshooting .timeline-item h3", t.troubleTitles);
+  setByIndex("#troubleshooting .timeline-item p", t.troubleCopies);
+  setText(".architecture-lead", t.architectureLead);
+  setText(".architecture-caption", t.architectureCaption);
+  setText("#stack .section-heading p", t.stackIntro);
+  setByIndex(".stack-group > summary", t.stackSummaries);
+  Object.entries(t.stackReasons || {}).forEach(([id, value]) => {
+    const node = document.querySelector(`#${id} p`);
+    if (node) node.textContent = value;
+  });
+  setText(".closing-card h2", t.closingTitle);
+  setText(".closing-card > p:last-of-type", t.closingCopy);
+  setByIndex(".closing-meta span", t.closingMeta);
+}
+
+function setLanguage(lang) {
+  currentLang = lang;
+  document.querySelectorAll(".lang-button").forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.lang === lang);
+  });
+  applyStaticTranslations();
+  renderStep(currentStep);
+}
+
+document.querySelectorAll(".lang-button").forEach((button) => {
+  button.addEventListener("click", () => setLanguage(button.dataset.lang));
+});
+
 function initStackReasons() {
   document.querySelectorAll(".stack-group").forEach((group) => {
     const buttons = group.querySelectorAll(".stack-chip[data-reason-target]");
@@ -712,4 +1068,5 @@ function initStackReasons() {
 }
 
 initStackReasons();
+applyStaticTranslations();
 renderStep("login");

@@ -3,18 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Portfolio Hub</title>
+  <title>Portfolio Hub</title>
   <style>
     :root {
-      --bg: #f5efe4;
-      --surface: rgba(255, 251, 245, 0.92);
-      --surface-strong: #fffdf8;
-      --text: #1f1a17;
-      --muted: #6c625a;
-      --line: rgba(69, 51, 38, 0.14);
-      --accent: #b65e3c;
-      --accent-dark: #864125;
-      --shadow: 0 24px 60px rgba(78, 54, 37, 0.12);
+      --bg: #ececec;
+      --bg-deep: #dcdcdc;
+      --surface: rgba(255, 255, 255, 0.82);
+      --surface-strong: rgba(255, 255, 255, 0.96);
+      --line: rgba(16, 16, 16, 0.08);
+      --text: #111111;
+      --muted: #5d5d5d;
+      --accent: #1a1a1a;
+      --accent-2: #050505;
+      --shadow: 0 22px 64px rgba(0, 0, 0, 0.08);
+      --radius-xl: 18px;
+      --radius-lg: 14px;
+      --radius-md: 10px;
     }
 
     * {
@@ -24,12 +28,22 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: "Segoe UI", "Noto Sans KR", sans-serif;
       color: var(--text);
+      font-family: "Pretendard", "SUIT", "Segoe UI", "Noto Sans KR", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(214, 151, 113, 0.26), transparent 28%),
-        radial-gradient(circle at bottom right, rgba(115, 148, 125, 0.2), transparent 24%),
-        linear-gradient(180deg, #f9f4ea 0%, var(--bg) 100%);
+        linear-gradient(180deg, #f6f6f6 0%, var(--bg) 52%, var(--bg-deep) 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.018) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.3), transparent 92%);
     }
 
     a {
@@ -38,164 +52,380 @@
     }
 
     .page-shell {
-      width: min(1120px, calc(100% - 40px));
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 56px 0 72px;
+      padding: 28px 0 64px;
+    }
+
+    .glass {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
     }
 
     .hero {
       display: grid;
-      gap: 20px;
-      padding: 32px;
-      border: 1px solid var(--line);
-      border-radius: 32px;
-      background: var(--surface);
-      box-shadow: var(--shadow);
+      grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+      gap: 22px;
+      align-items: stretch;
     }
 
-    .eyebrow {
-      margin: 0 0 8px;
-      font-size: 0.9rem;
+    .language-switch {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .lang-button {
+      min-width: 52px;
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid rgba(16, 16, 16, 0.08);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.86);
+      color: var(--accent-2);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .lang-button.is-active {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+
+    .hero-main,
+    .hero-side,
+    .project-card {
+      overflow: hidden;
+    }
+
+    .hero-main,
+    .hero-side {
+      padding: 30px;
+      border-radius: 6px;
+    }
+
+    .hero-main {
+      display: flex;
+      flex-direction: column;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(239, 239, 239, 0.92));
+    }
+
+    .hero-side {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(235, 235, 235, 0.92));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .eyebrow,
+    .section-kicker,
+    .meta-label {
+      margin: 0 0 12px;
+      font-size: 0.76rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--accent);
+      letter-spacing: 0.16em;
+      color: #444;
+    }
+
+    h1,
+    .project-title,
+    .section-title {
+      margin: 0;
+      letter-spacing: -0.04em;
     }
 
     h1 {
-      margin: 0;
-      font-size: clamp(2.4rem, 5vw, 4.4rem);
-      line-height: 0.95;
+      font-size: clamp(3rem, 6vw, 5.8rem);
+      line-height: 0.92;
     }
 
-    .hero p:last-child {
-      margin: 0;
-      max-width: 700px;
-      font-size: 1.05rem;
-      line-height: 1.7;
+    .hero-summary,
+    .hero-copy,
+    .project-copy,
+    .stat-card p {
+      margin: 14px 0 0;
+      line-height: 1.8;
       color: var(--muted);
     }
 
+    .project-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .profile-photo-shell {
+      display: grid;
+      gap: 18px;
+      justify-items: center;
+      align-content: center;
+      min-height: 100%;
+    }
+
+    .profile-photo {
+      width: min(100%, 260px);
+      aspect-ratio: 1 / 1.18;
+      border-radius: 4px;
+      border: 1px solid rgba(16, 16, 16, 0.1);
+      background:
+        linear-gradient(135deg, rgba(249, 249, 249, 0.98), rgba(228, 228, 228, 0.96));
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.52),
+        0 14px 30px rgba(0, 0, 0, 0.06);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .profile-name {
+      margin: 0;
+      font-size: clamp(2.2rem, 4vw, 4.4rem);
+      line-height: 0.96;
+    }
+
+    .profile-subtitle {
+      margin: 10px 0 0;
+      font-size: 1.02rem;
+      color: var(--muted);
+    }
+
+    .profile-meta {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .profile-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .profile-icon {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(17, 17, 17, 0.05);
+      color: #1a1a1a;
+    }
+
+    .profile-row-value {
+      min-width: 0;
+      font-weight: 600;
+      color: var(--accent-2);
+      word-break: break-all;
+    }
+
+    .profile-row-value a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .profile-row-value a:hover {
+      text-decoration: underline;
+    }
+
+    .profile-side-meta {
+      display: grid;
+      gap: 12px;
+      justify-items: start;
+    }
+
+    .profile-side-meta .profile-row-value {
+      font-size: 0.98rem;
+    }
+
+    .profile-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: auto;
+      padding-top: 24px;
+    }
+
+    .profile-link-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent-2);
+      font-weight: 600;
+    }
+
+    .profile-link-inline .profile-icon {
+      background: transparent;
+      border: 1px solid rgba(16, 16, 16, 0.08);
+    }
+
+    .section {
+      margin-top: 30px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
     .section-title {
-      margin: 40px 0 18px;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--accent-dark);
+      font-size: clamp(1.7rem, 3vw, 2.8rem);
+    }
+
+    .section-note {
+      margin: 0;
+      max-width: 520px;
+      color: var(--muted);
+      line-height: 1.7;
     }
 
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 20px;
     }
 
-    .project-card,
-    .project-card-placeholder {
-      min-height: 280px;
-      border-radius: 28px;
-      border: 1px solid var(--line);
-      background: var(--surface-strong);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
     .project-card {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-rows: 220px auto;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: var(--surface);
+      box-shadow: var(--shadow);
       transition: transform 160ms ease, box-shadow 160ms ease;
     }
 
     .project-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 28px 64px rgba(78, 54, 37, 0.16);
+      box-shadow: 0 30px 86px rgba(35, 56, 88, 0.16);
     }
 
     .project-visual {
-      min-height: 140px;
+      position: relative;
       padding: 22px;
       display: flex;
-      align-items: flex-end;
-      background:
-        linear-gradient(140deg, rgba(182, 94, 60, 0.92), rgba(95, 63, 45, 0.92)),
-        linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
-      color: #fffaf5;
+      align-items: end;
+      justify-content: space-between;
+      color: #f8fbff;
     }
 
-    .project-visual span {
+    .project-card.farm .project-visual {
+      background: url("./meer's_farm-screenshots/dashboard_all_cell_active.png") center 18% / cover no-repeat;
+    }
+
+    .project-card.dailylog .project-visual {
+      background: url("./dailylog-screenshots/login_screen.png") center 9% / cover no-repeat;
+    }
+
+    .chip {
       display: inline-flex;
-      padding: 8px 12px;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
       border-radius: 999px;
-      background: rgba(255, 250, 245, 0.18);
-      border: 1px solid rgba(255, 250, 245, 0.28);
-      font-size: 0.92rem;
+      font-size: 0.86rem;
       font-weight: 700;
     }
 
     .project-body {
+      padding: 24px;
       display: grid;
-      gap: 12px;
-      padding: 22px;
+      gap: 14px;
     }
 
-    .project-body h2 {
+    .project-title {
+      font-size: 1.65rem;
+    }
+
+    .project-copy {
       margin: 0;
-      font-size: 1.45rem;
     }
 
-    .project-body p {
-      margin: 0;
-      line-height: 1.65;
-      color: var(--muted);
-    }
-
-    .project-meta {
+    .chip-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 2px;
     }
 
-    .project-meta span {
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: #f5ede3;
-      color: var(--accent-dark);
-      font-size: 0.84rem;
-      font-weight: 600;
+    .chip {
+      background: rgba(17, 17, 17, 0.05);
+      color: var(--accent-2);
     }
 
-    .project-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: fit-content;
-      margin-top: 6px;
-      padding: 12px 16px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: #fffaf5;
-      font-weight: 700;
-    }
-
-    .project-card-placeholder {
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      border-style: dashed;
+    .footer-note {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border: 1px solid rgba(16, 16, 16, 0.08);
+      border-radius: var(--radius-lg);
       color: var(--muted);
-      text-align: center;
+      background: rgba(255, 255, 255, 0.58);
       line-height: 1.7;
+    }
+
+    @media (max-width: 960px) {
+      .hero,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        align-items: start;
+        flex-direction: column;
+      }
     }
 
     @media (max-width: 640px) {
       .page-shell {
-        width: min(100% - 24px, 1120px);
-        padding: 24px 0 48px;
+        width: min(100% - 20px, 1180px);
+        padding: 14px 0 44px;
       }
 
-      .hero {
-        padding: 24px;
-        border-radius: 24px;
+      .hero-main,
+      .hero-side,
+      .project-body {
+        padding: 22px 18px;
+      }
+
+      .hero-main,
+      .hero-side,
+      .project-card,
+      .glass {
+        border-radius: 14px;
+      }
+
+      .hero-main,
+      .hero-side {
+        border-radius: 4px;
+      }
+
+      .profile-photo {
+        border-radius: 2px;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      .profile-row {
+        justify-items: start;
+      }
+
+      .profile-links {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
@@ -203,43 +433,157 @@
 <body>
   <main class="page-shell">
     <section class="hero">
-      <div>
-        <p class="eyebrow">Project Portfolio</p>
-        <h1>Selected Projects</h1>
+      <aside class="hero-side glass">
+        <div class="profile-photo-shell">
+          <div class="profile-photo"><span id="photo-placeholder">프로필 사진 영역<br>이미지 추가 가능</span></div>
+          <div class="profile-side-meta">
+            <div class="profile-row">
+              <span class="profile-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.61 2.61a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6.09 6.09l1.47-1.27a2 2 0 0 1 2.11-.45c.84.28 1.71.49 2.61.61A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </span>
+              <span class="profile-row-value">010-8245-3525</span>
+            </div>
+            <div class="profile-row">
+              <span class="profile-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M20.32 4.37A19.8 19.8 0 0 0 15.37 3l-.24.49a18.3 18.3 0 0 1 4.37 1.33 14.6 14.6 0 0 0-14.99 0A18.2 18.2 0 0 1 8.87 3.5L8.63 3a19.72 19.72 0 0 0-4.95 1.37C.55 9.1-.28 13.72.13 18.29A19.94 19.94 0 0 0 6.2 21l1.31-1.79c-.72-.26-1.4-.58-2.04-.96.17-.13.33-.27.49-.41 3.94 1.85 8.22 1.85 12.1 0 .16.14.32.28.49.41-.64.38-1.33.7-2.05.96L17.8 21a19.85 19.85 0 0 0 6.07-2.71c.49-5.29-.83-9.87-3.55-13.92ZM9.56 15.5c-1.18 0-2.15-1.08-2.15-2.4 0-1.33.95-2.4 2.15-2.4 1.21 0 2.17 1.08 2.15 2.4 0 1.32-.95 2.4-2.15 2.4Zm4.88 0c-1.18 0-2.15-1.08-2.15-2.4 0-1.33.95-2.4 2.15-2.4 1.21 0 2.17 1.08 2.15 2.4 0 1.32-.94 2.4-2.15 2.4Z"/>
+                </svg>
+              </span>
+              <span class="profile-row-value">guson</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="hero-main glass">
+        <div class="language-switch" aria-label="Language switcher">
+          <button class="lang-button is-active" type="button" data-lang="ko">KO</button>
+          <button class="lang-button" type="button" data-lang="en">EN</button>
+          <button class="lang-button" type="button" data-lang="ja">JP</button>
+        </div>
+        <p class="eyebrow" id="profile-eyebrow">Portfolio Profile</p>
+        <h1 class="profile-name">손지유</h1>
+        <p class="profile-subtitle">sonjiyu</p>
+        <p class="hero-summary" id="hero-summary">프로젝트 포트폴리오를 모아 둔 개인 허브 페이지입니다. 상단에서 프로필과 연락처를 바로 확인하고, 아래에서 프로젝트별 상세 페이지로 이동할 수 있도록 구성했습니다.</p>
+        <div class="profile-links">
+          <a class="profile-link-inline" href="https://github.com/guson401" target="_blank" rel="noreferrer">
+            <span class="profile-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M12 .5A12 12 0 0 0 8.2 23.9c.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.73-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.82 2.8 1.3 3.48.99.11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.91 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.17 0 0 1-.32 3.3 1.23A11.53 11.53 0 0 1 12 6.6c1.02 0 2.04.14 3 .41 2.3-1.55 3.3-1.23 3.3-1.23.65 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.59-2.8 5.6-5.48 5.9.43.37.82 1.1.82 2.22 0 1.61-.02 2.9-.02 3.29 0 .32.21.7.83.58A12 12 0 0 0 12 .5Z"/>
+              </svg>
+            </span>
+            <span>github.com/guson401</span>
+          </a>
+          <a class="profile-link-inline" href="mailto:sonjiyu123@gmail.com">
+            <span class="profile-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16v16H4z"/>
+                <path d="m4 7 8 6 8-6"/>
+              </svg>
+            </span>
+            <span>sonjiyu123@gmail.com</span>
+          </a>
+        </div>
       </div>
-      <p>
-        프로젝트별 포트폴리오 페이지로 이동할 수 있는 허브입니다.
-        새로운 프로젝트가 추가되면 이 페이지에서 바로 연결할 수 있도록 구성했습니다.
-      </p>
     </section>
 
-    <section aria-labelledby="projects-title">
-      <h2 class="section-title" id="projects-title">Projects</h2>
+    <section class="section" aria-labelledby="projects-title">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title" id="projects-title">Projects</h2>
+        </div>
+      </div>
+
       <div class="project-grid">
-        <a class="project-card" href="./dailylog-portfolio/index.html">
-          <div class="project-visual">
-            <span>Emotion Diary Android App</span>
-          </div>
+        <a class="project-card farm" href="./meer's_farm- portfolio/index.html">
+          <div class="project-visual" aria-hidden="true"></div>
           <div class="project-body">
-            <h2>DailyLog</h2>
-            <p>
-              감정 기록, 일기 결과, 추천 활동, 캘린더 연동 흐름을 중심으로 정리한 Android 프로젝트 포트폴리오입니다.
-            </p>
-            <div class="project-meta">
-              <span>Kotlin</span>
-              <span>Jetpack Compose</span>
-              <span>Portfolio</span>
+            <h3 class="project-title">Meer's Farm</h3>
+            <p class="project-copy" id="farm-copy">병해충 감시 자율주행로봇과 이와 연동된 웹서비스로 농부의 노동시간을 줄여주는 AIoT 프로젝트입니다.</p>
+            <div class="chip-row">
+              <span class="chip">React</span>
+              <span class="chip">Django</span>
+              <span class="chip">MQTT</span>
             </div>
-            <span class="project-link">Open Portfolio</span>
           </div>
         </a>
 
-        <article class="project-card-placeholder" aria-label="추가 예정 프로젝트">
-          다음 프로젝트를 추가할 공간입니다.<br>
-          같은 형식의 카드만 복사해서 링크를 연결하면 됩니다.
-        </article>
+        <a class="project-card dailylog" href="./dailylog-portfolio/index.html">
+          <div class="project-visual" aria-hidden="true"></div>
+          <div class="project-body">
+            <h3 class="project-title">DailyLog</h3>
+            <p class="project-copy" id="dailylog-copy">하루 기록이 번거롭거나 어려움을 겪는 사람들을 위한 대화형 일기 작성 앱 프로젝트입니다.</p>
+            <div class="chip-row">
+              <span class="chip">Kotlin</span>
+              <span class="chip">Jetpack Compose</span>
+              <span class="chip">Android</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="footer-note">
+        <span id="footer-note">이후 프로젝트를 추가할 때는 이 카드 구조를 복사해서 링크와 텍스트만 교체하면 됩니다.</span>
       </div>
     </section>
   </main>
+  <script>
+    const rootTranslations = {
+      ko: {
+        profileEyebrow: "Portfolio Profile",
+        photoPlaceholder: "프로필 사진 영역<br>이미지 추가 가능",
+        heroSummary: "프로젝트 포트폴리오를 모아 둔 개인 허브 페이지입니다. 상단에서 프로필과 연락처를 바로 확인하고, 아래에서 프로젝트별 상세 페이지로 이동할 수 있도록 구성했습니다.",
+        projectsTitle: "Projects",
+        farmCopy: "병해충 감시 자율주행로봇과 이와 연동된 웹서비스로 농부의 노동시간을 줄여주는 AIoT 프로젝트입니다.",
+        dailylogCopy: "하루 기록이 번거롭거나 어려움을 겪는 사람들을 위한 대화형 일기 작성 앱 프로젝트입니다.",
+        footerNote: "이후 프로젝트를 추가할 때는 이 카드 구조를 복사해서 링크와 텍스트만 교체하면 됩니다.",
+      },
+      en: {
+        profileEyebrow: "Portfolio Profile",
+        photoPlaceholder: "Profile Photo Area<br>Add Image Here",
+        heroSummary: "This is a personal hub page that gathers project portfolios in one place. The top area shows profile and contact information, and the section below links to each project page.",
+        projectsTitle: "Projects",
+        farmCopy: "An AIoT project that reduces farmers' labor time through a pest-monitoring autonomous robot and a connected web service.",
+        dailylogCopy: "A conversational diary-writing app project for people who find daily journaling inconvenient or difficult.",
+        footerNote: "When you add another project later, you can reuse this card structure and only replace the link and text.",
+      },
+      ja: {
+        profileEyebrow: "Portfolio Profile",
+        photoPlaceholder: "プロフィール写真エリア<br>画像を追加できます",
+        heroSummary: "プロジェクトポートフォリオを一か所にまとめた個人ハブページです。上部ではプロフィールと連絡先を確認でき、下部から各プロジェクトページへ移動できます。",
+        projectsTitle: "Projects",
+        farmCopy: "病害虫監視の自律走行ロボットと連動Webサービスにより、農家の労働時間を減らすAIoTプロジェクトです。",
+        dailylogCopy: "毎日の記録が面倒だったり難しかったりする人のための会話型日記作成アプリプロジェクトです。",
+        footerNote: "今後プロジェクトを追加する場合は、このカード構造を再利用してリンクとテキストだけを差し替えれば大丈夫です。",
+      },
+    };
+
+    const rootBindings = {
+      "profile-eyebrow": "profileEyebrow",
+      "hero-summary": "heroSummary",
+      "projects-title": "projectsTitle",
+      "farm-copy": "farmCopy",
+      "dailylog-copy": "dailylogCopy",
+      "footer-note": "footerNote",
+    };
+
+    document.querySelectorAll(".lang-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const lang = button.dataset.lang;
+        const t = rootTranslations[lang];
+        Object.entries(rootBindings).forEach(([id, key]) => {
+          const node = document.getElementById(id);
+          if (node) node.textContent = t[key];
+        });
+        const photoNode = document.getElementById("photo-placeholder");
+        if (photoNode) photoNode.innerHTML = t.photoPlaceholder;
+        document.querySelectorAll(".lang-button").forEach((node) => {
+          node.classList.toggle("is-active", node === button);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
