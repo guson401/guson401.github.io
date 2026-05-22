@@ -330,6 +330,10 @@
       background: url("./dailylog-screenshots/login_screen.png") center 9% / cover no-repeat;
     }
 
+    .project-card.omnikit .project-visual {
+      background: url("./omni-kit-screenshots/ur5-desktop-page.png") center 6% / cover no-repeat;
+    }
+
     .chip {
       display: inline-flex;
       align-items: center;
@@ -497,6 +501,20 @@
       </div>
 
       <div class="project-grid">
+        <a class="project-card omnikit" href="./omni-kit-portfolio/index.html">
+          <div class="project-visual" aria-hidden="true"></div>
+          <div class="project-body">
+            <h3 class="project-title">Omni-Kit</h3>
+            <p class="project-copy" id="omnikit-copy">UR5 협동로봇을 React 콘솔에서 모니터링·제어하고, WebAuthn 디바이스 화이트리스트로 보호하는 산업용 운영 플랫폼입니다.</p>
+            <div class="chip-row">
+              <span class="chip">React</span>
+              <span class="chip">Spring Boot</span>
+              <span class="chip">ROS 2</span>
+              <span class="chip">WebAuthn</span>
+            </div>
+          </div>
+        </a>
+
         <a class="project-card farm" href="./meer's_farm- portfolio/index.html">
           <div class="project-visual" aria-hidden="true"></div>
           <div class="project-body">
@@ -536,6 +554,7 @@
         photoPlaceholder: "프로필 사진 영역<br>이미지 추가 가능",
         heroSummary: "프로젝트 포트폴리오를 모아 둔 개인 허브 페이지입니다. 상단에서 프로필과 연락처를 바로 확인하고, 아래에서 프로젝트별 상세 페이지로 이동할 수 있도록 구성했습니다.",
         projectsTitle: "Projects",
+        omnikitCopy: "UR5 협동로봇을 React 콘솔에서 모니터링·제어하고, WebAuthn 디바이스 화이트리스트로 보호하는 산업용 운영 플랫폼입니다.",
         farmCopy: "병해충 감시 자율주행로봇과 이와 연동된 웹서비스로 농부의 노동시간을 줄여주는 AIoT 프로젝트입니다.",
         dailylogCopy: "하루 기록이 번거롭거나 어려움을 겪는 사람들을 위한 대화형 일기 작성 앱 프로젝트입니다.",
         footerNote: "이후 프로젝트를 추가할 때는 이 카드 구조를 복사해서 링크와 텍스트만 교체하면 됩니다.",
@@ -545,6 +564,7 @@
         photoPlaceholder: "Profile Photo Area<br>Add Image Here",
         heroSummary: "This is a personal hub page that gathers project portfolios in one place. The top area shows profile and contact information, and the section below links to each project page.",
         projectsTitle: "Projects",
+        omnikitCopy: "An industrial operations platform that monitors and controls the UR5 cobot from a React console, guarded by a WebAuthn device whitelist.",
         farmCopy: "An AIoT project that reduces farmers' labor time through a pest-monitoring autonomous robot and a connected web service.",
         dailylogCopy: "A conversational diary-writing app project for people who find daily journaling inconvenient or difficult.",
         footerNote: "When you add another project later, you can reuse this card structure and only replace the link and text.",
@@ -554,6 +574,7 @@
         photoPlaceholder: "プロフィール写真エリア<br>画像を追加できます",
         heroSummary: "プロジェクトポートフォリオを一か所にまとめた個人ハブページです。上部ではプロフィールと連絡先を確認でき、下部から各プロジェクトページへ移動できます。",
         projectsTitle: "Projects",
+        omnikitCopy: "UR5協働ロボットをReactコンソールから監視・制御し、WebAuthnデバイスホワイトリストで保護する産業用運用プラットフォームです。",
         farmCopy: "病害虫監視の自律走行ロボットと連動Webサービスにより、農家の労働時間を減らすAIoTプロジェクトです。",
         dailylogCopy: "毎日の記録が面倒だったり難しかったりする人のための会話型日記作成アプリプロジェクトです。",
         footerNote: "今後プロジェクトを追加する場合は、このカード構造を再利用してリンクとテキストだけを差し替えれば大丈夫です。",
@@ -564,6 +585,7 @@
       "profile-eyebrow": "profileEyebrow",
       "hero-summary": "heroSummary",
       "projects-title": "projectsTitle",
+      "omnikit-copy": "omnikitCopy",
       "farm-copy": "farmCopy",
       "dailylog-copy": "dailylogCopy",
       "footer-note": "footerNote",

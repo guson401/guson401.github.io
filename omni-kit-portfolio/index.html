@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omni-Kit Portfolio</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <a class="back-link" href="../index.html">← Back</a>
+
+    <header class="hero">
+      <div class="hero-copy">
+        <div class="language-switch" aria-label="Language switcher">
+          <button class="lang-button is-active" type="button" data-lang="ko">KO</button>
+          <button class="lang-button" type="button" data-lang="en">EN</button>
+          <button class="lang-button" type="button" data-lang="ja">JP</button>
+        </div>
+        <p class="eyebrow" id="eyebrow">Cobot Operations Console</p>
+        <h1>Omni-Kit</h1>
+        <p class="hero-summary" id="hero-summary">
+          UR5 협동로봇을 웹에서 모니터링·제어하고 WebAuthn 기반 디바이스 화이트리스트로 보호하는 산업용 운영 콘솔입니다. React 19 + Spring Boot 3 + ROS 2 워크스페이스가 MQTT/WebSocket으로 연결됩니다.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-link" href="#screens" id="hero-link-screens">화면 보기</a>
+          <a class="secondary-link" href="#role" id="hero-link-role">담당 역할</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <p class="panel-label" id="snapshot-label">Project Snapshot</p>
+        <div class="hero-stat-grid">
+          <article class="hero-stat">
+            <span class="hero-stat-value">React 19</span>
+            <span class="hero-stat-label" id="snapshot-front">Vite 6 + TS · URDF Viewer</span>
+          </article>
+          <article class="hero-stat">
+            <span class="hero-stat-value">Spring 3</span>
+            <span class="hero-stat-label" id="snapshot-back">JDK 21 · JPA · MQTT</span>
+          </article>
+          <article class="hero-stat">
+            <span class="hero-stat-value">WebAuthn</span>
+            <span class="hero-stat-label" id="snapshot-auth">Yubico Server 2.8</span>
+          </article>
+          <article class="hero-stat">
+            <span class="hero-stat-value">ROS 2</span>
+            <span class="hero-stat-label" id="snapshot-ros">Humble · UR Driver 2.12</span>
+          </article>
+        </div>
+      </aside>
+    </header>
+
+    <main>
+      <section class="section intro-grid" id="overview">
+        <article class="section-card">
+          <p class="section-kicker" id="overview-kicker">Overview</p>
+          <h2 id="overview-title">문제 정의</h2>
+          <p id="overview-copy">
+            기존 산업용 협동로봇은 펜던트 옆에서만 조작·확인이 가능하고, 누가 어떤 단말에서 접근하는지 관리가 어렵습니다. Omni-Kit은 로봇 상태를 웹/모바일로 끌어올리고, 모든 단말을 사이트별 WebAuthn 화이트리스트로 잠그는 운영 콘솔을 만들었습니다.
+          </p>
+        </article>
+        <article class="section-card accent-card">
+          <p class="section-kicker" id="value-kicker">Core Value</p>
+          <h2 id="value-title">핵심 구현 포인트</h2>
+          <p id="value-copy">
+            React 19 기반 콘솔에서 3D URDF 디지털 트윈으로 실 로봇과 동일한 자세를 확인하고, MQTT/WebSocket으로 명령/상태가 양방향 흐릅니다. Spring Boot 백엔드가 WebAuthn 등록·인증·세션 무효화·디바이스 takeover까지 운영 보안을 책임집니다.
+          </p>
+        </article>
+      </section>
+
+      <section class="section" id="highlights">
+        <div class="section-heading">
+          <p class="section-kicker" id="highlights-kicker">Highlights</p>
+          <h2 id="highlights-title">핵심 기능</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="feature-icon">01</span>
+            <h3 id="feature-1-title">WebAuthn 디바이스 화이트리스트</h3>
+            <p id="feature-1-copy">Yubico WebAuthn 서버 라이브러리로 등록·어설션을 처리하고, 디바이스를 PENDING/APPROVED/BLOCKED로 관리합니다. 첫 admin은 부트스트랩 자동 승인됩니다.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">02</span>
+            <h3 id="feature-2-title">3D URDF 디지털 트윈</h3>
+            <p id="feature-2-copy">@react-three/fiber + urdf-loader로 UR5 모델을 렌더링하고, MQTT를 통해 들어오는 관절/TCP pose를 WebSocket으로 받아 화면에 즉시 반영합니다.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">03</span>
+            <h3 id="feature-3-title">단일 세션 보안</h3>
+            <p id="feature-3-copy">단일 세션 정책으로 다른 기기에서 takeover되면 30초 폴링과 visibilitychange로 즉시 감지해 로그아웃합니다. AccessTokenDenylist로 토큰도 즉시 무효화됩니다.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">04</span>
+            <h3 id="feature-4-title">패스키 분실 복구 흐름</h3>
+            <p id="feature-4-copy">OS keychain 분실로 WebAuthn 어설션이 막혔을 때 자가 reset-credential, 같은 사이트 사용자 takeover-reset, PENDING 승인 재요청까지 흐름을 닫았습니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section screens-section" id="screens">
+        <div class="section-heading">
+          <p class="section-kicker" id="screens-kicker">Screen Explorer</p>
+          <h2 id="screens-title">실제 운영 화면</h2>
+          <p id="screens-copy">관리자 콘솔의 실시간 제어 화면과 디지털 트윈 뷰어 동작을 확인할 수 있습니다.</p>
+        </div>
+
+        <div class="screen-preview">
+          <div>
+            <div class="screen-tabs" role="tablist">
+              <button class="screen-tab is-active" type="button" data-screen="tourAll">전체 화면 투어</button>
+              <button class="screen-tab" type="button" data-screen="tourOverview">페이지 개요</button>
+              <button class="screen-tab" type="button" data-screen="page">실시간 제어</button>
+              <button class="screen-tab" type="button" data-screen="canvas">URDF 뷰어</button>
+              <button class="screen-tab" type="button" data-screen="mini">축소 레이아웃</button>
+            </div>
+            <div class="screen-image-frame">
+              <img id="screen-image" src="./screens-tour/all/frame_001.png" alt="Omni-Kit 전체 화면 투어">
+              <div class="screen-player-controls" id="screen-player-controls" hidden>
+                <button class="screen-player-button" type="button" id="screen-player-toggle" aria-label="재생/일시정지">⏸</button>
+                <div class="screen-player-progress">
+                  <div class="screen-player-progress-bar" id="screen-player-progress-bar"></div>
+                </div>
+                <span class="screen-player-counter" id="screen-player-counter">1 / 29</span>
+              </div>
+            </div>
+          </div>
+          <div class="screen-copy">
+            <h3 id="screen-title">전체 화면 투어</h3>
+            <p id="screen-description">관리자 계정으로 실시간 제어 → 로봇 관리 → 작업 운영 → 웨이포인트 → 작업 이력 → 그리퍼 → 알림 → 회원정보 → 사업장/하드웨어/세션 관리까지, 콘솔 전 페이지를 순회하는 29프레임 화면 투어입니다.</p>
+            <ul class="flat-list" id="screen-points">
+              <li>Playwright 데스크톱 뷰포트 E2E가 모든 메뉴를 자동 순회하며 프레임 캡처</li>
+              <li>사이드바 네비게이션 · 헤더 · 권한별 메뉴 구성을 한 흐름에서 검증</li>
+              <li>Stop Claude 배너는 데모 환경 안내 (운영 빌드에는 없음)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="architecture">
+        <div class="section-heading">
+          <p class="section-kicker" id="architecture-kicker">Architecture</p>
+          <h2 id="architecture-title">웹 · 백엔드 · MQTT · ROS 2 워크스페이스 분리</h2>
+        </div>
+        <article class="architecture-card">
+          <p class="architecture-lead" id="architecture-lead">
+            React 콘솔과 Spring Boot 백엔드가 REST/STOMP로 통신하고, 백엔드는 Spring Integration MQTT로 로봇 워크스페이스와 명령/상태 메시지를 주고받습니다.
+          </p>
+          <div class="architecture-flow">
+            <span class="architecture-flow-card">React Console</span>
+            <span class="architecture-flow-arrow">↔</span>
+            <span class="architecture-flow-card">Spring Boot · JPA</span>
+            <span class="architecture-flow-arrow">↔</span>
+            <span class="architecture-flow-card">Mosquitto MQTT</span>
+            <span class="architecture-flow-arrow">↔</span>
+            <span class="architecture-flow-card">ROS 2 omni_kit</span>
+            <span class="architecture-flow-arrow">→</span>
+            <span class="architecture-flow-card">UR5 + 2FG7</span>
+          </div>
+          <p class="architecture-caption" id="architecture-caption">
+            STT는 web/sensevoice가 faster-whisper large-v3-turbo로 EC2 CPU(int8)에서 서빙하고, 음성 발화·LLM 응답은 로봇이 진실원천이 되어 evt/conversation MQTT → WS llm.conversation.appended로 콘솔에 도착합니다.
+          </p>
+        </article>
+      </section>
+
+      <section class="section" id="stack">
+        <div class="section-heading">
+          <p class="section-kicker" id="stack-kicker">Tech Stack</p>
+          <h2 id="stack-title">사용 기술</h2>
+        </div>
+        <div class="stack-grid">
+          <article class="stack-card">
+            <h3 id="stack-front-title">Frontend</h3>
+            <div class="chip-row">
+              <span class="chip strong">React 19.2</span>
+              <span class="chip strong">Vite 6.4</span>
+              <span class="chip strong">TypeScript 5.9</span>
+              <span class="chip">React Router 7</span>
+              <span class="chip">@tanstack/react-query 5</span>
+              <span class="chip">@react-three/fiber 9</span>
+              <span class="chip">@react-three/drei</span>
+              <span class="chip">urdf-loader</span>
+              <span class="chip">three.js</span>
+              <span class="chip">@simplewebauthn/browser 13</span>
+              <span class="chip">@stomp/stompjs 7</span>
+              <span class="chip">sockjs-client</span>
+              <span class="chip">axios</span>
+              <span class="chip">react-hook-form + zod</span>
+              <span class="chip">lucide-react</span>
+            </div>
+            <p id="stack-front-copy">관리자 콘솔(데스크톱)과 operator 모바일을 같은 모노레포에서 운영합니다. 3D URDF 뷰어는 @react-three/fiber + urdf-loader, WebAuthn 클라이언트는 @simplewebauthn/browser로 처리합니다.</p>
+          </article>
+          <article class="stack-card">
+            <h3 id="stack-back-title">Backend</h3>
+            <div class="chip-row">
+              <span class="chip strong">Spring Boot 3.5.14</span>
+              <span class="chip strong">JDK 21</span>
+              <span class="chip strong">Yubico WebAuthn 2.8</span>
+              <span class="chip">Spring Data JPA</span>
+              <span class="chip">Spring Data Redis</span>
+              <span class="chip">Spring WebSocket (STOMP)</span>
+              <span class="chip">Spring Integration MQTT</span>
+              <span class="chip">Paho MQTT 1.2.5</span>
+              <span class="chip">JJWT 0.12.6</span>
+              <span class="chip">dev.samstevens.totp 1.7 (MFA)</span>
+              <span class="chip">PostgreSQL</span>
+              <span class="chip">Testcontainers</span>
+            </div>
+            <p id="stack-back-copy">JWT + WebAuthn + 디바이스 가드 3중 보안과, ROS 2 워크스페이스와 통신하는 MQTT 이벤트 라우터를 같은 백엔드에 묶었습니다. JPA + Redis로 세션·쿨다운을 관리합니다.</p>
+          </article>
+          <article class="stack-card">
+            <h3 id="stack-robot-title">Robot / Infra</h3>
+            <div class="chip-row">
+              <span class="chip strong">ROS 2 Humble</span>
+              <span class="chip strong">UR ROS2 Driver 2.12</span>
+              <span class="chip strong">faster-whisper (large-v3-turbo)</span>
+              <span class="chip">FastAPI (sensevoice STT)</span>
+              <span class="chip">colcon</span>
+              <span class="chip">Docker Compose</span>
+              <span class="chip">Mosquitto MQTT</span>
+              <span class="chip">Nginx Blue/Green</span>
+              <span class="chip">Jenkins</span>
+            </div>
+            <p id="stack-robot-copy">omni_kit ROS 2 워크스페이스가 UR5 RTDE 드라이버와 OnRobot 2FG7 Modbus 그리퍼를 제어하고, web/sensevoice가 EC2 CPU(int8) Whisper 추론을 서빙합니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="role">
+        <div class="section-heading">
+          <p class="section-kicker" id="role-kicker">My Contribution</p>
+          <h2 id="role-title">담당 역할</h2>
+          <p id="role-copy">백엔드 인증·세션·디바이스 가드와 프론트엔드 페이지 구조(콘솔 셸·실시간 제어·관리자 화면·로그인 흐름)를 함께 맡았습니다.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="feature-icon">A</span>
+            <h3 id="role-1-title">WebAuthn 등록·인증 서비스</h3>
+            <p id="role-1-copy">Spring Boot의 WebAuthnService에서 Yubico RelyingParty 기반 등록 옵션·검증, 어설션, 첫 admin 부트스트랩 자동 승인까지 구현했습니다. 등록 시 admin에게 PENDING 알림을 발사합니다.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">B</span>
+            <h3 id="role-2-title">디바이스 가드 (D8) + 단일 세션</h3>
+            <p id="role-2-copy">AuthSessionGuard 인터셉터에서 WebAuthn credential → 사이트 → APPROVED → 디바이스 타입 순으로 검증하고, AccessTokenDenylist로 강제 만료 시 토큰을 즉시 무효화했습니다.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">C</span>
+            <h3 id="role-3-title">하드웨어 관리 콘솔</h3>
+            <p id="role-3-copy">AdminPages의 ClientDevicesPage에서 PENDING/APPROVED/BLOCKED 상태 전환, 알림 링크의 사원번호 prefill, 사이트 멤버/그룹/그리퍼 관리까지 화면을 구현했습니다.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">D</span>
+            <h3 id="role-4-title">콘솔 셸 + 라우팅 가드</h3>
+            <p id="role-4-copy">AppShell 사이드바·collapsed 상태·세션 takeover 폴링(30s + visibilitychange), routing.tsx의 PublicOnly/Protected/PendingApproval/DesktopOnly 라우트 가드를 작성했습니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="troubleshooting">
+        <div class="section-heading">
+          <p class="section-kicker" id="trouble-kicker">Troubleshooting</p>
+          <h2 id="trouble-title">기술적 문제 해결 포인트</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <span class="timeline-index">01</span>
+            <div>
+              <h3 id="trouble-1-title">디바이스 폴링 vs WebAuthn 어설션 race</h3>
+              <p id="trouble-1-copy">PendingApprovalRoute에서 디바이스가 APPROVED로 갱신되자마자 /dashboard로 보내면 WebAuthn 어설션 단계가 trigger되지 않는 race가 있었습니다. 토큰의 webauthnCredentialId 유무까지 함께 확인해 라우트가 한 단계 더 머무르도록 가드를 고쳤습니다.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-index">02</span>
+            <div>
+              <h3 id="trouble-2-title">다른 기기 takeover 즉시 감지</h3>
+              <p id="trouble-2-copy">단일 세션 정책 하에서 다른 기기 로그인 시 기존 탭이 살아 있으면 사용자가 모릅니다. AppShell에서 /auth/me 30초 폴링 + visibilitychange 즉시 호출을 결합해 AUTH_031을 받으면 인터셉터가 /login?takeover=1로 보내도록 닫았습니다.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-index">03</span>
+            <div>
+              <h3 id="trouble-3-title">패스키 분실 복구 cooldown 설계</h3>
+              <p id="trouble-3-copy">자가 reset-credential과 같은 사이트 사용자 takeover-reset이 admin 알림을 스팸으로 만들 수 있어, Redis로 사용자/사이트별 60초 cooldown을 적용했습니다. takeover 시 기존 deviceType·deviceName은 보존해 식별 정보가 사라지지 않도록 처리했습니다.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-index">04</span>
+            <div>
+              <h3 id="trouble-4-title">Linux 데스크톱 시현 우회 게이팅</h3>
+              <p id="trouble-4-copy">시연 환경의 우분투 PC는 OS platform authenticator가 없어 Chrome WebAuthn 흐름이 막힙니다. AuthSessionGuard와 라우트 가드에 User-Agent 기반 우회를 두되, Android의 "Linux" 토큰은 명시적으로 제외해 operator MOBILE 정책이 깨지지 않게 했습니다.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-index">05</span>
+            <div>
+              <h3 id="trouble-5-title">jog 명령 토스트 스팸 차단</h3>
+              <p id="trouble-5-copy">실시간 제어에서 jog 버튼은 80ms 간격으로 연속 발사되는데, 실패 시 매 tick 토스트가 떠 화면이 가려졌습니다. 마지막 에러 토스트 시점을 기록해 3초 이내 재표시를 막고, 성공 시 카운터를 리셋하도록 정리했습니다.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="closing">
+        <article class="closing-card">
+          <p class="section-kicker" id="closing-kicker">Summary</p>
+          <h2 id="closing-title">UR5 협동로봇 운영 콘솔 + WebAuthn 보안 통합 플랫폼</h2>
+          <p id="closing-copy">SSAFY 14기 자율 프로젝트(S14P31S303) — React 19 + Spring Boot 3 + ROS 2 워크스페이스를 묶은 협동로봇 운영 콘솔입니다. WebAuthn 디바이스 화이트리스트, 단일 세션 강제, 3D URDF 디지털 트윈을 한 흐름에 연결했습니다.</p>
+          <div class="closing-tags">
+            <span>React 19</span>
+            <span>Spring Boot 3</span>
+            <span>WebAuthn</span>
+            <span>URDF Digital Twin</span>
+            <span>MQTT</span>
+            <span>ROS 2</span>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
