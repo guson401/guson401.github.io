@@ -102,20 +102,25 @@
         <div class="section-heading">
           <p class="section-kicker" id="screens-kicker">Screen Explorer</p>
           <h2 id="screens-title">실제 운영 화면</h2>
-          <p id="screens-copy">관리자 콘솔의 실시간 제어 화면과 디지털 트윈 뷰어 동작을 확인할 수 있습니다.</p>
+          <p id="screens-copy">새로 정리한 스크린샷을 실제 탭 흐름 기준으로 묶어, 인증부터 실시간 제어와 관리자 보안 화면까지 확인할 수 있습니다.</p>
         </div>
 
         <div class="screen-preview">
           <div>
             <div class="screen-tabs" role="tablist">
-              <button class="screen-tab is-active" type="button" data-screen="tourAll">전체 화면 투어</button>
-              <button class="screen-tab" type="button" data-screen="tourOverview">페이지 개요</button>
-              <button class="screen-tab" type="button" data-screen="page">실시간 제어</button>
-              <button class="screen-tab" type="button" data-screen="canvas">URDF 뷰어</button>
-              <button class="screen-tab" type="button" data-screen="mini">축소 레이아웃</button>
+              <button class="screen-tab is-active" type="button" data-screen="auth">인증</button>
+              <button class="screen-tab" type="button" data-screen="dashboard">대시보드</button>
+              <button class="screen-tab" type="button" data-screen="realtime">실시간 제어</button>
+              <button class="screen-tab" type="button" data-screen="robots">로봇 관리</button>
+              <button class="screen-tab" type="button" data-screen="operations">작업 운영</button>
+              <button class="screen-tab" type="button" data-screen="waypoints">웨이포인트</button>
+              <button class="screen-tab" type="button" data-screen="history">작업 이력</button>
+              <button class="screen-tab" type="button" data-screen="gripper">그리퍼</button>
+              <button class="screen-tab" type="button" data-screen="alerts">알림</button>
+              <button class="screen-tab" type="button" data-screen="admin">관리자</button>
             </div>
             <div class="screen-image-frame">
-              <img id="screen-image" src="./screens-tour/all/frame_001.png" alt="Omni-Kit 전체 화면 투어">
+              <img id="screen-image" src="../omni-kit-screenshots/00_auth_01_login-form.png" alt="Omni-Kit 로그인과 관리자 승인">
               <div class="screen-player-controls" id="screen-player-controls" hidden>
                 <button class="screen-player-button" type="button" id="screen-player-toggle" aria-label="재생/일시정지">⏸</button>
                 <div class="screen-player-progress">
@@ -126,12 +131,12 @@
             </div>
           </div>
           <div class="screen-copy">
-            <h3 id="screen-title">전체 화면 투어</h3>
-            <p id="screen-description">관리자 계정으로 실시간 제어 → 로봇 관리 → 작업 운영 → 웨이포인트 → 작업 이력 → 그리퍼 → 알림 → 회원정보 → 사업장/하드웨어/세션 관리까지, 콘솔 전 페이지를 순회하는 29프레임 화면 투어입니다.</p>
+            <h3 id="screen-title">로그인과 관리자 승인</h3>
+            <p id="screen-description">사이트 코드와 사번으로 로그인한 뒤 저장된 패스키를 선택하고, WebAuthn 디바이스 승인 상태를 확인하는 진입 흐름입니다.</p>
             <ul class="flat-list" id="screen-points">
-              <li>Playwright 데스크톱 뷰포트 E2E가 모든 메뉴를 자동 순회하며 프레임 캡처</li>
-              <li>사이드바 네비게이션 · 헤더 · 권한별 메뉴 구성을 한 흐름에서 검증</li>
-              <li>Stop Claude 배너는 데모 환경 안내 (운영 빌드에는 없음)</li>
+              <li>PC 관리자는 패스키 기반 인증을 통과해야 콘솔에 진입</li>
+              <li>승인 대기 화면에서 등록 장치 정보와 현재 브라우저 fingerprint를 대조</li>
+              <li>승인 후 세션 갱신 실패 같은 예외도 같은 화면에서 복구 동선 제공</li>
             </ul>
           </div>
         </div>

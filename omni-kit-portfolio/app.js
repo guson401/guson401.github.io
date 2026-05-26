@@ -1,76 +1,82 @@
-function buildFrameList(prefix, count) {
-  const list = [];
-  for (let i = 1; i <= count; i += 1) {
-    list.push(`${prefix}/frame_${String(i).padStart(3, "0")}.png`);
-  }
-  return list;
+function screenList(...filenames) {
+  return filenames.map((filename) => `../omni-kit-screenshots/${filename}`);
 }
 
 const SCREEN_DATA = {
-  tourAll: {
-    frames: buildFrameList("./screens-tour/all", 29),
-    fps: 2.5,
+  auth: {
+    frames: screenList(
+      "00_auth_01_login-form.png",
+      "00_auth_02_passkey-selection.png",
+      "00_auth_03_admin-approval-error.png",
+    ),
+    fps: 0.55,
     titles: {
-      ko: "전체 화면 투어",
-      en: "Full Screen Tour",
-      ja: "全画面ツアー",
+      ko: "로그인과 관리자 승인",
+      en: "Login and Admin Approval",
+      ja: "ログインと管理者承認",
     },
     descriptions: {
-      ko: "관리자 계정으로 실시간 제어 → 로봇 관리 → 작업 운영 → 웨이포인트 → 작업 이력 → 그리퍼 → 알림 → 회원정보 → 사업장/하드웨어/세션 관리까지, 콘솔 전 페이지를 순회하는 29프레임 화면 투어입니다.",
-      en: "A 29-frame walkthrough of every console page under an admin account — real-time control, robots, recipes, waypoints, executions, gripper, alerts, profile, and the site/hardware/session admin screens.",
-      ja: "管理者アカウントで実時間制御 → ロボット管理 → 作業運用 → ウェイポイント → 作業履歴 → グリッパー → アラート → 会員情報 → 事業場/ハードウェア/セッション管理まで、コンソール全ページを巡回する29フレームのツアーです。",
+      ko: "사이트 코드와 사번으로 로그인한 뒤 저장된 패스키를 선택하고, WebAuthn 디바이스 승인 상태를 확인하는 진입 흐름입니다.",
+      en: "The entry flow: sign in with site code and employee ID, choose the saved passkey, then verify WebAuthn device approval state.",
+      ja: "サイトコードと社員番号でログインし、保存済みパスキーを選択してWebAuthnデバイス承認状態を確認する導線です。",
     },
     points: {
       ko: [
-        "Playwright 데스크톱 뷰포트 E2E가 모든 메뉴를 자동 순회하며 프레임 캡처",
-        "사이드바 네비게이션 · 헤더 · 권한별 메뉴 구성을 한 흐름에서 검증",
-        "Stop Claude 배너는 데모 환경 안내 (운영 빌드에는 없음)",
+        "PC 관리자는 패스키 기반 인증을 통과해야 콘솔에 진입",
+        "승인 대기 화면에서 등록 장치 정보와 현재 브라우저 fingerprint를 대조",
+        "승인 후 세션 갱신 실패 같은 예외도 같은 화면에서 복구 동선 제공",
       ],
       en: [
-        "A Playwright desktop-viewport E2E walks every menu and captures frames",
-        "Validates sidebar nav, header, and role-based menu layout in one flow",
-        "The 'Stop Claude' banner is a demo-environment hint (absent in prod builds)",
+        "Desktop managers must pass passkey authentication before entering the console",
+        "Pending approval compares registered device data with the current browser fingerprint",
+        "Recovery actions are exposed in place for edge cases like session refresh failure after approval",
       ],
       ja: [
-        "Playwrightのデスクトップビューポート E2E が全メニューを自動巡回しフレームをキャプチャ",
-        "サイドバーナビ・ヘッダー・権限別メニュー構成を一連の流れで検証",
-        "「Stop Claude」バナーはデモ環境の案内(本番ビルドには存在しません)",
+        "PC管理者はパスキー認証を通過してからコンソールへ進入",
+        "承認待ち画面で登録デバイス情報と現在ブラウザのfingerprintを照合",
+        "承認後のセッション更新失敗なども同じ画面で復旧導線を提示",
       ],
     },
   },
-  tourOverview: {
-    frames: buildFrameList("./screens-tour/overview", 11),
-    fps: 1.8,
+  dashboard: {
+    frames: screenList("10_dashboard_01_robot-status-cards.png"),
     titles: {
-      ko: "페이지 개요 (단축본)",
-      en: "Pages Overview (short)",
-      ja: "ページ概要(短縮版)",
+      ko: "운영 대시보드",
+      en: "Operations Dashboard",
+      ja: "運用ダッシュボード",
     },
     descriptions: {
-      ko: "전체 투어의 단축본입니다. 11프레임으로 실시간 제어 · 그리퍼 · 세션 관리 등 핵심 페이지만 빠르게 훑습니다. 면접/리뷰 자리에서 30초 안에 콘솔 인상을 전달할 때 사용했습니다.",
-      en: "An 11-frame short of the full tour — skims only the key pages (real-time control, gripper, session management). Used to convey the console feel in under 30 seconds during reviews and interviews.",
-      ja: "全体ツアーの短縮版。11フレームで実時間制御・グリッパー・セッション管理など主要ページのみを素早く確認。面接/レビューで30秒以内にコンソールの印象を伝える用に使用しました。",
+      ko: "사이트 내 로봇 상태와 미확인 알림을 한 화면에서 보는 초기 화면입니다. 운영자는 카드 상태를 보고 바로 로봇 상세나 알림 상세로 이동합니다.",
+      en: "The landing dashboard combines robot health cards and unread alerts. Operators can jump directly into robot details or alert details from the overview.",
+      ja: "サイト内ロボット状態と未確認通知を一画面で確認する初期画面です。カードからロボット詳細や通知詳細へ直接移動できます。",
     },
     points: {
       ko: [
-        "핵심 11페이지만 추려 빠른 인상 전달용으로 분리",
-        "동일한 캡처 파이프라인을 짧은 시나리오로 재실행",
-        "프레임 간 간격이 약간 더 길어 각 화면을 읽기 쉬움",
+        "전체·정상·오류·고장·오프라인 상태를 칩으로 요약",
+        "로봇 카드마다 점검 모드와 작업 상태를 즉시 확인",
+        "오른쪽 알림 패널에서 하드웨어 인증 요청과 로봇 이벤트를 함께 노출",
       ],
       en: [
-        "Cut down to the 11 most informative pages for a quick first impression",
-        "Same capture pipeline, rerun against a shorter scenario",
-        "Slightly slower playback so each screen is easier to read",
+        "Summarizes all, healthy, error, fault, and offline counts as status chips",
+        "Each robot card surfaces maintenance mode and current operating state",
+        "The alert panel combines device-registration requests and robot events",
       ],
       ja: [
-        "重要な11ページのみに絞り、印象を素早く伝える用途に分離",
-        "同じキャプチャパイプラインを短いシナリオで再実行",
-        "フレーム間隔がやや長く、各画面を読み取りやすい",
+        "全体・正常・エラー・故障・オフライン件数をチップで要約",
+        "各ロボットカードで点検モードと稼働状態を即時確認",
+        "右側通知パネルでデバイス認証要求とロボットイベントを併せて表示",
       ],
     },
   },
-  page: {
-    src: "../omni-kit-screenshots/ur5-desktop-page.png",
+  realtime: {
+    frames: screenList(
+      "20_realtime-control_01_tcp-control.png",
+      "20_realtime-control_02_llm-chat-compact.png",
+      "20_realtime-control_03_llm-chat-expanded.png",
+      "20_realtime-control_04_joint-control.png",
+      "20_realtime-control_05_quick-execution.png",
+    ),
+    fps: 0.55,
     titles: {
       ko: "실시간 제어 콘솔",
       en: "Real-time Control Console",
@@ -83,79 +89,267 @@ const SCREEN_DATA = {
     },
     points: {
       ko: [
-        "좌측 메뉴: 대시보드·실시간 제어·로봇 관리·작업 운영·웨이포인트·작업 이력·그리퍼·알림",
-        "관리자 메뉴: 사업장 관리(WS-016)·하드웨어 관리(WS-013)·세션 관리(WS-009)",
-        "좌측 패널 collapsed 상태는 localStorage 키 omnikit:sidebar-collapsed로 유지",
+        "TCP·조인트·빠른 실행 탭을 같은 3D 워크셀 위에서 전환",
+        "점검 모드, Free Drive, 속도, 실 로봇/시뮬레이션 상태를 상단에서 제어",
+        "LLM 대화 패널은 크기 조절 가능한 오버레이로 로봇 제어 문맥을 보조",
       ],
       en: [
-        "Left nav: dashboard, real-time control, robots, recipes, waypoints, executions, gripper, alerts",
-        "Admin nav: site management (WS-016), hardware management (WS-013), session management (WS-009)",
-        "Sidebar collapsed state is persisted under localStorage key omnikit:sidebar-collapsed",
+        "Switch TCP, joint, and quick-execution controls over the same 3D workcell",
+        "Maintenance mode, Free Drive, speed, real/simulation state are handled in the top control row",
+        "The resizable LLM overlay assists robot-control conversations in context",
       ],
       ja: [
-        "左ナビ：ダッシュボード、実時間制御、ロボット、レシピ、ウェイポイント、実行履歴、グリッパー、アラート",
-        "管理者ナビ：事業場管理(WS-016)、ハードウェア管理(WS-013)、セッション管理(WS-009)",
-        "サイドバー折りたたみ状態は localStorage キー omnikit:sidebar-collapsed に保存",
+        "同じ3Dワークセル上でTCP・ジョイント・クイック実行を切り替え",
+        "点検モード、Free Drive、速度、実機/シミュレーション状態を上部で制御",
+        "LLM会話パネルはサイズ調整可能なオーバーレイで制御文脈を補助",
       ],
     },
   },
-  canvas: {
-    src: "../omni-kit-screenshots/ur5-desktop-canvas-after.png",
+  robots: {
+    frames: screenList(
+      "30_robot-management_01_registered-robots.png",
+      "30_robot-management_02_robot-detail.png",
+      "30_robot-management_03_add-robot-modal.png",
+    ),
+    fps: 0.5,
     titles: {
-      ko: "URDF 디지털 트윈 뷰어",
-      en: "URDF Digital Twin Viewer",
-      ja: "URDFデジタルツインビューア",
+      ko: "로봇 관리",
+      en: "Robot Management",
+      ja: "ロボット管理",
     },
     descriptions: {
-      ko: "@react-three/fiber + urdf-loader 기반의 3D URDF 뷰어입니다. MQTT/WS로 도착한 jointPositions와 tcpPose를 normalizeTcpPose로 흡수해 실제 UR5와 같은 자세로 렌더링합니다.",
-      en: "A 3D URDF viewer built on @react-three/fiber + urdf-loader. Joint positions and TCP poses arriving over MQTT/WS are normalized and rendered to match the live UR5 pose.",
-      ja: "@react-three/fiber + urdf-loaderベースの3D URDFビューア。MQTT/WSで届くjointPositionsとtcpPoseをnormalizeTcpPoseで吸収し、実UR5と同じ姿勢でレンダリングします。",
+      ko: "등록된 UR5 로봇의 연결 모드, 운영 상태, MQTT 상태, 그리퍼 매핑을 확인하고 실 로봇을 추가하는 관리 화면입니다.",
+      en: "Manage registered UR5 robots, including connection mode, operating state, MQTT state, gripper mapping, and real-robot registration.",
+      ja: "登録済みUR5ロボットの接続モード、稼働状態、MQTT状態、グリッパー連携を確認し、実機を追加する管理画面です。",
     },
     points: {
       ko: [
-        "@react-three/drei OrbitControls로 카메라/그리드 조작",
-        "tcpPose는 객체형/배열형(posX..rotZ 또는 [x,y,z,rx,ry,rz]) 양쪽 수용",
-        "joint_positions 6개 슬롯 기준, 누락 시 DEFAULT_JOINT_POSITIONS로 폴백",
+        "카드 목록과 상세 패널을 모두 제공해 빠른 탐색과 세부 수정 분리",
+        "그룹·운영 상태·연결 모드·마지막 업데이트를 로봇별로 확인",
+        "실 로봇 등록 모달에서 이름, 시리얼, 그룹, 모델을 한 번에 입력",
       ],
       en: [
-        "OrbitControls (@react-three/drei) drives camera and grid interaction",
-        "tcpPose accepts both object (posX..rotZ) and array ([x,y,z,rx,ry,rz]) shapes",
-        "Falls back to DEFAULT_JOINT_POSITIONS when joint_positions slots are missing",
+        "Card list and detail panel separate quick scanning from detailed edits",
+        "Group, operation state, connection mode, and last update are visible per robot",
+        "The add-real-robot modal captures name, serial, group, and model in one flow",
       ],
       ja: [
-        "@react-three/drei のOrbitControlsでカメラ/グリッド操作",
-        "tcpPoseはオブジェクト形(posX..rotZ)/配列形([x,y,z,rx,ry,rz])の両方を吸収",
-        "joint_positions の6スロットが欠ける場合はDEFAULT_JOINT_POSITIONSにフォールバック",
+        "カード一覧と詳細パネルで素早い確認と細かな編集を分離",
+        "グループ・稼働状態・接続モード・最終更新をロボット単位で確認",
+        "実ロボット追加モーダルで名前、シリアル、グループ、モデルを一括入力",
       ],
     },
   },
-  mini: {
-    src: "../omni-kit-screenshots/ur5-min-desktop-page.png",
+  operations: {
+    frames: screenList(
+      "40_work-operation_01_saved-recipes.png",
+      "40_work-operation_02_recipe-type-modal.png",
+      "40_work-operation_03_picknplace-recipe-detail.png",
+      "40_work-operation_04_move-recipe-detail.png",
+    ),
+    fps: 0.5,
     titles: {
-      ko: "축소 레이아웃 콘솔",
-      en: "Compact Layout Console",
-      ja: "縮小レイアウトコンソール",
+      ko: "작업 운영",
+      en: "Recipe Operations",
+      ja: "作業運用",
     },
     descriptions: {
-      ko: "사이드바를 collapsed 상태로 두고 작은 데스크톱 뷰포트에 맞춘 콘솔 레이아웃입니다. Playwright 데스크톱 뷰포트 E2E로 캡처해 회귀 검증에 사용했습니다.",
-      en: "The console with the sidebar collapsed, tuned for narrower desktop viewports. Captured by a Playwright desktop-viewport E2E run and used for regression checks.",
-      ja: "サイドバーを折りたたみ、狭めのデスクトップビューポート向けに調整したレイアウト。Playwrightのデスクトップビューポート実行でキャプチャし、リグレッション検証に使用しています。",
+      ko: "저장된 레시피를 선택하고 move/pickNplace 타입별 파라미터를 편집·실행하는 작업 작성 화면입니다.",
+      en: "Create and run saved recipes, editing parameters separately for move and pickNplace recipe types.",
+      ja: "保存済みレシピを選択し、move/pickNplaceタイプ別パラメータを編集・実行する作業作成画面です。",
     },
     points: {
       ko: [
-        "collapsed 토글 상태가 omnikit:sidebar-collapsed에 영속",
-        "Playwright (vitest 아닌 E2E)로 데스크톱 페이지를 PNG 캡처",
-        "동일 컴포넌트가 일반/축소 레이아웃 양쪽을 담당",
+        "작업 목록, 필터, 새 작업 생성 모달을 한 화면에서 제공",
+        "pickNplace는 여유 높이·폭·힘·위치 파라미터를 명시적으로 편집",
+        "move는 이동 방식과 목표 waypoint를 단순하게 지정",
       ],
       en: [
-        "Sidebar collapsed toggle persists under omnikit:sidebar-collapsed",
-        "Captured as PNG via Playwright desktop-viewport E2E (not unit tests)",
-        "Same components drive both regular and compact layouts",
+        "Recipe list, filters, and creation modal are available in one workspace",
+        "pickNplace exposes clearance, width, force, and waypoint parameters explicitly",
+        "move keeps the flow focused on movement type and destination waypoint",
       ],
       ja: [
-        "折りたたみトグルは omnikit:sidebar-collapsed に保存",
-        "Playwrightのデスクトップビューポートで PNG キャプチャ",
-        "同一コンポーネントで通常/縮小レイアウト両方に対応",
+        "作業一覧、フィルタ、新規作業作成モーダルを一画面で提供",
+        "pickNplaceは高さ・幅・力・位置パラメータを明示的に編集",
+        "moveは移動方式と目標waypoint指定に集中",
+      ],
+    },
+  },
+  waypoints: {
+    frames: screenList(
+      "50_waypoint_01_waypoint-list.png",
+      "50_waypoint_02_name-waypoint-modal.png",
+      "50_waypoint_03_waypoint-detail.png",
+    ),
+    fps: 0.5,
+    titles: {
+      ko: "웨이포인트",
+      en: "Waypoints",
+      ja: "ウェイポイント",
+    },
+    descriptions: {
+      ko: "로봇 위치를 저장하고 이름을 부여한 뒤 X/Y/Z/RX/RY/RZ 값을 직접 검토·수정하는 위치 관리 화면입니다.",
+      en: "Capture robot positions, name them, and inspect or edit X/Y/Z/RX/RY/RZ values directly.",
+      ja: "ロボット位置を保存して名前を付け、X/Y/Z/RX/RY/RZ値を直接確認・編集する位置管理画面です。",
+    },
+    points: {
+      ko: [
+        "등록 위치 목록에서 좌표와 회전값을 함께 스캔",
+        "현재 로봇 위치를 저장할 때 별도 이름 지정 모달 제공",
+        "상세 패널에서 생성자와 생성 시각까지 함께 추적",
+      ],
+      en: [
+        "Scan coordinates and rotation values together in the waypoint list",
+        "A naming modal appears when saving the current robot pose",
+        "The detail panel tracks creator and creation time with the pose values",
+      ],
+      ja: [
+        "登録位置一覧で座標と回転値を同時に確認",
+        "現在ロボット位置を保存する際は名前指定モーダルを表示",
+        "詳細パネルで作成者と作成時刻も併せて追跡",
+      ],
+    },
+  },
+  history: {
+    frames: screenList(
+      "60_execution-history_01_history-list.png",
+      "60_execution-history_02_history-detail.png",
+    ),
+    fps: 0.45,
+    titles: {
+      ko: "작업 이력",
+      en: "Execution History",
+      ja: "作業履歴",
+    },
+    descriptions: {
+      ko: "실행 기록을 필터링하고 선택한 작업의 상태 이벤트 타임라인을 상세 패널에서 확인하는 이력 추적 화면입니다.",
+      en: "Filter execution records and inspect the selected job's status-event timeline in the detail panel.",
+      ja: "実行記録を絞り込み、選択した作業の状態イベントタイムラインを詳細パネルで確認する履歴画面です。",
+    },
+    points: {
+      ko: [
+        "기간·그룹·로봇·상태·작업명 필터를 조합",
+        "성공/실패/진행 중 상태를 테이블에서 빠르게 판별",
+        "선택한 실행은 STARTED/RUNNING/FAILED 같은 단계별 이벤트로 추적",
+      ],
+      en: [
+        "Combine date, group, robot, status, and job-name filters",
+        "Success, failure, and running states are scannable from the table",
+        "Selected runs are traced through step events such as STARTED/RUNNING/FAILED",
+      ],
+      ja: [
+        "期間・グループ・ロボット・状態・作業名フィルタを組み合わせ",
+        "成功/失敗/進行中状態をテーブルで素早く判別",
+        "選択した実行はSTARTED/RUNNING/FAILEDなど段階別イベントで追跡",
+      ],
+    },
+  },
+  gripper: {
+    frames: screenList(
+      "70_gripper_01_gripper-settings.png",
+      "70_gripper_02_add-gripper-modal.png",
+    ),
+    fps: 0.45,
+    titles: {
+      ko: "그리퍼 관리",
+      en: "Gripper Management",
+      ja: "グリッパー管理",
+    },
+    descriptions: {
+      ko: "2FG7 그리퍼의 TCP, payload, CoG 설정을 관리하고 시뮬레이션 그리퍼를 추가하는 관리자 화면입니다.",
+      en: "Manage 2FG7 gripper TCP, payload, and CoG settings, and add simulation grippers from the admin console.",
+      ja: "2FG7グリッパーのTCP、payload、CoG設定を管理し、シミュレーショングリッパーを追加する管理画面です。",
+    },
+    points: {
+      ko: [
+        "온라인 상태와 모델/시리얼을 목록에서 바로 확인",
+        "TCP offset, payload, CoG 값을 폼으로 편집하고 저장",
+        "시뮬레이션 장비 추가 시 외부 그립과 핑거 방향 옵션까지 지정",
+      ],
+      en: [
+        "Online state, model, and serial are visible directly in the list",
+        "TCP offset, payload, and CoG values are edited and saved from a form",
+        "Simulation registration includes external-grip and finger-direction options",
+      ],
+      ja: [
+        "オンライン状態とモデル/シリアルを一覧で直接確認",
+        "TCP offset、payload、CoG値をフォームで編集・保存",
+        "シミュレーション機器追加時に外部グリップとフィンガー方向も指定",
+      ],
+    },
+  },
+  alerts: {
+    frames: screenList(
+      "80_alerts_01_alert-list-detail.png",
+      "80_alerts_02_notice-all-site-modal.png",
+      "80_alerts_03_notice-group-modal.png",
+      "80_alerts_04_notice-personal-modal.png",
+      "80_alerts_05_notice-from-alert-modal.png",
+    ),
+    fps: 0.5,
+    titles: {
+      ko: "알림과 공지 발송",
+      en: "Alerts and Notices",
+      ja: "通知とお知らせ送信",
+    },
+    descriptions: {
+      ko: "하드웨어 인증 요청과 로봇 이벤트를 확인하고, 전체 사이트·그룹·개인 대상 공지를 발송하는 알림 운영 화면입니다.",
+      en: "Review device-registration requests and robot events, then send notices to the whole site, selected groups, or individual users.",
+      ja: "ハードウェア認証要求とロボットイベントを確認し、サイト全体・グループ・個人へお知らせを送信する通知運用画面です。",
+    },
+    points: {
+      ko: [
+        "심각도, 유형, 확인 여부 필터로 50건 알림을 페이지 단위 관리",
+        "선택 알림의 근거를 기반으로 공지 제목과 내용을 자동 구성",
+        "전체 사이트·그룹·개인 대상 발송 범위를 같은 모달에서 전환",
+      ],
+      en: [
+        "Manage paged alerts with severity, type, and acknowledgement filters",
+        "Generate notice title and body from the selected source alert",
+        "Switch audience scope among whole site, group, and individual in one modal",
+      ],
+      ja: [
+        "重大度、タイプ、確認有無フィルタで50件通知をページ管理",
+        "選択通知の根拠からお知らせタイトルと本文を自動構成",
+        "サイト全体・グループ・個人の送信範囲を同じモーダルで切替",
+      ],
+    },
+  },
+  admin: {
+    frames: screenList(
+      "90_profile_01_my-info.png",
+      "91_site-management_01_site-admin.png",
+      "92_hardware-management_01_registered-devices.png",
+      "93_session-management_01_session-list.png",
+      "93_session-management_02_session-detail.png",
+    ),
+    fps: 0.5,
+    titles: {
+      ko: "회원·사이트·보안 관리",
+      en: "Member, Site, and Security Admin",
+      ja: "会員・サイト・セキュリティ管理",
+    },
+    descriptions: {
+      ko: "내 정보, 사업장 멤버/그룹, 등록 디바이스, 세션 만료까지 관리자 권한으로 운영 보안을 다루는 화면 묶음입니다.",
+      en: "Admin screens for profile, site members/groups, registered devices, and session expiry controls.",
+      ja: "プロフィール、事業場メンバー/グループ、登録デバイス、セッション失効まで管理者権限で運用セキュリティを扱う画面群です。",
+    },
+    points: {
+      ko: [
+        "사업장 멤버 역할, 그룹 배정, 활성 상태를 한 테이블에서 관리",
+        "등록 디바이스의 승인/차단/폐기 상태와 heartbeat를 확인",
+        "세션 상세에서 권한과 마지막 사용 시각을 확인하고 강제 만료 처리",
+      ],
+      en: [
+        "Manage member roles, group assignment, and active state from one table",
+        "Review registered devices by approval/block/revocation state and heartbeat",
+        "Inspect session permissions and last-use time, then force-expire when needed",
+      ],
+      ja: [
+        "事業場メンバーの役割、グループ割当、アクティブ状態を一つの表で管理",
+        "登録デバイスの承認/ブロック/廃棄状態とheartbeatを確認",
+        "セッション詳細で権限と最終使用時刻を確認し、強制失効を実行",
       ],
     },
   },
@@ -190,12 +384,17 @@ const TRANSLATIONS = {
     "feature-4-copy": "OS keychain 분실로 WebAuthn 어설션이 막혔을 때 자가 reset-credential, 같은 사이트 사용자 takeover-reset, PENDING 승인 재요청까지 흐름을 닫았습니다.",
     "screens-kicker": "Screen Explorer",
     "screens-title": "실제 운영 화면",
-    "screens-copy": "관리자 콘솔의 실시간 제어 화면과 디지털 트윈 뷰어 동작을 확인할 수 있습니다.",
-    "tab-tourAll": "전체 화면 투어",
-    "tab-tourOverview": "페이지 개요",
-    "tab-page": "실시간 제어",
-    "tab-canvas": "URDF 뷰어",
-    "tab-mini": "축소 레이아웃",
+    "screens-copy": "새로 정리한 스크린샷을 실제 탭 흐름 기준으로 묶어, 인증부터 실시간 제어와 관리자 보안 화면까지 확인할 수 있습니다.",
+    "tab-auth": "인증",
+    "tab-dashboard": "대시보드",
+    "tab-realtime": "실시간 제어",
+    "tab-robots": "로봇 관리",
+    "tab-operations": "작업 운영",
+    "tab-waypoints": "웨이포인트",
+    "tab-history": "작업 이력",
+    "tab-gripper": "그리퍼",
+    "tab-alerts": "알림",
+    "tab-admin": "관리자",
     "architecture-kicker": "Architecture",
     "architecture-title": "웹 · 백엔드 · MQTT · ROS 2 워크스페이스 분리",
     "architecture-lead": "React 콘솔과 Spring Boot 백엔드가 REST/STOMP로 통신하고, 백엔드는 Spring Integration MQTT로 로봇 워크스페이스와 명령/상태 메시지를 주고받습니다.",
@@ -263,12 +462,17 @@ const TRANSLATIONS = {
     "feature-4-copy": "When an OS keychain wipes the credential, users can self reset-credential, peers in the same site can takeover-reset, and a PENDING device can remind-admin — closing every dead end.",
     "screens-kicker": "Screen Explorer",
     "screens-title": "Live Operations Screens",
-    "screens-copy": "Walk through the admin real-time control page and the URDF digital twin viewer.",
-    "tab-tourAll": "Full Tour",
-    "tab-tourOverview": "Pages Overview",
-    "tab-page": "Real-time Control",
-    "tab-canvas": "URDF Viewer",
-    "tab-mini": "Compact Layout",
+    "screens-copy": "The refreshed screenshots are grouped by the actual console tabs, from authentication through real-time control and admin security screens.",
+    "tab-auth": "Auth",
+    "tab-dashboard": "Dashboard",
+    "tab-realtime": "Real-time Control",
+    "tab-robots": "Robots",
+    "tab-operations": "Recipes",
+    "tab-waypoints": "Waypoints",
+    "tab-history": "History",
+    "tab-gripper": "Gripper",
+    "tab-alerts": "Alerts",
+    "tab-admin": "Admin",
     "architecture-kicker": "Architecture",
     "architecture-title": "Web · Backend · MQTT · ROS 2 workspace split",
     "architecture-lead": "The React console talks to Spring Boot over REST/STOMP, and Spring Integration MQTT carries commands and state between the backend and the ROS 2 workspace.",
@@ -336,12 +540,17 @@ const TRANSLATIONS = {
     "feature-4-copy": "OS keychain紛失でWebAuthnアサーションが止まったとき、自己reset-credential、同一サイト利用者のtakeover-reset、PENDING承認の再要求まで動線を閉じました。",
     "screens-kicker": "Screen Explorer",
     "screens-title": "実運用画面",
-    "screens-copy": "管理者コンソールの実時間制御画面とURDFデジタルツインビューアの挙動を確認できます。",
-    "tab-tourAll": "全画面ツアー",
-    "tab-tourOverview": "ページ概要",
-    "tab-page": "実時間制御",
-    "tab-canvas": "URDFビューア",
-    "tab-mini": "縮小レイアウト",
+    "screens-copy": "新しく整理したスクリーンショットを実際のタブ導線ごとにまとめ、認証から実時間制御、管理者セキュリティ画面まで確認できます。",
+    "tab-auth": "認証",
+    "tab-dashboard": "ダッシュボード",
+    "tab-realtime": "実時間制御",
+    "tab-robots": "ロボット管理",
+    "tab-operations": "作業運用",
+    "tab-waypoints": "ウェイポイント",
+    "tab-history": "作業履歴",
+    "tab-gripper": "グリッパー",
+    "tab-alerts": "通知",
+    "tab-admin": "管理者",
     "architecture-kicker": "Architecture",
     "architecture-title": "Web・バックエンド・MQTT・ROS 2ワークスペースの分離",
     "architecture-lead": "ReactコンソールとSpring BootバックエンドがREST/STOMPで通信し、バックエンドはSpring Integration MQTTでROS 2ワークスペースと命令/状態メッセージをやり取りします。",
@@ -384,15 +593,20 @@ const TRANSLATIONS = {
 };
 
 const TAB_KEY_BY_SCREEN = {
-  tourAll: "tab-tourAll",
-  tourOverview: "tab-tourOverview",
-  page: "tab-page",
-  canvas: "tab-canvas",
-  mini: "tab-mini",
+  auth: "tab-auth",
+  dashboard: "tab-dashboard",
+  realtime: "tab-realtime",
+  robots: "tab-robots",
+  operations: "tab-operations",
+  waypoints: "tab-waypoints",
+  history: "tab-history",
+  gripper: "tab-gripper",
+  alerts: "tab-alerts",
+  admin: "tab-admin",
 };
 
 let currentLang = "ko";
-let currentScreen = "tourAll";
+let currentScreen = "auth";
 let playerTimer = null;
 let playerFrameIdx = 0;
 let playerPaused = false;
@@ -443,27 +657,26 @@ function startPlayer(data) {
 function renderScreen() {
   const data = SCREEN_DATA[currentScreen];
   if (!data) return;
+  const frames = data.frames || (data.src ? [data.src] : []);
+  const shouldPlay = frames.length > 1;
   const image = document.getElementById("screen-image");
   const controls = document.getElementById("screen-player-controls");
   const toggle = document.getElementById("screen-player-toggle");
   stopPlayer();
 
-  if (data.frames) {
-    playerFrameIdx = 0;
-    playerPaused = false;
-    if (image) {
-      image.src = data.frames[0];
-      image.alt = data.titles[currentLang];
-    }
+  playerFrameIdx = 0;
+  playerPaused = false;
+  if (image && frames.length > 0) {
+    image.src = frames[0];
+    image.alt = data.titles[currentLang];
+  }
+
+  if (shouldPlay) {
     if (controls) controls.hidden = false;
     if (toggle) toggle.textContent = "⏸";
     updatePlayerUi(data);
     startPlayer(data);
   } else {
-    if (image) {
-      image.src = data.src;
-      image.alt = data.titles[currentLang];
-    }
     if (controls) controls.hidden = true;
   }
 
