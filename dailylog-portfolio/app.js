@@ -502,8 +502,8 @@ const staticTranslations = {
     ],
     troubleTitles: ["클릭 뎁스를 줄이기 위한 UI 수정", "상호작용형 UI를 위한 튜토리얼 개발"],
     troubleCopies: [
-      "초기 화면 흐름에서는 일기 작성, 일기 확인, 캘린더 이동처럼 자주 사용하는 기능에 접근하기까지 여러 단계의 선택이 필요했습니다. 홈 메뉴와 화면 내 액션 배치를 다시 정리해 핵심 기능을 한 단계 안에서 선택할 수 있도록 수정하고, 실제 사용 흐름 기준으로 이동 경로를 줄였습니다.",
-      "방 안의 오브젝트를 누르며 이동하는 UI는 분위기는 좋지만, 처음 사용하는 사용자가 어떤 요소를 눌러야 하는지 바로 알기 어려웠습니다. 핵심 상호작용 지점을 단계별로 안내하는 튜토리얼 화면을 구성하고, 홈 메뉴에서 다시 확인할 수 있게 연결해 초기 사용성을 보완했습니다.",
+      "기존 흐름에서는 홈에서 핵심 기능으로 이동하기 위해 메뉴를 열고 다시 세부 항목을 선택하는 식으로 클릭 단계가 늘어났습니다. 실제 사용 빈도가 높은 일기 작성, 일기 확인, 캘린더 진입을 홈 메뉴에서 바로 선택하도록 재배치하고, 화면 내 후속 액션도 다음 화면으로 직접 이어지게 정리해 반복 사용 시 이동 부담을 줄였습니다.",
+      "오브젝트 기반 화면은 앱의 감성을 살리는 장점이 있었지만, 버튼처럼 보이지 않는 요소가 많아 첫 사용자가 이동 가능 영역을 놓칠 수 있었습니다. 튜토리얼에서 눌러야 하는 오브젝트와 다음 흐름을 단계별로 보여주고, 홈 메뉴에서 다시 열 수 있도록 연결해 초기 학습 비용을 낮췄습니다.",
     ],
     architectureSummary: "DailyLog는 Android 앱에서 음성 입력과 화면 흐름을 처리하고, 서버는 API 처리, 데이터 저장, AI 연동, 배포와 모니터링을 분리해 운영할 수 있도록 구성했습니다.",
     architectureNoteTitles: ["Android App", "Backend & Data", "AI & Operations"],
@@ -556,8 +556,8 @@ const staticTranslations = {
     ],
     troubleTitles: ["UI Revision to Reduce Click Depth", "Tutorial Development for Interactive UI"],
     troubleCopies: [
-      "The early flow required several menu steps before users could reach frequent actions such as writing a diary, checking entries, or opening the calendar. I reorganized the home menu and in-screen actions so core features could be selected within one step and reduced navigation paths around the actual usage flow.",
-      "The object-based room UI matched the app mood, but first-time users could not immediately tell which elements were interactive. I built tutorial screens that guide the key interaction points step by step and connected them from the home menu so users can revisit the flow.",
+      "The previous flow increased click depth because users had to open a menu and then choose another subitem to reach core features from the home screen. I moved high-frequency actions such as writing a diary, checking entries, and opening the calendar into the home menu, then connected follow-up actions directly to the next screen to reduce repeated navigation effort.",
+      "The object-based screen helped preserve the app mood, but many interactive elements did not look like standard buttons, so first-time users could miss where they could move. I added tutorial steps that show which objects to press and what flow comes next, then linked the tutorial from the home menu to lower the initial learning cost.",
     ],
     architectureSummary: "DailyLog handles voice input and screen flow in the Android app, while the server side separates API handling, data storage, AI integration, deployment, and monitoring.",
     architectureNoteTitles: ["Android App", "Backend & Data", "AI & Operations"],
@@ -628,8 +628,8 @@ const staticTranslations = {
     ],
     troubleTitles: ["クリック深度を減らすUI修正", "インタラクティブUI向けチュートリアル開発"],
     troubleCopies: [
-      "初期の画面フローでは、日記作成、日記確認、カレンダー移動のような頻繁に使う機能へ到達するまで複数段階の選択が必要でした。ホームメニューと画面内アクションの配置を整理し、主要機能を1段階で選択できるようにして、実際の利用フローに合わせて移動経路を減らしました。",
-      "部屋のオブジェクトを押して移動するUIは雰囲気には合っていましたが、初回ユーザーがどこを操作すればよいか分かりにくい問題がありました。主要な操作ポイントを段階的に案内するチュートリアル画面を作り、ホームメニューから再確認できるようにしました。",
+      "従来のフローでは、ホームから主要機能へ移動するためにメニューを開き、さらに詳細項目を選ぶ必要があり、クリック段階が増えていました。利用頻度の高い日記作成、日記確認、カレンダー移動をホームメニューから直接選べるよう再配置し、画面内の後続アクションも次の画面へ直接つなげることで、繰り返し利用時の移動負担を減らしました。",
+      "オブジェクト中心の画面はアプリの雰囲気を活かせる一方、通常のボタンに見えない要素が多く、初回ユーザーが移動できる場所を見落とす可能性がありました。押すべきオブジェクトと次の流れをチュートリアルで段階的に示し、ホームメニューから再確認できるようにして初期学習コストを下げました。",
     ],
     architectureSummary: "DailyLogはAndroidアプリで音声入力と画面フローを処理し、サーバー側ではAPI処理、データ保存、AI連携、デプロイ、モニタリングを分離して構成しました。",
     architectureNoteTitles: ["Android App", "Backend & Data", "AI & Operations"],
