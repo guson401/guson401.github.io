@@ -44,7 +44,7 @@ const translations = {
   ko: {
     heroSummary: "센서 데이터, 로봇 순찰, 병해충 탐지, 운영 리포트를 하나의 흐름으로 연결한 스마트팜 통합 관제 웹 서비스입니다.",
     heroLinkScreens: "화면 둘러보기",
-    heroLinkStack: "기술 스택",
+    heroLinkStack: "사용기술",
     snapshotLabel: "Project Snapshot",
     snapshotReact: "SPA UI Flow",
     snapshotDjango: "REST API",
@@ -66,14 +66,38 @@ const translations = {
       "병해충 이미지와 리포트를 시간 기준으로 매칭해 어떤 문제가 언제 발생했는지 함께 확인할 수 있게 구성했습니다.",
     ],
     screensKicker: "Screen Explorer",
-    screensTitle: "스크린샷으로 보는 실제 화면 구성",
+    screensTitle: "화면구성",
     screensCopy: "대시보드, 농장 관리, 로봇, 갤러리, 리포트, FAQ, 설정 흐름을 카테고리별로 확인할 수 있습니다.",
     architectureKicker: "Architecture",
-    architectureTitle: "데이터가 상위 관제 화면으로 모이도록 도메인을 분리했습니다.",
-    architectureLead: "`accounts`, `farms`, `robots`, `reports`, `faqs` 앱으로 역할을 나누고, 센서 데이터와 외부 JSON 이미지 분석 결과가 최종적으로 대시보드와 리포트에 반영되도록 구성했습니다.",
-    architectureCaption: "화면은 React 라우팅 기준으로 분리하고, 백엔드는 도메인별 API와 인증을 분리해 데이터 흐름과 화면 흐름이 명확하게 이어지도록 했습니다.",
+    architectureTitle: "아키텍처",
+    architectureLead: "Farm 현장의 라즈베리파이와 로봇에서 발생한 센서/이미지 데이터를 MQTT와 저장소 흐름으로 중앙 서버에 모으고, 사용자는 웹 페이지에서 상태와 리포트를 확인하는 구조입니다.",
+    architectureNoteTitles: ["Farm Edge", "Robot & Vision", "Central Web"],
+    architectureNoteCopies: [
+      "라즈베리파이가 습도, 토양, 조도, pH 센서와 제어기를 관리하고 MQTT 브로커를 통해 중앙 서버로 상태 데이터를 전달합니다.",
+      "카메라와 로봇암으로 농장 이미지를 수집하고, 이미지는 S3와 GPU 서버의 VLM 처리 흐름으로 연결되어 병해충 판단 근거가 됩니다.",
+      "EC2 중앙 서버에서 Django, DB, MQTT 브로커, React 웹 서버를 운영해 센서 상태와 분석 결과를 웹 관제 화면에 반영합니다.",
+    ],
+    architectureCaption: "현장 장비 제어와 웹 관제를 분리해 로봇/센서 데이터, 이미지 분석, 사용자 화면이 하나의 운영 흐름으로 이어지도록 설계했습니다.",
     stackKicker: "Tech Stack",
-    stackTitle: "사용 기술",
+    stackTitle: "사용기술",
+    stackSummaries: ["Frontend / Web UI", "Backend / API / Auth", "Data / Robot / Infra"],
+    stackReasons: {
+      "stack-reason-react": "대시보드, 농장 관리, 로봇 제어, 갤러리, 리포트처럼 상태가 자주 바뀌는 화면을 컴포넌트 단위로 나누고 SPA 흐름으로 연결하기 위해 사용했습니다.",
+      "stack-reason-vite": "프론트엔드 개발 서버와 빌드 피드백을 빠르게 가져가고, 화면 단위 변경을 반복 검증하기 위해 사용했습니다.",
+      "stack-reason-router": "대시보드, 농장, 로봇, 갤러리, 리포트, 설정 화면을 라우팅 기준으로 분리해 관리형 웹 서비스의 화면 흐름을 명확히 구성했습니다.",
+      "stack-reason-axios": "Django REST API와 통신하는 요청 흐름을 정리하고, 대시보드/리포트/로봇 화면에서 필요한 데이터를 화면 단위로 받아오기 위해 사용했습니다.",
+      "stack-reason-tailwind": "관제형 화면에서 표, 카드, 상태 표시, 버튼 같은 반복 UI를 빠르게 구성하고 화면별 스타일 편차를 줄이기 위해 사용했습니다.",
+      "stack-reason-lucide": "대시보드와 로봇 제어 화면에서 기능을 직관적으로 구분할 수 있도록 일관된 아이콘 체계를 적용하기 위해 사용했습니다.",
+      "stack-reason-django": "농장, 섹터, 로봇, 리포트, FAQ 도메인을 앱 단위로 나누고 인증과 운영 데이터를 함께 관리하기 위해 사용했습니다.",
+      "stack-reason-drf": "프론트엔드에서 필요한 농장/로봇/리포트 데이터를 REST API로 제공하고, 응답 구조를 화면 흐름에 맞춰 정리하기 위해 사용했습니다.",
+      "stack-reason-jwt": "로그인 이후 API 접근 권한을 토큰 기반으로 처리하고, 사용자별 농장/로봇 접근 제어 흐름을 구성하기 위해 사용했습니다.",
+      "stack-reason-sqlite": "개발과 검증 단계에서 농장, 로봇, 리포트, 사용자 데이터를 빠르게 저장하고 조회하기 위한 기본 데이터베이스로 사용했습니다.",
+      "stack-reason-mqtt": "라즈베리파이와 중앙 서버 사이에서 센서 상태와 제어 흐름을 주고받는 통신 경계로 사용했습니다.",
+      "stack-reason-s3": "농장 이미지와 분석 대상 파일을 서버 처리 흐름에서 분리해 보관하고, GPU 서버 처리 결과와 리포트 흐름을 연결하기 위해 사용했습니다.",
+      "stack-reason-gpu": "로봇 카메라가 수집한 이미지를 VLM 처리 흐름으로 넘겨 병해충 판단과 리포트 생성의 근거 데이터로 활용했습니다.",
+      "stack-reason-ec2": "Django API, DB, MQTT 브로커, React 웹 서버를 운영하는 중앙 서버 환경으로 구성했습니다.",
+      "stack-reason-risk": "센서 수신 데이터와 이미지 분석 결과를 섹터 상태와 리포트에 반영해 사용자가 위험도를 한 화면에서 판단할 수 있도록 연결했습니다.",
+    },
     stackFrontTitle: "Frontend",
     stackFrontCopy: "대시보드, 농장, 로봇, 갤러리, 리포트, 설정 화면을 라우팅 기준으로 분리하고 전용 UI를 구성했습니다.",
     stackBackTitle: "Backend",
@@ -81,7 +105,7 @@ const translations = {
     stackDataTitle: "Data / Infra",
     stackDataCopy: "센서 수신 데이터와 병해충 이미지 정보를 반영해 섹터 상태를 갱신하고, 완료 이력을 로그로 남기도록 구성했습니다.",
     roleKicker: "Contribution",
-    roleTitle: "포트폴리오용 역할 정리",
+    roleTitle: "역할 정리",
     roleTitles: ["API 설계 및 구현", "대시보드/리포트 UI", "인증 및 권한 처리", "데이터 연결 구조 설계"],
     roleCopies: [
       "Django REST Framework 기반의 농장, 섹터, 로봇, 리포트 API를 설계하고 구현했습니다.",
@@ -90,7 +114,7 @@ const translations = {
       "병해충 이미지, 리포트, 로그를 시간 기준으로 연결해 문제 원인과 대응 방향을 함께 볼 수 있게 했습니다.",
     ],
     troubleKicker: "Troubleshooting",
-    troubleTitle: "기술적 문제 해결 포인트",
+    troubleTitle: "트러블슈팅",
     troubleTitles: ["응답 형식 정규화", "리포트와 이미지의 시간 매칭", "순찰 완료 상태 관리", "권한 분리와 접근 제어"],
     troubleCopies: [
       "농장, 리포트, 이미지 데이터 응답 형식 차이를 프론트엔드 정규화 로직으로 흡수해 화면 안정성을 높였습니다.",
@@ -128,14 +152,38 @@ const translations = {
       "Matches pest images and reports by time so operators can review what happened and when it happened together.",
     ],
     screensKicker: "Screen Explorer",
-    screensTitle: "Actual UI Through Screenshots",
+    screensTitle: "Screen Composition",
     screensCopy: "Browse dashboard, farm management, robot, gallery, report, FAQ, and settings flows by category.",
     architectureKicker: "Architecture",
-    architectureTitle: "Domains were separated so data gathers into the top control screens.",
-    architectureLead: "Responsibilities were divided into `accounts`, `farms`, `robots`, `reports`, and `faqs`, and sensor data plus external JSON image analysis results were routed into the dashboard and reports.",
-    architectureCaption: "The frontend was separated by React routes, and the backend by domain APIs and authentication, so data flow and screen flow remain clear.",
+    architectureTitle: "Architecture",
+    architectureLead: "Sensor and image data generated by the Raspberry Pi and robot at the farm are gathered into the central server through MQTT and storage flows, then exposed to users through the web page.",
+    architectureNoteTitles: ["Farm Edge", "Robot & Vision", "Central Web"],
+    architectureNoteCopies: [
+      "The Raspberry Pi manages humidity, soil, light, and pH sensors plus the controller, then sends status data to the central server through MQTT.",
+      "The camera and robot arm collect farm images, and those images flow through S3 and the GPU server for VLM-based analysis.",
+      "The EC2 central server runs Django, the database, the MQTT broker, and the React web server so sensor status and analysis results appear in the control UI.",
+    ],
+    architectureCaption: "The architecture separates field-device control from web monitoring so robot/sensor data, image analysis, and user screens connect into one operation flow.",
     stackKicker: "Tech Stack",
-    stackTitle: "Stack",
+    stackTitle: "Tech Stack",
+    stackSummaries: ["Frontend / Web UI", "Backend / API / Auth", "Data / Robot / Infra"],
+    stackReasons: {
+      "stack-reason-react": "Used to split frequently changing screens such as dashboard, farm management, robot control, gallery, and reports into components and connect them as an SPA flow.",
+      "stack-reason-vite": "Used for fast frontend dev-server and build feedback while repeatedly validating screen-level changes.",
+      "stack-reason-router": "Used to separate dashboard, farm, robot, gallery, report, and settings screens by route and make the admin-style web flow clear.",
+      "stack-reason-axios": "Used to organize API request flow with Django REST APIs and fetch screen-specific data for dashboards, reports, and robot pages.",
+      "stack-reason-tailwind": "Used to quickly build repeated admin UI such as tables, cards, status labels, and buttons while reducing style drift across screens.",
+      "stack-reason-lucide": "Used to keep a consistent icon system so dashboard and robot-control actions are easier to distinguish.",
+      "stack-reason-django": "Used to split farm, sector, robot, report, and FAQ domains into apps while managing authentication and operation data together.",
+      "stack-reason-drf": "Used to provide farm, robot, and report data to the frontend as REST APIs and align response structures with screen flow.",
+      "stack-reason-jwt": "Used to handle API access after login with tokens and compose per-user farm/robot access control.",
+      "stack-reason-sqlite": "Used as the development and validation database for quickly storing and querying farm, robot, report, and user data.",
+      "stack-reason-mqtt": "Used as the communication boundary for sensor status and control flow between Raspberry Pi and the central server.",
+      "stack-reason-s3": "Used to store farm images and analysis files separately from server processing and connect them to GPU results and report flow.",
+      "stack-reason-gpu": "Used to pass robot-camera images into the VLM processing flow and use them as evidence for pest detection and report generation.",
+      "stack-reason-ec2": "Used as the central server environment for Django APIs, database, MQTT broker, and the React web server.",
+      "stack-reason-risk": "Used to connect sensor data and image-analysis results to sector status and reports so users can judge risk from one screen.",
+    },
     stackFrontTitle: "Frontend",
     stackFrontCopy: "Dashboard, farm, robot, gallery, report, and settings pages were split by routing and implemented with dedicated UI components.",
     stackBackTitle: "Backend",
@@ -152,7 +200,7 @@ const translations = {
       "Connected pest images, reports, and logs by time so causes and responses could be reviewed together.",
     ],
     troubleKicker: "Troubleshooting",
-    troubleTitle: "Technical Problem-Solving Points",
+    troubleTitle: "Troubleshooting",
     troubleTitles: ["Response Normalization", "Time Matching Between Reports and Images", "Patrol Completion State Management", "Permission Split and Access Control"],
     troubleCopies: [
       "Differences in farm, report, and image response shapes were absorbed with frontend normalization logic for more stable screens.",
@@ -168,7 +216,7 @@ const translations = {
   ja: {
     heroSummary: "センサーデータ、ロボット巡回、病害虫検知、運用レポートを一つの流れでつなぐスマートファーム統合管制Webサービスです。",
     heroLinkScreens: "画面を見る",
-    heroLinkStack: "技術スタック",
+    heroLinkStack: "使用技術",
     snapshotLabel: "Project Snapshot",
     snapshotReact: "SPA UI Flow",
     snapshotDjango: "REST API",
@@ -190,14 +238,38 @@ const translations = {
       "病害虫画像とレポートを時刻基準で結び、何がいつ発生したかを同じ文脈で確認できるようにしました。",
     ],
     screensKicker: "Screen Explorer",
-    screensTitle: "スクリーンショットで見る実際の画面構成",
+    screensTitle: "画面構成",
     screensCopy: "ダッシュボード、農場管理、ロボット、ギャラリー、レポート、FAQ、設定フローをカテゴリ別に確認できます。",
     architectureKicker: "Architecture",
-    architectureTitle: "データが上位管制画面に集まるようにドメインを分離しました。",
-    architectureLead: "`accounts`、`farms`、`robots`、`reports`、`faqs` に役割を分け、センサーデータと外部JSON画像解析結果が最終的にダッシュボードとレポートに反映されるように構成しました。",
-    architectureCaption: "フロントエンドはReactルーティング基準で分離し、バックエンドはドメイン別APIと認証で整理してデータの流れと画面の流れを明確にしました。",
+    architectureTitle: "アーキテクチャ",
+    architectureLead: "農場現場のRaspberry Piとロボットから発生するセンサー / 画像データをMQTTと保存フローで中央サーバーに集め、ユーザーはWebページで状態とレポートを確認する構成です。",
+    architectureNoteTitles: ["Farm Edge", "Robot & Vision", "Central Web"],
+    architectureNoteCopies: [
+      "Raspberry Piが湿度、土壌、照度、pHセンサーと制御器を管理し、MQTTブローカーを通じて中央サーバーへ状態データを送ります。",
+      "カメラとロボットアームで農場画像を収集し、S3とGPUサーバーのVLM処理につなげて病害虫判断の根拠にします。",
+      "EC2中央サーバーでDjango、DB、MQTTブローカー、React Webサーバーを運用し、センサー状態と分析結果を管制画面へ反映します。",
+    ],
+    architectureCaption: "現場機器制御とWeb管制を分離し、ロボット / センサーデータ、画像分析、ユーザー画面が一つの運用フローにつながるように設計しました。",
     stackKicker: "Tech Stack",
     stackTitle: "使用技術",
+    stackSummaries: ["Frontend / Web UI", "Backend / API / Auth", "Data / Robot / Infra"],
+    stackReasons: {
+      "stack-reason-react": "ダッシュボード、農場管理、ロボット制御、ギャラリー、レポートのように状態変化が多い画面をコンポーネント単位で分け、SPAフローとしてつなぐために使用しました。",
+      "stack-reason-vite": "フロントエンド開発サーバーとビルドのフィードバックを速くし、画面単位の変更を繰り返し検証するために使用しました。",
+      "stack-reason-router": "ダッシュボード、農場、ロボット、ギャラリー、レポート、設定画面をルーティング基準で分け、管理型Webサービスの画面フローを明確にしました。",
+      "stack-reason-axios": "Django REST APIとの通信を整理し、ダッシュボード、レポート、ロボット画面に必要なデータを画面単位で取得するために使用しました。",
+      "stack-reason-tailwind": "表、カード、状態表示、ボタンなどの反復UIを素早く構成し、画面ごとのスタイル差を減らすために使用しました。",
+      "stack-reason-lucide": "ダッシュボードとロボット制御画面の機能を直感的に区別できるよう、一貫したアイコン体系として使用しました。",
+      "stack-reason-django": "農場、セクター、ロボット、レポート、FAQドメインをアプリ単位で分け、認証と運用データをまとめて管理するために使用しました。",
+      "stack-reason-drf": "フロントエンドに必要な農場、ロボット、レポートデータをREST APIで提供し、応答構造を画面フローに合わせるために使用しました。",
+      "stack-reason-jwt": "ログイン後のAPIアクセス権限をトークンベースで処理し、ユーザー別の農場 / ロボットアクセス制御を構成するために使用しました。",
+      "stack-reason-sqlite": "開発と検証段階で農場、ロボット、レポート、ユーザーデータを素早く保存・照会するためのDBとして使用しました。",
+      "stack-reason-mqtt": "Raspberry Piと中央サーバーの間でセンサー状態と制御フローをやり取りする通信境界として使用しました。",
+      "stack-reason-s3": "農場画像と分析対象ファイルをサーバー処理から分離して保存し、GPU処理結果とレポートフローへつなげるために使用しました。",
+      "stack-reason-gpu": "ロボットカメラが収集した画像をVLM処理フローに渡し、病害虫判断とレポート生成の根拠データとして活用しました。",
+      "stack-reason-ec2": "Django API、DB、MQTTブローカー、React Webサーバーを運用する中央サーバー環境として構成しました。",
+      "stack-reason-risk": "センサー受信データと画像分析結果をセクター状態とレポートに反映し、ユーザーが一画面でリスクを判断できるように接続しました。",
+    },
     stackFrontTitle: "Frontend",
     stackFrontCopy: "ダッシュボード、農場、ロボット、ギャラリー、レポート、設定画面をルーティング基準で分け、専用UIを構成しました。",
     stackBackTitle: "Backend",
@@ -205,7 +277,7 @@ const translations = {
     stackDataTitle: "Data / Infra",
     stackDataCopy: "センサー更新データと病害虫画像情報をセクター状態に反映し、完了履歴をログとして残すようにしました。",
     roleKicker: "Contribution",
-    roleTitle: "担当内容",
+    roleTitle: "役割整理",
     roleTitles: ["API設計と実装", "ダッシュボード / レポートUI", "認証と権限処理", "データ連携構造の設計"],
     roleCopies: [
       "Django REST Frameworkベースで農場、セクター、ロボット、レポートAPIを設計・実装しました。",
@@ -214,7 +286,7 @@ const translations = {
       "病害虫画像、レポート、ログを時刻基準でつなぎ、原因と対応を一緒に見られるようにしました。",
     ],
     troubleKicker: "Troubleshooting",
-    troubleTitle: "技術的な解決ポイント",
+    troubleTitle: "トラブルシューティング",
     troubleTitles: ["レスポンス形式の正規化", "レポートと画像の時刻マッチング", "巡回完了状態の管理", "権限分離とアクセス制御"],
     troubleCopies: [
       "農場、レポート、画像データの応答形式の差をフロントエンド正規化ロジックで吸収し、画面の安定性を高めました。",
@@ -370,6 +442,20 @@ function applyStaticTranslations() {
     document.getElementById(`trouble-${index + 1}-title`).textContent = t.troubleTitles[index];
     document.getElementById(`trouble-${index + 1}-copy`).textContent = t.troubleCopies[index];
   });
+
+  t.architectureNoteTitles.forEach((value, index) => {
+    document.getElementById(`architecture-note-${index + 1}-title`).textContent = value;
+    document.getElementById(`architecture-note-${index + 1}-copy`).textContent = t.architectureNoteCopies[index];
+  });
+
+  t.stackSummaries.forEach((value, index) => {
+    document.querySelectorAll(".stack-group > summary")[index].textContent = value;
+  });
+
+  Object.entries(t.stackReasons || {}).forEach(([id, value]) => {
+    const node = document.querySelector(`#${id} p`);
+    if (node) node.textContent = value;
+  });
 }
 
 function getVisibleScreens() {
@@ -456,4 +542,82 @@ langButtons.forEach((button) => {
   button.addEventListener("click", () => setLanguage(button.dataset.lang));
 });
 
+function initStackReasons() {
+  document.querySelectorAll(".stack-shell").forEach((shell) => {
+    const groups = shell.querySelectorAll(".stack-group");
+    const buttons = shell.querySelectorAll(".stack-chip[data-reason-target]");
+    const panels = shell.querySelectorAll(".stack-reason-panel");
+    let syncingStack = false;
+
+    const syncOpenGroup = (activeGroup) => {
+      if (!activeGroup) return;
+      syncingStack = true;
+      groups.forEach((group) => {
+        if (group === activeGroup) {
+          group.setAttribute("open", "");
+        } else {
+          group.removeAttribute("open");
+        }
+      });
+      syncingStack = false;
+    };
+
+    const activateReason = (button) => {
+      const targetId = button.dataset.reasonTarget;
+      if (!targetId) return;
+
+      buttons.forEach((node) => node.classList.remove("is-active"));
+      panels.forEach((panel) => panel.classList.remove("is-active"));
+
+      button.classList.add("is-active");
+      syncOpenGroup(button.closest(".stack-group"));
+
+      const targetPanel = shell.querySelector(`#${targetId}`);
+      if (targetPanel) {
+        targetPanel.classList.add("is-active");
+      }
+    };
+
+    const activateGroup = (group) => {
+      const selectedButton = group.querySelector(".stack-chip.is-active[data-reason-target]");
+      const fallbackButton = group.querySelector(".stack-chip[data-reason-target]");
+
+      if (selectedButton || fallbackButton) {
+        activateReason(selectedButton || fallbackButton);
+      } else {
+        syncOpenGroup(group);
+      }
+    };
+
+    const defaultButton = shell.querySelector(".stack-chip.is-active[data-reason-target]") || buttons[0];
+    if (defaultButton) activateReason(defaultButton);
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => activateReason(button));
+    });
+
+    groups.forEach((group) => {
+      group.addEventListener("toggle", () => {
+        if (syncingStack) return;
+
+        if (group.open) {
+          activateGroup(group);
+          return;
+        }
+
+        const hasOpenGroup = Array.from(groups).some((item) => item.open);
+        if (!hasOpenGroup) {
+          const activeButton = shell.querySelector(".stack-chip.is-active[data-reason-target]");
+          if (activeButton) {
+            activateReason(activeButton);
+          } else {
+            activateGroup(group);
+          }
+        }
+      });
+    });
+  });
+}
+
+initStackReasons();
 setLanguage("ko");

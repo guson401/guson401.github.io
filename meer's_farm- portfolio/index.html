@@ -24,7 +24,7 @@
         <p class="hero-summary" id="hero-summary">센서 데이터, 로봇 순찰, 병해충 탐지, 운영 리포트를 하나의 흐름으로 연결한 스마트팜 통합 관제 웹 서비스입니다.</p>
         <div class="hero-actions">
           <a class="primary-link" href="#screens" id="hero-link-screens">화면 둘러보기</a>
-          <a class="secondary-link" href="#stack" id="hero-link-stack">기술 스택</a>
+          <a class="secondary-link" href="#stack" id="hero-link-stack">사용기술</a>
         </div>
       </div>
 
@@ -42,12 +42,10 @@
     <main>
       <section class="section intro-grid" id="overview">
         <article class="glass-card section-card">
-          <p class="section-kicker" id="overview-kicker">Overview</p>
           <h2 id="overview-title">문제 정의</h2>
           <p id="overview-copy">일반 농부는 병해충 여부와 식물 상태를 직접 눈으로 확인해야 해 많은 시간이 들고, 판단 또한 개인 경험에 크게 의존하는 경우가 많았습니다. Meer's Farm은 자율주행 로봇이 농장을 순찰하며 상태를 자동으로 파악하고, 이를 사용자가 짧은 시간 안에 이해할 수 있도록 수치 데이터와 레포트 형태로 보여주는 흐름을 만드는 데 초점을 맞췄습니다.</p>
         </article>
         <article class="glass-card section-card accent-card">
-          <p class="section-kicker" id="value-kicker">Core Value</p>
           <h2 id="value-title">핵심 구현 포인트</h2>
           <p id="value-copy">전체 대시보드, 농장 상세, 로봇 제어, 이미지 갤러리, 운영 리포트를 하나의 서비스 흐름으로 연결했습니다. 조회에서 끝나지 않고 상태 확인 이후 원인 파악과 제어 액션까지 자연스럽게 이어지도록 설계한 점이 핵심입니다.</p>
         </article>
@@ -55,7 +53,6 @@
 
       <section class="section" id="highlights">
         <div class="section-heading">
-          <p class="section-kicker" id="highlights-kicker">Highlights</p>
           <h2 id="highlights-title">핵심 기능</h2>
         </div>
         <div class="feature-grid">
@@ -68,9 +65,7 @@
 
       <section class="section screens-section" id="screens">
         <div class="section-heading">
-          <p class="section-kicker" id="screens-kicker">Screen Explorer</p>
-          <h2 id="screens-title">스크린샷으로 보는 실제 화면 구성</h2>
-          <p id="screens-copy">대시보드, 농장 관리, 로봇, 갤러리, 리포트, FAQ, 설정 흐름을 카테고리별로 확인할 수 있습니다.</p>
+          <h2 id="screens-title">화면구성</h2>
         </div>
         <div class="screen-explorer">
           <section class="screen-preview glass-card">
@@ -93,46 +88,39 @@
 
       <section class="section architecture-section" id="architecture">
         <div class="section-heading">
-          <p class="section-kicker" id="architecture-kicker">Architecture</p>
-          <h2 id="architecture-title">데이터가 상위 관제 화면으로 모이도록 도메인을 분리했습니다.</h2>
+          <h2 id="architecture-title">아키텍처</h2>
         </div>
         <article class="glass-card architecture-card">
-          <p class="architecture-lead" id="architecture-lead">`accounts`, `farms`, `robots`, `reports`, `faqs` 앱으로 역할을 나누고, 센서 데이터와 외부 JSON 이미지 분석 결과가 최종적으로 대시보드와 리포트에 반영되도록 구성했습니다.</p>
-          <div class="architecture-flow">
-            <span>Sensor / MQTT</span><span class="flow-arrow">></span><span>Sector Data</span><span class="flow-arrow">></span><span>Farm Summary</span><span class="flow-arrow">></span><span>Dashboard</span><span class="flow-arrow">></span><span>Report / Gallery</span>
+          <figure class="architecture-figure">
+            <img
+              src="../meer's_farm-screenshots/meersfarm_architecture_overview.png"
+              alt="Meer's Farm 라즈베리파이, MQTT, 중앙 서버, DB, 웹 서버, S3, GPU 서버 연결 아키텍처"
+            >
+          </figure>
+          <div class="architecture-copy">
+            <p class="architecture-lead" id="architecture-lead">Farm 현장의 라즈베리파이와 로봇에서 발생한 센서/이미지 데이터를 MQTT와 저장소 흐름으로 중앙 서버에 모으고, 사용자는 웹 페이지에서 상태와 리포트를 확인하는 구조입니다.</p>
+            <ul class="architecture-notes" aria-label="Meer's Farm 아키텍처 설명">
+              <li>
+                <strong id="architecture-note-1-title">Farm Edge</strong>
+                <span id="architecture-note-1-copy">라즈베리파이가 습도, 토양, 조도, pH 센서와 제어기를 관리하고 MQTT 브로커를 통해 중앙 서버로 상태 데이터를 전달합니다.</span>
+              </li>
+              <li>
+                <strong id="architecture-note-2-title">Robot & Vision</strong>
+                <span id="architecture-note-2-copy">카메라와 로봇암으로 농장 이미지를 수집하고, 이미지는 S3와 GPU 서버의 VLM 처리 흐름으로 연결되어 병해충 판단 근거가 됩니다.</span>
+              </li>
+              <li>
+                <strong id="architecture-note-3-title">Central Web</strong>
+                <span id="architecture-note-3-copy">EC2 중앙 서버에서 Django, DB, MQTT 브로커, React 웹 서버를 운영해 센서 상태와 분석 결과를 웹 관제 화면에 반영합니다.</span>
+              </li>
+            </ul>
+            <p class="architecture-caption" id="architecture-caption">현장 장비 제어와 웹 관제를 분리해 로봇/센서 데이터, 이미지 분석, 사용자 화면이 하나의 운영 흐름으로 이어지도록 설계했습니다.</p>
           </div>
-          <p class="architecture-caption" id="architecture-caption">화면은 React 라우팅 기준으로 분리하고, 백엔드는 도메인별 API와 인증을 분리해 데이터 흐름과 화면 흐름이 명확하게 이어지도록 했습니다.</p>
         </article>
-      </section>
-
-      <section class="section stack-section" id="stack">
-        <div class="section-heading">
-          <p class="section-kicker" id="stack-kicker">Tech Stack</p>
-          <h2 id="stack-title">사용 기술</h2>
-        </div>
-        <div class="stack-grid">
-          <article class="stack-card glass-card">
-            <h3 id="stack-front-title">Frontend</h3>
-            <div class="chip-row"><span class="chip strong">React</span><span class="chip strong">Vite</span><span class="chip">React Router</span><span class="chip">Axios</span><span class="chip">Tailwind CSS</span><span class="chip">Lucide React</span></div>
-            <p id="stack-front-copy">대시보드, 농장, 로봇, 갤러리, 리포트, 설정 화면을 라우팅 기준으로 분리하고 전용 UI를 구성했습니다.</p>
-          </article>
-          <article class="stack-card glass-card">
-            <h3 id="stack-back-title">Backend</h3>
-            <div class="chip-row"><span class="chip strong">Django</span><span class="chip strong">DRF</span><span class="chip">Simple JWT</span><span class="chip">SQLite</span></div>
-            <p id="stack-back-copy">JWT 인증, 농장/섹터/로봇/리포트 모델 분리, 권한 제어, 운영 로그 저장 흐름을 구현했습니다.</p>
-          </article>
-          <article class="stack-card glass-card">
-            <h3 id="stack-data-title">Data / Infra</h3>
-            <div class="chip-row"><span class="chip strong">MQTT</span><span class="chip">External JSON</span><span class="chip">Risk Data Sync</span></div>
-            <p id="stack-data-copy">센서 수신 데이터와 병해충 이미지 정보를 반영해 섹터 상태를 갱신하고, 완료 이력을 로그로 남기도록 구성했습니다.</p>
-          </article>
-        </div>
       </section>
 
       <section class="section role-section" id="role">
         <div class="section-heading">
-          <p class="section-kicker" id="role-kicker">Contribution</p>
-          <h2 id="role-title">포트폴리오용 역할 정리</h2>
+          <h2 id="role-title">역할 정리</h2>
         </div>
         <div class="feature-grid">
           <article class="feature-card glass-card"><h3 id="role-1-title">API 설계 및 구현</h3><p id="role-1-copy">Django REST Framework 기반의 농장, 섹터, 로봇, 리포트 API를 설계하고 구현했습니다.</p></article>
@@ -144,8 +132,7 @@
 
       <section class="section timeline-section" id="troubleshooting">
         <div class="section-heading">
-          <p class="section-kicker" id="trouble-kicker">Troubleshooting</p>
-          <h2 id="trouble-title">기술적 문제 해결 포인트</h2>
+          <h2 id="trouble-title">트러블슈팅</h2>
         </div>
         <div class="timeline">
           <article class="timeline-item glass-card"><span class="timeline-index">01</span><div><h3 id="trouble-1-title">응답 형식 정규화</h3><p id="trouble-1-copy">농장, 리포트, 이미지 데이터 응답 형식 차이를 프론트엔드 정규화 로직으로 흡수해 화면 안정성을 높였습니다.</p></div></article>
@@ -155,13 +142,101 @@
         </div>
       </section>
 
-      <section class="section closing-section" id="closing">
-        <article class="glass-card closing-card">
-          <p class="section-kicker" id="closing-kicker">Summary</p>
-          <h2 id="closing-title">스마트팜 운영 데이터를 하나의 관제 흐름으로 묶은 웹 플랫폼</h2>
-          <p id="closing-copy">실시간 센서 데이터, 병해충 이미지, 로봇 순찰 로그, 운영 리포트를 연결해 운영자가 상태를 빠르게 파악하고 다음 조치까지 이어갈 수 있도록 만든 프로젝트입니다.</p>
-          <div class="closing-tags"><span>Monitoring</span><span>Robot Control</span><span>Image Report Linkage</span><span>Portfolio Ready</span></div>
-        </article>
+      <section class="section stack-section" id="stack">
+        <div class="section-heading">
+          <h2 id="stack-title">사용기술</h2>
+        </div>
+        <div class="stack-shell">
+          <details class="stack-group" open>
+            <summary id="stack-summary-front">Frontend / Web UI</summary>
+            <div class="stack-content">
+              <div class="stack-chip-row">
+                <button class="stack-chip is-highlight is-active" type="button" data-reason-target="stack-reason-react">React</button>
+                <button class="stack-chip is-highlight" type="button" data-reason-target="stack-reason-vite">Vite</button>
+                <button class="stack-chip" type="button" data-reason-target="stack-reason-router">React Router</button>
+                <button class="stack-chip" type="button" data-reason-target="stack-reason-axios">Axios</button>
+                <button class="stack-chip" type="button" data-reason-target="stack-reason-tailwind">Tailwind CSS</button>
+                <button class="stack-chip" type="button" data-reason-target="stack-reason-lucide">Lucide React</button>
+              </div>
+              <div class="stack-reason-display">
+                <article class="stack-reason-panel is-active" id="stack-reason-react">
+                  <p id="stack-reason-react-copy">대시보드, 농장 관리, 로봇 제어, 갤러리, 리포트처럼 상태가 자주 바뀌는 화면을 컴포넌트 단위로 나누고 SPA 흐름으로 연결하기 위해 사용했습니다.</p>
+                </article>
+                <article class="stack-reason-panel" id="stack-reason-vite">
+                  <p id="stack-reason-vite-copy">프론트엔드 개발 서버와 빌드 피드백을 빠르게 가져가고, 화면 단위 변경을 반복 검증하기 위해 사용했습니다.</p>
+                </article>
+                <article class="stack-reason-panel" id="stack-reason-router">
+                  <p id="stack-reason-router-copy">대시보드, 농장, 로봇, 갤러리, 리포트, 설정 화면을 라우팅 기준으로 분리해 관리형 웹 서비스의 화면 흐름을 명확히 구성했습니다.</p>
+                </article>
+                <article class="stack-reason-panel" id="stack-reason-axios">
+                  <p id="stack-reason-axios-copy">Django REST API와 통신하는 요청 흐름을 정리하고, 대시보드/리포트/로봇 화면에서 필요한 데이터를 화면 단위로 받아오기 위해 사용했습니다.</p>
+                </article>
+                <article class="stack-reason-panel" id="stack-reason-tailwind">
+                  <p id="stack-reason-tailwind-copy">관제형 화면에서 표, 카드, 상태 표시, 버튼 같은 반복 UI를 빠르게 구성하고 화면별 스타일 편차를 줄이기 위해 사용했습니다.</p>
+                </article>
+                <article class="stack-reason-panel" id="stack-reason-lucide">
+                  <p id="stack-reason-lucide-copy">대시보드와 로봇 제어 화면에서 기능을 직관적으로 구분할 수 있도록 일관된 아이콘 체계를 적용하기 위해 사용했습니다.</p>
+                </article>
+              </div>
+            </div>
+          </details>
+
+          <details class="stack-group">
+            <summary id="stack-summary-back">Backend / API / Auth</summary>
+            <div class="stack-content">
+              <div class="stack-chip-row">
+                <button class="stack-chip is-highlight" type="button" data-reason-target="stack-reason-django">Django</button>
+                <button class="stack-chip is-highlight" type="button" data-reason-target="stack-reason-drf">Django REST Framework</button>
+                <button class="stack-chip" type="button" data-reason-target="stack-reason-jwt">Simple JWT</button>
+                <button class="stack-chip" type="button" data-reason-target="stack-reason-sqlite">SQLite</button>
+              </div>
+              <div class="stack-reason-display">
+                <article class="stack-reason-panel" id="stack-reason-django">
+                  <p id="stack-reason-django-copy">농장, 섹터, 로봇, 리포트, FAQ 도메인을 앱 단위로 나누고 인증과 운영 데이터를 함께 관리하기 위해 사용했습니다.</p>
+                </article>
+                <article class="stack-reason-panel" id="stack-reason-drf">
+                  <p id="stack-reason-drf-copy">프론트엔드에서 필요한 농장/로봇/리포트 데이터를 REST API로 제공하고, 응답 구조를 화면 흐름에 맞춰 정리하기 위해 사용했습니다.</p>
+                </article>
+                <article class="stack-reason-panel" id="stack-reason-jwt">
+                  <p id="stack-reason-jwt-copy">로그인 이후 API 접근 권한을 토큰 기반으로 처리하고, 사용자별 농장/로봇 접근 제어 흐름을 구성하기 위해 사용했습니다.</p>
+                </article>
+                <article class="stack-reason-panel" id="stack-reason-sqlite">
+                  <p id="stack-reason-sqlite-copy">개발과 검증 단계에서 농장, 로봇, 리포트, 사용자 데이터를 빠르게 저장하고 조회하기 위한 기본 데이터베이스로 사용했습니다.</p>
+                </article>
+              </div>
+            </div>
+          </details>
+
+          <details class="stack-group">
+            <summary id="stack-summary-data">Data / Robot / Infra</summary>
+            <div class="stack-content">
+              <div class="stack-chip-row">
+                <button class="stack-chip is-highlight" type="button" data-reason-target="stack-reason-mqtt">MQTT</button>
+                <button class="stack-chip" type="button" data-reason-target="stack-reason-s3">S3</button>
+                <button class="stack-chip" type="button" data-reason-target="stack-reason-gpu">GPU Server / VLM</button>
+                <button class="stack-chip" type="button" data-reason-target="stack-reason-ec2">EC2</button>
+                <button class="stack-chip" type="button" data-reason-target="stack-reason-risk">Risk Data Sync</button>
+              </div>
+              <div class="stack-reason-display">
+                <article class="stack-reason-panel" id="stack-reason-mqtt">
+                  <p id="stack-reason-mqtt-copy">라즈베리파이와 중앙 서버 사이에서 센서 상태와 제어 흐름을 주고받는 통신 경계로 사용했습니다.</p>
+                </article>
+                <article class="stack-reason-panel" id="stack-reason-s3">
+                  <p id="stack-reason-s3-copy">농장 이미지와 분석 대상 파일을 서버 처리 흐름에서 분리해 보관하고, GPU 서버 처리 결과와 리포트 흐름을 연결하기 위해 사용했습니다.</p>
+                </article>
+                <article class="stack-reason-panel" id="stack-reason-gpu">
+                  <p id="stack-reason-gpu-copy">로봇 카메라가 수집한 이미지를 VLM 처리 흐름으로 넘겨 병해충 판단과 리포트 생성의 근거 데이터로 활용했습니다.</p>
+                </article>
+                <article class="stack-reason-panel" id="stack-reason-ec2">
+                  <p id="stack-reason-ec2-copy">Django API, DB, MQTT 브로커, React 웹 서버를 운영하는 중앙 서버 환경으로 구성했습니다.</p>
+                </article>
+                <article class="stack-reason-panel" id="stack-reason-risk">
+                  <p id="stack-reason-risk-copy">센서 수신 데이터와 이미지 분석 결과를 섹터 상태와 리포트에 반영해 사용자가 위험도를 한 화면에서 판단할 수 있도록 연결했습니다.</p>
+                </article>
+              </div>
+            </div>
+          </details>
+        </div>
       </section>
     </main>
   </div>

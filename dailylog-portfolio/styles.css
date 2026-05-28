@@ -45,6 +45,8 @@ body::before {
 }
 
 .page-shell {
+  --slide-width: min(1180px, calc(100vw - 32px));
+  --slide-height: calc(var(--slide-width) * 0.5625);
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
   padding: 28px 0 56px;
@@ -107,7 +109,7 @@ body::before {
   grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
   gap: 24px;
   align-items: stretch;
-  min-height: 48vh;
+  min-height: auto;
 }
 
 .hero-copy,
@@ -274,6 +276,14 @@ body::before {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+#highlights .feature-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+#role .feature-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .feature-card {
   padding: 24px 22px;
 }
@@ -289,28 +299,70 @@ body::before {
 }
 
 .architecture-panel {
-  padding: 28px 26px;
+  padding: 14px;
 }
 
-.architecture-lead {
+.architecture-figure {
   margin: 0;
-  max-width: 700px;
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: clamp(1.9rem, 3vw, 3rem);
-  line-height: 1.1;
-  font-weight: 600;
-  color: var(--text);
+  border-radius: 14px;
+  background: #fff;
+  overflow: hidden;
 }
 
-.architecture-flow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+.architecture-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.architecture-copy {
+  margin-top: 14px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.architecture-summary {
+  margin: 0;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.architecture-notes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
-  margin-top: 24px;
+  padding: 0;
+  margin: 14px 0 0;
+  list-style: none;
 }
 
-.architecture-flow-card,
+.architecture-notes li {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.architecture-notes strong,
+.architecture-notes span {
+  display: block;
+}
+
+.architecture-notes strong {
+  color: var(--accent-deep);
+  font-size: 0.98rem;
+}
+
+.architecture-notes span {
+  margin-top: 8px;
+  color: var(--muted);
+  line-height: 1.58;
+  font-size: 0.94rem;
+}
+
 .closing-meta span {
   display: inline-flex;
   align-items: center;
@@ -321,18 +373,7 @@ body::before {
   background: rgba(255, 252, 248, 0.92);
   border: 1px solid rgba(116, 66, 35, 0.14);
   color: var(--accent-deep);
-  font-weight: 700;
-}
-
-.architecture-flow-arrow {
-  color: rgba(109, 52, 22, 0.5);
-  font-size: 1.4rem;
-  font-weight: 700;
-}
-
-.architecture-caption {
-  margin: 22px 0 0;
-  max-width: 720px;
+  font-weight: 800;
 }
 
 .flat-list {
@@ -1598,4 +1639,476 @@ button.stack-chip:hover {
     grid-template-columns: 1fr;
   }
 
+  #highlights .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #role .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .architecture-notes {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* PPT-friendly presentation theme */
+:root {
+  --bg: #f6f8fb;
+  --bg-strong: #e9edf5;
+  --surface: #ffffff;
+  --surface-strong: #ffffff;
+  --line: rgba(25, 35, 55, 0.14);
+  --text: #111827;
+  --muted: #4b5565;
+  --accent: #a65f2d;
+  --accent-deep: #6f3c1d;
+  --shadow: 0 10px 28px rgba(20, 30, 50, 0.08);
+  --radius-xl: 12px;
+  --radius-lg: 10px;
+  --radius-md: 8px;
+}
+
+body {
+  background: var(--bg);
+}
+
+body::before {
+  display: none;
+}
+
+.page-shell {
+  --slide-width: min(1280px, calc(100vw - 48px));
+  --slide-height: calc(var(--slide-width) * 0.5625);
+  width: min(1280px, calc(100% - 48px));
+  padding: 24px 0 64px;
+}
+
+.back-link,
+.hero-copy,
+.hero-card,
+.panel,
+.feature-card,
+.shot-card,
+.closing-card,
+.timeline-item,
+.flow-detail-card,
+.flow-nav-panel,
+.stack-shell,
+.stack-reason-panel,
+.screen-sidebar,
+.screen-preview {
+  background: #fff;
+  border-color: var(--line);
+  box-shadow: var(--shadow);
+  backdrop-filter: none;
+}
+
+.back-link {
+  border-radius: 8px;
+  min-height: 38px;
+  margin-bottom: 18px;
+}
+
+.hero {
+  min-height: auto;
+}
+
+.hero-copy,
+.hero-card,
+.panel,
+.feature-card,
+.closing-card,
+.timeline-item,
+.architecture-panel {
+  background: #fff;
+}
+
+.hero h1,
+.section-heading h2,
+.panel h2,
+.closing-card h2,
+.flow-stage-top h3,
+.screen-preview-top h3 {
+  font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  letter-spacing: 0;
+}
+
+.hero h1 {
+  font-size: clamp(3.8rem, 6vw, 5.8rem);
+  line-height: 0.98;
+}
+
+.eyebrow,
+.hero-card-label,
+.section-kicker,
+.flow-label,
+.flow-screen-type {
+  letter-spacing: 0.08em;
+}
+
+.hero-summary {
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+}
+
+.section {
+  margin-top: 22px;
+}
+
+.feature-grid,
+.intro-strip,
+.gallery-grid,
+.stat-grid {
+  gap: 16px;
+}
+
+.primary-link,
+.secondary-link,
+.lang-button,
+.flow-control,
+.flow-action,
+.flow-title-step,
+.stack-chip,
+.closing-meta span {
+  border-radius: 8px;
+}
+
+.primary-link,
+.lang-button.is-active,
+.flow-title-step.is-current,
+.timeline-index {
+  background: var(--accent-deep);
+  color: #fff;
+}
+
+.secondary-link,
+.lang-button,
+.flow-control,
+.flow-action,
+.flow-title-step,
+.stack-chip,
+.closing-meta span {
+  background: #fff;
+  border-color: var(--line);
+}
+
+.stat-card,
+.flow-points li,
+.flat-list li,
+.demo-panel-card,
+.demo-question-card,
+.demo-graph-card,
+.demo-form-card,
+.demo-profile-card {
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.stat-value {
+  font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 1.32rem;
+  letter-spacing: 0;
+}
+
+.phone-frame {
+  border-radius: 14px;
+  background: #111827;
+  box-shadow: 0 10px 28px rgba(17, 24, 39, 0.18);
+}
+
+.phone-screen,
+.phone-frame img,
+.flow-stage-image {
+  border-radius: 8px;
+}
+
+.timeline-index {
+  width: 48px;
+  height: 48px;
+  font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 1.15rem;
+}
+
+@media (min-width: 1025px) {
+  .flow-stage,
+  .closing-card {
+    min-height: 560px;
+  }
+
+  .architecture-panel {
+    min-height: auto;
+  }
+
+  .architecture-figure {
+    margin-top: 14px;
+    padding: 10px;
+  }
+}
+
+@media print {
+  @page {
+    size: 13.333in 7.5in;
+    margin: 0.25in;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    background: #fff;
+    color: #172033;
+  }
+
+  .back-link,
+  .language-switch,
+  .hero-actions,
+  .flow-actions {
+    display: none !important;
+  }
+
+  .page-shell {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+  }
+
+  .hero,
+  .section {
+    break-after: auto;
+    page-break-after: auto;
+    min-height: auto;
+    margin-top: 0;
+  }
+
+  .hero {
+    min-height: auto;
+    break-after: page;
+    page-break-after: always;
+    grid-template-columns: minmax(0, 1.12fr) minmax(260px, 0.88fr);
+    gap: 0.18in;
+  }
+
+  #screens,
+  #role,
+  #troubleshooting,
+  #architecture,
+  #stack {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  #overview {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.14in;
+    margin-bottom: 0.16in;
+  }
+
+  .hero-copy,
+  .hero-card,
+  .panel,
+  .feature-card,
+  .flow-stage,
+  .flow-detail-card,
+  .timeline-item,
+  .architecture-panel,
+  .stack-shell {
+    box-shadow: none;
+    border-color: #d8deea;
+    border-radius: 8px;
+    padding: 0.14in;
+  }
+
+  .hero h1 {
+    font-size: 50pt;
+  }
+
+  .hero-summary,
+  .panel p,
+  .feature-card p,
+  .flow-description,
+  .flow-interaction-hint,
+  .timeline-item p,
+  .architecture-summary,
+  .architecture-notes span {
+    font-size: 8.7pt;
+    line-height: 1.42;
+  }
+
+  .section-heading {
+    margin-bottom: 0.12in;
+  }
+
+  .section-heading h2,
+  .panel h2 {
+    font-size: 20pt;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.1in;
+  }
+
+  #highlights .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #role .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .feature-card h3,
+  .timeline-item h3 {
+    font-size: 10.5pt;
+  }
+
+  .flow-nav-panel {
+    display: none;
+  }
+
+  .flow-content-row {
+    grid-template-columns: minmax(0, 2.25in) minmax(0, 1fr);
+    gap: 0.18in;
+  }
+
+  .phone-frame {
+    width: 2.25in;
+    padding: 0.08in;
+    border-radius: 10px;
+    box-shadow: none;
+  }
+
+  .phone-screen,
+  .phone-frame img,
+  .flow-stage-image,
+  .demo-screen {
+    border-radius: 8px;
+  }
+
+  .phone-screen-demo,
+  .demo-screen {
+    min-height: 0;
+    height: 4.85in;
+  }
+
+  .flat-list {
+    margin-top: 0.1in;
+  }
+
+  .flat-list li {
+    padding: 0.07in 0.09in;
+    font-size: 8pt;
+  }
+
+  #troubleshooting .timeline {
+    gap: 0.08in;
+  }
+
+  .timeline-item {
+    grid-template-columns: 0.38in minmax(0, 1fr);
+    gap: 0.09in;
+  }
+
+  .timeline-index {
+    width: 0.32in;
+    height: 0.32in;
+    font-size: 10pt;
+  }
+
+  .architecture-figure {
+    margin-top: 0.1in;
+    padding: 0.06in;
+    border-radius: 8px;
+  }
+
+  .architecture-figure img {
+    max-height: 3.62in;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+
+  .architecture-copy {
+    margin-top: 0.08in;
+    padding: 0.1in;
+    border-radius: 8px;
+  }
+
+  .architecture-notes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.06in;
+    margin-top: 0.08in;
+  }
+
+  .architecture-notes li {
+    padding: 0.08in;
+    border-radius: 8px;
+  }
+
+  .architecture-notes strong {
+    font-size: 8.6pt;
+  }
+
+  .architecture-notes span {
+    margin-top: 0.04in;
+  }
+
+  details.stack-group > .stack-content {
+    display: block !important;
+  }
+
+  .stack-shell {
+    padding: 0;
+  }
+
+  .stack-group > summary {
+    padding: 0.1in 0.14in;
+    font-size: 10pt;
+  }
+
+  .stack-content {
+    padding: 0.11in 0.14in;
+  }
+
+  .stack-reason-display {
+    display: block;
+    margin-top: 0.08in;
+  }
+
+  .stack-reason-panel {
+    display: none;
+    padding: 0.1in 0.12in;
+    border-radius: 8px;
+  }
+
+  .stack-reason-panel.is-active {
+    display: block;
+  }
+
+  .stack-reason-panel p {
+    font-size: 8.2pt;
+    line-height: 1.42;
+  }
+
+  .stack-chip-row {
+    gap: 0.06in;
+  }
+
+  .stack-chip {
+    min-height: 0.25in;
+    padding: 0 0.08in;
+    font-size: 8pt;
+  }
+
+  .hero-copy,
+  .hero-card,
+  .panel,
+  .feature-card,
+  .flow-stage,
+  .timeline-item,
+  .architecture-panel,
+  .stack-group {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
 }

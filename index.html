@@ -54,6 +54,8 @@
     .page-shell {
       position: relative;
       z-index: 1;
+      --slide-width: min(1180px, calc(100vw - 32px));
+      --slide-height: calc(var(--slide-width) * 0.5625);
       width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
       padding: 28px 0 64px;
@@ -72,6 +74,7 @@
       grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
       gap: 22px;
       align-items: stretch;
+      min-height: auto;
     }
 
     .language-switch {
@@ -432,6 +435,279 @@
         align-items: flex-start;
       }
     }
+
+    /* PPT-friendly presentation theme */
+    :root {
+      --bg: #f6f8fb;
+      --bg-deep: #edf1f7;
+      --surface: #ffffff;
+      --surface-strong: #ffffff;
+      --line: rgba(25, 35, 55, 0.14);
+      --text: #111827;
+      --muted: #4b5565;
+      --accent: #111827;
+      --accent-2: #0f172a;
+      --shadow: 0 10px 28px rgba(20, 30, 50, 0.08);
+      --radius-xl: 12px;
+      --radius-lg: 10px;
+      --radius-md: 8px;
+    }
+
+    body {
+      background: var(--bg);
+    }
+
+    body::before {
+      display: none;
+    }
+
+    .page-shell {
+      --slide-width: min(1280px, calc(100vw - 48px));
+      --slide-height: calc(var(--slide-width) * 0.5625);
+      width: min(1280px, calc(100% - 48px));
+      padding: 24px 0 64px;
+    }
+
+    .glass,
+    .project-card,
+    .footer-note {
+      background: #fff;
+      border-color: var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: none;
+    }
+
+    .hero {
+      min-height: auto;
+      gap: 18px;
+    }
+
+    .hero-main,
+    .hero-side {
+      padding: 30px;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    h1,
+    .profile-name,
+    .project-title,
+    .section-title {
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-size: clamp(3.6rem, 5.4vw, 5.3rem);
+      line-height: 0.98;
+    }
+
+    .hero-summary,
+    .hero-copy,
+    .project-copy,
+    .stat-card p {
+      color: var(--muted);
+      line-height: 1.68;
+    }
+
+    .eyebrow,
+    .section-kicker,
+    .meta-label {
+      letter-spacing: 0.08em;
+    }
+
+    .project-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .project-card {
+      grid-template-rows: 190px auto;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(20, 30, 50, 0.12);
+    }
+
+    .project-visual {
+      padding: 18px;
+    }
+
+    .project-body {
+      padding: 20px;
+      gap: 12px;
+    }
+
+    .project-title {
+      font-size: 1.35rem;
+    }
+
+    .chip,
+    .lang-button,
+    .profile-icon,
+    .footer-note {
+      border-radius: 8px;
+    }
+
+    .chip {
+      min-height: 32px;
+      font-size: 0.82rem;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+    }
+
+    .profile-photo {
+      width: min(100%, 220px);
+      border-radius: 8px;
+      background: #f8fafc;
+    }
+
+    .section {
+      margin-top: 24px;
+    }
+
+    .section-head {
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 960px) {
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      @page {
+        size: 13.333in 7.5in;
+        margin: 0.25in;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body {
+        background: #fff;
+        color: #182033;
+      }
+
+      .language-switch,
+      .footer-note {
+        display: none !important;
+      }
+
+      .page-shell {
+        width: 100%;
+        max-width: none;
+        padding: 0;
+      }
+
+      .hero,
+      .section {
+        margin: 0;
+        min-height: auto;
+        break-after: auto;
+        page-break-after: auto;
+      }
+
+      .hero {
+        min-height: auto;
+        grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+        gap: 0.16in;
+        align-items: stretch;
+      }
+
+      .hero-main,
+      .hero-side,
+      .project-card {
+        box-shadow: none;
+        border-color: #d8deea;
+        border-radius: 8px;
+        padding: 0.16in;
+      }
+
+      .profile-photo-shell {
+        grid-template-columns: 0.82in minmax(0, 1fr);
+        gap: 0.12in;
+      }
+
+      .profile-photo {
+        width: 0.82in;
+        min-height: 0;
+        aspect-ratio: 1;
+        font-size: 7pt;
+      }
+
+      .eyebrow,
+      .section-kicker,
+      .chip {
+        font-size: 7.5pt;
+      }
+
+      .profile-name {
+        font-size: 34pt;
+        line-height: 1;
+      }
+
+      .profile-subtitle {
+        font-size: 12pt;
+      }
+
+      .hero-summary,
+      .project-copy,
+      .profile-row,
+      .profile-link-inline {
+        font-size: 8.6pt;
+        line-height: 1.45;
+      }
+
+      .profile-links {
+        margin-top: 0.12in;
+        gap: 0.08in;
+      }
+
+      .section {
+        margin-top: 0.16in;
+      }
+
+      .section-head {
+        margin-bottom: 0.1in;
+      }
+
+      .section-title {
+        font-size: 20pt;
+      }
+
+      .project-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.12in;
+      }
+
+      .project-visual {
+        min-height: 0.9in;
+      }
+
+      .project-body {
+        padding: 0.12in 0 0;
+      }
+
+      .project-title {
+        font-size: 15pt;
+      }
+
+      .chip-row {
+        gap: 0.05in;
+        margin-top: 0.1in;
+      }
+
+      .chip {
+        min-height: 0.24in;
+        padding: 0 0.07in;
+      }
+    }
   </style>
 </head>
 <body>
@@ -505,25 +781,11 @@
           <div class="project-visual" aria-hidden="true"></div>
           <div class="project-body">
             <h3 class="project-title">Omni-Kit</h3>
-            <p class="project-copy" id="omnikit-copy">UR5 협동로봇을 React 콘솔에서 모니터링·제어하고, WebAuthn 디바이스 화이트리스트로 보호하는 산업용 운영 플랫폼입니다.</p>
+            <p class="project-copy" id="omnikit-copy">OnRobot Korea와 함께한 연계 프로젝트로, STT를 이용해 협동 로봇팔을 제어하고 기존 티치펜던트를 대체할 웹 콘솔을 구현했습니다.</p>
             <div class="chip-row">
               <span class="chip">React</span>
               <span class="chip">Spring Boot</span>
-              <span class="chip">ROS 2</span>
               <span class="chip">WebAuthn</span>
-            </div>
-          </div>
-        </a>
-
-        <a class="project-card farm" href="./meer's_farm- portfolio/index.html">
-          <div class="project-visual" aria-hidden="true"></div>
-          <div class="project-body">
-            <h3 class="project-title">Meer's Farm</h3>
-            <p class="project-copy" id="farm-copy">병해충 감시 자율주행로봇과 이와 연동된 웹서비스로 농부의 노동시간을 줄여주는 AIoT 프로젝트입니다.</p>
-            <div class="chip-row">
-              <span class="chip">React</span>
-              <span class="chip">Django</span>
-              <span class="chip">MQTT</span>
             </div>
           </div>
         </a>
@@ -537,6 +799,19 @@
               <span class="chip">Kotlin</span>
               <span class="chip">Jetpack Compose</span>
               <span class="chip">Android</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="project-card farm" href="./meer's_farm- portfolio/index.html">
+          <div class="project-visual" aria-hidden="true"></div>
+          <div class="project-body">
+            <h3 class="project-title">Meer's Farm</h3>
+            <p class="project-copy" id="farm-copy">병해충 감시 자율주행로봇과 이와 연동된 웹서비스로 농부의 노동시간을 줄여주는 AIoT 프로젝트입니다.</p>
+            <div class="chip-row">
+              <span class="chip">React</span>
+              <span class="chip">Django</span>
+              <span class="chip">MQTT</span>
             </div>
           </div>
         </a>
@@ -554,7 +829,7 @@
         photoPlaceholder: "프로필 사진 영역<br>이미지 추가 가능",
         heroSummary: "프로젝트 포트폴리오를 모아 둔 개인 허브 페이지입니다. 상단에서 프로필과 연락처를 바로 확인하고, 아래에서 프로젝트별 상세 페이지로 이동할 수 있도록 구성했습니다.",
         projectsTitle: "Projects",
-        omnikitCopy: "UR5 협동로봇을 React 콘솔에서 모니터링·제어하고, WebAuthn 디바이스 화이트리스트로 보호하는 산업용 운영 플랫폼입니다.",
+        omnikitCopy: "OnRobot Korea와 함께한 연계 프로젝트로, STT를 이용해 협동 로봇팔을 제어하고 기존 티치펜던트를 대체할 웹 콘솔을 구현했습니다.",
         farmCopy: "병해충 감시 자율주행로봇과 이와 연동된 웹서비스로 농부의 노동시간을 줄여주는 AIoT 프로젝트입니다.",
         dailylogCopy: "하루 기록이 번거롭거나 어려움을 겪는 사람들을 위한 대화형 일기 작성 앱 프로젝트입니다.",
         footerNote: "이후 프로젝트를 추가할 때는 이 카드 구조를 복사해서 링크와 텍스트만 교체하면 됩니다.",
@@ -564,7 +839,7 @@
         photoPlaceholder: "Profile Photo Area<br>Add Image Here",
         heroSummary: "This is a personal hub page that gathers project portfolios in one place. The top area shows profile and contact information, and the section below links to each project page.",
         projectsTitle: "Projects",
-        omnikitCopy: "An industrial operations platform that monitors and controls the UR5 cobot from a React console, guarded by a WebAuthn device whitelist.",
+        omnikitCopy: "A collaboration project with OnRobot Korea that uses STT to control a collaborative robot arm and implements a web console intended to replace the traditional teach pendant.",
         farmCopy: "An AIoT project that reduces farmers' labor time through a pest-monitoring autonomous robot and a connected web service.",
         dailylogCopy: "A conversational diary-writing app project for people who find daily journaling inconvenient or difficult.",
         footerNote: "When you add another project later, you can reuse this card structure and only replace the link and text.",
@@ -574,7 +849,7 @@
         photoPlaceholder: "プロフィール写真エリア<br>画像を追加できます",
         heroSummary: "プロジェクトポートフォリオを一か所にまとめた個人ハブページです。上部ではプロフィールと連絡先を確認でき、下部から各プロジェクトページへ移動できます。",
         projectsTitle: "Projects",
-        omnikitCopy: "UR5協働ロボットをReactコンソールから監視・制御し、WebAuthnデバイスホワイトリストで保護する産業用運用プラットフォームです。",
+        omnikitCopy: "OnRobot Koreaとの連携プロジェクトとして、STTで協働ロボットアームを制御し、従来のティーチペンダントを代替するWebコンソールを実装しました。",
         farmCopy: "病害虫監視の自律走行ロボットと連動Webサービスにより、農家の労働時間を減らすAIoTプロジェクトです。",
         dailylogCopy: "毎日の記録が面倒だったり難しかったりする人のための会話型日記作成アプリプロジェクトです。",
         footerNote: "今後プロジェクトを追加する場合は、このカード構造を再利用してリンクとテキストだけを差し替えれば大丈夫です。",

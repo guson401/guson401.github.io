@@ -358,33 +358,32 @@ const SCREEN_DATA = {
 const TRANSLATIONS = {
   ko: {
     eyebrow: "Cobot Operations Console",
-    "hero-summary": "UR5 협동로봇을 웹에서 모니터링·제어하고 WebAuthn 기반 디바이스 화이트리스트로 보호하는 산업용 운영 콘솔입니다. React 19 + Spring Boot 3 + ROS 2 워크스페이스가 MQTT/WebSocket으로 연결됩니다.",
+    "hero-summary": "OnRobot Korea와 함께한 연계 프로젝트로, STT를 이용한 협동 로봇팔 제어와 기존 티치펜던트를 대체할 웹 콘솔 구현을 목표로 했습니다. 웹 내부는 REST/WebSocket으로 구성하고, 로봇과 웹 시스템은 MQTT 토픽으로만 소통합니다.",
     "hero-link-screens": "화면 보기",
-    "hero-link-role": "담당 역할",
+    "hero-link-role": "역할 정리",
     "snapshot-label": "Project Snapshot",
-    "snapshot-front": "Vite 6 + TS · URDF Viewer",
-    "snapshot-back": "JDK 21 · JPA · MQTT",
-    "snapshot-auth": "Yubico Server 2.8",
-    "snapshot-ros": "Humble · UR Driver 2.12",
+    "snapshot-front": "Vite 6 + TS · URDF 디지털 트윈",
+    "snapshot-back": "JDK 21 · JPA · Redis 설계",
+    "snapshot-auth": "JWT · WebAuthn · 화이트리스트",
+    "snapshot-ros": "MQTT · UR5/2FG7 연동",
     "overview-kicker": "Overview",
     "overview-title": "문제 정의",
-    "overview-copy": "기존 산업용 협동로봇은 펜던트 옆에서만 조작·확인이 가능하고, 누가 어떤 단말에서 접근하는지 관리가 어렵습니다. Omni-Kit은 로봇 상태를 웹/모바일로 끌어올리고, 모든 단말을 사이트별 WebAuthn 화이트리스트로 잠그는 운영 콘솔을 만들었습니다.",
+    "overview-copy": "기존 협동 로봇팔 제어는 티치펜던트와 현장 PC 중심이라 음성 명령이나 웹 기반 운영 흐름으로 확장하기 어렵습니다. Omni-Kit은 STT 명령, 로봇 상태, 작업 흐름을 웹 콘솔로 끌어올려 더 직관적인 운영 환경을 만드는 프로젝트입니다.",
     "value-kicker": "Core Value",
     "value-title": "핵심 구현 포인트",
-    "value-copy": "React 19 기반 콘솔에서 3D URDF 디지털 트윈으로 실 로봇과 동일한 자세를 확인하고, MQTT/WebSocket으로 명령/상태가 양방향 흐릅니다. Spring Boot 백엔드가 WebAuthn 등록·인증·세션 무효화·디바이스 takeover까지 운영 보안을 책임집니다.",
+    "value-copy": "React 콘솔은 STT 음성 패널, URDF 3D 모델, 레시피, 웨이포인트, 세션·장치 관리 화면을 제공하고, Spring Boot는 인증·운영 API와 데이터 모델을 담당합니다. 로봇과 웹 시스템 사이의 모든 송수신은 MQTT 토픽으로만 처리되며, 웹 콘솔이 필요한 범위만 최소 수정으로 맞췄습니다.",
     "highlights-kicker": "Highlights",
     "highlights-title": "핵심 기능",
-    "feature-1-title": "WebAuthn 디바이스 화이트리스트",
-    "feature-1-copy": "Yubico WebAuthn 서버 라이브러리로 등록·어설션을 처리하고, 디바이스를 PENDING/APPROVED/BLOCKED로 관리합니다. 첫 admin은 부트스트랩 자동 승인됩니다.",
-    "feature-2-title": "3D URDF 디지털 트윈",
-    "feature-2-copy": "@react-three/fiber + urdf-loader로 UR5 모델을 렌더링하고, MQTT를 통해 들어오는 관절/TCP pose를 WebSocket으로 받아 화면에 즉시 반영합니다.",
-    "feature-3-title": "단일 세션 보안",
-    "feature-3-copy": "단일 세션 정책으로 다른 기기에서 takeover되면 30초 폴링과 visibilitychange로 즉시 감지해 로그아웃합니다. AccessTokenDenylist로 토큰도 즉시 무효화됩니다.",
-    "feature-4-title": "패스키 분실 복구 흐름",
-    "feature-4-copy": "OS keychain 분실로 WebAuthn 어설션이 막혔을 때 자가 reset-credential, 같은 사이트 사용자 takeover-reset, PENDING 승인 재요청까지 흐름을 닫았습니다.",
+    "feature-1-title": "티치펜던트 대체 웹 콘솔",
+    "feature-1-copy": "협동 로봇팔의 상태 확인, STT 음성 패널, TCP/조인트 제어, 레시피·웨이포인트·작업 이력을 React 관리자 콘솔로 묶어 현장 PC에서 운영할 수 있도록 구현했습니다.",
+    "feature-2-title": "웹 파트 설계와 구현",
+    "feature-2-copy": "프론트엔드 전체 화면·라우팅·인증 흐름을 담당하고, Spring Boot API, JPA/Redis 기반 도메인, 배포/인프라 구조와 DB 설계를 함께 정리했습니다.",
+    "feature-3-title": "WebAuthn 하드웨어 화이트리스트",
+    "feature-3-copy": "백엔드 하이라이트로 Yubico WebAuthn 2.8.1 기반 장치 등록·인증·승인 모델을 구현하고, 승인된 하드웨어만 제어 API에 접근하도록 보호했습니다.",
+    "feature-4-title": "MQTT 토픽 최소 연동",
+    "feature-4-copy": "로봇과 웹 시스템은 MQTT 토픽으로만 소통합니다. 로봇 파트에서 보내는 상태·이벤트 형식에 맞춰 필요한 토픽 매핑과 화면 반영만 최소 수정으로 맞췄습니다.",
     "screens-kicker": "Screen Explorer",
-    "screens-title": "실제 운영 화면",
-    "screens-copy": "새로 정리한 스크린샷을 실제 탭 흐름 기준으로 묶어, 인증부터 실시간 제어와 관리자 보안 화면까지 확인할 수 있습니다.",
+    "screens-title": "화면구성",
     "tab-auth": "인증",
     "tab-dashboard": "대시보드",
     "tab-realtime": "실시간 제어",
@@ -396,73 +395,87 @@ const TRANSLATIONS = {
     "tab-alerts": "알림",
     "tab-admin": "관리자",
     "architecture-kicker": "Architecture",
-    "architecture-title": "웹 · 백엔드 · MQTT · ROS 2 워크스페이스 분리",
-    "architecture-lead": "React 콘솔과 Spring Boot 백엔드가 REST/STOMP로 통신하고, 백엔드는 Spring Integration MQTT로 로봇 워크스페이스와 명령/상태 메시지를 주고받습니다.",
-    "architecture-caption": "STT는 web/sensevoice가 faster-whisper large-v3-turbo로 EC2 CPU(int8)에서 서빙하고, 음성 발화·LLM 응답은 로봇이 진실원천이 되어 evt/conversation MQTT → WS llm.conversation.appended로 콘솔에 도착합니다.",
+    "architecture-title": "아키텍처",
+    "architecture-lead": "다이어그램의 왼쪽은 제가 담당한 웹/백엔드/인프라 영역이고, 오른쪽은 로봇 파트입니다. 웹 내부는 Nginx, React, Spring Boot, FastAPI, PostgreSQL/Redis로 구성되며, 로봇 시스템과는 Mosquitto MQTT 토픽으로만 상태와 명령을 주고받습니다.",
+    "architecture-web-title": "웹 · 백엔드 · 인프라 영역",
+    "architecture-web-copy": "사용자는 Nginx를 통해 React 콘솔에 접근하고, 콘솔은 Spring Boot API/WS와 통신합니다. 백엔드는 인증, 세션, 운영 도메인, DB 모델을 담당하며 PostgreSQL/PGVector와 Redis를 사용합니다. Jenkins, Docker Compose, Prometheus/Grafana는 배포와 운영 관찰 흐름으로 연결됩니다.",
+    "architecture-boundary-title": "로봇과 웹의 유일한 경계",
+    "architecture-boundary-copy": "로봇과 웹 시스템은 REST나 WebSocket으로 직접 연결되지 않고 MQTT 토픽으로만 소통합니다. 웹 파트에서는 로봇 파트가 제공한 토픽과 payload 형식에 맞춰 상태 수신, 제어 명령 발행, STT 결과 전달에 필요한 최소 범위만 연동했습니다.",
+    "architecture-robot-title": "로봇 파트와 장치 흐름",
+    "architecture-robot-copy": "오른쪽 로봇 시스템은 마이크, 카메라, 스피커, STT/LLM/TTS, motion/vision layer, UR5와 OnRobot 2FG7 그리퍼를 포함합니다. 이 영역은 로봇 파트가 담당했고, 웹에서는 해당 시스템과 맞닿는 MQTT 토픽과 STT 컨테이너 호출 지점을 맞췄습니다.",
+    "architecture-caption": "핵심은 웹 시스템과 로봇 시스템을 MQTT 경계로 분리한 점입니다. 웹 파트는 사용자 화면, 인증/인가, 데이터 저장, 배포 구조, MQTT 토픽 연동을 담당하고, 로봇 제어와 센서 처리 로직은 로봇 파트에 둔 구조입니다.",
     "stack-kicker": "Tech Stack",
-    "stack-title": "사용 기술",
-    "stack-front-title": "Frontend",
-    "stack-front-copy": "관리자 콘솔(데스크톱)과 operator 모바일을 같은 모노레포에서 운영합니다. 3D URDF 뷰어는 @react-three/fiber + urdf-loader, WebAuthn 클라이언트는 @simplewebauthn/browser로 처리합니다.",
-    "stack-back-title": "Backend",
-    "stack-back-copy": "JWT + WebAuthn + 디바이스 가드 3중 보안과, ROS 2 워크스페이스와 통신하는 MQTT 이벤트 라우터를 같은 백엔드에 묶었습니다. JPA + Redis로 세션·쿨다운을 관리합니다.",
-    "stack-robot-title": "Robot / Infra",
-    "stack-robot-copy": "omni_kit ROS 2 워크스페이스가 UR5 RTDE 드라이버와 OnRobot 2FG7 Modbus 그리퍼를 제어하고, web/sensevoice가 EC2 CPU(int8) Whisper 추론을 서빙합니다.",
+    "stack-title": "사용기술",
+    "stack-copy": "프로젝트에 적용한 주요 기술과 라이브러리를 영역별로 정리했습니다. 핵심 기술은 강조 색상으로 구분했고, 기술명을 누르면 아래에서 사용 이유를 확인할 수 있습니다.",
+    "stack-summary-front": "Frontend / Console UI",
+    "stack-summary-back": "Backend / Auth / DB",
+    "stack-summary-robot": "Robot Communication / STT / Infra",
+    "stack-reason-react-copy": "관리자 콘솔의 대시보드, 실시간 제어, 장치/세션/알림 관리 화면을 컴포넌트 단위로 나누고 상태 변화가 많은 운영 UI를 일관되게 관리하기 위해 사용했습니다.",
+    "stack-reason-vite-ts-copy": "프론트 전체를 담당했기 때문에 빠른 개발 서버와 타입 안정성이 중요했습니다. Vite로 개발 피드백을 빠르게 가져가고 TypeScript로 API 응답과 화면 상태를 명확히 다뤘습니다.",
+    "stack-reason-router-query-copy": "로그인, 승인 대기, 관리자 전용 화면을 라우트 가드로 분리하고, 서버 상태는 TanStack Query로 캐싱·갱신해 화면별 API 호출 흐름을 안정적으로 관리했습니다.",
+    "stack-reason-three-copy": "티치펜던트를 대체할 웹 콘솔에서 로봇 자세를 시각적으로 확인할 수 있도록 3D 뷰어를 구성하는 데 사용했습니다. 로봇 제어 구현이 아니라 웹 화면 표현 영역으로 적용했습니다.",
+    "stack-reason-webauthn-browser-copy": "브라우저에서 패스키 등록과 인증 어설션을 처리하고, 백엔드 WebAuthn 검증 흐름과 연결해 승인된 하드웨어만 위험 기능에 접근하도록 만들기 위해 사용했습니다.",
+    "stack-reason-form-ui-copy": "로봇, 레시피, 웨이포인트, 장치 승인 같은 입력 화면이 많아 폼 검증과 에러 표시를 일관되게 처리하고, 관리자 콘솔의 버튼과 상태 표현을 빠르게 구성하기 위해 사용했습니다.",
+    "stack-reason-spring-copy": "웹 백엔드의 인증, 운영 API, 세션 관리, 관리자 도메인을 하나의 구조로 묶기 위해 사용했습니다. 컨트롤러, 서비스, 인터셉터 계층을 분리해 웹 파트의 책임을 명확히 했습니다.",
+    "stack-reason-yubico-copy": "백엔드 하이라이트인 하드웨어 화이트리스트 구현에 사용했습니다. 등록 옵션 생성, attestation/assertion 검증, 승인된 credential 기반 접근 제어를 구성했습니다.",
+    "stack-reason-jwt-copy": "로그인 이후 access/refresh token 흐름과 단일 세션 정책을 처리하고, 강제 만료나 takeover 상황에서 토큰 무효화를 명확히 반영하기 위해 사용했습니다.",
+    "stack-reason-jpa-copy": "회원, 사이트, 장치, 세션, 알림, MFA 도메인의 관계를 DB 모델로 정리하고 운영 화면에서 필요한 조회/상태 전환을 안정적으로 처리하기 위해 사용했습니다.",
+    "stack-reason-redis-copy": "WebAuthn challenge, 세션 보조 상태, recovery cooldown, access token denylist처럼 만료 시간이 중요한 데이터를 관리하기 위해 사용했습니다.",
+    "stack-reason-mfa-copy": "관리자 계정 보호를 강화하기 위해 TOTP MFA 설정, 확인, 복구 코드 갱신 흐름을 구현하는 데 사용했습니다.",
+    "stack-reason-mqtt-topics-copy": "로봇과 웹 시스템은 MQTT 토픽으로만 소통합니다. 웹 파트에서는 로봇 파트가 제공한 토픽과 payload 형식에 맞춰 상태 수신과 명령 발행에 필요한 범위만 연결했습니다.",
+    "stack-reason-spring-mqtt-copy": "Spring Boot 백엔드에서 MQTT publish/subscribe 흐름을 웹 API와 연결하기 위해 사용했습니다. 웹 내부 통신과 로봇 통신 경계를 분리하는 역할로 두었습니다.",
+    "stack-reason-mosquitto-copy": "로봇과 웹 백엔드 사이의 MQTT 브로커로 사용했습니다. 웹에서는 Mosquitto를 기준으로 필요한 토픽 연결과 운영 환경 설정만 맞췄습니다.",
+    "stack-reason-stt-copy": "STT 기반 로봇팔 제어 목표를 위해 음성 인식 컨테이너와 웹 콘솔의 호출 지점을 맞추는 데 사용했습니다. 웹 파트에서는 STT 결과를 제어 흐름에 연결하는 화면과 API 연동을 담당했습니다.",
+    "stack-reason-docker-copy": "웹, 백엔드, MQTT 브로커, STT 컨테이너를 같은 실행 환경에서 확인할 수 있도록 서비스 구성을 정리하는 데 사용했습니다.",
+    "stack-reason-deploy-copy": "웹/백엔드 배포 흐름과 무중단 전환 구조를 정리하기 위해 사용했습니다. 포트폴리오에서는 인프라 설계와 운영 흐름을 담당한 범위로 설명했습니다.",
     "role-kicker": "My Contribution",
-    "role-title": "담당 역할",
-    "role-copy": "백엔드 인증·세션·디바이스 가드와 프론트엔드 페이지 구조(콘솔 셸·실시간 제어·관리자 화면·로그인 흐름)를 함께 맡았습니다.",
-    "role-1-title": "WebAuthn 등록·인증 서비스",
-    "role-1-copy": "Spring Boot의 WebAuthnService에서 Yubico RelyingParty 기반 등록 옵션·검증, 어설션, 첫 admin 부트스트랩 자동 승인까지 구현했습니다. 등록 시 admin에게 PENDING 알림을 발사합니다.",
-    "role-2-title": "디바이스 가드 (D8) + 단일 세션",
-    "role-2-copy": "AuthSessionGuard 인터셉터에서 WebAuthn credential → 사이트 → APPROVED → 디바이스 타입 순으로 검증하고, AccessTokenDenylist로 강제 만료 시 토큰을 즉시 무효화했습니다.",
-    "role-3-title": "하드웨어 관리 콘솔",
-    "role-3-copy": "AdminPages의 ClientDevicesPage에서 PENDING/APPROVED/BLOCKED 상태 전환, 알림 링크의 사원번호 prefill, 사이트 멤버/그룹/그리퍼 관리까지 화면을 구현했습니다.",
-    "role-4-title": "콘솔 셸 + 라우팅 가드",
-    "role-4-copy": "AppShell 사이드바·collapsed 상태·세션 takeover 폴링(30s + visibilitychange), routing.tsx의 PublicOnly/Protected/PendingApproval/DesktopOnly 라우트 가드를 작성했습니다.",
+    "role-title": "역할 정리",
+    "role-copy": "웹 파트를 담당하며 프론트엔드 전체 구현, 백엔드 API와 인증 도메인, 인프라 구조, DB 설계를 주력으로 맡았습니다. 백엔드 하이라이트는 WebAuthn 기반 하드웨어 화이트리스트이고, 로봇과 웹의 통신은 MQTT 토픽만 사용하도록 최소 연동으로 맞췄습니다.",
+    "role-1-title": "프론트엔드 전체 구현",
+    "role-1-copy": "로그인, 승인 대기, 대시보드, 실시간 제어, 로봇/레시피/웨이포인트/이력, 장치·세션·알림 관리자 화면과 라우팅/인증 가드를 전반적으로 구현했습니다.",
+    "role-2-title": "WebAuthn 하드웨어 화이트리스트",
+    "role-2-copy": "Yubico RelyingParty 기반 등록 옵션·검증·어설션을 구성하고, 승인된 credential과 장치 상태를 기준으로 위험 제어 API를 막는 AuthSessionGuard를 구현했습니다.",
+    "role-3-title": "백엔드 · DB 설계",
+    "role-3-copy": "회원, 사이트, 장치, 세션, 알림, MFA 도메인의 API와 JPA 모델을 설계하고, Redis 기반 challenge·토큰 무효화 흐름을 정리했습니다.",
+    "role-4-title": "인프라 · MQTT 연동 범위 정리",
+    "role-4-copy": "웹/백엔드 배포 구조와 환경 변수를 정리하고, 로봇과 웹 사이의 통신은 MQTT 토픽만 사용하도록 웹 콘솔 표시와 제어 요청 전달에 필요한 최소 범위로 맞췄습니다.",
     "trouble-kicker": "Troubleshooting",
-    "trouble-title": "기술적 문제 해결 포인트",
-    "trouble-1-title": "디바이스 폴링 vs WebAuthn 어설션 race",
-    "trouble-1-copy": "PendingApprovalRoute에서 디바이스가 APPROVED로 갱신되자마자 /dashboard로 보내면 WebAuthn 어설션 단계가 trigger되지 않는 race가 있었습니다. 토큰의 webauthnCredentialId 유무까지 함께 확인해 라우트가 한 단계 더 머무르도록 가드를 고쳤습니다.",
-    "trouble-2-title": "다른 기기 takeover 즉시 감지",
-    "trouble-2-copy": "단일 세션 정책 하에서 다른 기기 로그인 시 기존 탭이 살아 있으면 사용자가 모릅니다. AppShell에서 /auth/me 30초 폴링 + visibilitychange 즉시 호출을 결합해 AUTH_031을 받으면 인터셉터가 /login?takeover=1로 보내도록 닫았습니다.",
-    "trouble-3-title": "패스키 분실 복구 cooldown 설계",
-    "trouble-3-copy": "자가 reset-credential과 같은 사이트 사용자 takeover-reset이 admin 알림을 스팸으로 만들 수 있어, Redis로 사용자/사이트별 60초 cooldown을 적용했습니다. takeover 시 기존 deviceType·deviceName은 보존해 식별 정보가 사라지지 않도록 처리했습니다.",
-    "trouble-4-title": "Linux 데스크톱 시현 우회 게이팅",
-    "trouble-4-copy": "시연 환경의 우분투 PC는 OS platform authenticator가 없어 Chrome WebAuthn 흐름이 막힙니다. AuthSessionGuard와 라우트 가드에 User-Agent 기반 우회를 두되, Android의 'Linux' 토큰은 명시적으로 제외해 operator MOBILE 정책이 깨지지 않게 했습니다.",
-    "trouble-5-title": "jog 명령 토스트 스팸 차단",
-    "trouble-5-copy": "실시간 제어에서 jog 버튼은 80ms 간격으로 연속 발사되는데, 실패 시 매 tick 토스트가 떠 화면이 가려졌습니다. 마지막 에러 토스트 시점을 기록해 3초 이내 재표시를 막고, 성공 시 카운터를 리셋하도록 정리했습니다.",
-    "closing-kicker": "Summary",
-    "closing-title": "UR5 협동로봇 운영 콘솔 + WebAuthn 보안 통합 플랫폼",
-    "closing-copy": "SSAFY 14기 자율 프로젝트(S14P31S303) — React 19 + Spring Boot 3 + ROS 2 워크스페이스를 묶은 협동로봇 운영 콘솔입니다. WebAuthn 디바이스 화이트리스트, 단일 세션 강제, 3D URDF 디지털 트윈을 한 흐름에 연결했습니다.",
+    "trouble-title": "트러블슈팅",
+    "trouble-1-title": "takeover 기반 단일 세션 정책 보정",
+    "trouble-1-copy": "부분 블루/그린 배포 과정에서 기존 인스턴스의 세션 만료가 즉시 반영되지 않아 이전 탭이 계속 살아 있는 문제가 있었습니다. takeover 로그인 시 기존 세션을 명시적으로 무효화하고, /auth/me 재검증으로 만료 상태를 감지하도록 수정했습니다.",
+    "trouble-2-title": "Linux WebAuthn 개발 우회",
+    "trouble-2-copy": "Linux 데스크톱 환경에서는 OS platform authenticator가 없어 WebAuthn 흐름이 동작하지 않았습니다. 실서비스에서는 Linux 접근을 차단하는 방향으로 두고, 개발 과정에서는 User-Agent 기반 우회 경로를 두어 로컬 검증이 가능하도록 정리했습니다.",
+    "trouble-3-title": "소프트 삭제 기기 재승인 흐름",
+    "trouble-3-copy": "승인된 기기를 soft delete로 폐기하면 같은 기기를 다시 등록해도 이전 삭제 상태 때문에 재활성화되지 않는 문제가 있었습니다. 기기 폐기 시 승인 대기 상태로 되돌려 관리자가 다시 검토하고 승인할 수 있는 흐름으로 수정했습니다.",
   },
   en: {
     eyebrow: "Cobot Operations Console",
-    "hero-summary": "An industrial operations console for the UR5 collaborative robot — monitor and control it from the web, with every endpoint locked behind a WebAuthn device whitelist. React 19 + Spring Boot 3 + a ROS 2 workspace are wired together over MQTT and WebSocket.",
+    "hero-summary": "A collaboration project with OnRobot Korea, built to control a collaborative robot arm through STT and replace the traditional teach pendant with a web console. REST/WebSocket is used inside the web system, while the robot and web system communicate only through MQTT topics.",
     "hero-link-screens": "See Screens",
-    "hero-link-role": "My Role",
+    "hero-link-role": "Role Summary",
     "snapshot-label": "Project Snapshot",
-    "snapshot-front": "Vite 6 + TS · URDF Viewer",
-    "snapshot-back": "JDK 21 · JPA · MQTT",
-    "snapshot-auth": "Yubico Server 2.8",
-    "snapshot-ros": "Humble · UR Driver 2.12",
+    "snapshot-front": "Vite 6 + TS · URDF digital twin",
+    "snapshot-back": "JDK 21 · JPA · Redis design",
+    "snapshot-auth": "JWT · WebAuthn · whitelist",
+    "snapshot-ros": "MQTT · UR5/2FG7 integration",
     "overview-kicker": "Overview",
     "overview-title": "The Problem",
-    "overview-copy": "Cobots are usually only controllable next to their pendant, and there's no clean way to govern which terminal accesses them. Omni-Kit lifts robot state into a web/mobile console and locks every device behind a per-site WebAuthn whitelist.",
+    "overview-copy": "Traditional cobot-arm control is centered on teach pendants and shop-floor PCs, which makes it hard to extend into voice commands or web-based operations. Omni-Kit brings STT commands, robot state, and job flow into a web console for a more intuitive operating environment.",
     "value-kicker": "Core Value",
     "value-title": "What we built",
-    "value-copy": "The React 19 console shows a 3D URDF digital twin that mirrors the live robot pose, while MQTT/WebSocket carry commands and state both ways. Spring Boot owns WebAuthn registration, assertion, session invalidation, and device takeover.",
+    "value-copy": "The React console provides the STT voice panel, URDF 3D model, recipes, waypoints, sessions, and device administration. Spring Boot owns authentication, operations APIs, and the data model. All communication between the robot and web system goes through MQTT topics, with only the web-console scope adjusted.",
     "highlights-kicker": "Highlights",
     "highlights-title": "Key Features",
-    "feature-1-title": "WebAuthn Device Whitelist",
-    "feature-1-copy": "Yubico's WebAuthn server library handles registration and assertion, and devices are tracked as PENDING/APPROVED/BLOCKED. The first admin device on a site is bootstrap-approved automatically.",
-    "feature-2-title": "3D URDF Digital Twin",
-    "feature-2-copy": "The UR5 model is rendered with @react-three/fiber + urdf-loader, and joint/TCP poses arriving over MQTT → WebSocket are reflected on screen instantly.",
-    "feature-3-title": "Single-Session Security",
-    "feature-3-copy": "Under a single-session policy, takeover from another device is detected by 30s polling + visibilitychange, kicking the old tab. AccessTokenDenylist invalidates the access token immediately on force expiry.",
-    "feature-4-title": "Passkey Recovery Flow",
-    "feature-4-copy": "When an OS keychain wipes the credential, users can self reset-credential, peers in the same site can takeover-reset, and a PENDING device can remind-admin — closing every dead end.",
+    "feature-1-title": "Teach-pendant Replacement Web Console",
+    "feature-1-copy": "Implemented a React admin console that brings robot-arm status, the STT voice panel, TCP/joint control, recipes, waypoints, and execution history into one web workflow for shop-floor PCs.",
+    "feature-2-title": "Web-part Design and Implementation",
+    "feature-2-copy": "Owned the overall frontend screens, routing, and auth flow, while also shaping Spring Boot APIs, JPA/Redis-backed domains, deployment/infrastructure structure, and DB design.",
+    "feature-3-title": "WebAuthn Hardware Whitelist",
+    "feature-3-copy": "As the backend highlight, implemented device registration, authentication, and approval with Yubico WebAuthn 2.8.1 so only approved hardware can access risky control APIs.",
+    "feature-4-title": "Minimal MQTT Topic Integration",
+    "feature-4-copy": "The robot and web system communicate only through MQTT topics. I followed the robot team's status and event message format and kept the work scoped to the required topic mapping and UI reflection.",
     "screens-kicker": "Screen Explorer",
-    "screens-title": "Live Operations Screens",
-    "screens-copy": "The refreshed screenshots are grouped by the actual console tabs, from authentication through real-time control and admin security screens.",
+    "screens-title": "Screen Composition",
     "tab-auth": "Auth",
     "tab-dashboard": "Dashboard",
     "tab-realtime": "Real-time Control",
@@ -474,73 +487,87 @@ const TRANSLATIONS = {
     "tab-alerts": "Alerts",
     "tab-admin": "Admin",
     "architecture-kicker": "Architecture",
-    "architecture-title": "Web · Backend · MQTT · ROS 2 workspace split",
-    "architecture-lead": "The React console talks to Spring Boot over REST/STOMP, and Spring Integration MQTT carries commands and state between the backend and the ROS 2 workspace.",
-    "architecture-caption": "STT runs out of web/sensevoice (faster-whisper large-v3-turbo, EC2 CPU int8). Utterances and LLM replies are sourced from the robot and arrive at the console via evt/conversation MQTT → WS llm.conversation.appended.",
+    "architecture-title": "Architecture",
+    "architecture-lead": "The left side of the diagram is the web/backend/infrastructure area I owned, and the right side is the robot area. The web system is composed of Nginx, React, Spring Boot, FastAPI, PostgreSQL/Redis, and it exchanges robot state and commands only through Mosquitto MQTT topics.",
+    "architecture-web-title": "Web, Backend, and Infrastructure",
+    "architecture-web-copy": "Users enter through Nginx into the React console, and the console communicates with Spring Boot API/WS. The backend owns authentication, sessions, operations domains, and DB models using PostgreSQL/PGVector and Redis. Jenkins, Docker Compose, and Prometheus/Grafana support deployment and operational monitoring.",
+    "architecture-boundary-title": "Only Boundary Between Robot and Web",
+    "architecture-boundary-copy": "The robot and web system do not communicate directly through REST or WebSocket; they communicate only through MQTT topics. On the web side, I connected only the required state subscriptions, command publishing, and STT-result delivery around the topic and payload format provided by the robot team.",
+    "architecture-robot-title": "Robot-side Device Flow",
+    "architecture-robot-copy": "The robot system includes microphone, camera, speaker, STT/LLM/TTS, motion/vision layers, UR5, and the OnRobot 2FG7 gripper. This area was owned by the robot team, while the web side aligned the MQTT topics and STT container call points that touch this system.",
+    "architecture-caption": "The key point is the MQTT boundary between the web system and robot system. The web part owns the user-facing console, authentication/authorization, data storage, deployment structure, and MQTT-topic integration, while robot control and sensor-processing logic stay on the robot side.",
     "stack-kicker": "Tech Stack",
-    "stack-title": "Technologies",
-    "stack-front-title": "Frontend",
-    "stack-front-copy": "The desktop admin console and the operator mobile app live in the same monorepo. The 3D URDF viewer uses @react-three/fiber + urdf-loader; WebAuthn is driven through @simplewebauthn/browser.",
-    "stack-back-title": "Backend",
-    "stack-back-copy": "Triple-layered security — JWT + WebAuthn + a device guard — sits alongside a Spring Integration MQTT event router that talks to the ROS 2 workspace. JPA + Redis manage sessions and cooldowns.",
-    "stack-robot-title": "Robot / Infra",
-    "stack-robot-copy": "The omni_kit ROS 2 workspace drives UR5 via the RTDE driver and the OnRobot 2FG7 gripper over Modbus, while web/sensevoice serves Whisper inference on EC2 CPU (int8).",
+    "stack-title": "Tech Stack",
+    "stack-copy": "The main technologies and libraries are grouped by area. Core items are highlighted, and clicking each technology shows why it was used.",
+    "stack-summary-front": "Frontend / Console UI",
+    "stack-summary-back": "Backend / Auth / DB",
+    "stack-summary-robot": "Robot Communication / STT / Infra",
+    "stack-reason-react-copy": "Used to split the admin console into components across the dashboard, real-time control, device/session/alert administration, and other state-heavy operation screens.",
+    "stack-reason-vite-ts-copy": "Because I owned the overall frontend, fast development feedback and type safety mattered. Vite kept iteration fast, while TypeScript made API responses and UI state explicit.",
+    "stack-reason-router-query-copy": "Used route guards to separate login, pending approval, and admin-only screens, while TanStack Query handled server-state caching and refresh flows per screen.",
+    "stack-reason-three-copy": "Used to render a visual robot posture in the web console that replaces the teach pendant. This was applied as a web visualization layer, not as robot-control implementation.",
+    "stack-reason-webauthn-browser-copy": "Used to handle passkey registration and authentication assertions in the browser, then connect them to backend WebAuthn verification so only approved hardware can access risky features.",
+    "stack-reason-form-ui-copy": "Used to keep validation and error display consistent across robot, recipe, waypoint, and device-approval forms, and to build admin-console controls quickly.",
+    "stack-reason-spring-copy": "Used to organize authentication, operations APIs, session handling, and admin domains in one backend structure, with controller, service, and interceptor responsibilities separated.",
+    "stack-reason-yubico-copy": "Used for the backend highlight: the hardware whitelist. It covers registration options, attestation/assertion verification, and approved-credential-based access control.",
+    "stack-reason-jwt-copy": "Used to handle access/refresh token flows and the single-session policy, including clear invalidation on force expiry or takeover.",
+    "stack-reason-jpa-copy": "Used to model members, sites, devices, sessions, alerts, and MFA relationships, and to support the queries and state transitions needed by the operation screens.",
+    "stack-reason-redis-copy": "Used for data with explicit expiry, such as WebAuthn challenges, session support state, recovery cooldowns, and access-token denylists.",
+    "stack-reason-mfa-copy": "Used to implement TOTP MFA setup, verification, and recovery-code rotation for stronger admin-account protection.",
+    "stack-reason-mqtt-topics-copy": "The robot and web system communicate only through MQTT topics. On the web side, I connected only the state subscription and command publishing needed by the console, following the topic and payload format provided by the robot team.",
+    "stack-reason-spring-mqtt-copy": "Used to connect MQTT publish/subscribe flows in the Spring Boot backend to the web APIs, keeping web-internal communication and robot communication clearly separated.",
+    "stack-reason-mosquitto-copy": "Used as the MQTT broker between the robot side and web backend. The web work aligned the required topic connections and runtime settings around Mosquitto.",
+    "stack-reason-stt-copy": "Used to align the speech-recognition container with the web-console call points for STT-based robot-arm control. The web part handled the screen and API integration for using STT results in the control flow.",
+    "stack-reason-docker-copy": "Used to organize the web, backend, MQTT broker, and STT container into a common execution environment for local and deployment checks.",
+    "stack-reason-deploy-copy": "Used to organize the web/backend deployment flow and blue-green switching structure. In this portfolio, it is described as part of my infrastructure-design and operation-flow work.",
     "role-kicker": "My Contribution",
-    "role-title": "What I Owned",
-    "role-copy": "Owned the backend auth/session/device guard layer alongside the frontend page structure — app shell, real-time control, admin pages, and the login flow.",
-    "role-1-title": "WebAuthn Registration & Authentication",
-    "role-1-copy": "Built WebAuthnService on top of Yubico RelyingParty — registration options, attestation verification, assertion, and bootstrap auto-approval for the first admin device. Registration fires a PENDING alert to admins.",
-    "role-2-title": "Device Guard (D8) + Single Session",
-    "role-2-copy": "The AuthSessionGuard interceptor verifies WebAuthn credential → site → APPROVED → device type, and AccessTokenDenylist invalidates JWTs immediately when admins force-expire sessions.",
-    "role-3-title": "Hardware Management Console",
-    "role-3-copy": "Built the ClientDevicesPage flows — PENDING/APPROVED/BLOCKED transitions, employee-number prefill from alert links, and site member/group/gripper management screens.",
-    "role-4-title": "App Shell + Routing Guards",
-    "role-4-copy": "Wrote the AppShell sidebar with persisted collapsed state and the 30s + visibilitychange session-takeover probe, plus the PublicOnly / Protected / PendingApproval / DesktopOnly route guards in routing.tsx.",
+    "role-title": "Role Summary",
+    "role-copy": "Owned the web part, with the main focus on overall frontend implementation, backend APIs and authentication domains, infrastructure structure, and DB design. The backend highlight was the WebAuthn-based hardware whitelist, and robot-web communication was aligned as a minimal MQTT-topic-only integration.",
+    "role-1-title": "Overall Frontend Implementation",
+    "role-1-copy": "Implemented the login, pending approval, dashboard, real-time control, robot/recipe/waypoint/history, device/session/alert admin screens, plus routing and authentication guards.",
+    "role-2-title": "WebAuthn Hardware Whitelist",
+    "role-2-copy": "Built Yubico RelyingParty registration options, verification, and assertion, then implemented AuthSessionGuard to block risky control APIs based on approved credentials and device state.",
+    "role-3-title": "Backend and DB Design",
+    "role-3-copy": "Designed APIs and JPA models for members, sites, devices, sessions, alerts, and MFA, plus Redis-backed challenge and token invalidation flows.",
+    "role-4-title": "Infrastructure and MQTT Scope",
+    "role-4-copy": "Organized the web/backend deployment structure and environment variables, and kept robot-web communication limited to the MQTT topics needed for UI display and control-request delivery.",
     "trouble-kicker": "Troubleshooting",
-    "trouble-title": "Technical Hurdles I Solved",
-    "trouble-1-title": "Device polling vs WebAuthn assertion race",
-    "trouble-1-copy": "PendingApprovalRoute redirected to /dashboard the moment the device flipped to APPROVED, which skipped the WebAuthn assertion step. I added a check on the token's webauthnCredentialId so the route stays one beat longer until assertion finishes.",
-    "trouble-2-title": "Detecting takeover from another device",
-    "trouble-2-copy": "Under the single-session policy, takeover from another device left old tabs stale. AppShell now combines a 30s /auth/me poll with a visibilitychange probe; on AUTH_031 the http interceptor sends the tab to /login?takeover=1.",
-    "trouble-3-title": "Passkey recovery cooldowns",
-    "trouble-3-copy": "Self reset-credential and peer takeover-reset could spam admins with alerts, so I added a per-user/site 60-second cooldown in Redis. Takeover preserves the existing deviceType and deviceName so identifying info survives the flow.",
-    "trouble-4-title": "Linux desktop demo bypass",
-    "trouble-4-copy": "The Ubuntu demo PC has no OS platform authenticator, so Chrome's WebAuthn flow stalls. AuthSessionGuard and the route guards gain a User-Agent bypass, but the Android 'Linux' token is excluded so the operator MOBILE policy isn't broken.",
-    "trouble-5-title": "Jog command toast spam",
-    "trouble-5-copy": "Jog buttons fire every 80ms, and a failure surfaced a toast on every tick. I record the last error timestamp, suppress repeats within 3 seconds, and reset the counter on the next success.",
-    "closing-kicker": "Summary",
-    "closing-title": "A UR5 cobot operations console wrapped in WebAuthn security",
-    "closing-copy": "SSAFY 14th autonomous project (S14P31S303) — a cobot operations console that ties React 19 + Spring Boot 3 + a ROS 2 workspace together, with WebAuthn device whitelisting, single-session enforcement, and a 3D URDF digital twin in one flow.",
+    "trouble-title": "Troubleshooting",
+    "trouble-1-title": "Single-session policy through takeover",
+    "trouble-1-copy": "During partial blue/green deployment, session expiry did not always propagate immediately from the old instance, leaving previous tabs alive. I explicitly invalidated the prior session during takeover login and added /auth/me revalidation so the stale state is detected.",
+    "trouble-2-title": "Linux WebAuthn development bypass",
+    "trouble-2-copy": "Linux desktop environments did not provide an OS platform authenticator, so the WebAuthn flow could not run. Production policy blocks Linux access, but during development I added a User-Agent bypass path so local verification could continue.",
+    "trouble-3-title": "Soft-deleted device reapproval flow",
+    "trouble-3-copy": "When an approved device was retired through soft delete, registering the same device again could not reactivate it because the deleted state remained. I changed device retirement to return the device to pending approval so admins can review and approve it again.",
   },
   ja: {
     eyebrow: "Cobot Operations Console",
-    "hero-summary": "UR5協働ロボットをWebから監視・制御し、WebAuthnベースのデバイスホワイトリストで保護する産業用運用コンソールです。React 19 + Spring Boot 3 + ROS 2 ワークスペースをMQTT/WebSocketで結合しています。",
+    "hero-summary": "OnRobot Koreaとの連携プロジェクトとして、STTで協働ロボットアームを制御し、従来のティーチペンダントをWebコンソールで代替することを目標にしました。Web内部はREST/WebSocketで構成し、ロボットとWebシステムはMQTTトピックだけで通信します。",
     "hero-link-screens": "画面を見る",
-    "hero-link-role": "担当役割",
+    "hero-link-role": "役割整理",
     "snapshot-label": "Project Snapshot",
-    "snapshot-front": "Vite 6 + TS · URDF Viewer",
-    "snapshot-back": "JDK 21 · JPA · MQTT",
-    "snapshot-auth": "Yubico Server 2.8",
-    "snapshot-ros": "Humble · UR Driver 2.12",
+    "snapshot-front": "Vite 6 + TS · URDFデジタルツイン",
+    "snapshot-back": "JDK 21 · JPA · Redis設計",
+    "snapshot-auth": "JWT · WebAuthn · ホワイトリスト",
+    "snapshot-ros": "MQTT · UR5/2FG7連携",
     "overview-kicker": "Overview",
     "overview-title": "問題定義",
-    "overview-copy": "従来の協働ロボットはペンダント脇でしか操作・確認できず、どの端末からアクセスしているかの管理も難しいです。Omni-KitはロボットステートをWeb/モバイルに引き上げ、全端末をサイト別WebAuthnホワイトリストで施錠する運用コンソールを作りました。",
+    "overview-copy": "従来の協働ロボットアーム制御はティーチペンダントと現場PC中心で、音声命令やWebベースの運用へ拡張しにくい課題があります。Omni-KitはSTT命令、ロボット状態、作業フローをWebコンソールに集約し、より直感的な運用環境を作るプロジェクトです。",
     "value-kicker": "Core Value",
     "value-title": "主要な実装ポイント",
-    "value-copy": "React 19コンソールの3D URDFデジタルツインで実機と同じ姿勢を確認し、MQTT/WebSocketで命令/状態を双方向に流します。Spring BackendがWebAuthn登録・認証・セッション失効・デバイスtakeoverまで運用セキュリティを担います。",
+    "value-copy": "ReactコンソールはSTT音声パネル、URDF 3Dモデル、レシピ、ウェイポイント、セッション、デバイス管理を提供します。Spring Bootは認証・運用APIとデータモデルを担い、ロボットとWebシステム間の全送受信はMQTTトピックだけで処理しました。",
     "highlights-kicker": "Highlights",
     "highlights-title": "主な機能",
-    "feature-1-title": "WebAuthn デバイスホワイトリスト",
-    "feature-1-copy": "Yubico WebAuthnサーバライブラリで登録・アサーションを処理し、デバイスをPENDING/APPROVED/BLOCKEDで管理。初の管理者デバイスはブートストラップで自動承認します。",
-    "feature-2-title": "3D URDF デジタルツイン",
-    "feature-2-copy": "@react-three/fiber + urdf-loaderでUR5モデルをレンダリングし、MQTT経由のjoint/TCPポーズをWebSocketで受けて画面に即時反映します。",
-    "feature-3-title": "単一セッションセキュリティ",
-    "feature-3-copy": "単一セッションポリシーで他端末takeoverを30秒ポーリング+visibilitychangeで即時検知しログアウト。AccessTokenDenylistによりトークンも即座に無効化します。",
-    "feature-4-title": "パスキー紛失リカバリ",
-    "feature-4-copy": "OS keychain紛失でWebAuthnアサーションが止まったとき、自己reset-credential、同一サイト利用者のtakeover-reset、PENDING承認の再要求まで動線を閉じました。",
+    "feature-1-title": "ティーチペンダント代替Webコンソール",
+    "feature-1-copy": "協働ロボットアームの状態確認、STT音声パネル、TCP/ジョイント制御、レシピ・ウェイポイント・作業履歴をReact管理コンソールにまとめ、現場PCで運用できるよう実装しました。",
+    "feature-2-title": "Webパート設計と実装",
+    "feature-2-copy": "フロントエンド全体の画面、ルーティング、認証フローを担当し、Spring Boot API、JPA/Redisベースのドメイン、配備/インフラ構造、DB設計も整理しました。",
+    "feature-3-title": "WebAuthnハードウェアホワイトリスト",
+    "feature-3-copy": "バックエンドのハイライトとして、Yubico WebAuthn 2.8.1ベースのデバイス登録・認証・承認モデルを実装し、承認済みハードウェアだけが制御APIへアクセスできるよう保護しました。",
+    "feature-4-title": "MQTTトピック最小連携",
+    "feature-4-copy": "ロボットとWebシステムはMQTTトピックだけで通信します。ロボットパートが送る状態・イベント形式に合わせ、必要なトピックマッピングと画面反映だけを最小修正で合わせました。",
     "screens-kicker": "Screen Explorer",
-    "screens-title": "実運用画面",
-    "screens-copy": "新しく整理したスクリーンショットを実際のタブ導線ごとにまとめ、認証から実時間制御、管理者セキュリティ画面まで確認できます。",
+    "screens-title": "画面構成",
     "tab-auth": "認証",
     "tab-dashboard": "ダッシュボード",
     "tab-realtime": "実時間制御",
@@ -552,43 +579,58 @@ const TRANSLATIONS = {
     "tab-alerts": "通知",
     "tab-admin": "管理者",
     "architecture-kicker": "Architecture",
-    "architecture-title": "Web・バックエンド・MQTT・ROS 2ワークスペースの分離",
-    "architecture-lead": "ReactコンソールとSpring BootバックエンドがREST/STOMPで通信し、バックエンドはSpring Integration MQTTでROS 2ワークスペースと命令/状態メッセージをやり取りします。",
-    "architecture-caption": "STTはweb/sensevoiceがfaster-whisper large-v3-turboでEC2 CPU(int8)でサービングし、発話・LLM応答はロボットを真実源としてevt/conversation MQTT → WS llm.conversation.appendedでコンソールへ届きます。",
+    "architecture-title": "アーキテクチャ",
+    "architecture-lead": "図の左側は私が担当したWeb/バックエンド/インフラ領域で、右側はロボットパートです。Web内部はNginx、React、Spring Boot、FastAPI、PostgreSQL/Redisで構成され、ロボットシステムとはMosquitto MQTTトピックだけで状態と命令をやり取りします。",
+    "architecture-web-title": "Web・バックエンド・インフラ領域",
+    "architecture-web-copy": "ユーザーはNginx経由でReactコンソールに入り、コンソールはSpring Boot API/WSと通信します。バックエンドは認証、セッション、運用ドメイン、DBモデルを担当し、PostgreSQL/PGVectorとRedisを使用します。Jenkins、Docker Compose、Prometheus/Grafanaは配備と運用監視の流れにつながります。",
+    "architecture-boundary-title": "ロボットとWebの唯一の境界",
+    "architecture-boundary-copy": "ロボットとWebシステムはRESTやWebSocketで直接接続せず、MQTTトピックだけで通信します。Webパートではロボットパートが提供したトピックとpayload形式に合わせ、状態受信、制御命令発行、STT結果伝達に必要な最小範囲だけ連携しました。",
+    "architecture-robot-title": "ロボットパートとデバイスフロー",
+    "architecture-robot-copy": "右側のロボットシステムにはマイク、カメラ、スピーカー、STT/LLM/TTS、motion/vision layer、UR5、OnRobot 2FG7グリッパーが含まれます。この領域はロボットパートが担当し、Webではそのシステムと接するMQTTトピックとSTTコンテナ呼び出し点を合わせました。",
+    "architecture-caption": "核心はWebシステムとロボットシステムをMQTT境界で分離した点です。Webパートはユーザー画面、認証/認可、データ保存、配備構造、MQTTトピック連携を担当し、ロボット制御とセンサー処理ロジックはロボットパート側に置いた構造です。",
     "stack-kicker": "Tech Stack",
     "stack-title": "使用技術",
-    "stack-front-title": "Frontend",
-    "stack-front-copy": "管理者コンソール(デスクトップ)とoperatorモバイルを同じモノレポで運用。3D URDFビューアは@react-three/fiber + urdf-loader、WebAuthnクライアントは@simplewebauthn/browserで処理しています。",
-    "stack-back-title": "Backend",
-    "stack-back-copy": "JWT + WebAuthn + デバイスガードの三重セキュリティと、ROS 2 ワークスペースと通信するMQTTイベントルータを同一バックエンドにまとめました。JPA + Redisでセッション・クールダウンを管理しています。",
-    "stack-robot-title": "Robot / Infra",
-    "stack-robot-copy": "omni_kit ROS 2 ワークスペースがUR5 RTDEドライバとOnRobot 2FG7 Modbusグリッパーを制御し、web/sensevoiceがEC2 CPU(int8) Whisper推論を提供します。",
+    "stack-copy": "プロジェクトに適用した主要技術とライブラリを領域別に整理しました。中核技術は強調し、技術名を押すと使用理由を確認できます。",
+    "stack-summary-front": "Frontend / Console UI",
+    "stack-summary-back": "Backend / Auth / DB",
+    "stack-summary-robot": "Robot Communication / STT / Infra",
+    "stack-reason-react-copy": "管理者コンソールのダッシュボード、実時間制御、デバイス/セッション/通知管理画面をコンポーネント単位で分け、状態変化の多い運用UIを一貫して管理するために使用しました。",
+    "stack-reason-vite-ts-copy": "フロント全体を担当したため、速い開発フィードバックと型安全性が重要でした。Viteで反復を速くし、TypeScriptでAPI応答と画面状態を明確に扱いました。",
+    "stack-reason-router-query-copy": "ログイン、承認待ち、管理者専用画面をルートガードで分離し、サーバー状態はTanStack Queryでキャッシュ/更新して画面ごとのAPI呼び出しを安定させました。",
+    "stack-reason-three-copy": "ティーチペンダントを代替するWebコンソールでロボット姿勢を視覚的に確認できるよう、3Dビューア構成に使用しました。ロボット制御実装ではなくWeb画面表現の領域として適用しました。",
+    "stack-reason-webauthn-browser-copy": "ブラウザでパスキー登録と認証アサーションを処理し、バックエンドWebAuthn検証と接続して、承認済みハードウェアだけが危険機能にアクセスできるようにするため使用しました。",
+    "stack-reason-form-ui-copy": "ロボット、レシピ、ウェイポイント、デバイス承認など入力画面が多いため、フォーム検証とエラー表示を一貫して処理し、管理者コンソールの操作部品を素早く構成するため使用しました。",
+    "stack-reason-spring-copy": "Webバックエンドの認証、運用API、セッション管理、管理者ドメインを一つの構造にまとめるため使用しました。Controller、Service、Interceptorの責任を分離しました。",
+    "stack-reason-yubico-copy": "バックエンドのハイライトであるハードウェアホワイトリスト実装に使用しました。登録オプション生成、attestation/assertion検証、承認済みcredentialベースのアクセス制御を構成しました。",
+    "stack-reason-jwt-copy": "ログイン後のaccess/refresh tokenフローと単一セッションポリシーを処理し、強制失効やtakeover時のトークン無効化を明確に反映するため使用しました。",
+    "stack-reason-jpa-copy": "会員、サイト、デバイス、セッション、通知、MFAドメインの関係をDBモデルとして整理し、運用画面で必要な照会と状態変更を安定して処理するため使用しました。",
+    "stack-reason-redis-copy": "WebAuthn challenge、セッション補助状態、recovery cooldown、access token denylistのように有効期限が重要なデータを管理するため使用しました。",
+    "stack-reason-mfa-copy": "管理者アカウント保護を強化するため、TOTP MFA設定、確認、復旧コード更新フローの実装に使用しました。",
+    "stack-reason-mqtt-topics-copy": "ロボットとWebシステムはMQTTトピックだけで通信します。Webパートではロボットパートが提供したトピックとpayload形式に合わせ、状態受信と命令発行に必要な範囲だけ接続しました。",
+    "stack-reason-spring-mqtt-copy": "Spring BootバックエンドでMQTT publish/subscribeフローをWeb APIに接続するため使用しました。Web内部通信とロボット通信の境界を分離する役割です。",
+    "stack-reason-mosquitto-copy": "ロボット側とWebバックエンドの間のMQTTブローカーとして使用しました。WebではMosquittoを基準に必要なトピック接続と運用環境設定を合わせました。",
+    "stack-reason-stt-copy": "STTベースのロボットアーム制御目標のため、音声認識コンテナとWebコンソールの呼び出し点を合わせる目的で使用しました。WebパートではSTT結果を制御フローへつなぐ画面とAPI連携を担当しました。",
+    "stack-reason-docker-copy": "Web、バックエンド、MQTTブローカー、STTコンテナを同じ実行環境で確認できるようサービス構成を整理するため使用しました。",
+    "stack-reason-deploy-copy": "Web/バックエンドの配備フローとBlue/Green切り替え構造を整理するため使用しました。ポートフォリオではインフラ設計と運用フローを担当した範囲として説明しています。",
     "role-kicker": "My Contribution",
-    "role-title": "担当役割",
-    "role-copy": "バックエンドの認証・セッション・デバイスガードと、フロントエンドのページ構造(コンソールシェル・実時間制御・管理者画面・ログイン動線)を併せて担当しました。",
-    "role-1-title": "WebAuthn 登録・認証サービス",
-    "role-1-copy": "Spring BootのWebAuthnServiceでYubico RelyingPartyベースの登録オプション/検証、アサーション、初管理者ブートストラップ自動承認まで実装。登録時には管理者へPENDING通知を発します。",
-    "role-2-title": "デバイスガード (D8) + 単一セッション",
-    "role-2-copy": "AuthSessionGuardインターセプタでWebAuthn credential → サイト → APPROVED → デバイスタイプの順で検証し、AccessTokenDenylistで強制終了時にトークンを即時無効化しました。",
-    "role-3-title": "ハードウェア管理コンソール",
-    "role-3-copy": "AdminPagesのClientDevicesPageでPENDING/APPROVED/BLOCKED状態遷移、通知リンクからの社員番号prefill、サイトメンバー/グループ/グリッパー管理まで画面を実装しました。",
-    "role-4-title": "コンソールシェル + ルーティングガード",
-    "role-4-copy": "AppShellサイドバー・collapsed状態・セッションtakeoverポーリング(30s + visibilitychange)、routing.tsxのPublicOnly/Protected/PendingApproval/DesktopOnlyガードを記述しました。",
+    "role-title": "役割整理",
+    "role-copy": "Webパートを担当し、フロントエンド全体実装、バックエンドAPIと認証ドメイン、インフラ構造、DB設計を主に担当しました。バックエンドのハイライトはWebAuthnベースのハードウェアホワイトリストで、ロボットとWebの通信はMQTTトピックだけを使う最小連携として進めました。",
+    "role-1-title": "フロントエンド全体実装",
+    "role-1-copy": "ログイン、承認待ち、ダッシュボード、実時間制御、ロボット/レシピ/ウェイポイント/履歴、デバイス・セッション・通知管理画面とルーティング/認証ガードを全般的に実装しました。",
+    "role-2-title": "WebAuthnハードウェアホワイトリスト",
+    "role-2-copy": "Yubico RelyingPartyベースの登録オプション、検証、アサーションを構成し、承認済みcredentialとデバイス状態を基準に危険な制御APIを防ぐAuthSessionGuardを実装しました。",
+    "role-3-title": "バックエンド・DB設計",
+    "role-3-copy": "会員、サイト、デバイス、セッション、通知、MFAドメインのAPIとJPAモデルを設計し、Redisベースのchallengeとトークン無効化フローを整理しました。",
+    "role-4-title": "インフラ・MQTT連携範囲整理",
+    "role-4-copy": "Web/バックエンド配備構造と環境変数を整理し、ロボットとWeb間の通信はMQTTトピックだけを使う形で、Webコンソール表示と制御要求伝達に必要な最小範囲を合わせました。",
     "trouble-kicker": "Troubleshooting",
-    "trouble-title": "技術的な問題解決ポイント",
-    "trouble-1-title": "デバイスポーリング vs WebAuthn アサーション race",
-    "trouble-1-copy": "PendingApprovalRouteでデバイスがAPPROVEDになるや否や/dashboardに遷移し、WebAuthnアサーションがトリガされないraceがありました。トークンのwebauthnCredentialId有無も併せて確認し、ルートが一段階長く留まるようガードを修正しました。",
-    "trouble-2-title": "他端末takeoverの即時検知",
-    "trouble-2-copy": "単一セッションポリシー下では他端末ログイン時に既存タブが残るとユーザが気づきません。AppShellで/auth/meの30秒ポーリング + visibilitychange呼び出しを結合し、AUTH_031を受けたらインターセプタが/login?takeover=1へ送るようにしました。",
-    "trouble-3-title": "パスキー紛失リカバリのクールダウン設計",
-    "trouble-3-copy": "自己reset-credentialと同サイト利用者のtakeover-resetが管理者通知を過剰にする可能性があり、Redisでユーザ/サイト別の60秒クールダウンを適用。takeover時は既存deviceType・deviceNameを保全して識別情報を維持しました。",
-    "trouble-4-title": "Linuxデスクトップ用デモバイパス",
-    "trouble-4-copy": "デモ環境のUbuntu PCはOS platform authenticatorが無く、ChromeのWebAuthnフローが止まります。AuthSessionGuardとルートガードにUser-Agentバイパスを入れつつ、Androidの「Linux」トークンは明示的に除外してoperator MOBILEポリシーが崩れないようにしました。",
-    "trouble-5-title": "jog命令トーストのスパム抑止",
-    "trouble-5-copy": "実時間制御のjogボタンは80ms間隔で連続発火するため、失敗するたびトーストが画面を覆っていました。最終エラー時刻を記録し3秒以内の再表示を抑止、成功時にカウンタをリセットするよう整えました。",
-    "closing-kicker": "Summary",
-    "closing-title": "UR5協働ロボット運用コンソール + WebAuthnセキュリティ統合プラットフォーム",
-    "closing-copy": "SSAFY 14期自律プロジェクト(S14P31S303) — React 19 + Spring Boot 3 + ROS 2ワークスペースを束ねた協働ロボット運用コンソール。WebAuthnデバイスホワイトリスト、単一セッション強制、3D URDFデジタルツインを一つの流れに統合しています。",
+    "trouble-title": "トラブルシューティング",
+    "trouble-1-title": "takeoverによる単一セッションポリシー補正",
+    "trouble-1-copy": "部分的なBlue/Green配備の過程で旧インスタンスのセッション失効が即時反映されず、既存タブが残る問題がありました。takeoverログイン時に既存セッションを明示的に無効化し、/auth/me再検証で失効状態を検知するよう修正しました。",
+    "trouble-2-title": "Linux WebAuthn開発用バイパス",
+    "trouble-2-copy": "Linuxデスクトップ環境ではOS platform authenticatorがなく、WebAuthnフローが動作しませんでした。実サービスではLinuxアクセスを遮断する方針とし、開発時のみUser-Agentベースのバイパス経路を置いてローカル検証を可能にしました。",
+    "trouble-3-title": "soft delete端末の再承認フロー",
+    "trouble-3-copy": "承認済み端末をsoft deleteで廃棄すると、同じ端末を再登録しても削除状態が残って再有効化できない問題がありました。端末廃棄時は承認待ち状態へ戻し、管理者が再確認して承認できる流れに修正しました。",
   },
 };
 
@@ -606,10 +648,38 @@ const TAB_KEY_BY_SCREEN = {
 };
 
 let currentLang = "ko";
-let currentScreen = "auth";
-let playerTimer = null;
-let playerFrameIdx = 0;
-let playerPaused = false;
+let currentCategory = "auth";
+
+const SCREEN_CATEGORY_ORDER = Object.keys(TAB_KEY_BY_SCREEN);
+const SCREEN_FRAMES = SCREEN_CATEGORY_ORDER.flatMap((category) => {
+  const data = SCREEN_DATA[category];
+  const frames = data?.frames || [];
+  return frames.map((src, index) => ({
+    key: `${category}-${index + 1}`,
+    category,
+    data,
+    src,
+    index,
+    total: frames.length,
+  }));
+});
+
+let currentScreenKey = SCREEN_FRAMES[0]?.key || "";
+
+function getCategoryLabel(category) {
+  const tabKey = TAB_KEY_BY_SCREEN[category];
+  return TRANSLATIONS[currentLang]?.[tabKey] || SCREEN_DATA[category]?.titles?.[currentLang] || category;
+}
+
+function getScreenTitle(screen) {
+  const title = screen.data.titles[currentLang] || screen.data.titles.ko;
+  if (screen.total <= 1) return title;
+  return `${title} ${String(screen.index + 1).padStart(2, "0")}`;
+}
+
+function getVisibleScreens() {
+  return SCREEN_FRAMES.filter((screen) => screen.category === currentCategory);
+}
 
 function applyTranslations(lang) {
   currentLang = lang;
@@ -621,73 +691,83 @@ function applyTranslations(lang) {
   document.querySelectorAll(".lang-button").forEach((btn) => {
     btn.classList.toggle("is-active", btn.dataset.lang === lang);
   });
-  document.querySelectorAll(".screen-tab").forEach((btn) => {
-    const key = TAB_KEY_BY_SCREEN[btn.dataset.screen];
-    if (key && t[key]) btn.textContent = t[key];
-  });
+  renderFilters();
+  renderList();
   renderScreen();
 }
 
-function stopPlayer() {
-  if (playerTimer !== null) {
-    clearInterval(playerTimer);
-    playerTimer = null;
+function renderFilters() {
+  const group = document.getElementById("screen-filter-group");
+  if (!group) return;
+
+  group.replaceChildren();
+  SCREEN_CATEGORY_ORDER.forEach((category) => {
+    const button = document.createElement("button");
+    button.className = "screen-filter";
+    button.type = "button";
+    button.textContent = getCategoryLabel(category);
+    button.classList.toggle("is-active", category === currentCategory);
+    button.setAttribute("aria-pressed", String(category === currentCategory));
+    button.addEventListener("click", () => {
+      currentCategory = category;
+      currentScreenKey = getVisibleScreens()[0]?.key || currentScreenKey;
+      renderFilters();
+      renderList();
+      renderScreen();
+    });
+    group.appendChild(button);
+  });
+}
+
+function renderList() {
+  const list = document.getElementById("screen-list");
+  if (!list) return;
+
+  const visibleScreens = getVisibleScreens();
+  if (!visibleScreens.some((screen) => screen.key === currentScreenKey)) {
+    currentScreenKey = visibleScreens[0]?.key || SCREEN_FRAMES[0]?.key || "";
   }
-}
 
-function updatePlayerUi(data) {
-  const counter = document.getElementById("screen-player-counter");
-  const bar = document.getElementById("screen-player-progress-bar");
-  if (counter) counter.textContent = `${playerFrameIdx + 1} / ${data.frames.length}`;
-  if (bar) bar.style.width = `${((playerFrameIdx + 1) / data.frames.length) * 100}%`;
-}
+  list.replaceChildren();
+  visibleScreens.forEach((screen) => {
+    const button = document.createElement("button");
+    const isActive = screen.key === currentScreenKey;
+    button.className = "screen-item";
+    button.type = "button";
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-current", String(isActive));
 
-function startPlayer(data) {
-  stopPlayer();
-  const interval = Math.max(120, Math.round(1000 / (data.fps || 2)));
-  playerTimer = setInterval(() => {
-    if (playerPaused) return;
-    playerFrameIdx = (playerFrameIdx + 1) % data.frames.length;
-    const image = document.getElementById("screen-image");
-    if (image) image.src = data.frames[playerFrameIdx];
-    updatePlayerUi(data);
-  }, interval);
+    const label = document.createElement("strong");
+    label.textContent = getScreenTitle(screen);
+
+    button.append(label);
+    button.addEventListener("click", () => {
+      currentScreenKey = screen.key;
+      renderList();
+      renderScreen();
+    });
+    list.appendChild(button);
+  });
 }
 
 function renderScreen() {
-  const data = SCREEN_DATA[currentScreen];
-  if (!data) return;
-  const frames = data.frames || (data.src ? [data.src] : []);
-  const shouldPlay = frames.length > 1;
+  const screen = SCREEN_FRAMES.find((item) => item.key === currentScreenKey) || SCREEN_FRAMES[0];
+  if (!screen) return;
+
+  const data = screen.data;
+  const titleText = getScreenTitle(screen);
   const image = document.getElementById("screen-image");
-  const controls = document.getElementById("screen-player-controls");
-  const toggle = document.getElementById("screen-player-toggle");
-  stopPlayer();
-
-  playerFrameIdx = 0;
-  playerPaused = false;
-  if (image && frames.length > 0) {
-    image.src = frames[0];
-    image.alt = data.titles[currentLang];
+  if (image) {
+    image.src = screen.src;
+    image.alt = `Omni-Kit ${titleText}`;
   }
 
-  if (shouldPlay) {
-    if (controls) controls.hidden = false;
-    if (toggle) toggle.textContent = "⏸";
-    updatePlayerUi(data);
-    startPlayer(data);
-  } else {
-    if (controls) controls.hidden = true;
-  }
-
-  const title = document.getElementById("screen-title");
-  if (title) title.textContent = data.titles[currentLang];
   const desc = document.getElementById("screen-description");
-  if (desc) desc.textContent = data.descriptions[currentLang];
+  if (desc) desc.textContent = data.descriptions[currentLang] || data.descriptions.ko;
   const points = document.getElementById("screen-points");
   if (points) {
-    points.innerHTML = "";
-    data.points[currentLang].forEach((line) => {
+    points.replaceChildren();
+    (data.points[currentLang] || data.points.ko).forEach((line) => {
       const li = document.createElement("li");
       li.textContent = line;
       points.appendChild(li);
@@ -695,24 +775,86 @@ function renderScreen() {
   }
 }
 
-document.getElementById("screen-player-toggle")?.addEventListener("click", () => {
-  playerPaused = !playerPaused;
-  const toggle = document.getElementById("screen-player-toggle");
-  if (toggle) toggle.textContent = playerPaused ? "▶" : "⏸";
-});
+function initStackReasons() {
+  document.querySelectorAll(".stack-shell").forEach((shell) => {
+    const groups = shell.querySelectorAll(".stack-group");
+    const buttons = shell.querySelectorAll(".stack-chip[data-reason-target]");
+    const panels = shell.querySelectorAll(".stack-reason-panel");
+    let syncingStack = false;
+
+    const syncOpenGroup = (activeGroup) => {
+      if (!activeGroup) return;
+      syncingStack = true;
+      groups.forEach((group) => {
+        if (group === activeGroup) {
+          group.setAttribute("open", "");
+        } else {
+          group.removeAttribute("open");
+        }
+      });
+      syncingStack = false;
+    };
+
+    const activateReason = (button) => {
+      const targetId = button.dataset.reasonTarget;
+      if (!targetId) return;
+
+      buttons.forEach((node) => node.classList.remove("is-active"));
+      panels.forEach((panel) => panel.classList.remove("is-active"));
+
+      button.classList.add("is-active");
+      syncOpenGroup(button.closest(".stack-group"));
+
+      const targetPanel = shell.querySelector(`#${targetId}`);
+      if (targetPanel) {
+        targetPanel.classList.add("is-active");
+      }
+    };
+
+    const activateGroup = (group) => {
+      const selectedButton = group.querySelector(".stack-chip.is-active[data-reason-target]");
+      const fallbackButton = group.querySelector(".stack-chip[data-reason-target]");
+
+      if (selectedButton || fallbackButton) {
+        activateReason(selectedButton || fallbackButton);
+      } else {
+        syncOpenGroup(group);
+      }
+    };
+
+    const defaultButton = shell.querySelector(".stack-chip.is-active[data-reason-target]") || buttons[0];
+    if (defaultButton) activateReason(defaultButton);
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => activateReason(button));
+    });
+
+    groups.forEach((group) => {
+      group.addEventListener("toggle", () => {
+        if (syncingStack) return;
+
+        if (group.open) {
+          activateGroup(group);
+          return;
+        }
+
+        const hasOpenGroup = Array.from(groups).some((item) => item.open);
+        if (!hasOpenGroup) {
+          const activeButton = shell.querySelector(".stack-chip.is-active[data-reason-target]");
+          if (activeButton) {
+            activateReason(activeButton);
+          } else {
+            activateGroup(group);
+          }
+        }
+      });
+    });
+  });
+}
 
 document.querySelectorAll(".lang-button").forEach((btn) => {
   btn.addEventListener("click", () => applyTranslations(btn.dataset.lang));
 });
 
-document.querySelectorAll(".screen-tab").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    currentScreen = btn.dataset.screen;
-    document.querySelectorAll(".screen-tab").forEach((node) => {
-      node.classList.toggle("is-active", node === btn);
-    });
-    renderScreen();
-  });
-});
-
-renderScreen();
+initStackReasons();
+applyTranslations(currentLang);

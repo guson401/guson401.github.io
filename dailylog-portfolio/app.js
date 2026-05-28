@@ -36,11 +36,11 @@ const flowData = {
       { label: "캘린더로 이동", target: "calendar" },
     ],
     hotspots: [
-      { label: "프로필", target: "profile", x: 46.7, y: 11.3, w: 45.6, h: 6.6, shape: "rounded" },
-      { label: "튜토리얼", target: "tutorial01", x: 46.7, y: 26.4, w: 45.6, h: 6.6, shape: "rounded" },
-      { label: "일기 작성", target: "write", x: 46.7, y: 34.0, w: 45.6, h: 6.6, shape: "rounded" },
-      { label: "일기 확인", target: "read", x: 46.7, y: 41.5, w: 45.6, h: 6.6, shape: "rounded" },
-      { label: "캘린더", target: "calendar", x: 46.7, y: 49.1, w: 45.6, h: 6.6, shape: "rounded" },
+      { label: "프로필", target: "profile", x: 47.0, y: 11.5, w: 45.0, h: 5.8, shape: "pill" },
+      { label: "튜토리얼", target: "tutorial01", x: 47.0, y: 19.2, w: 45.0, h: 5.8, shape: "pill" },
+      { label: "일기 작성", target: "write", x: 47.0, y: 26.9, w: 45.0, h: 5.8, shape: "pill" },
+      { label: "일기 확인", target: "read", x: 47.0, y: 34.6, w: 45.0, h: 5.8, shape: "pill" },
+      { label: "캘린더", target: "calendar", x: 47.0, y: 42.3, w: 45.0, h: 5.8, shape: "pill" },
       { label: "홈", target: "home", x: 77.8, y: 1.9, w: 16.0, h: 9.0, shape: "circle" },
     ],
   },
@@ -477,7 +477,7 @@ const staticTranslations = {
     heroEyebrow: "Emotion Diary Android Project",
     heroSummary: "STT/TTS 기반 일기 작성 어플리케이션 프로젝트입니다.",
     heroPrimary: "화면 보기",
-    heroSecondary: "구조 보기",
+    heroSecondary: "아키텍처",
     heroCardLabel: "Project Snapshot",
     statLabels: ["Jetpack Compose UI", "감정 기록과 결과 화면 구성", "Calendar Provider 유지", "실사용 흐름 기반 화면 구성"],
     introTitles: ["문제 정의", "핵심 구현 포인트"],
@@ -485,7 +485,7 @@ const staticTranslations = {
       "모두가 중요성을 느끼는 하루의 정리를 대화 기반으로 더 간단하게 기록하고, 그 결과를 바탕으로 일정 추천과 일정 관리까지 자연스럽게 이어질 수 있는 경험을 만들고자 했습니다.",
       "Compose 기반 화면 설계, Repository 계층 정리, Room DB 기반 로컬 데이터 저장, 캘린더 프로바이더 연동 유지, 결과 페이지와 프로필 그래프 흐름 검증을 중심으로 작업했습니다.",
     ],
-    sectionTitles: ["프로젝트 핵심 기능", "실제 사용 흐름으로 따라가는 화면 구성", "담당 역할", "개발 과정에서 신경 쓴 점", "트러블슈팅", "구조 설계", "사용한 라이브러리/기술", "포트폴리오용 검증 상태"],
+    sectionTitles: ["프로젝트 핵심 기능", "화면구성", "역할 정리", "트러블슈팅", "아키텍처", "사용기술"],
     featureTitles: ["일기 작성", "일기 기반 감정 분석", "감정 기반 일정 추천", "캘린더 연동"],
     featureCopies: [
       "질문형 흐름을 따라 하루의 감정과 상황을 기록하고, 결과 화면까지 자연스럽게 이어지도록 구성했습니다.",
@@ -495,26 +495,23 @@ const staticTranslations = {
     ],
     roleTitles: ["화면 흐름 설계", "Compose 기반 UI 구현", "로컬 데이터 구조 정리", "캘린더 및 프로필 흐름 검증"],
     roleCopies: [
-      "로그인, 회원가입, 튜토리얼, 홈, 일기 작성, 결과, 캘린더, 프로필까지 이어지는 주요 사용자 흐름을 설계하고 연결했습니다.",
-      "앱의 감성적인 화면 구성을 유지하면서 각 화면의 레이아웃과 상호작용이 자연스럽게 이어지도록 Compose UI를 구현했습니다.",
-      "Room DB와 Repository 구조를 통해 일기와 사용자 데이터를 저장하고, 화면 코드와 데이터 계층이 분리되도록 정리했습니다.",
-      "Calendar Provider 연동, 일정 수정/추가, 감정 그래프, 프로필 편집까지 실제 사용 흐름 기준으로 화면 동작을 점검했습니다.",
+      "로그인, 회원가입, 튜토리얼, 홈, 일기 작성, 결과, 캘린더, 프로필까지 이어지는 주요 사용자 흐름을 설계했습니다. 방, 다이어리, 종이 질감 같은 오브젝트 중심 인터페이스의 감성을 유지하면서 흐름이 끊기지 않도록 연결했습니다.",
+      "앱의 감성적인 화면 구성을 유지하면서 각 화면의 레이아웃과 상호작용이 자연스럽게 이어지도록 Compose UI를 구현했습니다. 처음 사용하는 사용자가 오브젝트 기반 화면을 이해할 수 있도록 튜토리얼 진입 흐름도 함께 구성했습니다.",
+      "Room DB와 Repository 구조를 통해 일기와 사용자 데이터를 안정적으로 저장하고, 화면 코드가 네트워크와 로컬 저장소에 직접 결합되지 않도록 계층을 분리했습니다.",
+      "서버가 정상 동작하는 환경을 기준으로 일기 작성, 감정 분석, 추천, Calendar Provider 연동, 일정 수정/추가, 감정 그래프, 프로필 편집까지 실제 사용 흐름으로 검증했습니다.",
     ],
-    processTitles: ["화면 감성 유지", "서버 연동 흐름 검증", "기기 기능 연결", "로컬 데이터 구조 정리"],
-    processCopies: [
-      "일반적인 앱 레이아웃 대신 방, 다이어리, 종이 질감 같은 오브젝트 중심 인터페이스를 유지했습니다.",
-      "서버가 정상적으로 동작하는 환경을 기준으로 일기 작성, 감정 분석 결과, 추천 흐름이 자연스럽게 이어지도록 화면 구성을 점검했습니다.",
-      "Calendar Provider는 유지해 실제 기기 일정과 앱 데이터를 함께 확인할 수 있도록 했습니다.",
-      "Room DB를 활용해 일기와 사용자 정보를 안정적으로 저장하고, 화면에서 필요한 데이터를 일관된 흐름으로 불러올 수 있도록 구조를 정리했습니다.",
-    ],
-    troubleTitles: ["리소스 최적화를 통한 성능 개선", "디자인 방향성에 대한 팀 의견 조율", "브랜치 통합 과정의 충돌 해결"],
+    troubleTitles: ["클릭 뎁스를 줄이기 위한 UI 수정", "상호작용형 UI를 위한 튜토리얼 개발"],
     troubleCopies: [
-      "초기에는 개별 리소스 수가 많고 해상도도 높아 화면 전환 시 앱이 무거워지는 문제가 있었습니다. 이를 해결하기 위해 전체 리소스 해상도를 조정하고, 분산되어 있던 개별 리소스를 통합하는 방식으로 구조를 정리해 렉 유발을 줄이고 보다 안정적인 동작 흐름을 만들었습니다.",
-      "초기 디자인을 구체화하는 과정에서 팀원들의 다양한 의견이 나왔고, 타당한 이유가 있는 제안은 적극적으로 수용해 화면에 반영했습니다. 반대로 방향성이 다르다고 판단한 경우에는 제 의견의 근거를 설명해 이해를 맞췄고, 양쪽 의견 모두 애매한 경우에는 팀장의 조율을 통해 기준을 정한 뒤 작업을 진행했습니다.",
-      "AI 파트에서 작업한 페이지와 제가 구현한 페이지가 브랜치 통합 과정에서 충돌하면서 일정이 지연되는 이슈가 있었습니다. 변경 범위를 다시 분리해 충돌 지점을 정리하고, 필요한 부분은 재확인 후 병합해 기능 흐름이 끊기지 않도록 통합 작업을 마무리했습니다.",
+      "초기 화면 흐름에서는 일기 작성, 일기 확인, 캘린더 이동처럼 자주 사용하는 기능에 접근하기까지 여러 단계의 선택이 필요했습니다. 홈 메뉴와 화면 내 액션 배치를 다시 정리해 핵심 기능을 한 단계 안에서 선택할 수 있도록 수정하고, 실제 사용 흐름 기준으로 이동 경로를 줄였습니다.",
+      "방 안의 오브젝트를 누르며 이동하는 UI는 분위기는 좋지만, 처음 사용하는 사용자가 어떤 요소를 눌러야 하는지 바로 알기 어려웠습니다. 핵심 상호작용 지점을 단계별로 안내하는 튜토리얼 화면을 구성하고, 홈 메뉴에서 다시 확인할 수 있게 연결해 초기 사용성을 보완했습니다.",
     ],
-    architectureLead: "화면은 UI에 집중하고, 데이터 처리는 ViewModel과 Repository가 분리해 담당하도록 설계했습니다.",
-    architectureCaption: "데이터 흐름을 계층별로 분리해 화면 코드가 네트워크와 직접 결합되지 않도록 설계했습니다.",
+    architectureSummary: "DailyLog는 Android 앱에서 음성 입력과 화면 흐름을 처리하고, 서버는 API 처리, 데이터 저장, AI 연동, 배포와 모니터링을 분리해 운영할 수 있도록 구성했습니다.",
+    architectureNoteTitles: ["Android App", "Backend & Data", "AI & Operations"],
+    architectureNoteCopies: [
+      "사용자 음성 입력은 온디바이스 ASR로 처리하고, 앱 내부 화면은 Retrofit을 통해 HTTPS API와 연결되도록 구성했습니다.",
+      "Nginx reverse proxy 뒤에서 Spring Boot가 주요 API를 처리하고, PostgreSQL/PGVector와 Redis를 통해 기록, 임베딩, 캐시 데이터를 관리합니다.",
+      "FastAPI AI 서버는 외부 LLM API와 연결하고, GitLab-Jenkins-Docker Compose 배포 흐름과 Prometheus/Grafana 모니터링으로 운영 구조를 정리했습니다.",
+    ],
     stackIntro: "프로젝트에 적용한 주요 기술과 라이브러리를 영역별로 정리했습니다. 핵심 기술은 강조 색상으로 구분했고, 기술명을 누르면 아래에서 사용 이유를 바로 확인할 수 있도록 구성했습니다.",
     stackSummaries: ["UI / Android", "Data / Local Storage", "Network / Security", "Device / Background"],
     closingTitle: "포트폴리오용 검증 상태",
@@ -542,7 +539,7 @@ const staticTranslations = {
       "The goal was to make daily reflection easier through conversation-based journaling, then connect the result naturally to activity recommendations and schedule management.",
       "The work focused on Compose-based screen design, repository-layer organization, Room DB-based local storage, keeping Calendar Provider integration, and validating result and profile graph flows.",
     ],
-    sectionTitles: ["Core Features", "Screen Flow Through Actual Usage", "My Role", "What I Focused On During Development", "Troubleshooting", "Architecture", "Libraries / Technologies Used", "Portfolio Validation Status"],
+    sectionTitles: ["Core Features", "Screen Composition", "Role Summary", "Troubleshooting", "Architecture", "Tech Stack"],
     featureTitles: ["Diary Writing", "Emotion Analysis from Diary", "Emotion-Based Recommendations", "Calendar Integration"],
     featureCopies: [
       "The app guides users through a question-based flow so daily emotions and situations can be recorded naturally and connected to the result screen.",
@@ -552,26 +549,23 @@ const staticTranslations = {
     ],
     roleTitles: ["Flow Design", "Compose UI Implementation", "Local Data Structure", "Calendar and Profile Flow Validation"],
     roleCopies: [
-      "Designed and connected the main user flow from login and signup to tutorial, home, diary writing, result, calendar, and profile.",
-      "Implemented Compose UI so the app's emotional visual tone and the interaction flow between screens stayed natural.",
-      "Organized diary and user data through Room DB and a repository structure so screen code and data layers remained separated.",
-      "Checked actual usage flows including Calendar Provider, schedule add/edit, emotion graph, and profile editing.",
+      "Designed the main user flow from login and signup to tutorial, home, diary writing, result, calendar, and profile. I kept the object-centered mood built around the room, diary, and paper textures while connecting the flow without dead ends.",
+      "Implemented Compose UI so the app's emotional visual tone and screen-to-screen interactions stayed natural. I also connected the tutorial entry flow so first-time users could understand the object-based interface.",
+      "Organized diary and user data through Room DB and a repository structure, separating screen code from networking and local storage.",
+      "Validated the actual usage flow in a working server environment, from diary writing, emotion analysis, and recommendations to Calendar Provider, schedule add/edit, emotion graphs, and profile editing.",
     ],
-    processTitles: ["Keeping the Visual Mood", "Validating Server Flow", "Connecting Device Features", "Structuring Local Data"],
-    processCopies: [
-      "Instead of a typical app layout, the interface kept an object-centered style built around a room, diary, and paper-like textures.",
-      "Using an environment where the server worked properly, the team verified that diary writing, emotion analysis, and recommendation flows connected naturally.",
-      "Calendar Provider was kept so real device schedules and app data could be checked together.",
-      "Room DB was used to store diary and user information reliably and to keep screen data flow consistent.",
-    ],
-    troubleTitles: ["Performance Improvement Through Resource Optimization", "Aligning Team Opinions on Design Direction", "Resolving Conflicts During Branch Integration"],
+    troubleTitles: ["UI Revision to Reduce Click Depth", "Tutorial Development for Interactive UI"],
     troubleCopies: [
-      "At first, many individual assets and high resolutions made transitions heavy. To solve this, the overall asset resolution was adjusted and scattered resources were consolidated to reduce lag and improve stability.",
-      "During early design refinement, the team had many opinions. Valid suggestions were accepted and reflected, while different directions were discussed with clear reasoning until alignment was reached.",
-      "Conflicts between pages from the AI part and pages I implemented delayed integration. The change scope was reorganized and merge points were resolved so the flow could stay intact.",
+      "The early flow required several menu steps before users could reach frequent actions such as writing a diary, checking entries, or opening the calendar. I reorganized the home menu and in-screen actions so core features could be selected within one step and reduced navigation paths around the actual usage flow.",
+      "The object-based room UI matched the app mood, but first-time users could not immediately tell which elements were interactive. I built tutorial screens that guide the key interaction points step by step and connected them from the home menu so users can revisit the flow.",
     ],
-    architectureLead: "The screen layer was focused on UI, while data handling was separated into ViewModel and Repository.",
-    architectureCaption: "The data flow was separated by layer so screen code would not be directly coupled to networking.",
+    architectureSummary: "DailyLog handles voice input and screen flow in the Android app, while the server side separates API handling, data storage, AI integration, deployment, and monitoring.",
+    architectureNoteTitles: ["Android App", "Backend & Data", "AI & Operations"],
+    architectureNoteCopies: [
+      "User voice input is handled through on-device ASR, and the app screens communicate with the HTTPS API through Retrofit.",
+      "Spring Boot processes the main APIs behind an Nginx reverse proxy, while PostgreSQL/PGVector and Redis manage records, embeddings, and cache data.",
+      "The FastAPI AI server connects to external LLM APIs, and operations are organized with GitLab, Jenkins, Docker Compose, Prometheus, and Grafana.",
+    ],
     stackIntro: "This section organizes the main technologies and libraries used in the project. Core technologies are highlighted, and each item can be clicked to see why it was used.",
     stackSummaries: ["UI / Android", "Data / Local Storage", "Network / Security", "Device / Background"],
     stackReasons: {
@@ -609,7 +603,7 @@ const staticTranslations = {
     heroEyebrow: "Emotion Diary Android Project",
     heroSummary: "STT/TTSベースの対話を中心に構成した日記作成アプリプロジェクトです。",
     heroPrimary: "画面を見る",
-    heroSecondary: "構造を見る",
+    heroSecondary: "アーキテクチャ",
     heroCardLabel: "Project Snapshot",
     statLabels: ["Jetpack Compose UI", "感情記録と結果画面構成", "Calendar Provider連携維持", "実使用フロー中心の画面構成"],
     introTitles: ["課題定義", "実装の焦点"],
@@ -617,7 +611,7 @@ const staticTranslations = {
       "一日の振り返りを対話ベースでより簡単に記録し、その結果をもとにおすすめ活動や予定管理へ自然につなげる体験を目指しました。",
       "Composeベースの画面設計、Repository層の整理、Room DBによるローカル保存、Calendar Provider連携維持、結果画面とプロフィールグラフの流れ検証を中心に進めました。",
     ],
-    sectionTitles: ["主要機能", "実際の利用フローで見る画面構成", "担当内容", "開発時に意識した点", "トラブルシューティング", "構造設計", "使用ライブラリ / 技術", "ポートフォリオ確認状態"],
+    sectionTitles: ["主要機能", "画面構成", "役割整理", "トラブルシューティング", "アーキテクチャ", "使用技術"],
     featureTitles: ["日記作成", "日記ベースの感情分析", "感情ベースのおすすめ提案", "カレンダー連携"],
     featureCopies: [
       "質問型フローに沿って一日の感情や状況を記録し、結果画面へ自然につながるように構成しました。",
@@ -627,26 +621,23 @@ const staticTranslations = {
     ],
     roleTitles: ["画面フロー設計", "Compose UI実装", "ローカルデータ構造整理", "カレンダー / プロフィール検証"],
     roleCopies: [
-      "ログイン、会員登録、チュートリアル、ホーム、日記作成、結果、カレンダー、プロフィールまで続く主要フローを設計して接続しました。",
-      "アプリの感性的な画面構成を保ちながら、各画面のレイアウトと相互作用が自然につながるようCompose UIを実装しました。",
-      "Room DBとRepository構造を通じて日記とユーザーデータを保存し、画面コードとデータ層が分離されるよう整理しました。",
-      "Calendar Provider、予定追加 / 修正、感情グラフ、プロフィール編集まで実使用フロー基準で確認しました。",
+      "ログイン、会員登録、チュートリアル、ホーム、日記作成、結果、カレンダー、プロフィールまで続く主要フローを設計しました。部屋、日記、紙の質感を活かしたオブジェクト中心UIの雰囲気を保ちながら、流れが途切れないよう接続しました。",
+      "アプリの感性的な画面構成を保ちながら、各画面のレイアウトと相互作用が自然につながるようCompose UIを実装しました。初回ユーザーがオブジェクト型画面を理解できるよう、チュートリアル導線も構成しました。",
+      "Room DBとRepository構造で日記とユーザーデータを安定して保存し、画面コードがネットワークやローカル保存層へ直接依存しないよう分離しました。",
+      "サーバーが正常に動く環境を基準に、日記作成、感情分析、おすすめ提案、Calendar Provider連携、予定追加 / 修正、感情グラフ、プロフィール編集まで実使用フローで検証しました。",
     ],
-    processTitles: ["画面の感性維持", "サーバーフロー検証", "端末機能連携", "ローカルデータ構造整理"],
-    processCopies: [
-      "一般的なアプリレイアウトではなく、部屋、日記、紙の質感のようなオブジェクト中心インターフェースを維持しました。",
-      "サーバーが正常に動く環境を基準に、日記作成、感情分析結果、おすすめフローが自然につながるように確認しました。",
-      "Calendar Providerを維持し、実際の端末予定とアプリデータを一緒に確認できるようにしました。",
-      "Room DBを活用して日記とユーザー情報を安定的に保存し、画面で必要なデータを一貫して読み込めるよう整理しました。",
-    ],
-    troubleTitles: ["リソース最適化による性能改善", "デザイン方向性に対するチーム調整", "ブランチ統合作業の衝突解決"],
+    troubleTitles: ["クリック深度を減らすUI修正", "インタラクティブUI向けチュートリアル開発"],
     troubleCopies: [
-      "初期は個別リソース数と解像度が高く、画面遷移時にアプリが重くなる問題がありました。全体解像度を調整し、散在していたリソースを統合してラグを減らしました。",
-      "初期デザインを具体化する過程でさまざまな意見が出ました。妥当な提案は積極的に反映し、方向が異なる場合は根拠を説明して調整しました。",
-      "AIパートのページと私が実装したページが統合時に衝突し、日程が遅れる問題がありました。変更範囲を整理し直し、必要部分を再確認して統合作業を終えました。",
+      "初期の画面フローでは、日記作成、日記確認、カレンダー移動のような頻繁に使う機能へ到達するまで複数段階の選択が必要でした。ホームメニューと画面内アクションの配置を整理し、主要機能を1段階で選択できるようにして、実際の利用フローに合わせて移動経路を減らしました。",
+      "部屋のオブジェクトを押して移動するUIは雰囲気には合っていましたが、初回ユーザーがどこを操作すればよいか分かりにくい問題がありました。主要な操作ポイントを段階的に案内するチュートリアル画面を作り、ホームメニューから再確認できるようにしました。",
     ],
-    architectureLead: "画面はUIに集中し、データ処理はViewModelとRepositoryが分離して担当するように設計しました。",
-    architectureCaption: "データフローを層別に分け、画面コードがネットワークと直接結合しないようにしました。",
+    architectureSummary: "DailyLogはAndroidアプリで音声入力と画面フローを処理し、サーバー側ではAPI処理、データ保存、AI連携、デプロイ、モニタリングを分離して構成しました。",
+    architectureNoteTitles: ["Android App", "Backend & Data", "AI & Operations"],
+    architectureNoteCopies: [
+      "ユーザーの音声入力はオンデバイスASRで処理し、アプリ画面はRetrofitを通じてHTTPS APIと連携します。",
+      "Nginx reverse proxyの背後でSpring Bootが主要APIを処理し、PostgreSQL/PGVectorとRedisで記録、埋め込み、キャッシュデータを管理します。",
+      "FastAPI AIサーバーは外部LLM APIと連携し、GitLab、Jenkins、Docker Compose、Prometheus、Grafanaで運用構造を整理しました。",
+    ],
     stackIntro: "このセクションではプロジェクトに適用した主要技術とライブラリを整理しています。重要技術は強調表示し、クリックすると使用理由を確認できます。",
     stackSummaries: ["UI / Android", "Data / Local Storage", "Network / Security", "Device / Background"],
     stackReasons: {
@@ -1014,12 +1005,11 @@ function applyStaticTranslations() {
   setByIndex("#highlights .feature-card p", t.featureCopies);
   setByIndex("#role .feature-card h3", t.roleTitles);
   setByIndex("#role .feature-card p", t.roleCopies);
-  setByIndex("#process .timeline-item h3", t.processTitles);
-  setByIndex("#process .timeline-item p", t.processCopies);
   setByIndex("#troubleshooting .timeline-item h3", t.troubleTitles);
   setByIndex("#troubleshooting .timeline-item p", t.troubleCopies);
-  setText(".architecture-lead", t.architectureLead);
-  setText(".architecture-caption", t.architectureCaption);
+  setText(".architecture-summary", t.architectureSummary);
+  setByIndex(".architecture-notes strong", t.architectureNoteTitles);
+  setByIndex(".architecture-notes span", t.architectureNoteCopies);
   setText("#stack .section-heading p", t.stackIntro);
   setByIndex(".stack-group > summary", t.stackSummaries);
   Object.entries(t.stackReasons || {}).forEach(([id, value]) => {
@@ -1045,24 +1035,31 @@ document.querySelectorAll(".lang-button").forEach((button) => {
 });
 
 function initStackReasons() {
-  document.querySelectorAll(".stack-group").forEach((group) => {
-    const buttons = group.querySelectorAll(".stack-chip[data-reason-target]");
-    const panels = group.querySelectorAll(".stack-reason-panel");
+  document.querySelectorAll(".stack-shell").forEach((shell) => {
+    const buttons = shell.querySelectorAll(".stack-chip[data-reason-target]");
+    const panels = shell.querySelectorAll(".stack-reason-panel");
+
+    const activateReason = (button) => {
+      const targetId = button.dataset.reasonTarget;
+      if (!targetId) return;
+
+      buttons.forEach((node) => node.classList.remove("is-active"));
+      panels.forEach((panel) => panel.classList.remove("is-active"));
+
+      button.classList.add("is-active");
+      button.closest(".stack-group")?.setAttribute("open", "");
+
+      const targetPanel = shell.querySelector(`#${targetId}`);
+      if (targetPanel) {
+        targetPanel.classList.add("is-active");
+      }
+    };
+
+    const defaultButton = shell.querySelector(".stack-chip.is-active[data-reason-target]") || buttons[0];
+    if (defaultButton) activateReason(defaultButton);
 
     buttons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const targetId = button.dataset.reasonTarget;
-        if (!targetId) return;
-
-        buttons.forEach((node) => node.classList.remove("is-active"));
-        panels.forEach((panel) => panel.classList.remove("is-active"));
-
-        button.classList.add("is-active");
-        const targetPanel = group.querySelector(`#${targetId}`);
-        if (targetPanel) {
-          targetPanel.classList.add("is-active");
-        }
-      });
+      button.addEventListener("click", () => activateReason(button));
     });
   });
 }
