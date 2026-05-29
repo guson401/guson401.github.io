@@ -43,6 +43,7 @@ const screens = [
 const translations = {
   ko: {
     heroSummary: "센서 데이터, 로봇 순찰, 병해충 탐지, 운영 리포트를 하나의 흐름으로 연결한 스마트팜 통합 관제 웹 서비스입니다.",
+    themeLabels: { day: "주간", night: "야간", theme: "테마" },
     heroLinkScreens: "화면 둘러보기",
     heroLinkStack: "사용기술",
     snapshotLabel: "Project Snapshot",
@@ -115,20 +116,20 @@ const translations = {
     ],
     troubleKicker: "Troubleshooting",
     troubleTitle: "트러블슈팅",
-    troubleTitles: ["응답 형식 정규화", "리포트와 이미지의 시간 매칭", "순찰 완료 상태 관리", "권한 분리와 접근 제어"],
+    troubleTitles: ["배포 환경 파일명 오류 해결", "더미 데이터에서 실제 API로 전환", "클릭 뎁스를 줄인 UI 재설계"],
     troubleCopies: [
-      "농장, 리포트, 이미지 데이터 응답 형식 차이를 프론트엔드 정규화 로직으로 흡수해 화면 안정성을 높였습니다.",
-      "단순 이미지 조회가 아니라 분석 근거 확인이 가능하도록 동일 시점 리포트와 이미지를 연결하는 구조를 설계했습니다.",
-      "모든 섹터 데이터 갱신이 끝났을 때 순찰 완료 로그가 남도록 순찰 세션 흐름을 설계했습니다.",
-      "사용자 권한에 따라 본인 소유 농장과 로봇만 접근 가능하도록 백엔드 접근 제어 로직을 적용했습니다.",
+      "Windows 로컬에서는 정상 동작하던 React 앱이 Linux 배포 환경에서 CSS 파일을 찾지 못했습니다. 파일명 대소문자 차이가 원인임을 확인하고 CSS 파일명과 import 경로를 소문자 기준으로 통일해 배포 빌드 오류를 해결했습니다.",
+      "더미 데이터 기준으로 만든 대시보드와 농장 화면을 Django API와 연결하면서 farmId/id, createdAt/create_time, NPK 객체 구조가 달라 데이터가 표시되지 않았습니다. 응답을 화면용 공통 포맷으로 정규화해 실제 운영 데이터 기반 화면으로 전환했습니다.",
+      "농장, 로봇, 갤러리 기능이 분리되어 상태 확인 후 상세 조치까지 이동 단계가 많았습니다. 대시보드와 상단 메뉴에 농장/로봇 상세 이동, 갤러리 바로가기, 농장 추가 진입점을 배치해 관제 업무 흐름을 더 짧게 만들었습니다.",
     ],
     closingKicker: "Summary",
     closingTitle: "스마트팜 운영 데이터를 하나의 관제 흐름으로 묶은 웹 플랫폼",
     closingCopy: "실시간 센서 데이터, 병해충 이미지, 로봇 순찰 로그, 운영 리포트를 연결해 운영자가 상태를 빠르게 파악하고 다음 조치까지 이어갈 수 있도록 만든 프로젝트입니다.",
-    categories: { all: "전체", dashboard: "대시보드", farm: "농장", robot: "로봇", gallery: "갤러리", report: "리포트", faq: "FAQ", settings: "설정" },
+    categories: { dashboard: "대시보드", farm: "농장", robot: "로봇", gallery: "갤러리", report: "리포트", faq: "FAQ", settings: "설정" },
   },
   en: {
     heroSummary: "An integrated smart farm control web service that connects sensor data, robot patrols, pest detection, and operation reports in one flow.",
+    themeLabels: { day: "Day", night: "Night", theme: "Theme" },
     heroLinkScreens: "Browse Screens",
     heroLinkStack: "Tech Stack",
     snapshotLabel: "Project Snapshot",
@@ -201,20 +202,20 @@ const translations = {
     ],
     troubleKicker: "Troubleshooting",
     troubleTitle: "Troubleshooting",
-    troubleTitles: ["Response Normalization", "Time Matching Between Reports and Images", "Patrol Completion State Management", "Permission Split and Access Control"],
+    troubleTitles: ["Deployment Filename Case Fix", "Switch from Dummy Data to Real APIs", "UI Redesign to Reduce Click Depth"],
     troubleCopies: [
-      "Differences in farm, report, and image response shapes were absorbed with frontend normalization logic for more stable screens.",
-      "Reports and images were matched by the same time window so users can verify evidence, not just browse images.",
-      "A patrol session flow was designed so a completion log is recorded after all sector updates finish.",
-      "Backend access control was applied so users can access only the farms and robots they own.",
+      "The React app worked locally on Windows, but the Linux deployment environment could not find the CSS file. I traced the issue to filename casing and standardized both the CSS filename and import path to lowercase to resolve the deployment build error.",
+      "When dashboard and farm screens built around dummy data were connected to the Django API, data failed to render because farmId/id, createdAt/create_time, and NPK object structures differed. I normalized responses into a shared screen format and moved the UI to real operation data.",
+      "Farm, robot, and gallery features were separated, so moving from status checks to detailed actions required too many steps. I placed farm/robot detail links, gallery shortcuts, and farm-add entry points in the dashboard and top menu to shorten the control workflow.",
     ],
     closingKicker: "Summary",
     closingTitle: "A web platform that unifies smart farm operation data into one control flow",
     closingCopy: "The project connects real-time sensor data, pest images, robot patrol logs, and operation reports so operators can understand status quickly and move to the next action.",
-    categories: { all: "All", dashboard: "Dashboard", farm: "Farm", robot: "Robot", gallery: "Gallery", report: "Report", faq: "FAQ", settings: "Settings" },
+    categories: { dashboard: "Dashboard", farm: "Farm", robot: "Robot", gallery: "Gallery", report: "Report", faq: "FAQ", settings: "Settings" },
   },
   ja: {
     heroSummary: "センサーデータ、ロボット巡回、病害虫検知、運用レポートを一つの流れでつなぐスマートファーム統合管制Webサービスです。",
+    themeLabels: { day: "昼間", night: "夜間", theme: "テーマ" },
     heroLinkScreens: "画面を見る",
     heroLinkStack: "使用技術",
     snapshotLabel: "Project Snapshot",
@@ -287,17 +288,16 @@ const translations = {
     ],
     troubleKicker: "Troubleshooting",
     troubleTitle: "トラブルシューティング",
-    troubleTitles: ["レスポンス形式の正規化", "レポートと画像の時刻マッチング", "巡回完了状態の管理", "権限分離とアクセス制御"],
+    troubleTitles: ["デプロイ環境のファイル名エラー解消", "ダミーデータから実APIへの移行", "クリック深度を減らすUI再設計"],
     troubleCopies: [
-      "農場、レポート、画像データの応答形式の差をフロントエンド正規化ロジックで吸収し、画面の安定性を高めました。",
-      "単なる画像閲覧ではなく、根拠確認ができるように同じ時点のレポートと画像を結びました。",
-      "すべてのセクター更新が終わった後に巡回完了ログが残るよう、巡回セッションフローを設計しました。",
-      "ユーザーが自分の農場とロボットだけにアクセスできるようバックエンド制御を適用しました。",
+      "Windowsローカルでは正常に動作していたReactアプリが、Linuxデプロイ環境ではCSSファイルを見つけられませんでした。ファイル名の大文字小文字差異が原因だと確認し、CSSファイル名とimportパスを小文字基準に統一してデプロイ時のビルドエラーを解消しました。",
+      "ダミーデータ前提で作成したダッシュボードと農場画面をDjango APIにつなぐと、farmId/id、createdAt/create_time、NPKオブジェクト構造の違いによりデータが表示されませんでした。レスポンスを画面用の共通フォーマットに正規化し、実運用データに基づく画面へ移行しました。",
+      "農場、ロボット、ギャラリー機能が分離されていたため、状態確認後の詳細対応まで移動ステップが多くなっていました。ダッシュボードと上部メニューに農場/ロボット詳細への移動、ギャラリーショートカット、農場追加の入口を配置し、管制業務の流れを短縮しました。",
     ],
     closingKicker: "Summary",
     closingTitle: "スマートファーム運営データを一つの管制フローにまとめたWebプラットフォーム",
     closingCopy: "リアルタイムのセンサーデータ、病害虫画像、ロボット巡回ログ、運用レポートをつなぎ、運営者が状態を素早く把握して次の対応まで進めるようにしたプロジェクトです。",
-    categories: { all: "全体", dashboard: "ダッシュボード", farm: "農場", robot: "ロボット", gallery: "ギャラリー", report: "レポート", faq: "FAQ", settings: "設定" },
+    categories: { dashboard: "ダッシュボード", farm: "農場", robot: "ロボット", gallery: "ギャラリー", report: "レポート", faq: "FAQ", settings: "設定" },
   },
 };
 
@@ -375,8 +375,6 @@ const screenTranslations = {
 const categoryKeys = ["dashboard", "farm", "robot", "gallery", "report", "faq", "settings"];
 const screenFilterGroup = document.getElementById("screen-filter-group");
 const screenList = document.getElementById("screen-list");
-const screenCategoryLabel = document.getElementById("screen-category-label");
-const screenTitle = document.getElementById("screen-title");
 const screenImage = document.getElementById("screen-image");
 const screenDescription = document.getElementById("screen-description");
 const screenPoints = document.getElementById("screen-points");
@@ -437,10 +435,18 @@ function applyStaticTranslations() {
   t.featureTitles.forEach((value, index) => {
     document.getElementById(`feature-${index + 1}-title`).textContent = value;
     document.getElementById(`feature-${index + 1}-copy`).textContent = t.featureCopies[index];
-    document.getElementById(`role-${index + 1}-title`).textContent = t.roleTitles[index];
+  });
+
+  t.roleTitles.forEach((value, index) => {
+    document.getElementById(`role-${index + 1}-title`).textContent = value;
     document.getElementById(`role-${index + 1}-copy`).textContent = t.roleCopies[index];
-    document.getElementById(`trouble-${index + 1}-title`).textContent = t.troubleTitles[index];
-    document.getElementById(`trouble-${index + 1}-copy`).textContent = t.troubleCopies[index];
+  });
+
+  t.troubleTitles.forEach((value, index) => {
+    const titleNode = document.getElementById(`trouble-${index + 1}-title`);
+    const copyNode = document.getElementById(`trouble-${index + 1}-copy`);
+    if (titleNode) titleNode.textContent = value;
+    if (copyNode) copyNode.textContent = t.troubleCopies[index];
   });
 
   t.architectureNoteTitles.forEach((value, index) => {
@@ -456,10 +462,27 @@ function applyStaticTranslations() {
     const node = document.querySelector(`#${id} p`);
     if (node) node.textContent = value;
   });
+
+  updateThemeToggle(document.body.dataset.theme || "day");
 }
 
 function getVisibleScreens() {
   return screens.filter((screen) => screen.category === currentCategory);
+}
+
+function getLocalizedScreen(screen) {
+  const localized = screenTranslations[currentLang]?.[screen.key];
+  return {
+    title: localized?.[0] ?? screen.title,
+    description: localized?.[1] ?? screen.description,
+    points: localized?.[2] ?? screen.points,
+  };
+}
+
+function selectScreen(screenKey) {
+  currentScreenKey = screenKey;
+  renderList();
+  renderPreview();
 }
 
 function renderFilters() {
@@ -487,35 +510,27 @@ function renderFilters() {
 function renderList() {
   screenList.innerHTML = "";
   getVisibleScreens().forEach((screen) => {
-    const localized = screenTranslations[currentLang]?.[screen.key];
-    const title = localized?.[0] ?? screen.title;
+    const { title } = getLocalizedScreen(screen);
     const item = document.createElement("button");
     item.type = "button";
     item.className = "screen-item";
     if (screen.key === currentScreenKey) item.classList.add("is-active");
     item.innerHTML = `<strong>${title}</strong>`;
     item.addEventListener("click", () => {
-      currentScreenKey = screen.key;
-      renderList();
-      renderPreview();
+      selectScreen(screen.key);
     });
     screenList.appendChild(item);
   });
+  const activeItem = screenList.querySelector(".screen-item.is-active");
+  if (activeItem) {
+    activeItem.scrollIntoView({ block: "nearest", inline: "center" });
+  }
 }
 
 function renderPreview() {
   const screen = screens.find((item) => item.key === currentScreenKey);
   if (!screen) return;
-  const localized = screenTranslations[currentLang]?.[screen.key];
-  const title = localized?.[0] ?? screen.title;
-  const description = localized?.[1] ?? screen.description;
-  const points = localized?.[2] ?? screen.points;
-  if (screenCategoryLabel) {
-    screenCategoryLabel.textContent = translations[currentLang].categories[screen.category];
-  }
-  if (screenTitle) {
-    screenTitle.textContent = title;
-  }
+  const { title, description, points } = getLocalizedScreen(screen);
   screenImage.src = `../meer's_farm-screenshots/${screen.file}`;
   screenImage.alt = `${title} screenshot`;
   screenDescription.textContent = description;
@@ -540,6 +555,40 @@ function setLanguage(lang) {
 
 langButtons.forEach((button) => {
   button.addEventListener("click", () => setLanguage(button.dataset.lang));
+});
+
+const themeStorageKey = "portfolio-theme";
+const themeOptions = ["day", "night", "theme"];
+const themeToggle = document.querySelector(".theme-toggle");
+const themeIcons = {
+  day: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>',
+  night: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>',
+  theme: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0 0 3.5H16a1.5 1.5 0 0 1 0 3z"></path><circle cx="7.5" cy="10.5" r=".5"></circle><circle cx="12" cy="7.5" r=".5"></circle><circle cx="16.5" cy="10.5" r=".5"></circle></svg>',
+};
+
+function updateThemeToggle(theme) {
+  if (!themeToggle) return;
+  const label = translations[currentLang].themeLabels[theme];
+  themeToggle.innerHTML = themeIcons[theme] || themeIcons.day;
+  themeToggle.dataset.theme = theme;
+  themeToggle.classList.add("is-active");
+  themeToggle.setAttribute("aria-label", label);
+}
+
+function setTheme(theme, persist = true) {
+  const nextTheme = themeOptions.includes(theme) ? theme : "day";
+  document.body.dataset.theme = nextTheme;
+  updateThemeToggle(nextTheme);
+  if (persist) {
+    localStorage.setItem(themeStorageKey, nextTheme);
+  }
+}
+
+themeToggle?.addEventListener("click", () => {
+  const currentTheme = document.body.dataset.theme || "day";
+  const currentIndex = themeOptions.indexOf(currentTheme);
+  const nextTheme = themeOptions[(currentIndex + 1) % themeOptions.length];
+  setTheme(nextTheme);
 });
 
 function initStackReasons() {
@@ -620,4 +669,5 @@ function initStackReasons() {
 }
 
 initStackReasons();
+setTheme(localStorage.getItem(themeStorageKey) || "day", false);
 setLanguage("ko");

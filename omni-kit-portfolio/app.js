@@ -359,6 +359,9 @@ const TRANSLATIONS = {
   ko: {
     eyebrow: "Cobot Operations Console",
     "hero-summary": "OnRobot Korea와 함께한 연계 프로젝트로, STT를 이용한 협동 로봇팔 제어와 기존 티치펜던트를 대체할 웹 콘솔 구현을 목표로 했습니다. 웹 내부는 REST/WebSocket으로 구성하고, 로봇과 웹 시스템은 MQTT 토픽으로만 소통합니다.",
+    "theme-day": "주간",
+    "theme-night": "야간",
+    "theme-theme": "테마",
     "hero-link-screens": "화면 보기",
     "hero-link-role": "역할 정리",
     "snapshot-label": "Project Snapshot",
@@ -451,6 +454,9 @@ const TRANSLATIONS = {
   en: {
     eyebrow: "Cobot Operations Console",
     "hero-summary": "A collaboration project with OnRobot Korea, built to control a collaborative robot arm through STT and replace the traditional teach pendant with a web console. REST/WebSocket is used inside the web system, while the robot and web system communicate only through MQTT topics.",
+    "theme-day": "Day",
+    "theme-night": "Night",
+    "theme-theme": "Theme",
     "hero-link-screens": "See Screens",
     "hero-link-role": "Role Summary",
     "snapshot-label": "Project Snapshot",
@@ -543,6 +549,9 @@ const TRANSLATIONS = {
   ja: {
     eyebrow: "Cobot Operations Console",
     "hero-summary": "OnRobot Koreaとの連携プロジェクトとして、STTで協働ロボットアームを制御し、従来のティーチペンダントをWebコンソールで代替することを目標にしました。Web内部はREST/WebSocketで構成し、ロボットとWebシステムはMQTTトピックだけで通信します。",
+    "theme-day": "昼間",
+    "theme-night": "夜間",
+    "theme-theme": "テーマ",
     "hero-link-screens": "画面を見る",
     "hero-link-role": "役割整理",
     "snapshot-label": "Project Snapshot",
@@ -691,9 +700,37 @@ function applyTranslations(lang) {
   document.querySelectorAll(".lang-button").forEach((btn) => {
     btn.classList.toggle("is-active", btn.dataset.lang === lang);
   });
+  updateThemeToggle(document.body.dataset.theme || "day");
   renderFilters();
   renderList();
   renderScreen();
+}
+
+const themeStorageKey = "portfolio-theme";
+const themeOptions = ["day", "night", "theme"];
+const themeToggle = document.querySelector(".theme-toggle");
+const themeIcons = {
+  day: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>',
+  night: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>',
+  theme: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0 0 3.5H16a1.5 1.5 0 0 1 0 3z"></path><circle cx="7.5" cy="10.5" r=".5"></circle><circle cx="12" cy="7.5" r=".5"></circle><circle cx="16.5" cy="10.5" r=".5"></circle></svg>',
+};
+
+function updateThemeToggle(theme) {
+  if (!themeToggle) return;
+  const label = TRANSLATIONS[currentLang][`theme-${theme}`] || theme;
+  themeToggle.innerHTML = themeIcons[theme] || themeIcons.day;
+  themeToggle.dataset.theme = theme;
+  themeToggle.classList.add("is-active");
+  themeToggle.setAttribute("aria-label", label);
+}
+
+function setTheme(theme, persist = true) {
+  const nextTheme = themeOptions.includes(theme) ? theme : "day";
+  document.body.dataset.theme = nextTheme;
+  updateThemeToggle(nextTheme);
+  if (persist) {
+    localStorage.setItem(themeStorageKey, nextTheme);
+  }
 }
 
 function renderFilters() {
@@ -856,5 +893,13 @@ document.querySelectorAll(".lang-button").forEach((btn) => {
   btn.addEventListener("click", () => applyTranslations(btn.dataset.lang));
 });
 
+themeToggle?.addEventListener("click", () => {
+  const currentTheme = document.body.dataset.theme || "day";
+  const currentIndex = themeOptions.indexOf(currentTheme);
+  const nextTheme = themeOptions[(currentIndex + 1) % themeOptions.length];
+  setTheme(nextTheme);
+});
+
 initStackReasons();
+setTheme(localStorage.getItem(themeStorageKey) || "day", false);
 applyTranslations(currentLang);

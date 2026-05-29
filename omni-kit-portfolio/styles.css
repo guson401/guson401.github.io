@@ -105,6 +105,13 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 18px;
 }
 
+.theme-switch {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
 .lang-button {
   min-width: 52px;
   min-height: 36px;
@@ -118,9 +125,43 @@ a { color: inherit; text-decoration: none; }
   transition: transform 180ms ease, background-color 180ms ease, color 180ms ease;
 }
 
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(40, 60, 96, 0.14);
+  background: rgba(252, 253, 255, 0.88);
+  color: var(--accent-strong);
+  font: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
 .lang-button:hover { transform: translateY(-1px); }
+.theme-toggle:hover { transform: translateY(-1px); }
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 
 .lang-button.is-active {
+  background: linear-gradient(135deg, rgba(52, 97, 176, 0.95), rgba(31, 61, 120, 0.92));
+  border-color: transparent;
+  color: #f4f8ff;
+  font-weight: 700;
+}
+
+.theme-toggle.is-active {
   background: linear-gradient(135deg, rgba(52, 97, 176, 0.95), rgba(31, 61, 120, 0.92));
   border-color: transparent;
   color: #f4f8ff;
@@ -865,6 +906,7 @@ body::before {
 .primary-link,
 .secondary-link,
 .lang-button,
+.theme-toggle,
 .screen-filter,
 .screen-item,
 .stack-chip,
@@ -875,6 +917,7 @@ body::before {
 
 .primary-link,
 .lang-button.is-active,
+.theme-toggle.is-active,
 .screen-filter.is-active,
 .screen-item.is-active,
 .stack-chip.is-active,
@@ -885,6 +928,7 @@ body::before {
 
 .secondary-link,
 .lang-button,
+.theme-toggle,
 .screen-filter,
 .screen-item,
 .stack-chip,
@@ -1009,6 +1053,110 @@ body::before {
   }
 }
 
+body[data-theme="night"] {
+  --bg: #0d1420;
+  --surface: #141d2b;
+  --surface-strong: #1b2638;
+  --line: rgba(219, 234, 254, 0.14);
+  --text: #f4f8ff;
+  --muted: #b7c5da;
+  --accent: #7fb0ff;
+  --accent-strong: #9bc2ff;
+  --accent-soft: rgba(155, 194, 255, 0.14);
+  --accent-warm: #8eb8ed;
+  --shadow: 0 16px 38px rgba(0, 0, 0, 0.34);
+  background: linear-gradient(180deg, #101a2a 0%, #0d1420 52%, #070b12 100%);
+}
+
+body[data-theme="theme"] {
+  --bg: #eef2f7;
+  --surface: rgba(248, 250, 253, 0.82);
+  --surface-strong: rgba(255, 255, 255, 0.94);
+  --line: rgba(40, 60, 96, 0.14);
+  --text: #1b2540;
+  --muted: #56627a;
+  --accent: #3461b0;
+  --accent-strong: #1f3d78;
+  --accent-soft: rgba(52, 97, 176, 0.14);
+  --accent-warm: #5a8fce;
+  --shadow: 0 24px 80px rgba(30, 50, 90, 0.14);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.6), transparent 24%),
+    radial-gradient(circle at top right, rgba(90, 143, 206, 0.22), transparent 28%),
+    linear-gradient(180deg, #e5ecf4 0%, #eef2f7 48%, #d6dee9 100%);
+}
+
+body[data-theme="night"] .back-link,
+body[data-theme="night"] .hero-copy,
+body[data-theme="night"] .hero-panel,
+body[data-theme="night"] .section-card,
+body[data-theme="night"] .feature-card,
+body[data-theme="night"] .screen-preview,
+body[data-theme="night"] .stack-card,
+body[data-theme="night"] .stack-shell,
+body[data-theme="night"] .stack-reason-panel,
+body[data-theme="night"] .timeline-item,
+body[data-theme="night"] .architecture-card,
+body[data-theme="theme"] .back-link,
+body[data-theme="theme"] .hero-copy,
+body[data-theme="theme"] .hero-panel,
+body[data-theme="theme"] .section-card,
+body[data-theme="theme"] .feature-card,
+body[data-theme="theme"] .screen-preview,
+body[data-theme="theme"] .stack-card,
+body[data-theme="theme"] .stack-shell,
+body[data-theme="theme"] .stack-reason-panel,
+body[data-theme="theme"] .timeline-item,
+body[data-theme="theme"] .architecture-card {
+  background: var(--surface);
+  border-color: var(--line);
+  box-shadow: var(--shadow);
+}
+
+body[data-theme="night"] .secondary-link,
+body[data-theme="night"] .lang-button,
+body[data-theme="night"] .theme-toggle,
+body[data-theme="night"] .screen-filter,
+body[data-theme="night"] .screen-item,
+body[data-theme="night"] .stack-chip,
+body[data-theme="night"] .chip,
+body[data-theme="night"] .architecture-flow-card,
+body[data-theme="night"] .hero-stat,
+body[data-theme="night"] .flat-list li,
+body[data-theme="theme"] .secondary-link,
+body[data-theme="theme"] .lang-button,
+body[data-theme="theme"] .theme-toggle,
+body[data-theme="theme"] .screen-filter,
+body[data-theme="theme"] .screen-item,
+body[data-theme="theme"] .stack-chip,
+body[data-theme="theme"] .chip,
+body[data-theme="theme"] .architecture-flow-card,
+body[data-theme="theme"] .hero-stat,
+body[data-theme="theme"] .flat-list li {
+  background: var(--surface-strong);
+  border-color: var(--line);
+  color: var(--text);
+}
+
+body[data-theme="night"] .primary-link,
+body[data-theme="night"] .lang-button.is-active,
+body[data-theme="night"] .theme-toggle.is-active,
+body[data-theme="night"] .screen-filter.is-active,
+body[data-theme="night"] .screen-item.is-active,
+body[data-theme="night"] .stack-chip.is-active,
+body[data-theme="night"] .timeline-index,
+body[data-theme="theme"] .primary-link,
+body[data-theme="theme"] .lang-button.is-active,
+body[data-theme="theme"] .theme-toggle.is-active,
+body[data-theme="theme"] .screen-filter.is-active,
+body[data-theme="theme"] .screen-item.is-active,
+body[data-theme="theme"] .stack-chip.is-active,
+body[data-theme="theme"] .timeline-index {
+  background: var(--accent-strong);
+  border-color: transparent;
+  color: #fff;
+}
+
 @media print {
   @page {
     size: 13.333in 7.5in;
@@ -1026,6 +1174,7 @@ body::before {
 
   .back-link,
   .language-switch,
+  .theme-switch,
   .hero-actions {
     display: none;
   }

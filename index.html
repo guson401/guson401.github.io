@@ -84,6 +84,13 @@
       margin-bottom: 18px;
     }
 
+    .theme-switch {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
     .lang-button {
       min-width: 52px;
       min-height: 34px;
@@ -96,7 +103,43 @@
       cursor: pointer;
     }
 
+    .theme-toggle {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border: 1px solid rgba(16, 16, 16, 0.08);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.86);
+      color: var(--accent-2);
+      font: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 180ms ease, background-color 180ms ease, color 180ms ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+    }
+
+    .theme-toggle svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
     .lang-button.is-active {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+
+    .theme-toggle.is-active {
       background: #111;
       color: #fff;
       border-color: #111;
@@ -175,7 +218,7 @@
 
     .profile-photo {
       width: min(100%, 260px);
-      aspect-ratio: 1 / 1.18;
+      aspect-ratio: 1;
       border-radius: 4px;
       border: 1px solid rgba(16, 16, 16, 0.1);
       background:
@@ -188,6 +231,13 @@
       text-align: center;
       color: var(--muted);
       line-height: 1.7;
+    }
+
+    .profile-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .profile-name {
@@ -546,6 +596,7 @@
 
     .chip,
     .lang-button,
+    .theme-toggle,
     .profile-icon,
     .footer-note {
       border-radius: 8px;
@@ -572,6 +623,47 @@
       margin-bottom: 16px;
     }
 
+    body[data-theme="night"] {
+      --bg: #0f141d;
+      --bg-deep: #080b10;
+      --surface: #171d28;
+      --surface-strong: #202838;
+      --line: rgba(226, 232, 240, 0.14);
+      --text: #f4f7fb;
+      --muted: #b8c2d2;
+      --accent: #e5e7eb;
+      --accent-2: #f8fafc;
+      --shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+      background: linear-gradient(180deg, #121823 0%, #0f141d 54%, #07090d 100%);
+    }
+
+    body[data-theme="night"] .glass,
+    body[data-theme="night"] .project-card,
+    body[data-theme="night"] .footer-note,
+    body[data-theme="night"] .hero-main,
+    body[data-theme="night"] .hero-side {
+      background: var(--surface);
+      border-color: var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    body[data-theme="night"] .chip,
+    body[data-theme="night"] .profile-photo,
+    body[data-theme="night"] .profile-icon,
+    body[data-theme="night"] .lang-button,
+    body[data-theme="night"] .theme-toggle {
+      background: var(--surface-strong);
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    body[data-theme="night"] .lang-button.is-active,
+    body[data-theme="night"] .theme-toggle.is-active {
+      background: #f8fafc;
+      border-color: transparent;
+      color: #0f172a;
+    }
+
     @media (max-width: 960px) {
       .project-grid {
         grid-template-columns: 1fr;
@@ -595,6 +687,7 @@
       }
 
       .language-switch,
+      .theme-switch,
       .footer-note {
         display: none !important;
       }
@@ -715,7 +808,7 @@
     <section class="hero">
       <aside class="hero-side glass">
         <div class="profile-photo-shell">
-          <div class="profile-photo"><span id="photo-placeholder">프로필 사진 영역<br>이미지 추가 가능</span></div>
+          <div class="profile-photo"><img src="./profile-photo.png" alt="손지유 프로필 사진"></div>
           <div class="profile-side-meta">
             <div class="profile-row">
               <span class="profile-icon" aria-hidden="true">
@@ -742,6 +835,9 @@
           <button class="lang-button is-active" type="button" data-lang="ko">KO</button>
           <button class="lang-button" type="button" data-lang="en">EN</button>
           <button class="lang-button" type="button" data-lang="ja">JP</button>
+        </div>
+        <div class="theme-switch" aria-label="Theme switcher">
+          <button class="theme-toggle is-active" type="button" aria-label="테마: 주간"></button>
         </div>
         <p class="eyebrow" id="profile-eyebrow">Portfolio Profile</p>
         <h1 class="profile-name">손지유</h1>
@@ -826,33 +922,33 @@
     const rootTranslations = {
       ko: {
         profileEyebrow: "Portfolio Profile",
-        photoPlaceholder: "프로필 사진 영역<br>이미지 추가 가능",
         heroSummary: "프로젝트 포트폴리오를 모아 둔 개인 허브 페이지입니다. 상단에서 프로필과 연락처를 바로 확인하고, 아래에서 프로젝트별 상세 페이지로 이동할 수 있도록 구성했습니다.",
         projectsTitle: "Projects",
         omnikitCopy: "OnRobot Korea와 함께한 연계 프로젝트로, STT를 이용해 협동 로봇팔을 제어하고 기존 티치펜던트를 대체할 웹 콘솔을 구현했습니다.",
         farmCopy: "병해충 감시 자율주행로봇과 이와 연동된 웹서비스로 농부의 노동시간을 줄여주는 AIoT 프로젝트입니다.",
         dailylogCopy: "하루 기록이 번거롭거나 어려움을 겪는 사람들을 위한 대화형 일기 작성 앱 프로젝트입니다.",
         footerNote: "이후 프로젝트를 추가할 때는 이 카드 구조를 복사해서 링크와 텍스트만 교체하면 됩니다.",
+        themeLabels: { day: "주간", night: "야간" },
       },
       en: {
         profileEyebrow: "Portfolio Profile",
-        photoPlaceholder: "Profile Photo Area<br>Add Image Here",
         heroSummary: "This is a personal hub page that gathers project portfolios in one place. The top area shows profile and contact information, and the section below links to each project page.",
         projectsTitle: "Projects",
         omnikitCopy: "A collaboration project with OnRobot Korea that uses STT to control a collaborative robot arm and implements a web console intended to replace the traditional teach pendant.",
         farmCopy: "An AIoT project that reduces farmers' labor time through a pest-monitoring autonomous robot and a connected web service.",
         dailylogCopy: "A conversational diary-writing app project for people who find daily journaling inconvenient or difficult.",
         footerNote: "When you add another project later, you can reuse this card structure and only replace the link and text.",
+        themeLabels: { day: "Day", night: "Night" },
       },
       ja: {
         profileEyebrow: "Portfolio Profile",
-        photoPlaceholder: "プロフィール写真エリア<br>画像を追加できます",
         heroSummary: "プロジェクトポートフォリオを一か所にまとめた個人ハブページです。上部ではプロフィールと連絡先を確認でき、下部から各プロジェクトページへ移動できます。",
         projectsTitle: "Projects",
         omnikitCopy: "OnRobot Koreaとの連携プロジェクトとして、STTで協働ロボットアームを制御し、従来のティーチペンダントを代替するWebコンソールを実装しました。",
         farmCopy: "病害虫監視の自律走行ロボットと連動Webサービスにより、農家の労働時間を減らすAIoTプロジェクトです。",
         dailylogCopy: "毎日の記録が面倒だったり難しかったりする人のための会話型日記作成アプリプロジェクトです。",
         footerNote: "今後プロジェクトを追加する場合は、このカード構造を再利用してリンクとテキストだけを差し替えれば大丈夫です。",
+        themeLabels: { day: "昼間", night: "夜間" },
       },
     };
 
@@ -866,21 +962,64 @@
       "footer-note": "footerNote",
     };
 
+    let currentLang = "ko";
+    const themeStorageKey = "portfolio-theme";
+    const themeToggle = document.querySelector(".theme-toggle");
+    const rootThemeOptions = ["day", "night"];
+    const themeIcons = {
+      day: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>',
+      night: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>',
+    };
+
+    function updateThemeToggle(theme) {
+      if (!themeToggle) return;
+      const label = rootTranslations[currentLang].themeLabels[theme];
+      themeToggle.innerHTML = themeIcons[theme] || themeIcons.day;
+      themeToggle.dataset.theme = theme;
+      themeToggle.classList.add("is-active");
+      themeToggle.setAttribute("aria-label", label);
+    }
+
+    function applyRootTranslations(lang) {
+      currentLang = lang;
+      const t = rootTranslations[lang];
+      Object.entries(rootBindings).forEach(([id, key]) => {
+        const node = document.getElementById(id);
+        if (node) node.textContent = t[key];
+      });
+      updateThemeToggle(document.body.dataset.theme || "day");
+      document.querySelectorAll(".lang-button").forEach((node) => {
+        node.classList.toggle("is-active", node.dataset.lang === lang);
+      });
+    }
+
+    function setTheme(theme, persist = true) {
+      const nextTheme = rootThemeOptions.includes(theme) ? theme : "day";
+      document.body.dataset.theme = nextTheme;
+      updateThemeToggle(nextTheme);
+      if (persist) {
+        localStorage.setItem(themeStorageKey, nextTheme);
+      }
+    }
+
+    function initTheme() {
+      setTheme(localStorage.getItem(themeStorageKey) || "day", false);
+      themeToggle?.addEventListener("click", () => {
+        const currentTheme = document.body.dataset.theme || "day";
+        const currentIndex = rootThemeOptions.indexOf(currentTheme);
+        const nextTheme = rootThemeOptions[(currentIndex + 1) % rootThemeOptions.length];
+        setTheme(nextTheme);
+      });
+    }
+
     document.querySelectorAll(".lang-button").forEach((button) => {
       button.addEventListener("click", () => {
-        const lang = button.dataset.lang;
-        const t = rootTranslations[lang];
-        Object.entries(rootBindings).forEach(([id, key]) => {
-          const node = document.getElementById(id);
-          if (node) node.textContent = t[key];
-        });
-        const photoNode = document.getElementById("photo-placeholder");
-        if (photoNode) photoNode.innerHTML = t.photoPlaceholder;
-        document.querySelectorAll(".lang-button").forEach((node) => {
-          node.classList.toggle("is-active", node === button);
-        });
+        applyRootTranslations(button.dataset.lang);
       });
     });
+
+    initTheme();
+    applyRootTranslations(currentLang);
   </script>
 </body>
 </html>

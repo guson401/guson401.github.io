@@ -19,6 +19,9 @@
           <button class="lang-button" type="button" data-lang="en">EN</button>
           <button class="lang-button" type="button" data-lang="ja">JP</button>
         </div>
+        <div class="theme-switch" aria-label="Theme switcher">
+          <button class="theme-toggle is-active" type="button" aria-label="테마: 주간"></button>
+        </div>
         <p class="eyebrow">Smart Farm Control Platform</p>
         <h1>Meer's Farm</h1>
         <p class="hero-summary" id="hero-summary">센서 데이터, 로봇 순찰, 병해충 탐지, 운영 리포트를 하나의 흐름으로 연결한 스마트팜 통합 관제 웹 서비스입니다.</p>
@@ -70,8 +73,8 @@
         <div class="screen-explorer">
           <section class="screen-preview glass-card">
             <div class="screen-nav-panel">
-            <div class="screen-filter-group" id="screen-filter-group"></div>
-            <div class="screen-list" id="screen-list" aria-label="화면 목록"></div>
+              <div class="screen-filter-group" id="screen-filter-group"></div>
+              <div class="screen-list" id="screen-list" aria-label="화면 목록"></div>
             </div>
             <div class="screen-preview-body">
               <div class="screen-image-frame">
@@ -135,10 +138,9 @@
           <h2 id="trouble-title">트러블슈팅</h2>
         </div>
         <div class="timeline">
-          <article class="timeline-item glass-card"><span class="timeline-index">01</span><div><h3 id="trouble-1-title">응답 형식 정규화</h3><p id="trouble-1-copy">농장, 리포트, 이미지 데이터 응답 형식 차이를 프론트엔드 정규화 로직으로 흡수해 화면 안정성을 높였습니다.</p></div></article>
-          <article class="timeline-item glass-card"><span class="timeline-index">02</span><div><h3 id="trouble-2-title">리포트와 이미지의 시간 매칭</h3><p id="trouble-2-copy">단순 이미지 조회가 아니라 분석 근거 확인이 가능하도록 동일 시점 리포트와 이미지를 연결하는 구조를 설계했습니다.</p></div></article>
-          <article class="timeline-item glass-card"><span class="timeline-index">03</span><div><h3 id="trouble-3-title">순찰 완료 상태 관리</h3><p id="trouble-3-copy">모든 섹터 데이터 갱신이 끝났을 때 순찰 완료 로그가 남도록 순찰 세션 흐름을 설계했습니다.</p></div></article>
-          <article class="timeline-item glass-card"><span class="timeline-index">04</span><div><h3 id="trouble-4-title">권한 분리와 접근 제어</h3><p id="trouble-4-copy">사용자 권한에 따라 본인 소유 농장과 로봇만 접근 가능하도록 백엔드 접근 제어 로직을 적용했습니다.</p></div></article>
+          <article class="timeline-item glass-card"><span class="timeline-index">01</span><div><h3 id="trouble-1-title">배포 환경 파일명 오류 해결</h3><p id="trouble-1-copy">Windows 로컬에서는 정상 동작하던 React 앱이 Linux 배포 환경에서 CSS 파일을 찾지 못했습니다. 파일명 대소문자 차이가 원인임을 확인하고 CSS 파일명과 import 경로를 소문자 기준으로 통일해 배포 빌드 오류를 해결했습니다.</p></div></article>
+          <article class="timeline-item glass-card"><span class="timeline-index">02</span><div><h3 id="trouble-2-title">더미 데이터에서 실제 API로 전환</h3><p id="trouble-2-copy">더미 데이터 기준으로 만든 대시보드와 농장 화면을 Django API와 연결하면서 farmId/id, createdAt/create_time, NPK 객체 구조가 달라 데이터가 표시되지 않았습니다. 응답을 화면용 공통 포맷으로 정규화해 실제 운영 데이터 기반 화면으로 전환했습니다.</p></div></article>
+          <article class="timeline-item glass-card"><span class="timeline-index">03</span><div><h3 id="trouble-3-title">클릭 뎁스를 줄인 UI 재설계</h3><p id="trouble-3-copy">농장, 로봇, 갤러리 기능이 분리되어 상태 확인 후 상세 조치까지 이동 단계가 많았습니다. 대시보드와 상단 메뉴에 농장/로봇 상세 이동, 갤러리 바로가기, 농장 추가 진입점을 배치해 관제 업무 흐름을 더 짧게 만들었습니다.</p></div></article>
         </div>
       </section>
 

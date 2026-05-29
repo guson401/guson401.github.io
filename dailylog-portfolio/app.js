@@ -476,6 +476,7 @@ const staticTranslations = {
   ko: {
     heroEyebrow: "Emotion Diary Android Project",
     heroSummary: "STT/TTS 기반 일기 작성 어플리케이션 프로젝트입니다.",
+    themeLabels: { day: "주간", night: "야간", theme: "테마" },
     heroPrimary: "화면 보기",
     heroSecondary: "아키텍처",
     heroCardLabel: "Project Snapshot",
@@ -530,6 +531,7 @@ const staticTranslations = {
   en: {
     heroEyebrow: "Emotion Diary Android Project",
     heroSummary: "A diary-writing application project built around STT/TTS-based interaction.",
+    themeLabels: { day: "Day", night: "Night", theme: "Theme" },
     heroPrimary: "View Screens",
     heroSecondary: "View Architecture",
     heroCardLabel: "Project Snapshot",
@@ -602,6 +604,7 @@ const staticTranslations = {
   ja: {
     heroEyebrow: "Emotion Diary Android Project",
     heroSummary: "STT/TTSベースの対話を中心に構成した日記作成アプリプロジェクトです。",
+    themeLabels: { day: "昼間", night: "夜間", theme: "テーマ" },
     heroPrimary: "画面を見る",
     heroSecondary: "アーキテクチャ",
     heroCardLabel: "Project Snapshot",
@@ -1019,6 +1022,7 @@ function applyStaticTranslations() {
   setText(".closing-card h2", t.closingTitle);
   setText(".closing-card > p:last-of-type", t.closingCopy);
   setByIndex(".closing-meta span", t.closingMeta);
+  updateThemeToggle(document.body.dataset.theme || "day");
 }
 
 function setLanguage(lang) {
@@ -1032,6 +1036,40 @@ function setLanguage(lang) {
 
 document.querySelectorAll(".lang-button").forEach((button) => {
   button.addEventListener("click", () => setLanguage(button.dataset.lang));
+});
+
+const themeStorageKey = "portfolio-theme";
+const themeOptions = ["day", "night", "theme"];
+const themeToggle = document.querySelector(".theme-toggle");
+const themeIcons = {
+  day: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>',
+  night: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>',
+  theme: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0 0 3.5H16a1.5 1.5 0 0 1 0 3z"></path><circle cx="7.5" cy="10.5" r=".5"></circle><circle cx="12" cy="7.5" r=".5"></circle><circle cx="16.5" cy="10.5" r=".5"></circle></svg>',
+};
+
+function updateThemeToggle(theme) {
+  if (!themeToggle) return;
+  const label = staticTranslations[currentLang].themeLabels[theme];
+  themeToggle.innerHTML = themeIcons[theme] || themeIcons.day;
+  themeToggle.dataset.theme = theme;
+  themeToggle.classList.add("is-active");
+  themeToggle.setAttribute("aria-label", label);
+}
+
+function setTheme(theme, persist = true) {
+  const nextTheme = themeOptions.includes(theme) ? theme : "day";
+  document.body.dataset.theme = nextTheme;
+  updateThemeToggle(nextTheme);
+  if (persist) {
+    localStorage.setItem(themeStorageKey, nextTheme);
+  }
+}
+
+themeToggle?.addEventListener("click", () => {
+  const currentTheme = document.body.dataset.theme || "day";
+  const currentIndex = themeOptions.indexOf(currentTheme);
+  const nextTheme = themeOptions[(currentIndex + 1) % themeOptions.length];
+  setTheme(nextTheme);
 });
 
 function initStackReasons() {
@@ -1065,5 +1103,6 @@ function initStackReasons() {
 }
 
 initStackReasons();
+setTheme(localStorage.getItem(themeStorageKey) || "day", false);
 applyStaticTranslations();
 renderStep("login");
