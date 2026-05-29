@@ -475,12 +475,13 @@ tutorialStepMeta.forEach(([key, title, type, file, description], index) => {
 const staticTranslations = {
   ko: {
     heroEyebrow: "Emotion Diary Android Project",
-    heroSummary: "STT/TTS 기반 일기 작성 어플리케이션 프로젝트입니다.",
+    heroSummary: "STT/TTS 기반 일기 작성 애플리케이션 프로젝트입니다.",
+    awardLabel: "동메달 · 3등 수상",
     themeLabels: { day: "주간", night: "야간", theme: "테마" },
     heroPrimary: "화면 보기",
     heroSecondary: "아키텍처",
     heroCardLabel: "Project Snapshot",
-    statLabels: ["Jetpack Compose UI", "감정 기록과 결과 화면 구성", "Calendar Provider 유지", "실사용 흐름 기반 화면 구성"],
+    statLabels: ["Jetpack Compose UI", "감정 기록과 결과 화면 구성", "Calendar Provider 유지", "실사용 흐름 기반 화면 구성", "진행 기간"],
     introTitles: ["문제 정의", "핵심 구현 포인트"],
     introCopies: [
       "모두가 중요성을 느끼는 하루의 정리를 대화 기반으로 더 간단하게 기록하고, 그 결과를 바탕으로 일정 추천과 일정 관리까지 자연스럽게 이어질 수 있는 경험을 만들고자 했습니다.",
@@ -531,11 +532,12 @@ const staticTranslations = {
   en: {
     heroEyebrow: "Emotion Diary Android Project",
     heroSummary: "A diary-writing application project built around STT/TTS-based interaction.",
+    awardLabel: "Bronze · 3rd Place",
     themeLabels: { day: "Day", night: "Night", theme: "Theme" },
     heroPrimary: "View Screens",
     heroSecondary: "View Architecture",
     heroCardLabel: "Project Snapshot",
-    statLabels: ["Jetpack Compose UI", "Emotion logging and result screens", "Calendar Provider integration", "Real usage flow-centered screens"],
+    statLabels: ["Jetpack Compose UI", "Emotion logging and result screens", "Calendar Provider integration", "Real usage flow-centered screens", "Project period"],
     introTitles: ["Problem", "Implementation Focus"],
     introCopies: [
       "The goal was to make daily reflection easier through conversation-based journaling, then connect the result naturally to activity recommendations and schedule management.",
@@ -604,11 +606,12 @@ const staticTranslations = {
   ja: {
     heroEyebrow: "Emotion Diary Android Project",
     heroSummary: "STT/TTSベースの対話を中心に構成した日記作成アプリプロジェクトです。",
+    awardLabel: "銅賞 · 3位受賞",
     themeLabels: { day: "昼間", night: "夜間", theme: "テーマ" },
     heroPrimary: "画面を見る",
     heroSecondary: "アーキテクチャ",
     heroCardLabel: "Project Snapshot",
-    statLabels: ["Jetpack Compose UI", "感情記録と結果画面構成", "Calendar Provider連携維持", "実使用フロー中心の画面構成"],
+    statLabels: ["Jetpack Compose UI", "感情記録と結果画面構成", "Calendar Provider連携維持", "実使用フロー中心の画面構成", "実施期間"],
     introTitles: ["課題定義", "実装の焦点"],
     introCopies: [
       "一日の振り返りを対話ベースでより簡単に記録し、その結果をもとにおすすめ活動や予定管理へ自然につなげる体験を目指しました。",
@@ -997,6 +1000,7 @@ function applyStaticTranslations() {
 
   setText(".hero .eyebrow", t.heroEyebrow);
   setText(".hero-summary", t.heroSummary);
+  setText("#dailylog-award-label", t.awardLabel);
   setText(".primary-link", t.heroPrimary);
   setText(".secondary-link", t.heroSecondary);
   setText(".hero-card-label", t.heroCardLabel);

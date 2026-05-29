@@ -220,6 +220,13 @@
       font-size: 8pt;
     }
 
+    .contents-period {
+      margin-bottom: 0.05in;
+      color: var(--ink);
+      font-size: 7.4pt;
+      font-weight: 900;
+    }
+
     .chips {
       display: flex;
       flex-wrap: wrap;
@@ -298,6 +305,34 @@
       color: var(--muted);
       font-size: 12.2pt;
       line-height: 1.65;
+    }
+
+    .pdf-award-badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      min-height: 0.3in;
+      margin: 0 0 0.12in;
+      padding: 0 0.12in;
+      border-radius: 999px;
+      background: rgba(109, 52, 22, 0.12);
+      color: var(--daily);
+      font-size: 8.8pt;
+      font-weight: 900;
+    }
+
+    .pdf-period-badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      min-height: 0.3in;
+      margin: 0 0.08in 0.12in 0;
+      padding: 0 0.12in;
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--ink);
+      font-size: 8.8pt;
+      font-weight: 900;
     }
 
     .snapshot {
@@ -715,6 +750,7 @@
             <span class="contents-num">01</span>
             <div>
               <h3>Omni-Kit</h3>
+              <p class="contents-period">2026.04 - 2026.05</p>
               <p>STT 기반 협동 로봇팔 제어와 티치펜던트 대체 웹 콘솔 프로젝트</p>
               <div class="chips"><span class="chip">React</span><span class="chip">Spring Boot</span><span class="chip">WebAuthn</span></div>
             </div>
@@ -723,6 +759,7 @@
             <span class="contents-num">02</span>
             <div>
               <h3>DailyLog</h3>
+              <p class="contents-period">2026.02 - 2026.04</p>
               <p>대화형 일기 작성, 감정 분석, 캘린더 연동을 제공하는 Android 앱 프로젝트</p>
               <div class="chips"><span class="chip">Kotlin</span><span class="chip">Compose</span><span class="chip">Android</span></div>
             </div>
@@ -731,6 +768,7 @@
             <span class="contents-num">03</span>
             <div>
               <h3>Meer's Farm</h3>
+              <p class="contents-period">2026.01 - 2026.02</p>
               <p>병해충 감시 자율주행 로봇과 농장 관제 웹 서비스를 연결한 AIoT 프로젝트</p>
               <div class="chips"><span class="chip">React</span><span class="chip">Django</span><span class="chip">MQTT</span></div>
             </div>
@@ -745,12 +783,13 @@
         <article class="hero-copy">
           <p class="kicker">Project Overview</p>
           <h2>Omni-Kit</h2>
+          <span class="pdf-period-badge">2026.04 - 2026.05</span>
           <p>OnRobot Korea와 함께한 연계 프로젝트로, STT를 이용한 협동 로봇팔 제어와 기존 티치펜던트를 대체할 웹 콘솔 구현을 목표로 했습니다. 웹 내부는 REST/WebSocket으로 구성하고, 로봇과 웹 시스템은 MQTT 토픽으로만 소통합니다.</p>
         </article>
         <aside class="snapshot">
           <p class="kicker">Project Snapshot</p>
           <div class="stat"><strong>React 19</strong><span>Vite 6 + TS · URDF 디지털 트윈</span></div>
-          <div class="stat"><strong>Spring 3</strong><span>JDK 21 · JPA · Redis 설계</span></div>
+          <div class="stat"><strong>Spring Boot 3</strong><span>JDK 21 · JPA · Redis 설계</span></div>
           <div class="stat"><strong>Device Guard</strong><span>JWT · WebAuthn · 화이트리스트</span></div>
           <div class="stat"><strong>Robot Link</strong><span>MQTT · UR5/2FG7 연동</span></div>
         </aside>
@@ -835,7 +874,9 @@
         <article class="hero-copy">
           <p class="kicker">Project Overview</p>
           <h2>DailyLog</h2>
-          <p>STT/TTS 기반 일기 작성 어플리케이션 프로젝트입니다. 대화 기반으로 하루를 기록하고 감정 결과를 일정 추천과 캘린더 흐름으로 연결하는 Android 앱입니다.</p>
+          <span class="pdf-period-badge">2026.02 - 2026.04</span>
+          <span class="pdf-award-badge">동메달 · 3등 수상</span>
+          <p>STT/TTS 기반 일기 작성 애플리케이션 프로젝트입니다. 대화 기반으로 하루를 기록하고 감정 결과를 일정 추천과 캘린더 흐름으로 연결하는 Android 앱입니다.</p>
         </article>
         <aside class="snapshot">
           <p class="kicker">Project Snapshot</p>
@@ -925,6 +966,7 @@
         <article class="hero-copy">
           <p class="kicker">Project Overview</p>
           <h2>Meer's Farm</h2>
+          <span class="pdf-period-badge">2026.01 - 2026.02</span>
           <p>센서 데이터, 로봇 순찰, 병해충 탐지, 운영 리포트를 하나의 흐름으로 연결한 스마트팜 통합 관제 웹 서비스입니다. 조회에서 끝나지 않고 상태 확인 이후 원인 파악과 제어 액션까지 이어지도록 구성했습니다.</p>
         </article>
         <aside class="snapshot">
