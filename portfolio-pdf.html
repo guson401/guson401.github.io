@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Son Jiyu Portfolio PDF</title>
+  <style>
+    :root {
+      --slide-w: 13.333in;
+      --slide-h: 7.5in;
+      --pad-x: 0.52in;
+      --pad-y: 0.42in;
+      --bg: #f6f8fb;
+      --paper: #ffffff;
+      --ink: #111827;
+      --muted: #4b5565;
+      --line: rgba(25, 35, 55, 0.14);
+      --soft: #f8fafc;
+      --shadow: 0 10px 28px rgba(20, 30, 50, 0.08);
+      --omni: #1f3d78;
+      --daily: #6d3416;
+      --farm: #2f4a23;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #e7ebf2;
+      color: var(--ink);
+      font-family: "Pretendard", "SUIT", "Segoe UI", "Noto Sans KR", Arial, sans-serif;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .pdf-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px;
+      background: rgba(231, 235, 242, 0.9);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .pdf-toolbar a,
+    .pdf-toolbar button {
+      min-height: 38px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .pdf-document { padding: 18px 0 32px; }
+
+    .slide {
+      width: var(--slide-w);
+      height: var(--slide-h);
+      margin: 0 auto 18px;
+      padding: var(--pad-y) var(--pad-x);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 46px rgba(17, 24, 39, 0.12);
+      break-after: page;
+      page-break-after: always;
+      overflow: hidden;
+    }
+
+    .slide:last-child {
+      break-after: auto;
+      page-break-after: auto;
+    }
+
+    .cover {
+      display: grid;
+      grid-template-columns: 3.7in minmax(0, 1fr);
+      gap: 0.36in;
+      align-items: stretch;
+    }
+
+    .cover-profile,
+    .cover-contents,
+    .card,
+    .stat,
+    .screen-copy,
+    .image-frame,
+    .architecture-copy,
+    .tech-group,
+    .timeline-item {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .cover-profile {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0.3in;
+    }
+
+    .profile-photo {
+      width: 2.4in;
+      aspect-ratio: 1;
+      margin: 0 auto 0.18in;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+      object-fit: contain;
+    }
+
+    .kicker {
+      margin: 0 0 0.08in;
+      color: var(--muted);
+      font-size: 8.6pt;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      margin-bottom: 0.06in;
+      font-size: 35pt;
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+    }
+
+    .roman-name {
+      margin-bottom: 0.18in;
+      color: var(--muted);
+      font-size: 13pt;
+      font-weight: 700;
+    }
+
+    .tagline {
+      margin-bottom: 0.2in;
+      font-size: 13pt;
+      line-height: 1.46;
+      font-weight: 800;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 0.07in;
+      font-size: 8.2pt;
+    }
+
+    .contact-list span {
+      display: block;
+      color: var(--muted);
+      font-size: 7pt;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .cover-contents {
+      padding: 0.3in;
+    }
+
+    .contents-title {
+      margin-bottom: 0.1in;
+      font-size: 22pt;
+      line-height: 1.05;
+    }
+
+    .contents-copy {
+      margin-bottom: 0.2in;
+      color: var(--muted);
+      font-size: 9.2pt;
+    }
+
+    .contents-grid {
+      display: grid;
+      gap: 0.1in;
+    }
+
+    .contents-item {
+      display: grid;
+      grid-template-columns: 0.52in minmax(0, 1fr);
+      gap: 0.12in;
+      padding: 0.12in;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .contents-num {
+      display: grid;
+      place-items: center;
+      width: 0.48in;
+      height: 0.48in;
+      border-radius: 8px;
+      background: var(--ink);
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .contents-item h3 {
+      margin-bottom: 0.03in;
+      font-size: 12pt;
+    }
+
+    .contents-item p {
+      margin-bottom: 0.06in;
+      color: var(--muted);
+      font-size: 8pt;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.04in;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 0.2in;
+      padding: 0 0.07in;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      font-size: 7.3pt;
+      font-weight: 800;
+    }
+
+    .slide-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 0.2in;
+      margin-bottom: 0.14in;
+      padding-bottom: 0.08in;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .slide-title {
+      margin: 0;
+      font-size: 25pt;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+    }
+
+    .slide-meta {
+      margin: 0;
+      color: var(--muted);
+      font-size: 8.3pt;
+      font-weight: 800;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .hero-slide {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) 3.45in;
+      gap: 0.22in;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .snapshot {
+      padding: 0.32in;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-copy h2 {
+      margin-bottom: 0.14in;
+      font-size: 46pt;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-copy p {
+      max-width: 7.2in;
+      color: var(--muted);
+      font-size: 12.2pt;
+      line-height: 1.65;
+    }
+
+    .snapshot {
+      display: grid;
+      align-content: center;
+      gap: 0.1in;
+    }
+
+    .stat {
+      padding: 0.12in;
+      background: var(--soft);
+      box-shadow: none;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 13pt;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 8.2pt;
+    }
+
+    .two-col,
+    .four-col,
+    .three-col {
+      display: grid;
+      gap: 0.1in;
+    }
+
+    .two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .three-col { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .four-col { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .feature-slide .two-col,
+    .feature-slide .four-col {
+      gap: 0.16in;
+    }
+
+    .feature-slide .four-col {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 0.16in;
+    }
+
+    .feature-slide .card {
+      padding: 0.18in;
+    }
+
+    .feature-slide .two-col .card {
+      min-height: 1.35in;
+    }
+
+    .feature-slide .four-col .card {
+      min-height: 1.32in;
+    }
+
+    .feature-slide .card h3 {
+      margin-bottom: 0.08in;
+      font-size: 12.3pt;
+    }
+
+    .feature-slide .card p {
+      font-size: 9.5pt;
+      line-height: 1.58;
+    }
+
+    .feature-slide .feature-no {
+      width: 0.32in;
+      height: 0.32in;
+      margin-bottom: 0.08in;
+      font-size: 8pt;
+    }
+
+    .card {
+      padding: 0.14in;
+      box-shadow: none;
+    }
+
+    .card h3 {
+      margin-bottom: 0.07in;
+      font-size: 12pt;
+      line-height: 1.28;
+    }
+
+    .card p,
+    .timeline-item p,
+    .architecture-copy p,
+    .screen-copy p,
+    .tech-group p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 8.5pt;
+    }
+
+    .feature-no {
+      display: inline-grid;
+      place-items: center;
+      width: 0.32in;
+      height: 0.32in;
+      margin-bottom: 0.08in;
+      border-radius: 50%;
+      background: var(--ink);
+      color: #fff;
+      font-size: 8pt;
+      font-weight: 900;
+    }
+
+    .section-gap { margin-top: 0.1in; }
+
+    .combo-slide .section-gap { margin-top: 0.08in; }
+
+    .screen-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) 3.45in;
+      gap: 0.14in;
+      align-items: stretch;
+    }
+
+    .image-frame {
+      display: grid;
+      place-items: center;
+      padding: 0.1in;
+      background: var(--soft);
+      box-shadow: none;
+      overflow: hidden;
+    }
+
+    .image-frame img {
+      display: block;
+      width: 100%;
+      height: 4.85in;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .combo-slide .image-frame img {
+      height: 2.9in;
+    }
+
+    .combo-slide .architecture-layout .image-frame img {
+      height: 2.25in;
+    }
+
+    .combo-slide .screen-layout,
+    .combo-slide .architecture-layout {
+      gap: 0.1in;
+    }
+
+    .combo-slide .screen-copy,
+    .combo-slide .architecture-copy,
+    .combo-slide .card,
+    .combo-slide .tech-group,
+    .combo-slide .timeline-item {
+      padding: 0.1in;
+    }
+
+    .combo-slide li {
+      margin-top: 0.05in;
+      padding: 0.06in 0.08in;
+      font-size: 7.8pt;
+    }
+
+    .screen-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0.18in;
+      box-shadow: none;
+    }
+
+    ul {
+      margin: 0.12in 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      margin-top: 0.07in;
+      padding: 0.08in 0.1in;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+      color: var(--muted);
+      font-size: 8.2pt;
+    }
+
+    .architecture-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) 3.75in;
+      gap: 0.14in;
+      align-items: stretch;
+    }
+
+    .architecture-layout .image-frame img {
+      height: 4.72in;
+    }
+
+    .architecture-copy {
+      display: grid;
+      align-content: start;
+      gap: 0.09in;
+      padding: 0.16in;
+      box-shadow: none;
+    }
+
+    .architecture-copy h3 {
+      margin-bottom: 0.03in;
+      font-size: 10.6pt;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 0.08in;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 0.38in minmax(0, 1fr);
+      gap: 0.1in;
+      padding: 0.11in;
+      box-shadow: none;
+    }
+
+    .timeline-index {
+      display: inline-grid;
+      place-items: center;
+      width: 0.32in;
+      height: 0.32in;
+      border-radius: 50%;
+      background: var(--ink);
+      color: #fff;
+      font-size: 7.5pt;
+      font-weight: 900;
+    }
+
+    .timeline-item h3 {
+      margin-bottom: 0.04in;
+      font-size: 10.8pt;
+    }
+
+    .tech-layout {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.11in;
+    }
+
+    .tech-group {
+      padding: 0.14in;
+      box-shadow: none;
+    }
+
+    .combo-slide .tech-group h3,
+    .combo-slide .card h3,
+    .combo-slide .timeline-item h3,
+    .combo-slide .architecture-copy h3 {
+      font-size: 10pt;
+    }
+
+    .work-layout {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      grid-template-rows: minmax(0, 1fr) auto;
+      gap: 0.14in;
+      height: calc(100% - 0.78in);
+    }
+
+    .work-section {
+      border: 1px solid var(--line);
+      border-radius: 0.15in;
+      background: #fff;
+      padding: 0.15in;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .work-section-title {
+      margin: 0 0 0.1in;
+      color: var(--ink);
+      font-size: 14pt;
+      line-height: 1;
+    }
+
+    .role-section .four-col {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.1in;
+    }
+
+    .role-section .card {
+      padding: 0.12in;
+      box-shadow: none;
+    }
+
+    .trouble-section .timeline {
+      gap: 0.08in;
+    }
+
+    .trouble-section .timeline-item {
+      grid-template-columns: 0.34in minmax(0, 1fr);
+      gap: 0.09in;
+      padding: 0.11in;
+      box-shadow: none;
+    }
+
+    .tech-section {
+      grid-column: 1 / -1;
+      padding: 0.14in 0.15in;
+    }
+
+    .tech-section .tech-layout {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.12in;
+    }
+
+    .tech-section .tech-group {
+      padding: 0.11in;
+      box-shadow: none;
+    }
+
+    .tech-section .tech-group p {
+      display: none;
+    }
+
+    .work-slide .card h3,
+    .work-slide .tech-group h3,
+    .work-slide .timeline-item h3 {
+      margin-bottom: 0.05in;
+      font-size: 10.2pt;
+    }
+
+    .work-slide .card p,
+    .work-slide .tech-group p,
+    .work-slide .timeline-item p {
+      font-size: 8.2pt;
+      line-height: 1.5;
+    }
+
+    .work-slide .timeline-index {
+      width: 0.3in;
+      height: 0.3in;
+      font-size: 7.2pt;
+    }
+
+    .work-slide .chip {
+      min-height: 0.2in;
+      padding: 0 0.07in;
+      font-size: 7.4pt;
+    }
+
+    .tech-group h3 {
+      margin-bottom: 0.08in;
+      font-size: 11.5pt;
+    }
+
+    .accent-omni .slide-head { border-color: var(--omni); }
+    .accent-daily .slide-head { border-color: var(--daily); }
+    .accent-farm .slide-head { border-color: var(--farm); }
+    .accent-omni .feature-no, .accent-omni .timeline-index { background: var(--omni); }
+    .accent-daily .feature-no, .accent-daily .timeline-index { background: var(--daily); }
+    .accent-farm .feature-no, .accent-farm .timeline-index { background: var(--farm); }
+
+    @page {
+      size: 13.333in 7.5in;
+      margin: 0;
+    }
+
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body { background: #fff; }
+      .pdf-toolbar { display: none; }
+      .pdf-document { padding: 0; }
+      .slide {
+        margin: 0;
+        border: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="pdf-toolbar" aria-label="PDF actions">
+    <button type="button" onclick="window.print()">PDF로 인쇄</button>
+    <a href="./index.html">메인으로 돌아가기</a>
+  </nav>
+
+  <main class="pdf-document">
+    <section class="slide cover">
+      <aside class="cover-profile">
+        <div>
+          <p class="kicker">Portfolio Profile</p>
+          <img class="profile-photo" src="./profile-photo.png" alt="손지유 프로필 사진">
+          <h1>손지유</h1>
+          <p class="roman-name">sonjiyu</p>
+          <p class="tagline">AI와 함께 주어진 환경을 빠르게 파악하고,<br>필요한 역할을 수행해 결과로 연결하는 개발자</p>
+        </div>
+        <div class="contact-list">
+          <p><span>GitHub</span>github.com/guson401</p>
+          <p><span>Portfolio Web</span>guson401.github.io</p>
+          <p><span>Email</span>sonjiyu123@gmail.com</p>
+          <p><span>Phone</span>010-8245-3525</p>
+        </div>
+      </aside>
+
+      <section class="cover-contents">
+        <p class="kicker">Contents</p>
+        <h2 class="contents-title">Project Portfolio</h2>
+        <p class="contents-copy">웹, 모바일, AIoT 프로젝트를 하나의 포트폴리오로 정리했습니다. 표지 다음 페이지부터는 각 프로젝트 상세 페이지를 사용해 주요 역할, 구현 내용, 트러블슈팅, 아키텍처를 확인할 수 있습니다.</p>
+        <div class="contents-grid">
+          <article class="contents-item">
+            <span class="contents-num">01</span>
+            <div>
+              <h3>Omni-Kit</h3>
+              <p>STT 기반 협동 로봇팔 제어와 티치펜던트 대체 웹 콘솔 프로젝트</p>
+              <div class="chips"><span class="chip">React</span><span class="chip">Spring Boot</span><span class="chip">WebAuthn</span></div>
+            </div>
+          </article>
+          <article class="contents-item">
+            <span class="contents-num">02</span>
+            <div>
+              <h3>DailyLog</h3>
+              <p>대화형 일기 작성, 감정 분석, 캘린더 연동을 제공하는 Android 앱 프로젝트</p>
+              <div class="chips"><span class="chip">Kotlin</span><span class="chip">Compose</span><span class="chip">Android</span></div>
+            </div>
+          </article>
+          <article class="contents-item">
+            <span class="contents-num">03</span>
+            <div>
+              <h3>Meer's Farm</h3>
+              <p>병해충 감시 자율주행 로봇과 농장 관제 웹 서비스를 연결한 AIoT 프로젝트</p>
+              <div class="chips"><span class="chip">React</span><span class="chip">Django</span><span class="chip">MQTT</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section class="slide accent-omni combo-slide">
+      <header class="slide-head"><h2 class="slide-title">Omni-Kit</h2><p class="slide-meta">Cobot Operations Console</p></header>
+      <div class="hero-slide">
+        <article class="hero-copy">
+          <p class="kicker">Project Overview</p>
+          <h2>Omni-Kit</h2>
+          <p>OnRobot Korea와 함께한 연계 프로젝트로, STT를 이용한 협동 로봇팔 제어와 기존 티치펜던트를 대체할 웹 콘솔 구현을 목표로 했습니다. 웹 내부는 REST/WebSocket으로 구성하고, 로봇과 웹 시스템은 MQTT 토픽으로만 소통합니다.</p>
+        </article>
+        <aside class="snapshot">
+          <p class="kicker">Project Snapshot</p>
+          <div class="stat"><strong>React 19</strong><span>Vite 6 + TS · URDF 디지털 트윈</span></div>
+          <div class="stat"><strong>Spring 3</strong><span>JDK 21 · JPA · Redis 설계</span></div>
+          <div class="stat"><strong>Device Guard</strong><span>JWT · WebAuthn · 화이트리스트</span></div>
+          <div class="stat"><strong>Robot Link</strong><span>MQTT · UR5/2FG7 연동</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide accent-omni feature-slide">
+      <header class="slide-head"><h2 class="slide-title">문제 정의 · 핵심 기능</h2><p class="slide-meta">Omni-Kit</p></header>
+      <div class="two-col">
+        <article class="card"><h3>문제 정의</h3><p>기존 협동 로봇팔 제어는 티치펜던트와 현장 PC 중심이라 음성 명령이나 웹 기반 운영 흐름으로 확장하기 어렵습니다. Omni-Kit은 STT 명령, 로봇 상태, 작업 흐름을 웹 콘솔로 끌어올려 더 직관적인 운영 환경을 만드는 프로젝트입니다.</p></article>
+        <article class="card"><h3>핵심 구현 포인트</h3><p>React 콘솔은 STT 음성 패널, URDF 3D 모델, 레시피, 웨이포인트, 세션·장치 관리 화면을 제공하고, Spring Boot는 인증·운영 API와 데이터 모델을 담당합니다. 로봇과 웹 시스템 사이의 송수신은 MQTT 토픽으로 처리했습니다.</p></article>
+      </div>
+      <div class="four-col section-gap">
+        <article class="card"><span class="feature-no">01</span><h3>웹 콘솔</h3><p>상태 확인, STT 패널, TCP/조인트 제어, 레시피·웨이포인트·작업 이력을 React 관리자 콘솔로 묶었습니다.</p></article>
+        <article class="card"><span class="feature-no">02</span><h3>웹 파트 설계</h3><p>프론트엔드 화면·라우팅·인증 흐름과 Spring Boot API, 도메인, 배포/인프라 구조를 정리했습니다.</p></article>
+        <article class="card"><span class="feature-no">03</span><h3>WebAuthn</h3><p>Yubico WebAuthn 기반 장치 등록·인증·승인 모델로 승인된 하드웨어만 접근하도록 보호했습니다.</p></article>
+        <article class="card"><span class="feature-no">04</span><h3>MQTT 연동</h3><p>로봇 파트의 상태·이벤트 형식에 맞춰 토픽 매핑과 화면 반영을 최소 수정으로 맞췄습니다.</p></article>
+      </div>
+    </section>
+
+    <section class="slide accent-omni">
+      <header class="slide-head"><h2 class="slide-title">화면구성</h2><p class="slide-meta">Omni-Kit</p></header>
+      <div class="screen-layout">
+        <figure class="image-frame"><img src="./omni-kit-screenshots/00_auth_01_login-form.png" alt="Omni-Kit 로그인 화면"></figure>
+        <aside class="screen-copy">
+          <p>사이트 코드와 사번으로 로그인한 뒤 저장된 패스키를 선택하고, WebAuthn 디바이스 승인 상태를 확인하는 진입 흐름입니다.</p>
+          <ul>
+            <li>패스키 기반 인증 후 콘솔 진입</li>
+            <li>등록 장치 정보와 현재 브라우저 fingerprint 대조</li>
+            <li>세션 갱신 실패 같은 예외 복구 동선 제공</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide accent-omni">
+      <header class="slide-head"><h2 class="slide-title">아키텍처</h2><p class="slide-meta">Omni-Kit</p></header>
+      <div class="architecture-layout">
+        <figure class="image-frame"><img src="./omni-kit-screenshots/omni-kit_architecture_overview.png" alt="Omni-Kit 아키텍처"></figure>
+        <aside class="architecture-copy">
+          <p>웹 내부는 Nginx, React, Spring Boot, FastAPI, PostgreSQL/Redis로 구성되며, 로봇 시스템과는 Mosquitto MQTT 토픽으로만 상태와 명령을 주고받습니다.</p>
+          <div><h3>웹 · 백엔드 · 인프라 영역</h3><p>사용자는 Nginx를 통해 React 콘솔에 접근하고, 콘솔은 Spring Boot API/WS와 통신합니다. 백엔드는 인증, 세션, 운영 도메인, DB 모델을 담당합니다.</p></div>
+          <div><h3>경계 분리</h3><p>로봇과 웹 시스템은 REST나 WebSocket으로 직접 연결되지 않고 MQTT 토픽으로만 소통합니다.</p></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide accent-omni work-slide">
+      <header class="slide-head"><h2 class="slide-title">프로젝트 수행 정리</h2><p class="slide-meta">Omni-Kit</p></header>
+      <div class="work-layout">
+        <section class="work-section role-section">
+          <h3 class="work-section-title">역할</h3>
+          <div class="four-col">
+            <article class="card"><h3>프론트엔드 전체 구현</h3><p>로그인, 승인 대기, 대시보드, 실시간 제어, 로봇/레시피/웨이포인트/이력, 관리자 화면과 라우팅/인증 가드를 구현했습니다.</p></article>
+            <article class="card"><h3>WebAuthn 화이트리스트</h3><p>Yubico RelyingParty 기반 등록 옵션·검증·어설션과 승인 credential 기반 접근 제어를 구성했습니다.</p></article>
+            <article class="card"><h3>백엔드 · DB 설계</h3><p>회원, 사이트, 장치, 세션, 알림, MFA 도메인의 API와 JPA 모델, Redis 기반 challenge 흐름을 정리했습니다.</p></article>
+            <article class="card"><h3>인프라 · MQTT 연동</h3><p>웹/백엔드 배포 구조와 환경 변수를 정리하고, 로봇과 웹 사이 통신 범위를 MQTT 중심으로 맞췄습니다.</p></article>
+          </div>
+        </section>
+        <section class="work-section trouble-section">
+          <h3 class="work-section-title">트러블슈팅</h3>
+          <div class="timeline">
+            <article class="timeline-item"><span class="timeline-index">01</span><div><h3>takeover 기반 단일 세션 정책 보정</h3><p>기존 탭이 계속 살아 있던 문제를 takeover 로그인 시 기존 세션 무효화와 /auth/me 재검증으로 해결했습니다.</p></div></article>
+            <article class="timeline-item"><span class="timeline-index">02</span><div><h3>Linux WebAuthn 개발 우회</h3><p>Linux platform authenticator 부재를 고려해 실서비스 접근 제한과 개발용 User-Agent 우회 경로를 분리했습니다.</p></div></article>
+            <article class="timeline-item"><span class="timeline-index">03</span><div><h3>소프트 삭제 기기 재승인 흐름</h3><p>폐기된 기기의 재등록이 막히던 문제를 승인 대기 상태로 되돌려 재검토할 수 있게 수정했습니다.</p></div></article>
+          </div>
+        </section>
+        <section class="work-section tech-section">
+          <h3 class="work-section-title">사용기술</h3>
+          <div class="tech-layout">
+            <article class="tech-group"><h3>Frontend / Console UI</h3><div class="chips"><span class="chip">React 19.2</span><span class="chip">Vite 6.4</span><span class="chip">TypeScript</span><span class="chip">React Router</span><span class="chip">TanStack Query</span><span class="chip">three.js</span></div><p class="section-gap">상태 변화가 많은 운영 UI를 컴포넌트 단위로 나누고 관리하기 위해 사용했습니다.</p></article>
+            <article class="tech-group"><h3>Backend / Auth / DB</h3><div class="chips"><span class="chip">Spring Boot 3.5</span><span class="chip">JDK 21</span><span class="chip">Yubico WebAuthn</span><span class="chip">JWT</span><span class="chip">JPA</span><span class="chip">Redis</span></div><p class="section-gap">하드웨어 화이트리스트와 credential 기반 접근 제어에 사용했습니다.</p></article>
+            <article class="tech-group"><h3>Robot Communication / Infra</h3><div class="chips"><span class="chip">MQTT</span><span class="chip">FastAPI</span><span class="chip">Docker Compose</span><span class="chip">Nginx</span><span class="chip">Prometheus</span><span class="chip">Grafana</span></div><p class="section-gap">로봇과 웹의 경계를 MQTT로 분리하고 운영 관찰 흐름을 배포 구조 안에 연결했습니다.</p></article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="slide accent-daily combo-slide">
+      <header class="slide-head"><h2 class="slide-title">DailyLog</h2><p class="slide-meta">Emotion Diary Android Project</p></header>
+      <div class="hero-slide">
+        <article class="hero-copy">
+          <p class="kicker">Project Overview</p>
+          <h2>DailyLog</h2>
+          <p>STT/TTS 기반 일기 작성 어플리케이션 프로젝트입니다. 대화 기반으로 하루를 기록하고 감정 결과를 일정 추천과 캘린더 흐름으로 연결하는 Android 앱입니다.</p>
+        </article>
+        <aside class="snapshot">
+          <p class="kicker">Project Snapshot</p>
+          <div class="stat"><strong>Android</strong><span>Jetpack Compose UI</span></div>
+          <div class="stat"><strong>Diary</strong><span>감정 기록과 결과 화면 구성</span></div>
+          <div class="stat"><strong>Calendar</strong><span>Calendar Provider 유지</span></div>
+          <div class="stat"><strong>Flow</strong><span>실사용 흐름 기반 화면 구성</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide accent-daily feature-slide">
+      <header class="slide-head"><h2 class="slide-title">문제 정의 · 핵심 기능</h2><p class="slide-meta">DailyLog</p></header>
+      <div class="two-col">
+        <article class="card"><h3>문제 정의</h3><p>하루의 정리를 대화 기반으로 더 간단하게 기록하고, 그 결과를 바탕으로 일정 추천과 일정 관리까지 자연스럽게 이어질 수 있는 경험을 만들고자 했습니다.</p></article>
+        <article class="card"><h3>핵심 구현 포인트</h3><p>Compose 화면 설계, Repository 계층, Room DB, 캘린더 프로바이더 연동, 결과 페이지와 프로필 그래프 흐름 검증을 중심으로 작업했습니다.</p></article>
+      </div>
+      <div class="four-col section-gap">
+        <article class="card"><h3>일기 작성</h3><p>질문형 흐름을 따라 하루의 감정과 상황을 기록하고, 결과 화면까지 자연스럽게 이어지도록 구성했습니다.</p></article>
+        <article class="card"><h3>일기 기반 감정 분석</h3><p>작성한 일기 내용을 바탕으로 감정 결과를 분석하고 사용자가 하루를 돌아볼 수 있도록 피드백을 제공합니다.</p></article>
+        <article class="card"><h3>감정 기반 일정 추천</h3><p>분석된 감정 결과를 바탕으로 추천 활동을 제안하고 일정과 연결해 다음 행동으로 이어지게 했습니다.</p></article>
+        <article class="card"><h3>캘린더 연동</h3><p>앱 내부 기록과 Calendar Provider 이벤트를 함께 보여주어 감정 기록과 일정 관리를 한 흐름으로 연결합니다.</p></article>
+      </div>
+    </section>
+
+    <section class="slide accent-daily">
+      <header class="slide-head"><h2 class="slide-title">화면구성</h2><p class="slide-meta">DailyLog</p></header>
+      <div class="screen-layout">
+        <figure class="image-frame"><img src="./dailylog-screenshots/login_screen.png" alt="DailyLog 로그인 화면"></figure>
+        <aside class="screen-copy">
+          <p><strong>AUTH</strong></p>
+          <p>앱 사용을 시작할 때 가장 먼저 진입하는 인증 화면으로, 로그인 실행뿐 아니라 비밀번호 찾기와 회원가입 흐름으로도 분기되는 출발점입니다.</p>
+          <ul>
+            <li>인증 화면까지 포함해 전체 사용자 여정 완성</li>
+            <li>회원 흐름의 시작점과 복귀 지점 설명</li>
+            <li>앱 전반의 완결성을 보강하는 화면</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide accent-daily">
+      <header class="slide-head"><h2 class="slide-title">아키텍처</h2><p class="slide-meta">DailyLog</p></header>
+      <div class="architecture-layout">
+        <figure class="image-frame"><img src="./dailylog-screenshots/dailylog_architecture_overview.png" alt="DailyLog 아키텍처"></figure>
+        <aside class="architecture-copy">
+          <p>DailyLog는 Android 앱에서 음성 입력과 화면 흐름을 처리하고, 서버는 API 처리, 데이터 저장, AI 연동, 배포와 모니터링을 분리해 운영할 수 있도록 구성했습니다.</p>
+          <div><h3>Android App</h3><p>사용자 음성 입력은 온디바이스 ASR로 처리하고, 앱 내부 화면은 Retrofit을 통해 HTTPS API와 연결했습니다.</p></div>
+          <div><h3>Backend & AI</h3><p>Spring Boot, PostgreSQL/PGVector, Redis, FastAPI AI 서버와 배포/모니터링 흐름을 분리했습니다.</p></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide accent-daily work-slide">
+      <header class="slide-head"><h2 class="slide-title">프로젝트 수행 정리</h2><p class="slide-meta">DailyLog</p></header>
+      <div class="work-layout">
+        <section class="work-section role-section">
+          <h3 class="work-section-title">역할</h3>
+          <div class="four-col">
+            <article class="card"><h3>화면 흐름 설계</h3><p>로그인, 회원가입, 튜토리얼, 홈, 일기 작성, 결과, 캘린더, 프로필까지 이어지는 주요 흐름을 설계했습니다.</p></article>
+            <article class="card"><h3>Compose 기반 UI</h3><p>오브젝트 중심 인터페이스 감성을 유지하면서 각 화면의 레이아웃과 상호작용을 구현했습니다.</p></article>
+            <article class="card"><h3>로컬 데이터 구조</h3><p>Room DB와 Repository 구조를 통해 일기와 사용자 데이터를 안정적으로 저장하고 계층을 분리했습니다.</p></article>
+            <article class="card"><h3>캘린더/프로필 검증</h3><p>일기 작성, 감정 분석, 추천, Calendar Provider 연동, 감정 그래프까지 실제 흐름으로 검증했습니다.</p></article>
+          </div>
+        </section>
+        <section class="work-section trouble-section">
+          <h3 class="work-section-title">트러블슈팅</h3>
+          <div class="timeline">
+            <article class="timeline-item"><span class="timeline-index">01</span><div><h3>클릭 뎁스를 줄이기 위한 UI 수정</h3><p>자주 쓰는 일기 작성, 일기 확인, 캘린더 진입을 홈 메뉴에서 바로 선택하도록 재배치했습니다.</p></div></article>
+            <article class="timeline-item"><span class="timeline-index">02</span><div><h3>상호작용형 UI 튜토리얼</h3><p>오브젝트 기반 화면에서 눌러야 하는 요소와 다음 흐름을 단계별로 보여주어 초기 학습 비용을 낮췄습니다.</p></div></article>
+          </div>
+        </section>
+        <section class="work-section tech-section">
+          <h3 class="work-section-title">사용기술</h3>
+          <div class="tech-layout">
+            <article class="tech-group"><h3>UI / Android</h3><div class="chips"><span class="chip">Kotlin</span><span class="chip">Jetpack Compose</span><span class="chip">Material 3</span></div></article>
+            <article class="tech-group"><h3>Data / Storage</h3><div class="chips"><span class="chip">Room DB</span><span class="chip">Repository Pattern</span><span class="chip">Kotlin Serialization</span></div></article>
+            <article class="tech-group"><h3>Network / Device</h3><div class="chips"><span class="chip">Retrofit</span><span class="chip">OkHttp</span><span class="chip">Calendar Provider</span><span class="chip">ASR</span><span class="chip">TTS</span></div></article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="slide accent-farm combo-slide">
+      <header class="slide-head"><h2 class="slide-title">Meer's Farm</h2><p class="slide-meta">Smart Farm Control Platform</p></header>
+      <div class="hero-slide">
+        <article class="hero-copy">
+          <p class="kicker">Project Overview</p>
+          <h2>Meer's Farm</h2>
+          <p>센서 데이터, 로봇 순찰, 병해충 탐지, 운영 리포트를 하나의 흐름으로 연결한 스마트팜 통합 관제 웹 서비스입니다. 조회에서 끝나지 않고 상태 확인 이후 원인 파악과 제어 액션까지 이어지도록 구성했습니다.</p>
+        </article>
+        <aside class="snapshot">
+          <p class="kicker">Project Snapshot</p>
+          <div class="stat"><strong>React</strong><span>SPA UI Flow</span></div>
+          <div class="stat"><strong>Django</strong><span>REST API</span></div>
+          <div class="stat"><strong>MQTT</strong><span>Sensor Update</span></div>
+          <div class="stat"><strong>Report</strong><span>Image + Log Linkage</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide accent-farm feature-slide">
+      <header class="slide-head"><h2 class="slide-title">문제 정의 · 핵심 기능</h2><p class="slide-meta">Meer's Farm</p></header>
+      <div class="two-col">
+        <article class="card"><h3>문제 정의</h3><p>농부가 병해충 여부와 식물 상태를 직접 확인해야 하는 부담을 줄이고, 로봇 순찰과 분석 결과를 짧은 시간 안에 이해할 수 있게 하는 데 초점을 맞췄습니다.</p></article>
+        <article class="card"><h3>핵심 구현 포인트</h3><p>대시보드, 농장 상세, 로봇 제어, 이미지 갤러리, 운영 리포트를 하나의 서비스 흐름으로 연결했습니다.</p></article>
+      </div>
+      <div class="four-col section-gap">
+        <article class="card"><h3>통합 대시보드</h3><p>전체 농장 보기와 개별 농장 보기를 나누어 온도, 습도, 조도, pH, NPK, 위험도 데이터를 빠르게 비교할 수 있게 했습니다.</p></article>
+        <article class="card"><h3>농장/섹터 관리</h3><p>행, 열, 층수 기반 구조 데이터와 자동화 임계값을 함께 다루고 섹터 상태가 상위 대시보드에 반영되도록 설계했습니다.</p></article>
+        <article class="card"><h3>로봇 제어</h3><p>로봇 등록, 상세 조회, 모드 전환, 정지, 복귀, 스케줄 타임라인까지 연결해 관제 기능을 강화했습니다.</p></article>
+        <article class="card"><h3>이미지/리포트 연계</h3><p>병해충 이미지와 리포트를 시간 기준으로 매칭해 어떤 문제가 언제 발생했는지 함께 확인할 수 있게 구성했습니다.</p></article>
+      </div>
+    </section>
+
+    <section class="slide accent-farm">
+      <header class="slide-head"><h2 class="slide-title">화면구성</h2><p class="slide-meta">Meer's Farm</p></header>
+      <div class="screen-layout">
+        <figure class="image-frame"><img src="./meer's_farm-screenshots/dashboard_all_cell_active.png" alt="Meer's Farm 대시보드 화면"></figure>
+        <aside class="screen-copy">
+          <p>전체 농장 기준으로 셀 상태가 활성화된 대시보드 화면입니다.</p>
+          <ul>
+            <li>전체 농장 단위 모니터링 화면</li>
+            <li>상위 레벨에서 이상 징후를 먼저 파악</li>
+            <li>운영 판단의 출발점이 되는 화면</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide accent-farm">
+      <header class="slide-head"><h2 class="slide-title">아키텍처</h2><p class="slide-meta">Meer's Farm</p></header>
+      <div class="architecture-layout">
+        <figure class="image-frame"><img src="./meer's_farm-screenshots/meersfarm_architecture_overview.png" alt="Meer's Farm 아키텍처"></figure>
+        <aside class="architecture-copy">
+          <p>Farm 현장의 라즈베리파이와 로봇에서 발생한 센서/이미지 데이터를 MQTT와 저장소 흐름으로 중앙 서버에 모으고, 사용자는 웹 페이지에서 상태와 리포트를 확인하는 구조입니다.</p>
+          <div><h3>Farm Edge · Robot</h3><p>라즈베리파이, 센서, 카메라, 로봇암, S3, GPU 서버의 VLM 처리 흐름을 웹 관제로 연결했습니다.</p></div>
+          <div><h3>Central Web</h3><p>EC2 중앙 서버에서 Django, DB, MQTT 브로커, React 웹 서버를 운영해 센서 상태와 분석 결과를 반영합니다.</p></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide accent-farm work-slide">
+      <header class="slide-head"><h2 class="slide-title">프로젝트 수행 정리</h2><p class="slide-meta">Meer's Farm</p></header>
+      <div class="work-layout">
+        <section class="work-section role-section">
+          <h3 class="work-section-title">역할</h3>
+          <div class="four-col">
+            <article class="card"><h3>API 설계 및 구현</h3><p>Django REST Framework 기반 농장, 섹터, 로봇, 리포트 API를 설계했습니다.</p></article>
+            <article class="card"><h3>대시보드/리포트 UI</h3><p>React 기반 대시보드, 리포트, 갤러리, 로봇 상세 화면을 구현했습니다.</p></article>
+            <article class="card"><h3>인증 및 권한 처리</h3><p>JWT 로그인, 회원가입, 사용자 설정과 접근 제어 로직을 적용했습니다.</p></article>
+            <article class="card"><h3>데이터 연결 구조</h3><p>병해충 이미지, 리포트, 로그를 시간 기준으로 연결했습니다.</p></article>
+          </div>
+        </section>
+        <section class="work-section trouble-section">
+          <h3 class="work-section-title">트러블슈팅</h3>
+          <div class="timeline">
+            <article class="timeline-item"><span class="timeline-index">01</span><div><h3>배포 환경 파일명 오류 해결</h3><p>Windows 로컬과 Linux 배포 환경의 파일명 대소문자 차이를 확인하고 CSS 파일명과 import 경로를 소문자 기준으로 통일했습니다.</p></div></article>
+            <article class="timeline-item"><span class="timeline-index">02</span><div><h3>더미 데이터에서 실제 API로 전환</h3><p>farmId/id, createdAt/create_time, NPK 객체 구조 차이를 화면용 공통 포맷으로 정규화했습니다.</p></div></article>
+            <article class="timeline-item"><span class="timeline-index">03</span><div><h3>클릭 뎁스를 줄인 UI 재설계</h3><p>대시보드와 상단 메뉴에 농장/로봇 상세 이동, 갤러리 바로가기, 농장 추가 진입점을 배치했습니다.</p></div></article>
+          </div>
+        </section>
+        <section class="work-section tech-section">
+          <h3 class="work-section-title">사용기술</h3>
+          <div class="tech-layout">
+            <article class="tech-group"><h3>Frontend / Web UI</h3><div class="chips"><span class="chip">React</span><span class="chip">Vite</span><span class="chip">React Router</span><span class="chip">Axios</span><span class="chip">Tailwind CSS</span></div></article>
+            <article class="tech-group"><h3>Backend / API / Auth</h3><div class="chips"><span class="chip">Django</span><span class="chip">Django REST Framework</span><span class="chip">Simple JWT</span><span class="chip">SQLite</span></div></article>
+            <article class="tech-group"><h3>Data / Robot / Infra</h3><div class="chips"><span class="chip">MQTT</span><span class="chip">S3</span><span class="chip">GPU Server / VLM</span><span class="chip">EC2</span></div></article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -259,6 +259,7 @@
       line-height: 1.65;
       font-weight: 650;
       color: var(--text);
+      white-space: pre-line;
     }
 
     .profile-meta {
@@ -588,8 +589,47 @@
       gap: 12px;
     }
 
+    .project-heading {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
     .project-title {
       font-size: 1.35rem;
+    }
+
+    .award-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 30px;
+      padding: 0 10px;
+      border: 1px solid rgba(150, 88, 42, 0.35);
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(224, 157, 93, 0.18), rgba(132, 74, 36, 0.12));
+      color: #6b3c1d;
+      font-size: 0.78rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .award-badge svg {
+      width: 16px;
+      height: 16px;
+      flex: 0 0 auto;
+    }
+
+    .award-badge .medal-ribbon {
+      fill: #7b8794;
+    }
+
+    .award-badge .medal-disc {
+      fill: #b87333;
+      stroke: #6b3c1d;
+      stroke-width: 1.4;
     }
 
     .chip,
@@ -620,6 +660,50 @@
       margin-bottom: 16px;
     }
 
+    .competency-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .competency-card {
+      display: grid;
+      gap: 12px;
+      min-height: 184px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .competency-no {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 30px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fafc;
+      color: var(--accent-2);
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .competency-title {
+      margin: 0;
+      font-size: 1.04rem;
+      line-height: 1.35;
+    }
+
+    .competency-copy {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.68;
+    }
+
     body[data-theme="night"] {
       --bg: #0f141d;
       --bg-deep: #080b10;
@@ -636,6 +720,7 @@
 
     body[data-theme="night"] .glass,
     body[data-theme="night"] .project-card,
+    body[data-theme="night"] .competency-card,
     body[data-theme="night"] .hero-main,
     body[data-theme="night"] .hero-side {
       background: var(--surface);
@@ -644,6 +729,7 @@
     }
 
     body[data-theme="night"] .chip,
+    body[data-theme="night"] .competency-no,
     body[data-theme="night"] .profile-photo,
     body[data-theme="night"] .profile-icon,
     body[data-theme="night"] .lang-button,
@@ -660,8 +746,15 @@
       color: #0f172a;
     }
 
+    body[data-theme="night"] .award-badge {
+      border-color: rgba(224, 157, 93, 0.48);
+      background: rgba(180, 103, 48, 0.18);
+      color: #f1c299;
+    }
+
     @media (max-width: 960px) {
-      .project-grid {
+      .project-grid,
+      .competency-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -710,6 +803,7 @@
 
       .hero-main,
       .hero-side,
+      .competency-card,
       .project-card {
         box-shadow: none;
         border-color: #d8deea;
@@ -745,6 +839,7 @@
       }
 
       .hero-summary,
+      .competency-copy,
       .project-copy,
       .profile-row,
       .profile-link-inline {
@@ -769,7 +864,8 @@
         font-size: 20pt;
       }
 
-      .project-grid {
+      .project-grid,
+      .competency-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 0.12in;
       }
@@ -837,7 +933,8 @@
         <p class="eyebrow" id="profile-eyebrow">Portfolio Profile</p>
         <h1 class="profile-name" id="profile-name">손지유</h1>
         <p class="profile-subtitle" id="profile-subtitle">sonjiyu</p>
-        <p class="profile-tagline" id="profile-tagline">주어진 환경을 빠르게 파악하고, 필요한 역할을 수행해 결과로 연결하는 개발자</p>
+        <p class="profile-tagline" id="profile-tagline">AI와 함께 주어진 환경을 빠르게 파악하고,
+필요한 역할을 수행해 결과로 연결하는 개발자</p>
         <div class="profile-links">
           <a class="profile-link-inline" href="https://github.com/guson401" target="_blank" rel="noreferrer">
             <span class="profile-icon" aria-hidden="true">
@@ -856,7 +953,50 @@
             </span>
             <span>sonjiyu123@gmail.com</span>
           </a>
+          <a class="profile-link-inline" href="./portfolio-pdf.html">
+            <span class="profile-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <path d="M14 2v6h6"/>
+                <path d="M8 13h8"/>
+                <path d="M8 17h5"/>
+              </svg>
+            </span>
+            <span id="pdf-link-label">PDF 버전</span>
+          </a>
         </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="competencies-title">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title" id="competencies-title">Core Competencies</h2>
+        </div>
+        <p class="section-note" id="competencies-note">프로젝트에서 반복적으로 드러난 주된 역량만 압축했습니다.</p>
+      </div>
+
+      <div class="competency-grid">
+        <article class="competency-card">
+          <span class="competency-no">01</span>
+          <h3 class="competency-title" id="competency-title-1">AI 기반 빠른 도메인 적응</h3>
+          <p class="competency-copy" id="competency-copy-1">낯선 요구사항과 코드 흐름을 AI와 함께 빠르게 구조화하고, 필요한 역할과 구현 범위를 정리합니다.</p>
+        </article>
+        <article class="competency-card">
+          <span class="competency-no">02</span>
+          <h3 class="competency-title" id="competency-title-2">웹·앱·AIoT 연결 구현</h3>
+          <p class="competency-copy" id="competency-copy-2">React, Android, Spring Boot, Django, MQTT 등 서로 다른 환경을 서비스 흐름 안에서 연결합니다.</p>
+        </article>
+        <article class="competency-card">
+          <span class="competency-no">03</span>
+          <h3 class="competency-title" id="competency-title-3">사용자 흐름 중심 화면 설계</h3>
+          <p class="competency-copy" id="competency-copy-3">인증, 대시보드, 리포트, 캘린더처럼 실제 사용자가 이동하는 경로를 기준으로 화면을 구성합니다.</p>
+        </article>
+        <article class="competency-card">
+          <span class="competency-no">04</span>
+          <h3 class="competency-title" id="competency-title-4">원인 중심 트러블슈팅</h3>
+          <p class="competency-copy" id="competency-copy-4">배포 환경 차이, 인증/세션, API 데이터 불일치, 클릭 뎁스 문제를 원인 단위로 정리하고 개선합니다.</p>
+        </article>
       </div>
     </section>
 
@@ -884,7 +1024,18 @@
         <a class="project-card dailylog" href="./dailylog-portfolio/index.html">
           <div class="project-visual" aria-hidden="true"></div>
           <div class="project-body">
-            <h3 class="project-title">DailyLog</h3>
+            <div class="project-heading">
+              <h3 class="project-title">DailyLog</h3>
+              <span class="award-badge">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path class="medal-ribbon" d="M8.2 3h7.6l-2.4 5.2h-2.8L8.2 3Z"/>
+                  <circle class="medal-disc" cx="12" cy="14.5" r="5.3"/>
+                  <path d="M10.3 14.4h1.7c.9 0 1.4.43 1.4 1.08 0 .68-.57 1.12-1.46 1.12-.75 0-1.28-.26-1.66-.72" fill="none" stroke="#fff7ed" stroke-width="1.35" stroke-linecap="round"/>
+                  <path d="M10.6 12.3h2.58l-1.52 1.62" fill="none" stroke="#fff7ed" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span id="dailylog-award-label">동메달 · 3등 수상</span>
+              </span>
+            </div>
             <p class="project-copy" id="dailylog-copy">하루 기록이 번거롭거나 어려움을 겪는 사람들을 위한 대화형 일기 작성 앱 프로젝트입니다.</p>
             <div class="chip-row">
               <span class="chip">Kotlin</span>
@@ -915,33 +1066,69 @@
         profileEyebrow: "Portfolio Profile",
         profileName: "손지유",
         profileSubtitle: "sonjiyu",
-        profileTagline: "주어진 환경을 빠르게 파악하고, 필요한 역할을 수행해 결과로 연결하는 개발자",
+        profileTagline: "AI와 함께 주어진 환경을 빠르게 파악하고,\n필요한 역할을 수행해 결과로 연결하는 개발자",
+        pdfLinkLabel: "PDF 버전",
+        competenciesTitle: "Core Competencies",
+        competenciesNote: "프로젝트에서 반복적으로 드러난 주된 역량만 압축했습니다.",
+        competencyTitle1: "AI 기반 빠른 도메인 적응",
+        competencyCopy1: "낯선 요구사항과 코드 흐름을 AI와 함께 빠르게 구조화하고, 필요한 역할과 구현 범위를 정리합니다.",
+        competencyTitle2: "웹·앱·AIoT 연결 구현",
+        competencyCopy2: "React, Android, Spring Boot, Django, MQTT 등 서로 다른 환경을 서비스 흐름 안에서 연결합니다.",
+        competencyTitle3: "사용자 흐름 중심 화면 설계",
+        competencyCopy3: "인증, 대시보드, 리포트, 캘린더처럼 실제 사용자가 이동하는 경로를 기준으로 화면을 구성합니다.",
+        competencyTitle4: "원인 중심 트러블슈팅",
+        competencyCopy4: "배포 환경 차이, 인증/세션, API 데이터 불일치, 클릭 뎁스 문제를 원인 단위로 정리하고 개선합니다.",
         projectsTitle: "Projects",
         omnikitCopy: "OnRobot Korea와 함께한 연계 프로젝트로, STT를 이용해 협동 로봇팔을 제어하고 기존 티치펜던트를 대체할 웹 콘솔을 구현했습니다.",
         farmCopy: "병해충 감시 자율주행로봇과 이와 연동된 웹서비스로 농부의 노동시간을 줄여주는 AIoT 프로젝트입니다.",
         dailylogCopy: "하루 기록이 번거롭거나 어려움을 겪는 사람들을 위한 대화형 일기 작성 앱 프로젝트입니다.",
+        dailylogAwardLabel: "동메달 · 3등 수상",
         themeLabels: { day: "주간", night: "야간" },
       },
       en: {
         profileEyebrow: "Portfolio Profile",
         profileName: "Son Jiyu",
         profileSubtitle: "sonjiyu",
-        profileTagline: "A developer who quickly understands the environment, takes on the needed role, and turns it into results.",
+        profileTagline: "A developer who works with AI to quickly understand the environment,\ntake on the needed role, and turn it into results.",
+        pdfLinkLabel: "PDF Version",
+        competenciesTitle: "Core Competencies",
+        competenciesNote: "A focused summary of the strengths repeated across the projects.",
+        competencyTitle1: "AI-assisted domain adaptation",
+        competencyCopy1: "I use AI to quickly structure unfamiliar requirements and code flows, then define the role and implementation scope.",
+        competencyTitle2: "Web, app, and AIoT integration",
+        competencyCopy2: "I connect React, Android, Spring Boot, Django, MQTT, and other stacks into a single service flow.",
+        competencyTitle3: "User-flow oriented UI design",
+        competencyCopy3: "I design screens around real user paths such as authentication, dashboards, reports, and calendars.",
+        competencyTitle4: "Root-cause troubleshooting",
+        competencyCopy4: "I resolve deployment differences, auth/session issues, API data mismatches, and click-depth problems by tracing causes.",
         projectsTitle: "Projects",
         omnikitCopy: "A collaboration project with OnRobot Korea that uses STT to control a collaborative robot arm and implements a web console intended to replace the traditional teach pendant.",
         farmCopy: "An AIoT project that reduces farmers' labor time through a pest-monitoring autonomous robot and a connected web service.",
         dailylogCopy: "A conversational diary-writing app project for people who find daily journaling inconvenient or difficult.",
+        dailylogAwardLabel: "Bronze · 3rd Place",
         themeLabels: { day: "Day", night: "Night" },
       },
       ja: {
         profileEyebrow: "Portfolio Profile",
         profileName: "ソン・ジユ",
         profileSubtitle: "sonjiyu",
-        profileTagline: "与えられた環境を素早く把握し、必要な役割を担って成果につなげる開発者",
+        profileTagline: "AIとともに与えられた環境を素早く把握し、\n必要な役割を担って成果につなげる開発者",
+        pdfLinkLabel: "PDF版",
+        competenciesTitle: "Core Competencies",
+        competenciesNote: "各プロジェクトで繰り返し発揮した主要な強みだけをまとめました。",
+        competencyTitle1: "AIを活用した素早いドメイン適応",
+        competencyCopy1: "初めての要件やコードの流れをAIとともに素早く整理し、必要な役割と実装範囲を定義します。",
+        competencyTitle2: "Web・アプリ・AIoTの連携実装",
+        competencyCopy2: "React、Android、Spring Boot、Django、MQTTなど異なる環境をサービスの流れとしてつなぎます。",
+        competencyTitle3: "ユーザー動線中心の画面設計",
+        competencyCopy3: "認証、ダッシュボード、レポート、カレンダーなど実際の利用経路を基準に画面を構成します。",
+        competencyTitle4: "原因に基づくトラブルシューティング",
+        competencyCopy4: "デプロイ環境差、認証/セッション、APIデータ不一致、クリック階層の問題を原因から整理して改善します。",
         projectsTitle: "Projects",
         omnikitCopy: "OnRobot Koreaとの連携プロジェクトとして、STTで協働ロボットアームを制御し、従来のティーチペンダントを代替するWebコンソールを実装しました。",
         farmCopy: "病害虫監視の自律走行ロボットと連動Webサービスにより、農家の労働時間を減らすAIoTプロジェクトです。",
         dailylogCopy: "毎日の記録が面倒だったり難しかったりする人のための会話型日記作成アプリプロジェクトです。",
+        dailylogAwardLabel: "銅賞 · 3位受賞",
         themeLabels: { day: "昼間", night: "夜間" },
       },
     };
@@ -951,10 +1138,22 @@
       "profile-name": "profileName",
       "profile-subtitle": "profileSubtitle",
       "profile-tagline": "profileTagline",
+      "pdf-link-label": "pdfLinkLabel",
+      "competencies-title": "competenciesTitle",
+      "competencies-note": "competenciesNote",
+      "competency-title-1": "competencyTitle1",
+      "competency-copy-1": "competencyCopy1",
+      "competency-title-2": "competencyTitle2",
+      "competency-copy-2": "competencyCopy2",
+      "competency-title-3": "competencyTitle3",
+      "competency-copy-3": "competencyCopy3",
+      "competency-title-4": "competencyTitle4",
+      "competency-copy-4": "competencyCopy4",
       "projects-title": "projectsTitle",
       "omnikit-copy": "omnikitCopy",
       "farm-copy": "farmCopy",
       "dailylog-copy": "dailylogCopy",
+      "dailylog-award-label": "dailylogAwardLabel",
     };
 
     let currentLang = "ko";

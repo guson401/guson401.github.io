@@ -317,10 +317,27 @@ body::before {
 
 .screen-item.is-active { background: linear-gradient(135deg, rgba(109, 132, 81, 0.96), rgba(70, 88, 51, 0.96)); color: #f6f8ef; border-color: transparent; }
 
-.screen-preview-body { grid-template-columns: 1fr; align-items: start; margin-top: 20px; gap: 22px; }
+.screen-preview-body {
+  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
+  align-items: stretch;
+  margin-top: 20px;
+  gap: 22px;
+}
+
 .screen-image-frame { padding: 14px; border-radius: 30px; background: linear-gradient(180deg, #4d5f39, #28311f); box-shadow: 0 20px 48px rgba(37, 47, 26, 0.24); }
 .screen-image-frame img { display: block; width: 100%; height: auto; border-radius: 22px; background: #eef1e3; }
-.screen-copy { max-width: 860px; }
+.screen-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: none;
+  padding: 20px;
+  border: 1px solid rgba(70, 88, 51, 0.12);
+  border-radius: 22px;
+  background: rgba(255, 255, 252, 0.68);
+}
+
+.screen-description { margin-top: 0; }
 
 .flat-list { list-style: none; padding: 0; margin: 16px 0 0; }
 .screen-points li { padding: 11px 14px; border-radius: 16px; background: rgba(236, 241, 225, 0.82); color: var(--muted); }
@@ -527,6 +544,12 @@ button.stack-chip:hover {
   .hero, .intro-grid, .feature-grid, .stack-grid { grid-template-columns: 1fr; }
 }
 
+@media (max-width: 900px) {
+  .screen-preview-body {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 720px) {
   .page-shell { width: min(100% - 20px, 100%); padding-top: 12px; }
   .hero-copy, .hero-panel, .section-card, .feature-card, .screen-preview, .stack-card, .timeline-item, .closing-card, .architecture-card { padding: 22px 18px; border-radius: 24px; }
@@ -710,6 +733,11 @@ body::before {
   box-shadow: none;
 }
 
+.screen-copy {
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
 .screen-image-frame img {
   border-radius: 8px;
 }
@@ -793,6 +821,7 @@ body[data-theme="night"] .hero-panel,
 body[data-theme="night"] .section-card,
 body[data-theme="night"] .feature-card,
 body[data-theme="night"] .screen-preview,
+body[data-theme="night"] .screen-copy,
 body[data-theme="night"] .stack-card,
 body[data-theme="night"] .stack-shell,
 body[data-theme="night"] .stack-reason-panel,
@@ -806,6 +835,7 @@ body[data-theme="theme"] .hero-panel,
 body[data-theme="theme"] .section-card,
 body[data-theme="theme"] .feature-card,
 body[data-theme="theme"] .screen-preview,
+body[data-theme="theme"] .screen-copy,
 body[data-theme="theme"] .stack-card,
 body[data-theme="theme"] .stack-shell,
 body[data-theme="theme"] .stack-reason-panel,
@@ -863,6 +893,72 @@ body[data-theme="theme"] .timeline-index {
   background: var(--accent-strong);
   border-color: transparent;
   color: #fff;
+}
+
+body[data-theme="night"] .stack-group[open] > summary {
+  background: linear-gradient(135deg, rgba(196, 221, 156, 0.16), rgba(196, 221, 156, 0.06));
+  border-bottom-color: var(--line);
+  color: var(--accent-strong);
+}
+
+body[data-theme="night"] .stack-chip.is-highlight:not(.is-active) {
+  background: rgba(196, 221, 156, 0.14);
+  border-color: rgba(196, 221, 156, 0.28);
+  color: var(--accent-strong);
+}
+
+body[data-theme="night"] .stack-chip.is-active {
+  background: var(--accent-strong);
+  border-color: transparent;
+  color: #10170e;
+}
+
+body[data-theme="theme"] .stack-group[open] > summary {
+  background: rgba(246, 249, 240, 0.82);
+  border-bottom-color: var(--line);
+  color: var(--accent-strong);
+}
+
+.stack-section .stack-shell {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: none;
+  overflow: hidden;
+  padding: 0;
+}
+
+.stack-section .stack-group + .stack-group {
+  border-top-color: var(--line);
+}
+
+.stack-section .stack-reason-display {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.stack-section .stack-reason-panel {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  overflow: visible;
+}
+
+body[data-theme="night"] .stack-section .stack-shell,
+body[data-theme="theme"] .stack-section .stack-shell {
+  background: var(--surface);
+  border-color: var(--line);
+  box-shadow: var(--shadow);
+}
+
+body[data-theme="night"] .stack-section .stack-reason-panel,
+body[data-theme="theme"] .stack-section .stack-reason-panel {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 @media print {
