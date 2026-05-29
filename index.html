@@ -252,6 +252,15 @@
       color: var(--muted);
     }
 
+    .profile-tagline {
+      margin: 18px 0 0;
+      max-width: 680px;
+      font-size: clamp(1.08rem, 1.5vw, 1.34rem);
+      line-height: 1.65;
+      font-weight: 650;
+      color: var(--text);
+    }
+
     .profile-meta {
       display: grid;
       gap: 12px;
@@ -422,16 +431,6 @@
       color: var(--accent-2);
     }
 
-    .footer-note {
-      margin-top: 18px;
-      padding: 18px 20px;
-      border: 1px solid rgba(16, 16, 16, 0.08);
-      border-radius: var(--radius-lg);
-      color: var(--muted);
-      background: rgba(255, 255, 255, 0.58);
-      line-height: 1.7;
-    }
-
     @media (max-width: 960px) {
       .hero,
       .project-grid {
@@ -519,8 +518,7 @@
     }
 
     .glass,
-    .project-card,
-    .footer-note {
+    .project-card {
       background: #fff;
       border-color: var(--line);
       box-shadow: var(--shadow);
@@ -597,8 +595,7 @@
     .chip,
     .lang-button,
     .theme-toggle,
-    .profile-icon,
-    .footer-note {
+    .profile-icon {
       border-radius: 8px;
     }
 
@@ -639,7 +636,6 @@
 
     body[data-theme="night"] .glass,
     body[data-theme="night"] .project-card,
-    body[data-theme="night"] .footer-note,
     body[data-theme="night"] .hero-main,
     body[data-theme="night"] .hero-side {
       background: var(--surface);
@@ -687,8 +683,7 @@
       }
 
       .language-switch,
-      .theme-switch,
-      .footer-note {
+      .theme-switch {
         display: none !important;
       }
 
@@ -840,9 +835,9 @@
           <button class="theme-toggle is-active" type="button" aria-label="테마: 주간"></button>
         </div>
         <p class="eyebrow" id="profile-eyebrow">Portfolio Profile</p>
-        <h1 class="profile-name">손지유</h1>
-        <p class="profile-subtitle">sonjiyu</p>
-        <p class="hero-summary" id="hero-summary">프로젝트 포트폴리오를 모아 둔 개인 허브 페이지입니다. 상단에서 프로필과 연락처를 바로 확인하고, 아래에서 프로젝트별 상세 페이지로 이동할 수 있도록 구성했습니다.</p>
+        <h1 class="profile-name" id="profile-name">손지유</h1>
+        <p class="profile-subtitle" id="profile-subtitle">sonjiyu</p>
+        <p class="profile-tagline" id="profile-tagline">주어진 환경을 빠르게 파악하고, 필요한 역할을 수행해 결과로 연결하는 개발자</p>
         <div class="profile-links">
           <a class="profile-link-inline" href="https://github.com/guson401" target="_blank" rel="noreferrer">
             <span class="profile-icon" aria-hidden="true">
@@ -912,54 +907,54 @@
           </div>
         </a>
       </div>
-
-      <div class="footer-note">
-        <span id="footer-note">이후 프로젝트를 추가할 때는 이 카드 구조를 복사해서 링크와 텍스트만 교체하면 됩니다.</span>
-      </div>
     </section>
   </main>
   <script>
     const rootTranslations = {
       ko: {
         profileEyebrow: "Portfolio Profile",
-        heroSummary: "프로젝트 포트폴리오를 모아 둔 개인 허브 페이지입니다. 상단에서 프로필과 연락처를 바로 확인하고, 아래에서 프로젝트별 상세 페이지로 이동할 수 있도록 구성했습니다.",
+        profileName: "손지유",
+        profileSubtitle: "sonjiyu",
+        profileTagline: "주어진 환경을 빠르게 파악하고, 필요한 역할을 수행해 결과로 연결하는 개발자",
         projectsTitle: "Projects",
         omnikitCopy: "OnRobot Korea와 함께한 연계 프로젝트로, STT를 이용해 협동 로봇팔을 제어하고 기존 티치펜던트를 대체할 웹 콘솔을 구현했습니다.",
         farmCopy: "병해충 감시 자율주행로봇과 이와 연동된 웹서비스로 농부의 노동시간을 줄여주는 AIoT 프로젝트입니다.",
         dailylogCopy: "하루 기록이 번거롭거나 어려움을 겪는 사람들을 위한 대화형 일기 작성 앱 프로젝트입니다.",
-        footerNote: "이후 프로젝트를 추가할 때는 이 카드 구조를 복사해서 링크와 텍스트만 교체하면 됩니다.",
         themeLabels: { day: "주간", night: "야간" },
       },
       en: {
         profileEyebrow: "Portfolio Profile",
-        heroSummary: "This is a personal hub page that gathers project portfolios in one place. The top area shows profile and contact information, and the section below links to each project page.",
+        profileName: "Son Jiyu",
+        profileSubtitle: "sonjiyu",
+        profileTagline: "A developer who quickly understands the environment, takes on the needed role, and turns it into results.",
         projectsTitle: "Projects",
         omnikitCopy: "A collaboration project with OnRobot Korea that uses STT to control a collaborative robot arm and implements a web console intended to replace the traditional teach pendant.",
         farmCopy: "An AIoT project that reduces farmers' labor time through a pest-monitoring autonomous robot and a connected web service.",
         dailylogCopy: "A conversational diary-writing app project for people who find daily journaling inconvenient or difficult.",
-        footerNote: "When you add another project later, you can reuse this card structure and only replace the link and text.",
         themeLabels: { day: "Day", night: "Night" },
       },
       ja: {
         profileEyebrow: "Portfolio Profile",
-        heroSummary: "プロジェクトポートフォリオを一か所にまとめた個人ハブページです。上部ではプロフィールと連絡先を確認でき、下部から各プロジェクトページへ移動できます。",
+        profileName: "ソン・ジユ",
+        profileSubtitle: "sonjiyu",
+        profileTagline: "与えられた環境を素早く把握し、必要な役割を担って成果につなげる開発者",
         projectsTitle: "Projects",
         omnikitCopy: "OnRobot Koreaとの連携プロジェクトとして、STTで協働ロボットアームを制御し、従来のティーチペンダントを代替するWebコンソールを実装しました。",
         farmCopy: "病害虫監視の自律走行ロボットと連動Webサービスにより、農家の労働時間を減らすAIoTプロジェクトです。",
         dailylogCopy: "毎日の記録が面倒だったり難しかったりする人のための会話型日記作成アプリプロジェクトです。",
-        footerNote: "今後プロジェクトを追加する場合は、このカード構造を再利用してリンクとテキストだけを差し替えれば大丈夫です。",
         themeLabels: { day: "昼間", night: "夜間" },
       },
     };
 
     const rootBindings = {
       "profile-eyebrow": "profileEyebrow",
-      "hero-summary": "heroSummary",
+      "profile-name": "profileName",
+      "profile-subtitle": "profileSubtitle",
+      "profile-tagline": "profileTagline",
       "projects-title": "projectsTitle",
       "omnikit-copy": "omnikitCopy",
       "farm-copy": "farmCopy",
       "dailylog-copy": "dailylogCopy",
-      "footer-note": "footerNote",
     };
 
     let currentLang = "ko";
