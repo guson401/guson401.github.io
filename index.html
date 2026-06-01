@@ -730,23 +730,24 @@
       margin-bottom: 16px;
     }
 
-    .competency-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-
     .certification-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
     }
 
-    .competency-card {
+    .tech-stack-grid {
       display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .tech-stack-card {
+      display: grid;
+      align-content: start;
       gap: 12px;
-      min-height: 184px;
-      padding: 20px;
+      min-height: 220px;
+      padding: 18px;
       border: 1px solid var(--line);
       border-radius: 12px;
       background: #fff;
@@ -780,12 +781,6 @@
       font-weight: 900;
     }
 
-    .competency-title {
-      margin: 0;
-      font-size: 1.04rem;
-      line-height: 1.35;
-    }
-
     .certification-title {
       margin: 0;
       color: var(--accent-2);
@@ -793,11 +788,39 @@
       line-height: 1.35;
     }
 
-    .competency-copy {
+    .tech-category {
+      margin: 0;
+      color: var(--accent-2);
+      font-size: 1.02rem;
+      line-height: 1.35;
+    }
+
+    .tech-card-copy {
       margin: 0;
       color: var(--muted);
-      font-size: 0.94rem;
-      line-height: 1.68;
+      font-size: 0.86rem;
+      line-height: 1.62;
+    }
+
+    .tech-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tech-chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 9px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fafc;
+      color: var(--accent-2);
+      font-size: 0.75rem;
+      font-weight: 800;
+      line-height: 1.2;
+      overflow-wrap: anywhere;
     }
 
     body[data-theme="night"] {
@@ -816,7 +839,7 @@
 
     body[data-theme="night"] .glass,
     body[data-theme="night"] .project-card,
-    body[data-theme="night"] .competency-card,
+    body[data-theme="night"] .tech-stack-card,
     body[data-theme="night"] .certification-card,
     body[data-theme="night"] .hero-main,
     body[data-theme="night"] .hero-side {
@@ -826,6 +849,7 @@
     }
 
     body[data-theme="night"] .chip,
+    body[data-theme="night"] .tech-chip,
     body[data-theme="night"] .competency-no,
     body[data-theme="night"] .profile-photo,
     body[data-theme="night"] .profile-icon,
@@ -851,7 +875,7 @@
 
     @media (max-width: 960px) {
       .project-grid,
-      .competency-grid,
+      .tech-stack-grid,
       .certification-grid {
         grid-template-columns: 1fr;
       }
@@ -901,7 +925,7 @@
 
       .hero-main,
       .hero-side,
-      .competency-card,
+      .tech-stack-card,
       .certification-card,
       .project-card {
         box-shadow: none;
@@ -938,7 +962,7 @@
       }
 
       .hero-summary,
-      .competency-copy,
+      .tech-card-copy,
       .project-copy,
       .profile-row,
       .education-item,
@@ -976,14 +1000,24 @@
       }
 
       .project-grid,
-      .competency-grid,
+      .tech-stack-grid,
       .certification-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 0.12in;
       }
 
+      .tech-stack-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 0.08in;
+      }
+
       .certification-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .tech-stack-card {
+        min-height: 1.45in;
+        padding: 0.1in;
       }
 
       .project-visual {
@@ -1063,13 +1097,13 @@
         <div class="theme-switch" aria-label="Theme switcher">
           <button class="theme-toggle is-active" type="button" aria-label="테마: 주간"></button>
         </div>
-        <p class="eyebrow" id="profile-eyebrow">Portfolio Profile</p>
+        <p class="eyebrow" id="profile-eyebrow">포트폴리오 프로필</p>
         <h1 class="profile-name" id="profile-name">손지유</h1>
         <p class="profile-subtitle" id="profile-subtitle">sonjiyu</p>
         <p class="profile-tagline" id="profile-tagline">AI와 함께 주어진 환경을 빠르게 파악하고,
 필요한 역할을 수행해 결과로 연결하는 개발자</p>
         <div class="education-list" aria-labelledby="education-title">
-          <p class="meta-label" id="education-title">Education</p>
+          <p class="meta-label" id="education-title">교육</p>
           <article class="education-item">
             <span class="education-date" id="education-date-1">2025.02</span>
             <span class="education-desc" id="education-desc-1">조선대학교 첨단에너지공학과 졸업</span>
@@ -1082,41 +1116,10 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="competencies-title">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title" id="competencies-title">Core Competencies</h2>
-        </div>
-      </div>
-
-      <div class="competency-grid">
-        <article class="competency-card">
-          <span class="competency-no">01</span>
-          <h3 class="competency-title" id="competency-title-1">AI 기반 빠른 도메인 적응</h3>
-          <p class="competency-copy" id="competency-copy-1">낯선 요구사항과 코드 흐름을 AI와 함께 빠르게 구조화하고, 필요한 역할과 구현 범위를 정리합니다.</p>
-        </article>
-        <article class="competency-card">
-          <span class="competency-no">02</span>
-          <h3 class="competency-title" id="competency-title-2">웹·앱·AIoT 연결 구현</h3>
-          <p class="competency-copy" id="competency-copy-2">React, Android, Spring Boot, Django, MQTT 등 서로 다른 환경을 서비스 흐름 안에서 연결합니다.</p>
-        </article>
-        <article class="competency-card">
-          <span class="competency-no">03</span>
-          <h3 class="competency-title" id="competency-title-3">사용자 흐름 중심 화면 설계</h3>
-          <p class="competency-copy" id="competency-copy-3">인증, 대시보드, 리포트, 캘린더처럼 실제 사용자가 이동하는 경로를 기준으로 화면을 구성합니다.</p>
-        </article>
-        <article class="competency-card">
-          <span class="competency-no">04</span>
-          <h3 class="competency-title" id="competency-title-4">원인 중심 트러블슈팅</h3>
-          <p class="competency-copy" id="competency-copy-4">배포 환경 차이, 인증/세션, API 데이터 불일치, 클릭 뎁스 문제를 원인 단위로 정리하고 개선합니다.</p>
-        </article>
-      </div>
-    </section>
-
     <section class="section" aria-labelledby="certifications-title">
       <div class="section-head">
         <div>
-          <h2 class="section-title" id="certifications-title">Certifications</h2>
+          <h2 class="section-title" id="certifications-title">자격증</h2>
         </div>
       </div>
 
@@ -1132,10 +1135,76 @@
       </div>
     </section>
 
+    <section class="section" aria-labelledby="tech-stack-title">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title" id="tech-stack-title">기술 스택</h2>
+        </div>
+      </div>
+
+      <div class="tech-stack-grid">
+        <article class="tech-stack-card">
+          <span class="competency-no">01</span>
+          <h3 class="tech-category" id="tech-title-1">언어</h3>
+          <div class="tech-chip-row">
+            <span class="tech-chip">Python</span>
+            <span class="tech-chip">Java</span>
+            <span class="tech-chip">JavaScript</span>
+            <span class="tech-chip">TypeScript</span>
+            <span class="tech-chip">Kotlin</span>
+          </div>
+          <p class="tech-card-copy" id="tech-copy-1">웹 콘솔, 모바일 앱, AIoT 백엔드 구현에 맞춰 프로젝트별 언어를 선택해 사용했습니다.</p>
+        </article>
+        <article class="tech-stack-card">
+          <span class="competency-no">02</span>
+          <h3 class="tech-category" id="tech-title-2">프론트엔드 / 모바일</h3>
+          <div class="tech-chip-row">
+            <span class="tech-chip">React</span>
+            <span class="tech-chip">Vue</span>
+            <span class="tech-chip">Android</span>
+          </div>
+          <p class="tech-card-copy" id="tech-copy-2">React·Vue 기반 웹 화면과 Android 앱 화면을 실제 사용자 흐름에 맞춰 구성했습니다.</p>
+        </article>
+        <article class="tech-stack-card">
+          <span class="competency-no">03</span>
+          <h3 class="tech-category" id="tech-title-3">백엔드 / 에이피아이</h3>
+          <div class="tech-chip-row">
+            <span class="tech-chip">Spring Boot</span>
+            <span class="tech-chip">Django</span>
+          </div>
+          <p class="tech-card-copy" id="tech-copy-3">인증, 운영 API, 실시간 상태 반영, 분석 연동 흐름을 서버 계층에서 연결했습니다.</p>
+        </article>
+        <article class="tech-stack-card">
+          <span class="competency-no">04</span>
+          <h3 class="tech-category" id="tech-title-4">데이터 / 인프라</h3>
+          <div class="tech-chip-row">
+            <span class="tech-chip">PostgreSQL</span>
+            <span class="tech-chip">Redis</span>
+            <span class="tech-chip">Room DB</span>
+            <span class="tech-chip">SQLite</span>
+            <span class="tech-chip">Docker</span>
+            <span class="tech-chip">Jenkins</span>
+            <span class="tech-chip">Nginx</span>
+          </div>
+          <p class="tech-card-copy" id="tech-copy-4">데이터 저장, 세션/캐시, 배포와 실행 환경을 서비스 구조에 맞춰 정리했습니다.</p>
+        </article>
+        <article class="tech-stack-card">
+          <span class="competency-no">05</span>
+          <h3 class="tech-category" id="tech-title-5">에이아이 / 로봇 / 아이오티</h3>
+          <div class="tech-chip-row">
+            <span class="tech-chip">MQTT</span>
+            <span class="tech-chip">STT/TTS</span>
+            <span class="tech-chip">Three.js</span>
+          </div>
+          <p class="tech-card-copy" id="tech-copy-5">로봇 통신, 음성 명령, 3D 제어 화면 흐름을 연결했습니다.</p>
+        </article>
+      </div>
+    </section>
+
     <section class="section" aria-labelledby="projects-title">
       <div class="section-head">
         <div>
-          <h2 class="section-title" id="projects-title">Projects</h2>
+          <h2 class="section-title" id="projects-title">프로젝트</h2>
         </div>
       </div>
 
@@ -1173,8 +1242,6 @@
             <p class="project-copy" id="dailylog-copy">하루 기록이 번거롭거나 어려움을 겪는 사람들을 위한 대화형 일기 작성 앱 프로젝트입니다.</p>
             <div class="chip-row">
               <span class="chip">Kotlin</span>
-              <span class="chip">Jetpack Compose</span>
-              <span class="chip">Android</span>
             </div>
           </div>
         </a>
@@ -1202,12 +1269,12 @@
   <script>
     const rootTranslations = {
       ko: {
-        profileEyebrow: "Portfolio Profile",
+        profileEyebrow: "포트폴리오 프로필",
         profileName: "손지유",
         profileSubtitle: "sonjiyu",
         profileTagline: "AI와 함께 주어진 환경을 빠르게 파악하고,\n필요한 역할을 수행해 결과로 연결하는 개발자",
         profilePhotoAlt: "손지유 프로필 사진",
-        educationTitle: "Education",
+        educationTitle: "교육",
         educationDate1: "2025.02",
         educationDesc1: "조선대학교 첨단에너지공학과 졸업",
         educationDate2: "2026.06",
@@ -1215,19 +1282,21 @@
         pdfActionLabel: "PDF 버전 확인",
         languageSwitcherLabel: "언어 선택",
         themeSwitcherLabel: "테마 선택",
-        competenciesTitle: "Core Competencies",
-        competencyTitle1: "AI 기반 빠른 도메인 적응",
-        competencyCopy1: "낯선 요구사항과 코드 흐름을 AI와 함께 빠르게 구조화하고, 필요한 역할과 구현 범위를 정리합니다.",
-        competencyTitle2: "웹·앱·AIoT 연결 구현",
-        competencyCopy2: "React, Android, Spring Boot, Django, MQTT 등 서로 다른 환경을 서비스 흐름 안에서 연결합니다.",
-        competencyTitle3: "사용자 흐름 중심 화면 설계",
-        competencyCopy3: "인증, 대시보드, 리포트, 캘린더처럼 실제 사용자가 이동하는 경로를 기준으로 화면을 구성합니다.",
-        competencyTitle4: "원인 중심 트러블슈팅",
-        competencyCopy4: "배포 환경 차이, 인증/세션, API 데이터 불일치, 클릭 뎁스 문제를 원인 단위로 정리하고 개선합니다.",
-        certificationsTitle: "Certifications",
+        certificationsTitle: "자격증",
         certificationTitle1: "1종보통 운전면허",
         certificationTitle2: "소방안전관리자 1급",
-        projectsTitle: "Projects",
+        techStackTitle: "기술 스택",
+        techTitle1: "언어",
+        techCopy1: "웹 콘솔, 모바일 앱, AIoT 백엔드 구현에 맞춰 프로젝트별 언어를 선택해 사용했습니다.",
+        techTitle2: "프론트엔드 / 모바일",
+        techCopy2: "React·Vue 기반 웹 화면과 Android 앱 화면을 실제 사용자 흐름에 맞춰 구성했습니다.",
+        techTitle3: "백엔드 / 에이피아이",
+        techCopy3: "인증, 운영 API, 실시간 상태 반영, 분석 연동 흐름을 서버 계층에서 연결했습니다.",
+        techTitle4: "데이터 / 인프라",
+        techCopy4: "데이터 저장, 세션/캐시, 배포와 실행 환경을 서비스 구조에 맞춰 정리했습니다.",
+        techTitle5: "에이아이 / 로봇 / 아이오티",
+        techCopy5: "로봇 통신, 음성 명령, 3D 제어 화면 흐름을 연결했습니다.",
+        projectsTitle: "프로젝트",
         omnikitCopy: "OnRobot Korea와 함께한 연계 프로젝트로, STT를 이용해 협동 로봇팔을 제어하고 기존 티치펜던트를 대체할 웹 콘솔을 구현했습니다.",
         farmCopy: "병해충 감시 자율주행 로봇과 이와 연동된 웹 서비스로 농부의 노동시간을 줄여주는 AIoT 프로젝트입니다.",
         dailylogCopy: "하루 기록이 번거롭거나 어려움을 겪는 사람들을 위한 대화형 일기 작성 앱 프로젝트입니다.",
@@ -1248,18 +1317,20 @@
         pdfActionLabel: "View PDF",
         languageSwitcherLabel: "Language switcher",
         themeSwitcherLabel: "Theme switcher",
-        competenciesTitle: "Core Competencies",
-        competencyTitle1: "AI-assisted domain adaptation",
-        competencyCopy1: "I use AI to quickly structure unfamiliar requirements and code flows, then define the role and implementation scope.",
-        competencyTitle2: "Web, app, and AIoT integration",
-        competencyCopy2: "I connect React, Android, Spring Boot, Django, MQTT, and other stacks into a single service flow.",
-        competencyTitle3: "User-flow oriented UI design",
-        competencyCopy3: "I design screens around real user paths such as authentication, dashboards, reports, and calendars.",
-        competencyTitle4: "Root-cause troubleshooting",
-        competencyCopy4: "I resolve deployment differences, auth/session issues, API data mismatches, and click-depth problems by tracing causes.",
         certificationsTitle: "Certifications",
         certificationTitle1: "Class 1 Normal Driver's License",
         certificationTitle2: "Fire Safety Manager Level 1",
+        techStackTitle: "Tech Stack",
+        techTitle1: "Languages",
+        techCopy1: "Selected languages by project scope for the web console, mobile app, and AIoT backend implementation.",
+        techTitle2: "Frontend / Mobile",
+        techCopy2: "Built React/Vue web screens and Android app screens around real user flows.",
+        techTitle3: "Backend / API",
+        techCopy3: "Connected authentication, operations APIs, real-time status updates, and analysis integrations in the server layer.",
+        techTitle4: "Data / Infra",
+        techCopy4: "Organized data storage, session/cache handling, deployment, and runtime environments around the service structure.",
+        techTitle5: "AI / Robot / IoT",
+        techCopy5: "Connected robot communication, voice commands, and 3D control-screen flows.",
         projectsTitle: "Projects",
         omnikitCopy: "A collaboration project with OnRobot Korea that uses STT to control a collaborative robot arm and implements a web console intended to replace the traditional teach pendant.",
         farmCopy: "An AIoT project that reduces farmers' labor time through a pest-monitoring autonomous robot and a connected web service.",
@@ -1281,18 +1352,20 @@
         pdfActionLabel: "PDF版を確認",
         languageSwitcherLabel: "言語選択",
         themeSwitcherLabel: "テーマ選択",
-        competenciesTitle: "主要スキル",
-        competencyTitle1: "AIを活用した素早いドメイン適応",
-        competencyCopy1: "初めての要件やコードの流れをAIとともに素早く整理し、必要な役割と実装範囲を定義します。",
-        competencyTitle2: "Web・アプリ・AIoTの連携実装",
-        competencyCopy2: "React、Android、Spring Boot、Django、MQTTなど異なる環境をサービスの流れとしてつなぎます。",
-        competencyTitle3: "ユーザー動線中心の画面設計",
-        competencyCopy3: "認証、ダッシュボード、レポート、カレンダーなど実際の利用経路を基準に画面を構成します。",
-        competencyTitle4: "原因に基づくトラブルシューティング",
-        competencyCopy4: "デプロイ環境差、認証/セッション、APIデータ不一致、クリック階層の問題を原因から整理して改善します。",
         certificationsTitle: "資格",
         certificationTitle1: "第1種普通運転免許",
         certificationTitle2: "消防安全管理者 1級",
+        techStackTitle: "使用技術",
+        techTitle1: "言語",
+        techCopy1: "Webコンソール、モバイルアプリ、AIoTバックエンドの実装範囲に合わせて言語を選択して使いました。",
+        techTitle2: "Frontend / Mobile",
+        techCopy2: "React/VueベースのWeb画面とAndroidアプリ画面を、実際のユーザーフローに合わせて構成しました。",
+        techTitle3: "Backend / API",
+        techCopy3: "認証、運用API、リアルタイム状態反映、分析連携の流れをサーバー層でつなぎました。",
+        techTitle4: "Data / Infra",
+        techCopy4: "データ保存、セッション/キャッシュ、配備と実行環境をサービス構造に合わせて整理しました。",
+        techTitle5: "AI / Robot / IoT",
+        techCopy5: "ロボット通信、音声命令、3D制御画面の流れをつなぎました。",
         projectsTitle: "プロジェクト",
         omnikitCopy: "OnRobot Koreaとの連携プロジェクトとして、STTで協働ロボットアームを制御し、従来のティーチペンダントを代替するWebコンソールを実装しました。",
         farmCopy: "病害虫監視の自律走行ロボットと連動Webサービスにより、農家の労働時間を減らすAIoTプロジェクトです。",
@@ -1313,18 +1386,20 @@
       "education-date-2": "educationDate2",
       "education-desc-2": "educationDesc2",
       "pdf-action-label": "pdfActionLabel",
-      "competencies-title": "competenciesTitle",
-      "competency-title-1": "competencyTitle1",
-      "competency-copy-1": "competencyCopy1",
-      "competency-title-2": "competencyTitle2",
-      "competency-copy-2": "competencyCopy2",
-      "competency-title-3": "competencyTitle3",
-      "competency-copy-3": "competencyCopy3",
-      "competency-title-4": "competencyTitle4",
-      "competency-copy-4": "competencyCopy4",
       "certifications-title": "certificationsTitle",
       "certification-title-1": "certificationTitle1",
       "certification-title-2": "certificationTitle2",
+      "tech-stack-title": "techStackTitle",
+      "tech-title-1": "techTitle1",
+      "tech-copy-1": "techCopy1",
+      "tech-title-2": "techTitle2",
+      "tech-copy-2": "techCopy2",
+      "tech-title-3": "techTitle3",
+      "tech-copy-3": "techCopy3",
+      "tech-title-4": "techTitle4",
+      "tech-copy-4": "techCopy4",
+      "tech-title-5": "techTitle5",
+      "tech-copy-5": "techCopy5",
       "projects-title": "projectsTitle",
       "omnikit-copy": "omnikitCopy",
       "farm-copy": "farmCopy",

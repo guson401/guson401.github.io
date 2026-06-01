@@ -401,6 +401,14 @@ const TRANSLATIONS = {
     "tab-gripper": "그리퍼",
     "tab-alerts": "알림",
     "tab-admin": "관리자",
+    "operation-demo-open": "작동 예시",
+    "operation-demo-kicker": "Operation Example",
+    "operation-demo-title": "웹 조작과 실 로봇 동작 확인",
+    "operation-demo-console-label": "웹 조작 화면",
+    "operation-demo-robot-label": "실 로봇 동작",
+    "operation-demo-close-label": "작동 예시 닫기",
+    "operation-demo-console-alt": "Omni-Kit 조인트 제어 웹 조작 GIF",
+    "operation-demo-robot-alt": "실제 협동 로봇 동작 GIF",
     "architecture-kicker": "Architecture",
     "architecture-title": "아키텍처",
     "architecture-lead": "다이어그램의 왼쪽은 제가 담당한 웹/백엔드/인프라 영역이고, 오른쪽은 로봇 파트입니다. 웹 내부는 Nginx, React, Spring Boot, FastAPI, PostgreSQL/Redis로 구성되며, 로봇 시스템과는 Mosquitto MQTT 토픽으로만 상태와 명령을 주고받습니다.",
@@ -500,6 +508,14 @@ const TRANSLATIONS = {
     "tab-gripper": "Gripper",
     "tab-alerts": "Alerts",
     "tab-admin": "Admin",
+    "operation-demo-open": "Operation Example",
+    "operation-demo-kicker": "Operation Example",
+    "operation-demo-title": "Web Control and Real Robot Motion",
+    "operation-demo-console-label": "Web control screen",
+    "operation-demo-robot-label": "Real robot motion",
+    "operation-demo-close-label": "Close operation example",
+    "operation-demo-console-alt": "Omni-Kit joint-control web operation GIF",
+    "operation-demo-robot-alt": "Real collaborative robot motion GIF",
     "architecture-kicker": "Architecture",
     "architecture-title": "Architecture",
     "architecture-lead": "The left side of the diagram is the web/backend/infrastructure area I owned, and the right side is the robot area. The web system is composed of Nginx, React, Spring Boot, FastAPI, PostgreSQL/Redis, and it exchanges robot state and commands only through Mosquitto MQTT topics.",
@@ -599,6 +615,14 @@ const TRANSLATIONS = {
     "tab-gripper": "グリッパー",
     "tab-alerts": "通知",
     "tab-admin": "管理者",
+    "operation-demo-open": "動作例",
+    "operation-demo-kicker": "Operation Example",
+    "operation-demo-title": "Web操作と実ロボット動作の確認",
+    "operation-demo-console-label": "Web操作画面",
+    "operation-demo-robot-label": "実ロボット動作",
+    "operation-demo-close-label": "動作例を閉じる",
+    "operation-demo-console-alt": "Omni-Kit ジョイント制御Web操作GIF",
+    "operation-demo-robot-alt": "実際の協働ロボット動作GIF",
     "architecture-kicker": "アーキテクチャ",
     "architecture-title": "アーキテクチャ",
     "architecture-lead": "図の左側は私が担当したWeb/バックエンド/インフラ領域で、右側はロボットパートです。Web内部はNginx、React、Spring Boot、FastAPI、PostgreSQL/Redisで構成され、ロボットシステムとはMosquitto MQTTトピックだけで状態と命令をやり取りします。",
@@ -713,6 +737,9 @@ function applyTranslations(lang) {
   document.getElementById("screen-filter-group")?.setAttribute("aria-label", t["aria-screen-category"]);
   document.getElementById("screen-list")?.setAttribute("aria-label", t["aria-screen-list"]);
   document.querySelector("#architecture img")?.setAttribute("alt", t["alt-architecture"]);
+  document.getElementById("operation-demo-close")?.setAttribute("aria-label", t["operation-demo-close-label"]);
+  document.getElementById("operation-demo-console-gif")?.setAttribute("alt", t["operation-demo-console-alt"]);
+  document.getElementById("operation-demo-robot-gif")?.setAttribute("alt", t["operation-demo-robot-alt"]);
   document.querySelectorAll(".lang-button").forEach((btn) => {
     btn.classList.toggle("is-active", btn.dataset.lang === lang);
   });
@@ -803,6 +830,36 @@ function renderList() {
   });
 }
 
+function closeOperationDemoModal(restoreFocus = false) {
+  const modal = document.getElementById("operation-demo-modal");
+  if (!modal || modal.hidden) return;
+
+  modal.hidden = true;
+  document.body.classList.remove("is-demo-modal-open");
+
+  if (restoreFocus) {
+    document.getElementById("operation-demo-open")?.focus();
+  }
+}
+
+function openOperationDemoModal() {
+  const modal = document.getElementById("operation-demo-modal");
+  if (!modal) return;
+
+  modal.hidden = false;
+  document.body.classList.add("is-demo-modal-open");
+  document.getElementById("operation-demo-close")?.focus();
+}
+
+function syncOperationDemoButton(screen) {
+  const button = document.getElementById("operation-demo-open");
+  if (!button) return;
+
+  const isRealtime = screen.category === "realtime";
+  button.hidden = !isRealtime;
+  if (!isRealtime) closeOperationDemoModal(false);
+}
+
 function renderScreen() {
   const screen = SCREEN_FRAMES.find((item) => item.key === currentScreenKey) || SCREEN_FRAMES[0];
   if (!screen) return;
@@ -826,6 +883,7 @@ function renderScreen() {
       points.appendChild(li);
     });
   }
+  syncOperationDemoButton(screen);
 }
 
 function initStackReasons() {
@@ -914,6 +972,15 @@ themeToggle?.addEventListener("click", () => {
   const currentIndex = themeOptions.indexOf(currentTheme);
   const nextTheme = themeOptions[(currentIndex + 1) % themeOptions.length];
   setTheme(nextTheme);
+});
+
+document.getElementById("operation-demo-open")?.addEventListener("click", openOperationDemoModal);
+document.getElementById("operation-demo-close")?.addEventListener("click", () => closeOperationDemoModal(true));
+document.querySelectorAll("[data-demo-close]").forEach((node) => {
+  node.addEventListener("click", () => closeOperationDemoModal(true));
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeOperationDemoModal(true);
 });
 
 initStackReasons();

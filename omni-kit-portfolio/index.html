@@ -115,8 +115,10 @@
             </div>
 
             <div class="screen-preview-body">
-              <div class="screen-image-frame">
-                <img id="screen-image" src="../omni-kit-screenshots/20_realtime-control_01_tcp-control.png" alt="Omni-Kit 실시간 제어 콘솔 01">
+              <div class="screen-media-column">
+                <div class="screen-image-frame">
+                  <img id="screen-image" src="../omni-kit-screenshots/20_realtime-control_01_tcp-control.png" alt="Omni-Kit 실시간 제어 콘솔 01">
+                </div>
               </div>
               <div class="screen-copy">
                 <p id="screen-description">관리자 권한으로 진입하는 실시간 제어(WS-003) 페이지입니다. 좌측 메뉴는 일반/관리자 권한에 따라 동적으로 구성되며, 메인 영역에 URDF 3D 뷰어 · 로봇 명령 · 정비 모드 · 그리퍼 · 음성 패널이 모여 있습니다.</p>
@@ -125,6 +127,7 @@
                   <li>점검 모드, Free Drive, 속도, 실 로봇/시뮬레이션 상태를 상단에서 제어</li>
                   <li>LLM 대화 패널은 크기 조절 가능한 오버레이로 로봇 제어 문맥을 보조</li>
                 </ul>
+                <button class="screen-demo-button" type="button" id="operation-demo-open" hidden>작동 예시</button>
               </div>
             </div>
           </section>
@@ -329,6 +332,29 @@
         </div>
       </section>
     </main>
+  </div>
+
+  <div class="demo-modal" id="operation-demo-modal" hidden>
+    <div class="demo-modal-backdrop" data-demo-close></div>
+    <section class="demo-modal-panel" role="dialog" aria-modal="true" aria-labelledby="operation-demo-title">
+      <header class="demo-modal-header">
+        <div>
+          <p class="section-kicker" id="operation-demo-kicker">Operation Example</p>
+          <h2 id="operation-demo-title">웹 조작과 실 로봇 동작 확인</h2>
+        </div>
+        <button class="demo-modal-close" type="button" id="operation-demo-close" aria-label="작동 예시 닫기">×</button>
+      </header>
+      <div class="demo-modal-grid">
+        <figure class="demo-modal-frame demo-modal-console">
+          <figcaption id="operation-demo-console-label">웹 조작 화면</figcaption>
+          <img id="operation-demo-console-gif" src="../omni-kit-screenshots/2026-05-20 22-09-14_cut_8.00s_49s_2x.gif" alt="Omni-Kit 조인트 제어 웹 조작 GIF">
+        </figure>
+        <figure class="demo-modal-frame demo-modal-robot">
+          <figcaption id="operation-demo-robot-label">실 로봇 동작</figcaption>
+          <img id="operation-demo-robot-gif" src="../omni-kit-screenshots/20260520_220917_cut_5.00s_49s_2x.gif" alt="실제 협동 로봇 동작 GIF">
+        </figure>
+      </div>
+    </section>
   </div>
 
   <script src="./app.js"></script>
