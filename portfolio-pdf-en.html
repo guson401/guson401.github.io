@@ -135,8 +135,8 @@
 
     .profile-summary {
       display: grid;
-      grid-template-columns: 3.52in minmax(0, 1fr);
-      gap: 0.3in;
+      grid-template-columns: 3.52in minmax(0, 1fr) 2.25in;
+      gap: 0.22in;
       align-items: center;
     }
 
@@ -149,6 +149,7 @@
     .profile-copy {
       display: grid;
       align-content: center;
+      gap: 0.1in;
     }
 
     .profile-cover .profile-photo {
@@ -246,13 +247,24 @@
       text-transform: uppercase;
     }
 
-    .education-list {
+    .education-list,
+    .certification-list {
       display: grid;
       gap: 0.07in;
       margin: 0.14in 0 0.18in;
     }
 
-    .education-item {
+    .certification-list {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .profile-certifications {
+      align-self: start;
+    }
+
+    .education-item,
+    .certification-item {
       display: grid;
       grid-template-columns: 0.92in minmax(0, 1fr);
       gap: 0.08in;
@@ -261,6 +273,11 @@
       border-radius: 8px;
       background: var(--soft);
       font-size: 12pt;
+    }
+
+    .certification-item {
+      grid-template-columns: minmax(0, 1fr);
+      font-weight: 800;
     }
 
     .education-date {
@@ -931,6 +948,11 @@
               <div class="education-item"><span class="education-date">2025.02</span><span class="education-desc">조선대학교 첨단에너지공학과 졸업</span></div>
               <div class="education-item"><span class="education-date">2026.06</span><span class="education-desc">SSAFY 교육 이수</span></div>
             </div>
+          </div>
+          <div class="certification-list profile-certifications">
+            <p class="kicker">Certifications</p>
+            <div class="certification-item">1종보통 운전면허</div>
+            <div class="certification-item">소방안전관리자 1급</div>
           </div>
         </div>
       </aside>
