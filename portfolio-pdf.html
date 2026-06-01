@@ -889,6 +889,62 @@
       font-size: 17.3pt;
     }
 
+    .portfolio-tech-slide {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .portfolio-tech-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.1in;
+      flex: 1 1 auto;
+      min-height: 0;
+    }
+
+    .portfolio-tech-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.08in;
+      min-height: 0;
+      padding: 0.14in;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+    }
+
+    .portfolio-tech-card .feature-no {
+      flex: 0 0 auto;
+      margin-bottom: 0.02in;
+    }
+
+    .portfolio-tech-card h3 {
+      margin: 0;
+      font-size: 18.2pt;
+      line-height: 1.2;
+    }
+
+    .portfolio-tech-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12.8pt;
+      line-height: 1.36;
+    }
+
+    .portfolio-tech-card .chips {
+      margin-top: auto;
+    }
+
+    .portfolio-tech-card .chip {
+      min-height: 0.2in;
+      font-size: 11.2pt;
+      line-height: 1.15;
+    }
+
     .accent-omni .slide-head { border-color: var(--omni); }
     .accent-daily .slide-head { border-color: var(--daily); }
     .accent-farm .slide-head { border-color: var(--farm); }
@@ -956,6 +1012,45 @@
           </div>
         </div>
       </aside>
+    </section>
+
+    <section class="slide portfolio-tech-slide">
+      <header class="slide-head">
+        <h2 class="slide-title">기술 스택</h2>
+        <p class="slide-meta">전체 요약</p>
+      </header>
+      <div class="portfolio-tech-grid">
+        <article class="portfolio-tech-card">
+          <span class="feature-no">01</span>
+          <h3>언어</h3>
+          <p>웹 콘솔, 모바일 앱, AIoT 백엔드 구현에 맞춰 프로젝트별 언어를 선택해 사용했습니다.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Java</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">Kotlin</span></div>
+        </article>
+        <article class="portfolio-tech-card">
+          <span class="feature-no">02</span>
+          <h3>프론트엔드 / 모바일</h3>
+          <p>React·Vue 기반 웹 화면과 Android 앱 화면을 실제 사용자 흐름에 맞춰 구성했습니다.</p>
+          <div class="chips"><span class="chip">React</span><span class="chip">Vue</span><span class="chip">Android</span></div>
+        </article>
+        <article class="portfolio-tech-card">
+          <span class="feature-no">03</span>
+          <h3>백엔드</h3>
+          <p>인증, 운영 API, 실시간 상태 반영, 분석 연동 흐름을 서버 계층에서 연결했습니다.</p>
+          <div class="chips"><span class="chip">Spring Boot</span><span class="chip">Django</span></div>
+        </article>
+        <article class="portfolio-tech-card">
+          <span class="feature-no">04</span>
+          <h3>데이터 / 인프라</h3>
+          <p>데이터 저장, 세션/캐시, 배포와 실행 환경을 서비스 구조에 맞춰 정리했습니다.</p>
+          <div class="chips"><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">Room DB</span><span class="chip">SQLite</span><span class="chip">Docker</span><span class="chip">Jenkins</span><span class="chip">Nginx</span></div>
+        </article>
+        <article class="portfolio-tech-card">
+          <span class="feature-no">05</span>
+          <h3>에이아이 / 로봇 / 아이오티</h3>
+          <p>로봇 통신, 음성 명령, 3D 제어 화면 흐름을 연결했습니다.</p>
+          <div class="chips"><span class="chip">MQTT</span><span class="chip">STT/TTS</span><span class="chip">Three.js</span></div>
+        </article>
+      </div>
     </section>
 
     <section class="slide contents-cover">

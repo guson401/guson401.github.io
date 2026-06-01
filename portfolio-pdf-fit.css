@@ -37,6 +37,7 @@ html[data-pdf-lang="en"] .stat,
 html[data-pdf-lang="en"] .screen-copy,
 html[data-pdf-lang="en"] .architecture-copy,
 html[data-pdf-lang="en"] .tech-group,
+html[data-pdf-lang="en"] .portfolio-tech-card,
 html[data-pdf-lang="en"] .timeline-item,
 html[data-pdf-lang="ja"] .card,
 html[data-pdf-lang="ja"] .contents-item,
@@ -46,6 +47,7 @@ html[data-pdf-lang="ja"] .stat,
 html[data-pdf-lang="ja"] .screen-copy,
 html[data-pdf-lang="ja"] .architecture-copy,
 html[data-pdf-lang="ja"] .tech-group,
+html[data-pdf-lang="ja"] .portfolio-tech-card,
 html[data-pdf-lang="ja"] .timeline-item {
   min-width: 0;
   min-height: 0;
@@ -66,6 +68,8 @@ html[data-pdf-lang="en"] .architecture-copy p,
 html[data-pdf-lang="en"] .timeline-item h3,
 html[data-pdf-lang="en"] .timeline-item p,
 html[data-pdf-lang="en"] .tech-group h3,
+html[data-pdf-lang="en"] .portfolio-tech-card h3,
+html[data-pdf-lang="en"] .portfolio-tech-card p,
 html[data-pdf-lang="en"] .chip,
 html[data-pdf-lang="ja"] .card h3,
 html[data-pdf-lang="ja"] .card p,
@@ -81,6 +85,8 @@ html[data-pdf-lang="ja"] .architecture-copy p,
 html[data-pdf-lang="ja"] .timeline-item h3,
 html[data-pdf-lang="ja"] .timeline-item p,
 html[data-pdf-lang="ja"] .tech-group h3,
+html[data-pdf-lang="ja"] .portfolio-tech-card h3,
+html[data-pdf-lang="ja"] .portfolio-tech-card p,
 html[data-pdf-lang="ja"] .chip {
   min-width: 0;
   max-width: 100%;
@@ -193,6 +199,31 @@ html[data-pdf-lang="ja"] .feature-slide .feature-no {
   height: 0.4in;
   margin-bottom: 0.08in;
   font-size: 10pt;
+}
+
+html[data-pdf-lang="en"] .portfolio-tech-card,
+html[data-pdf-lang="ja"] .portfolio-tech-card {
+  padding: 0.11in;
+}
+
+html[data-pdf-lang="en"] .portfolio-tech-card h3,
+html[data-pdf-lang="ja"] .portfolio-tech-card h3 {
+  font-size: 15.4pt;
+  line-height: 1.16;
+}
+
+html[data-pdf-lang="en"] .portfolio-tech-card p,
+html[data-pdf-lang="ja"] .portfolio-tech-card p {
+  font-size: 10.9pt;
+  line-height: 1.25;
+}
+
+html[data-pdf-lang="en"] .portfolio-tech-card .chip,
+html[data-pdf-lang="ja"] .portfolio-tech-card .chip {
+  min-height: 0.17in;
+  padding: 0 0.05in;
+  font-size: 9.8pt;
+  line-height: 1.14;
 }
 
 html[data-pdf-lang="en"] .screen-copy,
