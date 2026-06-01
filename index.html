@@ -1206,12 +1206,15 @@
         profileName: "손지유",
         profileSubtitle: "sonjiyu",
         profileTagline: "AI와 함께 주어진 환경을 빠르게 파악하고,\n필요한 역할을 수행해 결과로 연결하는 개발자",
+        profilePhotoAlt: "손지유 프로필 사진",
         educationTitle: "Education",
         educationDate1: "2025.02",
         educationDesc1: "조선대학교 첨단에너지공학과 졸업",
         educationDate2: "2026.06",
         educationDesc2: "SSAFY 교육 이수",
         pdfActionLabel: "PDF 버전 확인",
+        languageSwitcherLabel: "언어 선택",
+        themeSwitcherLabel: "테마 선택",
         competenciesTitle: "Core Competencies",
         competencyTitle1: "AI 기반 빠른 도메인 적응",
         competencyCopy1: "낯선 요구사항과 코드 흐름을 AI와 함께 빠르게 구조화하고, 필요한 역할과 구현 범위를 정리합니다.",
@@ -1236,12 +1239,15 @@
         profileName: "Son Jiyu",
         profileSubtitle: "sonjiyu",
         profileTagline: "A developer who works with AI to quickly understand the environment,\ntake on the needed role, and turn it into results.",
+        profilePhotoAlt: "Son Jiyu profile photo",
         educationTitle: "Education",
         educationDate1: "Feb 2025",
         educationDesc1: "B.S. in Advanced Energy Engineering, Chosun University",
         educationDate2: "Jun 2026",
         educationDesc2: "Completed SSAFY training",
         pdfActionLabel: "View PDF",
+        languageSwitcherLabel: "Language switcher",
+        themeSwitcherLabel: "Theme switcher",
         competenciesTitle: "Core Competencies",
         competencyTitle1: "AI-assisted domain adaptation",
         competencyCopy1: "I use AI to quickly structure unfamiliar requirements and code flows, then define the role and implementation scope.",
@@ -1266,12 +1272,15 @@
         profileName: "ソン・ジユ",
         profileSubtitle: "sonjiyu",
         profileTagline: "AIとともに与えられた環境を素早く把握し、\n必要な役割を担って成果につなげる開発者",
+        profilePhotoAlt: "ソン・ジユ プロフィール写真",
         educationTitle: "学歴",
         educationDate1: "2025.02",
         educationDesc1: "朝鮮大学校 先端エネルギー工学科 卒業",
         educationDate2: "2026.06",
         educationDesc2: "SSAFY教育 修了",
         pdfActionLabel: "PDF版を確認",
+        languageSwitcherLabel: "言語選択",
+        themeSwitcherLabel: "テーマ選択",
         competenciesTitle: "主要スキル",
         competencyTitle1: "AIを活用した素早いドメイン適応",
         competencyCopy1: "初めての要件やコードの流れをAIとともに素早く整理し、必要な役割と実装範囲を定義します。",
@@ -1350,10 +1359,15 @@
     function applyRootTranslations(lang) {
       currentLang = lang;
       const t = rootTranslations[lang];
+      document.documentElement.lang = lang;
       Object.entries(rootBindings).forEach(([id, key]) => {
         const node = document.getElementById(id);
         if (node) node.textContent = t[key];
       });
+      document.querySelector(".profile-photo img")?.setAttribute("alt", t.profilePhotoAlt);
+      document.querySelector(".language-switch")?.setAttribute("aria-label", t.languageSwitcherLabel);
+      document.querySelector(".theme-switch")?.setAttribute("aria-label", t.themeSwitcherLabel);
+      document.querySelector(".pdf-button-section")?.setAttribute("aria-label", t.pdfActionLabel);
       const pdfAction = document.getElementById("pdf-action-label");
       if (pdfAction) pdfAction.href = pdfHrefByLang[lang] || pdfHrefByLang.ko;
       updateThemeToggle(document.body.dataset.theme || "day");

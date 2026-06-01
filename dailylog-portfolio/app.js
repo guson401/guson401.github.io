@@ -478,6 +478,10 @@ const staticTranslations = {
     heroSummary: "STT/TTS 기반 일기 작성 애플리케이션 프로젝트입니다.",
     awardLabel: "동메달 · 3등 수상",
     themeLabels: { day: "주간", night: "야간", theme: "테마" },
+    currentPathLabel: "현재 화면 순차 경로",
+    architectureAlt: "DailyLog Android 앱, EC2 서버, AI 서버, 데이터베이스, 외부 API 연결 아키텍처",
+    architectureAria: "DailyLog 아키텍처 설명",
+    flowScreenSuffix: "화면",
     heroPrimary: "화면 보기",
     heroSecondary: "아키텍처",
     heroCardLabel: "Project Snapshot",
@@ -534,6 +538,10 @@ const staticTranslations = {
     heroSummary: "A diary-writing application project built around STT/TTS-based interaction.",
     awardLabel: "Bronze · 3rd Place",
     themeLabels: { day: "Day", night: "Night", theme: "Theme" },
+    currentPathLabel: "Current screen path",
+    architectureAlt: "DailyLog architecture connecting Android app, EC2 server, AI server, database, and external APIs",
+    architectureAria: "DailyLog architecture description",
+    flowScreenSuffix: "screen",
     heroPrimary: "View Screens",
     heroSecondary: "View Architecture",
     heroCardLabel: "Project Snapshot",
@@ -604,13 +612,17 @@ const staticTranslations = {
     flowHint: "You can move to the next screen by clicking the highlighted area on the screenshot.",
   },
   ja: {
-    heroEyebrow: "Emotion Diary Android Project",
+    heroEyebrow: "感情日記Androidプロジェクト",
     heroSummary: "STT/TTSベースの対話を中心に構成した日記作成アプリプロジェクトです。",
     awardLabel: "銅賞 · 3位受賞",
     themeLabels: { day: "昼間", night: "夜間", theme: "テーマ" },
+    currentPathLabel: "現在の画面順序",
+    architectureAlt: "DailyLog Androidアプリ、EC2サーバー、AIサーバー、データベース、外部API接続アーキテクチャ",
+    architectureAria: "DailyLog アーキテクチャ説明",
+    flowScreenSuffix: "画面",
     heroPrimary: "画面を見る",
     heroSecondary: "アーキテクチャ",
-    heroCardLabel: "Project Snapshot",
+    heroCardLabel: "プロジェクト概要",
     statLabels: ["Jetpack Compose UI", "感情記録と結果画面構成", "Calendar Provider連携維持", "実使用フロー中心の画面構成", "実施期間"],
     introTitles: ["課題定義", "実装の焦点"],
     introCopies: [
@@ -829,6 +841,8 @@ function hotspotClass(shape) {
 function stageMarkup(stepKey) {
   const step = getLocalizedStep(stepKey);
   if (!step) return "";
+  const suffix = staticTranslations[currentLang].flowScreenSuffix;
+  const imageAlt = currentLang === "ja" ? `${step.title}${suffix}` : `${step.title} ${suffix}`;
 
   const hotspots = [...(step.hotspots || [])]
     .sort((a, b) => (a.z || 1) - (b.z || 1))
@@ -849,7 +863,7 @@ function stageMarkup(stepKey) {
       <img
         class="flow-stage-image"
         src="../dailylog-screenshots/${step.file}"
-        alt="${step.title} 화면"
+        alt="${imageAlt}"
       >
       <div class="flow-hotspots">${hotspots}</div>
     </figure>
@@ -988,6 +1002,7 @@ function renderStep(stepKey) {
 
 function applyStaticTranslations() {
   const t = staticTranslations[currentLang];
+  document.documentElement.lang = currentLang;
   const setText = (selector, value) => {
     const node = document.querySelector(selector);
     if (node && value !== undefined) node.textContent = value;
@@ -1017,6 +1032,9 @@ function applyStaticTranslations() {
   setText(".architecture-summary", t.architectureSummary);
   setByIndex(".architecture-notes strong", t.architectureNoteTitles);
   setByIndex(".architecture-notes span", t.architectureNoteCopies);
+  flowTitleSequenceNode?.setAttribute("aria-label", t.currentPathLabel);
+  document.querySelector("#architecture img")?.setAttribute("alt", t.architectureAlt);
+  document.querySelector(".architecture-notes")?.setAttribute("aria-label", t.architectureAria);
   setText("#stack .section-heading p", t.stackIntro);
   setByIndex(".stack-group > summary", t.stackSummaries);
   Object.entries(t.stackReasons || {}).forEach(([id, value]) => {

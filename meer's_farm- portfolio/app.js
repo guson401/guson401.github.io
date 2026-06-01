@@ -44,6 +44,10 @@ const translations = {
   ko: {
     heroSummary: "센서 데이터, 로봇 순찰, 병해충 탐지, 운영 리포트를 하나의 흐름으로 연결한 스마트팜 통합 관제 웹 서비스입니다.",
     themeLabels: { day: "주간", night: "야간", theme: "테마" },
+    screenListLabel: "화면 목록",
+    architectureAlt: "Meer's Farm 라즈베리파이, MQTT, 중앙 서버, DB, 웹 서버, S3, GPU 서버 연결 아키텍처",
+    architectureAria: "Meer's Farm 아키텍처 설명",
+    screenAltSuffix: "스크린샷",
     heroLinkScreens: "화면 둘러보기",
     heroLinkStack: "사용기술",
     snapshotLabel: "Project Snapshot",
@@ -131,6 +135,10 @@ const translations = {
   en: {
     heroSummary: "An integrated smart farm control web service that connects sensor data, robot patrols, pest detection, and operation reports in one flow.",
     themeLabels: { day: "Day", night: "Night", theme: "Theme" },
+    screenListLabel: "Screen list",
+    architectureAlt: "Meer's Farm architecture connecting Raspberry Pi, MQTT, central server, DB, web server, S3, and GPU server",
+    architectureAria: "Meer's Farm architecture description",
+    screenAltSuffix: "screenshot",
     heroLinkScreens: "Browse Screens",
     heroLinkStack: "Tech Stack",
     snapshotLabel: "Project Snapshot",
@@ -218,21 +226,25 @@ const translations = {
   ja: {
     heroSummary: "センサーデータ、ロボット巡回、病害虫検知、運用レポートを一つの流れでつなぐスマートファーム統合管制Webサービスです。",
     themeLabels: { day: "昼間", night: "夜間", theme: "テーマ" },
+    screenListLabel: "画面一覧",
+    architectureAlt: "Meer's Farm Raspberry Pi、MQTT、中央サーバー、DB、Webサーバー、S3、GPUサーバー接続アーキテクチャ",
+    architectureAria: "Meer's Farm アーキテクチャ説明",
+    screenAltSuffix: "スクリーンショット",
     heroLinkScreens: "画面を見る",
     heroLinkStack: "使用技術",
-    snapshotLabel: "Project Snapshot",
+    snapshotLabel: "プロジェクト概要",
     snapshotReact: "SPA UI Flow",
     snapshotDjango: "REST API",
     snapshotMqtt: "Sensor Update",
     snapshotReport: "Image + Log Linkage",
     snapshotPeriod: "実施期間",
-    overviewKicker: "Overview",
+    overviewKicker: "概要",
     overviewTitle: "問題定義",
     overviewCopy: "一般の農家は病害虫の有無や植物の状態を直接目で確認する必要があり、多くの時間がかかるうえ、判断も個人の経験に大きく依存しがちでした。Meer's Farmは自律走行ロボットが農場を巡回して状態を自動で把握し、その結果を短時間で理解できる数値データとレポート形式で利用者に見せる流れを重視しています。",
-    valueKicker: "Core Value",
+    valueKicker: "中核価値",
     valueTitle: "主要実装ポイント",
     valueCopy: "全体ダッシュボード、農場詳細、ロボット制御、画像ギャラリー、運用レポートを一つのサービスフローとして接続しました。状態確認のあとに原因把握と制御アクションまで自然につながるよう設計した点が核心です。",
-    highlightsKicker: "Highlights",
+    highlightsKicker: "ハイライト",
     highlightsTitle: "主要機能",
     featureTitles: ["統合ダッシュボード", "農場 / セクター管理", "ロボット制御", "画像 / レポート連携"],
     featureCopies: [
@@ -241,10 +253,10 @@ const translations = {
       "ロボット登録、詳細確認、モード切替、停止、復帰、スケジュールまで一つの流れにまとめました。",
       "病害虫画像とレポートを時刻基準で結び、何がいつ発生したかを同じ文脈で確認できるようにしました。",
     ],
-    screensKicker: "Screen Explorer",
+    screensKicker: "画面確認",
     screensTitle: "画面構成",
     screensCopy: "ダッシュボード、農場管理、ロボット、ギャラリー、レポート、FAQ、設定フローをカテゴリ別に確認できます。",
-    architectureKicker: "Architecture",
+    architectureKicker: "アーキテクチャ",
     architectureTitle: "アーキテクチャ",
     architectureLead: "農場現場のRaspberry Piとロボットから発生するセンサー / 画像データをMQTTと保存フローで中央サーバーに集め、ユーザーはWebページで状態とレポートを確認する構成です。",
     architectureNoteTitles: ["Farm Edge", "Robot & Vision", "Central Web"],
@@ -254,7 +266,7 @@ const translations = {
       "EC2中央サーバーでDjango、DB、MQTTブローカー、React Webサーバーを運用し、センサー状態と分析結果を管制画面へ反映します。",
     ],
     architectureCaption: "現場機器制御とWeb管制を分離し、ロボット / センサーデータ、画像分析、ユーザー画面が一つの運用フローにつながるように設計しました。",
-    stackKicker: "Tech Stack",
+    stackKicker: "使用技術",
     stackTitle: "使用技術",
     stackSummaries: ["Frontend / Web UI", "Backend / API / Auth", "Data / Robot / Infra"],
     stackReasons: {
@@ -280,7 +292,7 @@ const translations = {
     stackBackCopy: "JWT認証、農場 / セクター / ロボット / レポートモデルの分離、権限制御、運用ログ保存を実装しました。",
     stackDataTitle: "Data / Infra",
     stackDataCopy: "センサー更新データと病害虫画像情報をセクター状態に反映し、完了履歴をログとして残すようにしました。",
-    roleKicker: "Contribution",
+    roleKicker: "担当範囲",
     roleTitle: "役割整理",
     roleTitles: ["API設計と実装", "ダッシュボード / レポートUI", "認証と権限処理", "データ連携構造の設計"],
     roleCopies: [
@@ -289,7 +301,7 @@ const translations = {
       "JWTログイン、会員登録、ユーザー設定、管理者 / 一般ユーザーのアクセス制御を適用しました。",
       "病害虫画像、レポート、ログを時刻基準でつなぎ、原因と対応を一緒に見られるようにしました。",
     ],
-    troubleKicker: "Troubleshooting",
+    troubleKicker: "トラブルシューティング",
     troubleTitle: "トラブルシューティング",
     troubleTitles: ["デプロイ環境のファイル名エラー解消", "ダミーデータから実APIへの移行", "クリック深度を減らすUI再設計"],
     troubleCopies: [
@@ -297,7 +309,7 @@ const translations = {
       "ダミーデータ前提で作成したダッシュボードと農場画面をDjango APIにつなぐと、farmId/id、createdAt/create_time、NPKオブジェクト構造の違いによりデータが表示されませんでした。レスポンスを画面用の共通フォーマットに正規化し、実運用データに基づく画面へ移行しました。",
       "農場、ロボット、ギャラリー機能が分離されていたため、状態確認後の詳細対応まで移動ステップが多くなっていました。ダッシュボードと上部メニューに農場/ロボット詳細への移動、ギャラリーショートカット、農場追加の入口を配置し、管制業務の流れを短縮しました。",
     ],
-    closingKicker: "Summary",
+    closingKicker: "まとめ",
     closingTitle: "スマートファーム運営データを一つの管制フローにまとめたWebプラットフォーム",
     closingCopy: "リアルタイムのセンサーデータ、病害虫画像、ロボット巡回ログ、運用レポートをつなぎ、運営者が状態を素早く把握して次の対応まで進めるようにしたプロジェクトです。",
     categories: { dashboard: "ダッシュボード", farm: "農場", robot: "ロボット", gallery: "ギャラリー", report: "レポート", faq: "FAQ", settings: "設定" },
@@ -345,33 +357,33 @@ const screenTranslations = {
     dashboard_farm_cell_active: ["個別農場セル有効", "特定農場基準でセル状態が有効なダッシュボードです。", ["個別農場に集中した監視画面です。", "セクター状態とログを一緒に確認できます。", "全体表示から詳細表示へつながります。"]],
     dashboard_farm_cell_inactive: ["個別農場セル無効", "個別農場表示でセル状態が無効な画面です。", ["状態別UI対応を確認できます。", "農場中心の情報配置を見せます。", "無効セル処理の説明に向いています。"]],
     dashboard_farm_cell_inactive_week: ["週間基準個別農場", "週間観点が含まれた農場ダッシュボード画面です。", ["時系列データの流れを見せます。", "期間基準の探索に向いています。", "傾向把握に役立つ画面です。"]],
-    dashboard_add_farm_popup: ["Dashboard Add Farm Popup", "ダッシュボード内で農場追加ポップアップを開く画面です。", ["ダッシュボード文脈を維持したまま追加できます。", "ページ移動ではなくポップアップで進みます。", "運用フローを切らない設計です。"]],
-    farm_add_page: ["Farm Add Page", "新しい農場を登録する生成画面です。", ["農場生成フローを見せます。", "行・列・段数ベースの構造入力を含みます。", "農場登録の開始画面として機能します。"]],
-    farm_dashboard_cell_active: ["Farm Dashboard Cell Active", "農場管理文脈で有効セル状態を見せる画面です。", ["農場構造と状態を一緒に見せます。", "有効セル状態が明確です。", "管理と監視を一つの画面で扱います。"]],
-    farm_dashboard_cell_inactive: ["Farm Dashboard Cell Inactive", "農場セル状態が無効に表現されたバージョンです。", ["構造中心UIの説明に向いています。", "無効状態フィードバックを見せます。", "農場状態による視覚変化を確認できます。"]],
-    farm_detail_page_1: ["Farm Detail Page 1", "農場詳細情報の最初の画面です。", ["農場単位の深い確認に向いています。", "ダッシュボードから詳細へ下りる流れです。", "詳細レイアウトを確認できます。"]],
-    farm_detail_page_2: ["Farm Detail Page 2", "農場詳細の拡張情報画面です。", ["拡張された詳細情報を見せます。", "設定や状態変化の説明に適しています。", "詳細ページ構成を補完します。"]],
+    dashboard_add_farm_popup: ["ダッシュボード農場追加ポップアップ", "ダッシュボード内で農場追加ポップアップを開く画面です。", ["ダッシュボード文脈を維持したまま追加できます。", "ページ移動ではなくポップアップで進みます。", "運用フローを切らない設計です。"]],
+    farm_add_page: ["農場追加ページ", "新しい農場を登録する生成画面です。", ["農場生成フローを見せます。", "行・列・段数ベースの構造入力を含みます。", "農場登録の開始画面として機能します。"]],
+    farm_dashboard_cell_active: ["農場管理セル有効画面", "農場管理文脈で有効セル状態を見せる画面です。", ["農場構造と状態を一緒に見せます。", "有効セル状態が明確です。", "管理と監視を一つの画面で扱います。"]],
+    farm_dashboard_cell_inactive: ["農場管理セル無効画面", "農場セル状態が無効に表現されたバージョンです。", ["構造中心UIの説明に向いています。", "無効状態フィードバックを見せます。", "農場状態による視覚変化を確認できます。"]],
+    farm_detail_page_1: ["農場詳細ページ 1", "農場詳細情報の最初の画面です。", ["農場単位の深い確認に向いています。", "ダッシュボードから詳細へ下りる流れです。", "詳細レイアウトを確認できます。"]],
+    farm_detail_page_2: ["農場詳細ページ 2", "農場詳細の拡張情報画面です。", ["拡張された詳細情報を見せます。", "設定や状態変化の説明に適しています。", "詳細ページ構成を補完します。"]],
     robot_main_page: ["ロボットメイン", "ロボット管理のメイン画面です。", ["ロボット管制のハブです。", "状態確認と操作選択が同時にできます。", "ロボット管理フローの中心です。"]],
     robot_add_page: ["ロボット追加", "新しいロボットを登録する画面です。", ["ロボット登録フローを見せます。", "農場とロボットの関係説明に向いています。", "管理対象拡張画面です。"]],
     robot_detail_page: ["ロボット詳細", "個別ロボットの詳細画面です。", ["ロボット状態を深く確認できます。", "詳細画面からの操作分岐説明に適しています。", "メイン画面から詳細管理へつながります。"]],
-    robot_mode_switch: ["Robot Mode Switch", "ロボットのモードを切り替える画面です。", ["直接制御機能を含みます。", "自動 / 手動切替説明に向いています。", "操作中心の管制画面です。"]],
+    robot_mode_switch: ["ロボットモード切替", "ロボットのモードを切り替える画面です。", ["直接制御機能を含みます。", "自動 / 手動切替説明に向いています。", "操作中心の管制画面です。"]],
     robot_mode_switch_selection: ["ロボットモード切替対象", "モード切替前に対象を選ぶ画面です。", ["複数ロボット環境で対象選択を見せます。", "選択と実行を分離したUXです。", "操作前段階を明確にします。"]],
-    robot_stop: ["Robot Stop", "ロボット停止命令を実行する画面です。", ["停止制御を直接見せます。", "緊急対応説明に向いています。", "状態変化と一緒に説明できます。"]],
+    robot_stop: ["ロボット停止", "ロボット停止命令を実行する画面です。", ["停止制御を直接見せます。", "緊急対応説明に向いています。", "状態変化と一緒に説明できます。"]],
     robot_stop_selection: ["ロボット停止対象", "停止対象ロボットを選ぶ画面です。", ["停止前の対象選択段階です。", "複数ロボット処理の説明に使えます。", "実行前確認として機能します。"]],
-    robot_return: ["Robot Return", "ロボット復帰命令を実行する画面です。", ["復帰フローを見せます。", "停止やモード切替と合わせて説明できます。", "復帰制御アクション画面です。"]],
+    robot_return: ["ロボット復帰", "ロボット復帰命令を実行する画面です。", ["復帰フローを見せます。", "停止やモード切替と合わせて説明できます。", "復帰制御アクション画面です。"]],
     robot_return_selection: ["ロボット復帰対象", "復帰対象ロボットを選ぶ画面です。", ["復帰前の対象選択段階です。", "複数ロボット環境を考慮しています。", "確認フローとして使えます。"]],
-    farm_gallery: ["Farm Gallery", "農場単位の病害虫画像ギャラリーです。", ["農場全体の画像履歴を確認できます。", "視覚的根拠をすばやく探せます。", "レポートと密接につながる画面です。"]],
-    sector_gallery: ["Sector Gallery", "セクター単位の病害虫画像ギャラリーです。", ["より細かい位置基準で探索できます。", "原本 / 解析画像フロー説明に向いています。", "フィルタと閲覧構造を見せやすいです。"]],
-    report_page: ["Report Page", "日付基準で農場レポートを確認するメイン画面です。", ["日付基準のレポート確認に使います。", "一覧型フロー説明に向いています。", "ログと画像への入口になります。"]],
-    report_detail_page: ["Report Detail Page", "状況、対応案内、危険度を含む詳細レポート画面です。", ["実際のレポート構造を確認できます。", "運用判断に必要な情報が集約されています。", "画像とログを一緒に説明しやすい画面です。"]],
-    faq_page: ["FAQ Page", "FAQとサポートのメイン画面です。", ["サポート中心の画面です。", "ヘルプ探索フローを見せます。", "サービス完成度を高めます。"]],
-    faq_category_selection: ["FAQ Category Selection", "FAQカテゴリを選ぶ画面です。", ["カテゴリ型サポート探索です。", "ヘルプ到達までの距離を短くします。", "質問分岐説明に向いています。"]],
-    faq_chat_session_selection: ["FAQ Chat Session Selection", "FAQ相談のチャットセッション選択画面です。", ["セッションベースの支援フローです。", "問い合わせ文脈を維持できます。", "FAQとチャットボット体験をつなぎます。"]],
-    faq_chatbot: ["FAQ Chatbot", "FAQチャットボット支援画面です。", ["会話型サポート画面です。", "静的FAQより速い案内が可能です。", "インタラクティブな支援体験を見せます。"]],
-    account_settings_page: ["Account Settings Page", "アカウントと環境設定画面です。", ["設定と個人化を扱います。", "権限とユーザー設定につながります。", "運用利便性を高めます。"]],
-    profile_edit_page: ["Profile Edit Page", "ユーザープロフィール編集画面です。", ["プロフィール編集UXを見せます。", "ユーザーデータ管理説明に向いています。", "設定関連フローの代表画面です。"]],
-    topbar_profile_expanded: ["Topbar Profile Expanded", "上部プロフィールメニュー拡張画面です。", ["上部バー基準の高速探索構造です。", "プロフィール関連操作へのアクセスを見せます。", "上部ナビゲーションの一部です。"]],
-    topbar_settings_expanded: ["Topbar Settings Expanded", "上部設定メニュー拡張画面です。", ["上部バーからの高速アクセスを見せます。", "拡張メニュー構造を明確にします。", "管理型サービスの雰囲気を強めます。"]],
+    farm_gallery: ["農場ギャラリー", "農場単位の病害虫画像ギャラリーです。", ["農場全体の画像履歴を確認できます。", "視覚的根拠をすばやく探せます。", "レポートと密接につながる画面です。"]],
+    sector_gallery: ["セクターギャラリー", "セクター単位の病害虫画像ギャラリーです。", ["より細かい位置基準で探索できます。", "原本 / 解析画像フロー説明に向いています。", "フィルタと閲覧構造を見せやすいです。"]],
+    report_page: ["レポートページ", "日付基準で農場レポートを確認するメイン画面です。", ["日付基準のレポート確認に使います。", "一覧型フロー説明に向いています。", "ログと画像への入口になります。"]],
+    report_detail_page: ["レポート詳細ページ", "状況、対応案内、危険度を含む詳細レポート画面です。", ["実際のレポート構造を確認できます。", "運用判断に必要な情報が集約されています。", "画像とログを一緒に説明しやすい画面です。"]],
+    faq_page: ["FAQページ", "FAQとサポートのメイン画面です。", ["サポート中心の画面です。", "ヘルプ探索フローを見せます。", "サービス完成度を高めます。"]],
+    faq_category_selection: ["FAQカテゴリ選択", "FAQカテゴリを選ぶ画面です。", ["カテゴリ型サポート探索です。", "ヘルプ到達までの距離を短くします。", "質問分岐説明に向いています。"]],
+    faq_chat_session_selection: ["FAQチャットセッション選択", "FAQ相談のチャットセッション選択画面です。", ["セッションベースの支援フローです。", "問い合わせ文脈を維持できます。", "FAQとチャットボット体験をつなぎます。"]],
+    faq_chatbot: ["FAQチャットボット", "FAQチャットボット支援画面です。", ["会話型サポート画面です。", "静的FAQより速い案内が可能です。", "インタラクティブな支援体験を見せます。"]],
+    account_settings_page: ["アカウント設定ページ", "アカウントと環境設定画面です。", ["設定と個人化を扱います。", "権限とユーザー設定につながります。", "運用利便性を高めます。"]],
+    profile_edit_page: ["プロフィール編集ページ", "ユーザープロフィール編集画面です。", ["プロフィール編集UXを見せます。", "ユーザーデータ管理説明に向いています。", "設定関連フローの代表画面です。"]],
+    topbar_profile_expanded: ["上部プロフィールメニュー展開", "上部プロフィールメニュー拡張画面です。", ["上部バー基準の高速探索構造です。", "プロフィール関連操作へのアクセスを見せます。", "上部ナビゲーションの一部です。"]],
+    topbar_settings_expanded: ["上部設定メニュー展開", "上部設定メニュー拡張画面です。", ["上部バーからの高速アクセスを見せます。", "拡張メニュー構造を明確にします。", "管理型サービスの雰囲気を強めます。"]],
   },
 };
 
@@ -389,6 +401,7 @@ let currentScreenKey = screens.find((screen) => screen.category === currentCateg
 
 function applyStaticTranslations() {
   const t = translations[currentLang];
+  document.documentElement.lang = currentLang;
   const textMap = {
     "hero-summary": t.heroSummary,
     "hero-link-screens": t.heroLinkScreens,
@@ -467,6 +480,9 @@ function applyStaticTranslations() {
     if (node) node.textContent = value;
   });
 
+  screenList?.setAttribute("aria-label", t.screenListLabel);
+  document.querySelector("#architecture img")?.setAttribute("alt", t.architectureAlt);
+  document.querySelector(".architecture-notes")?.setAttribute("aria-label", t.architectureAria);
   updateThemeToggle(document.body.dataset.theme || "day");
 }
 
@@ -536,7 +552,7 @@ function renderPreview() {
   if (!screen) return;
   const { title, description, points } = getLocalizedScreen(screen);
   screenImage.src = `../meer's_farm-screenshots/${screen.file}`;
-  screenImage.alt = `${title} screenshot`;
+  screenImage.alt = `${title} ${translations[currentLang].screenAltSuffix}`;
   screenDescription.textContent = description;
   screenPoints.innerHTML = "";
   points.forEach((point) => {

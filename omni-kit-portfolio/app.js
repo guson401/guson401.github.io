@@ -362,6 +362,9 @@ const TRANSLATIONS = {
     "theme-day": "주간",
     "theme-night": "야간",
     "theme-theme": "테마",
+    "aria-screen-category": "화면 카테고리",
+    "aria-screen-list": "화면 목록",
+    "alt-architecture": "Omni-Kit 전체 아키텍처 다이어그램",
     "hero-link-screens": "화면 보기",
     "hero-link-role": "역할 정리",
     "snapshot-label": "Project Snapshot",
@@ -458,6 +461,9 @@ const TRANSLATIONS = {
     "theme-day": "Day",
     "theme-night": "Night",
     "theme-theme": "Theme",
+    "aria-screen-category": "Screen categories",
+    "aria-screen-list": "Screen list",
+    "alt-architecture": "Omni-Kit architecture diagram",
     "hero-link-screens": "See Screens",
     "hero-link-role": "Role Summary",
     "snapshot-label": "Project Snapshot",
@@ -549,26 +555,29 @@ const TRANSLATIONS = {
     "trouble-3-copy": "When an approved device was retired through soft delete, registering the same device again could not reactivate it because the deleted state remained. I changed device retirement to return the device to pending approval so admins can review and approve it again.",
   },
   ja: {
-    eyebrow: "Cobot Operations Console",
+    eyebrow: "協働ロボット運用コンソール",
     "hero-summary": "OnRobot Koreaとの連携プロジェクトとして、STTで協働ロボットアームを制御し、従来のティーチペンダントをWebコンソールで代替することを目標にしました。Web内部はREST/WebSocketで構成し、ロボットとWebシステムはMQTTトピックだけで通信します。",
     "theme-day": "昼間",
     "theme-night": "夜間",
     "theme-theme": "テーマ",
+    "aria-screen-category": "画面カテゴリ",
+    "aria-screen-list": "画面一覧",
+    "alt-architecture": "Omni-Kit 全体アーキテクチャ図",
     "hero-link-screens": "画面を見る",
     "hero-link-role": "役割整理",
-    "snapshot-label": "Project Snapshot",
+    "snapshot-label": "プロジェクト概要",
     "snapshot-front": "Vite 6 + TS · URDFデジタルツイン",
     "snapshot-back": "JDK 21 · JPA · Redis設計",
     "snapshot-auth": "JWT · WebAuthn · ホワイトリスト",
     "snapshot-ros": "MQTT · UR5/2FG7連携",
     "snapshot-period": "実施期間",
-    "overview-kicker": "Overview",
+    "overview-kicker": "概要",
     "overview-title": "問題定義",
     "overview-copy": "従来の協働ロボットアーム制御はティーチペンダントと現場PC中心で、音声命令やWebベースの運用へ拡張しにくい課題があります。Omni-KitはSTT命令、ロボット状態、作業フローをWebコンソールに集約し、より直感的な運用環境を作るプロジェクトです。",
-    "value-kicker": "Core Value",
+    "value-kicker": "中核価値",
     "value-title": "主要な実装ポイント",
     "value-copy": "ReactコンソールはSTT音声パネル、URDF 3Dモデル、レシピ、ウェイポイント、セッション、デバイス管理を提供します。Spring Bootは認証・運用APIとデータモデルを担い、ロボットとWebシステム間の全送受信はMQTTトピックだけで処理しました。",
-    "highlights-kicker": "Highlights",
+    "highlights-kicker": "ハイライト",
     "highlights-title": "主な機能",
     "feature-1-title": "ティーチペンダント代替Webコンソール",
     "feature-1-copy": "協働ロボットアームの状態確認、STT音声パネル、TCP/ジョイント制御、レシピ・ウェイポイント・作業履歴をReact管理コンソールにまとめ、現場PCで運用できるよう実装しました。",
@@ -578,7 +587,7 @@ const TRANSLATIONS = {
     "feature-3-copy": "バックエンドのハイライトとして、Yubico WebAuthn 2.8.1ベースのデバイス登録・認証・承認モデルを実装し、承認済みハードウェアだけが制御APIへアクセスできるよう保護しました。",
     "feature-4-title": "MQTTトピック最小連携",
     "feature-4-copy": "ロボットとWebシステムはMQTTトピックだけで通信します。ロボットパートが送る状態・イベント形式に合わせ、必要なトピックマッピングと画面反映だけを最小修正で合わせました。",
-    "screens-kicker": "Screen Explorer",
+    "screens-kicker": "画面確認",
     "screens-title": "画面構成",
     "tab-auth": "認証",
     "tab-dashboard": "ダッシュボード",
@@ -590,7 +599,7 @@ const TRANSLATIONS = {
     "tab-gripper": "グリッパー",
     "tab-alerts": "通知",
     "tab-admin": "管理者",
-    "architecture-kicker": "Architecture",
+    "architecture-kicker": "アーキテクチャ",
     "architecture-title": "アーキテクチャ",
     "architecture-lead": "図の左側は私が担当したWeb/バックエンド/インフラ領域で、右側はロボットパートです。Web内部はNginx、React、Spring Boot、FastAPI、PostgreSQL/Redisで構成され、ロボットシステムとはMosquitto MQTTトピックだけで状態と命令をやり取りします。",
     "architecture-web-title": "Web・バックエンド・インフラ領域",
@@ -600,7 +609,7 @@ const TRANSLATIONS = {
     "architecture-robot-title": "ロボットパートとデバイスフロー",
     "architecture-robot-copy": "右側のロボットシステムにはマイク、カメラ、スピーカー、STT/LLM/TTS、motion/vision layer、UR5、OnRobot 2FG7グリッパーが含まれます。この領域はロボットパートが担当し、Webではそのシステムと接するMQTTトピックとSTTコンテナ呼び出し点を合わせました。",
     "architecture-caption": "核心はWebシステムとロボットシステムをMQTT境界で分離した点です。Webパートはユーザー画面、認証/認可、データ保存、配備構造、MQTTトピック連携を担当し、ロボット制御とセンサー処理ロジックはロボットパート側に置いた構造です。",
-    "stack-kicker": "Tech Stack",
+    "stack-kicker": "使用技術",
     "stack-title": "使用技術",
     "stack-copy": "プロジェクトに適用した主要技術とライブラリを領域別に整理しました。中核技術は強調し、技術名を押すと使用理由を確認できます。",
     "stack-summary-front": "Frontend / Console UI",
@@ -624,7 +633,7 @@ const TRANSLATIONS = {
     "stack-reason-stt-copy": "STTベースのロボットアーム制御目標のため、音声認識コンテナとWebコンソールの呼び出し点を合わせる目的で使用しました。WebパートではSTT結果を制御フローへつなぐ画面とAPI連携を担当しました。",
     "stack-reason-docker-copy": "Web、バックエンド、MQTTブローカー、STTコンテナを同じ実行環境で確認できるようサービス構成を整理するため使用しました。",
     "stack-reason-deploy-copy": "Web/バックエンドの配備フローとBlue/Green切り替え構造を整理するため使用しました。ポートフォリオではインフラ設計と運用フローを担当した範囲として説明しています。",
-    "role-kicker": "My Contribution",
+    "role-kicker": "担当範囲",
     "role-title": "役割整理",
     "role-copy": "Webパートを担当し、フロントエンド全体実装、バックエンドAPIと認証ドメイン、インフラ構造、DB設計を主に担当しました。バックエンドのハイライトはWebAuthnベースのハードウェアホワイトリストで、ロボットとWebの通信はMQTTトピックだけを使う最小連携として進めました。",
     "role-1-title": "フロントエンド全体実装",
@@ -635,7 +644,7 @@ const TRANSLATIONS = {
     "role-3-copy": "会員、サイト、デバイス、セッション、通知、MFAドメインのAPIとJPAモデルを設計し、Redisベースのchallengeとトークン無効化フローを整理しました。",
     "role-4-title": "インフラ・MQTT連携範囲整理",
     "role-4-copy": "Web/バックエンド配備構造と環境変数を整理し、ロボットとWeb間の通信はMQTTトピックだけを使う形で、Webコンソール表示と制御要求伝達に必要な最小範囲を合わせました。",
-    "trouble-kicker": "Troubleshooting",
+    "trouble-kicker": "トラブルシューティング",
     "trouble-title": "トラブルシューティング",
     "trouble-1-title": "takeoverによる単一セッションポリシー補正",
     "trouble-1-copy": "部分的なBlue/Green配備の過程で旧インスタンスのセッション失効が即時反映されず、既存タブが残る問題がありました。takeoverログイン時に既存セッションを明示的に無効化し、/auth/me再検証で失効状態を検知するよう修正しました。",
@@ -696,10 +705,14 @@ function getVisibleScreens() {
 function applyTranslations(lang) {
   currentLang = lang;
   const t = TRANSLATIONS[lang];
+  document.documentElement.lang = lang;
   Object.entries(t).forEach(([id, text]) => {
     const node = document.getElementById(id);
     if (node) node.textContent = text;
   });
+  document.getElementById("screen-filter-group")?.setAttribute("aria-label", t["aria-screen-category"]);
+  document.getElementById("screen-list")?.setAttribute("aria-label", t["aria-screen-list"]);
+  document.querySelector("#architecture img")?.setAttribute("alt", t["alt-architecture"]);
   document.querySelectorAll(".lang-button").forEach((btn) => {
     btn.classList.toggle("is-active", btn.dataset.lang === lang);
   });
