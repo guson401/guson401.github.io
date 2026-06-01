@@ -71,7 +71,7 @@
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+      grid-template-columns: minmax(300px, 390px) minmax(0, 1fr);
       gap: 22px;
       align-items: stretch;
       min-height: auto;
@@ -262,6 +262,41 @@
       white-space: pre-line;
     }
 
+    .education-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 24px;
+      max-width: 680px;
+    }
+
+    .education-list .meta-label {
+      margin-bottom: 2px;
+    }
+
+    .education-item {
+      display: grid;
+      grid-template-columns: 88px minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(17, 17, 17, 0.035);
+    }
+
+    .education-date {
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .education-desc {
+      color: var(--accent-2);
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
     .profile-meta {
       display: grid;
       gap: 12px;
@@ -331,6 +366,25 @@
     .profile-link-inline .profile-icon {
       background: transparent;
       border: 1px solid rgba(16, 16, 16, 0.08);
+    }
+
+    .pdf-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .pdf-button-section {
+      display: flex;
+      justify-content: flex-end;
     }
 
     .section {
@@ -483,6 +537,11 @@
         font-size: 3rem;
       }
 
+      .education-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
       .profile-row {
         justify-items: start;
       }
@@ -490,6 +549,10 @@
       .profile-links {
         flex-direction: column;
         align-items: flex-start;
+      }
+
+      .pdf-button-section {
+        justify-content: flex-start;
       }
     }
 
@@ -654,7 +717,7 @@
     }
 
     .profile-photo {
-      width: min(100%, 220px);
+      width: min(100%, 240px);
       border-radius: 8px;
       background: #f8fafc;
     }
@@ -673,10 +736,29 @@
       gap: 14px;
     }
 
+    .certification-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
     .competency-card {
       display: grid;
       gap: 12px;
       min-height: 184px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .certification-card {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+      min-height: 96px;
       padding: 20px;
       border: 1px solid var(--line);
       border-radius: 12px;
@@ -704,6 +786,13 @@
       line-height: 1.35;
     }
 
+    .certification-title {
+      margin: 0;
+      color: var(--accent-2);
+      font-size: 1.08rem;
+      line-height: 1.35;
+    }
+
     .competency-copy {
       margin: 0;
       color: var(--muted);
@@ -728,6 +817,7 @@
     body[data-theme="night"] .glass,
     body[data-theme="night"] .project-card,
     body[data-theme="night"] .competency-card,
+    body[data-theme="night"] .certification-card,
     body[data-theme="night"] .hero-main,
     body[data-theme="night"] .hero-side {
       background: var(--surface);
@@ -761,7 +851,8 @@
 
     @media (max-width: 960px) {
       .project-grid,
-      .competency-grid {
+      .competency-grid,
+      .certification-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -811,6 +902,7 @@
       .hero-main,
       .hero-side,
       .competency-card,
+      .certification-card,
       .project-card {
         box-shadow: none;
         border-color: #d8deea;
@@ -849,9 +941,21 @@
       .competency-copy,
       .project-copy,
       .profile-row,
+      .education-item,
       .profile-link-inline {
         font-size: 8.6pt;
         line-height: 1.45;
+      }
+
+      .education-list {
+        margin-top: 0.12in;
+        gap: 0.05in;
+      }
+
+      .education-item {
+        grid-template-columns: 0.62in minmax(0, 1fr);
+        gap: 0.06in;
+        padding: 0.07in 0.08in;
       }
 
       .profile-links {
@@ -872,9 +976,14 @@
       }
 
       .project-grid,
-      .competency-grid {
+      .competency-grid,
+      .certification-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 0.12in;
+      }
+
+      .certification-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .project-visual {
@@ -924,6 +1033,23 @@
               </span>
               <span class="profile-row-value">guson</span>
             </div>
+            <div class="profile-row">
+              <span class="profile-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M12 .5A12 12 0 0 0 8.2 23.9c.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.73-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.82 2.8 1.3 3.48.99.11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.91 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.17 0 0 1-.32 3.3 1.23A11.53 11.53 0 0 1 12 6.6c1.02 0 2.04.14 3 .41 2.3-1.55 3.3-1.23 3.3-1.23.65 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.59-2.8 5.6-5.48 5.9.43.37.82 1.1.82 2.22 0 1.61-.02 2.9-.02 3.29 0 .32.21.7.83.58A12 12 0 0 0 12 .5Z"/>
+                </svg>
+              </span>
+              <span class="profile-row-value"><a href="https://github.com/guson401" target="_blank" rel="noreferrer">github.com/guson401</a></span>
+            </div>
+            <div class="profile-row">
+              <span class="profile-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16v16H4z"/>
+                  <path d="m4 7 8 6 8-6"/>
+                </svg>
+              </span>
+              <span class="profile-row-value"><a href="mailto:sonjiyu123@gmail.com">sonjiyu123@gmail.com</a></span>
+            </div>
           </div>
         </div>
       </aside>
@@ -942,35 +1068,16 @@
         <p class="profile-subtitle" id="profile-subtitle">sonjiyu</p>
         <p class="profile-tagline" id="profile-tagline">AI와 함께 주어진 환경을 빠르게 파악하고,
 필요한 역할을 수행해 결과로 연결하는 개발자</p>
-        <div class="profile-links">
-          <a class="profile-link-inline" href="https://github.com/guson401" target="_blank" rel="noreferrer">
-            <span class="profile-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                <path d="M12 .5A12 12 0 0 0 8.2 23.9c.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.73-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.82 2.8 1.3 3.48.99.11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.91 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.17 0 0 1-.32 3.3 1.23A11.53 11.53 0 0 1 12 6.6c1.02 0 2.04.14 3 .41 2.3-1.55 3.3-1.23 3.3-1.23.65 1.65.24 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.59-2.8 5.6-5.48 5.9.43.37.82 1.1.82 2.22 0 1.61-.02 2.9-.02 3.29 0 .32.21.7.83.58A12 12 0 0 0 12 .5Z"/>
-              </svg>
-            </span>
-            <span>github.com/guson401</span>
-          </a>
-          <a class="profile-link-inline" href="mailto:sonjiyu123@gmail.com">
-            <span class="profile-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16v16H4z"/>
-                <path d="m4 7 8 6 8-6"/>
-              </svg>
-            </span>
-            <span>sonjiyu123@gmail.com</span>
-          </a>
-          <a class="profile-link-inline" href="./portfolio-pdf.html">
-            <span class="profile-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                <path d="M14 2v6h6"/>
-                <path d="M8 13h8"/>
-                <path d="M8 17h5"/>
-              </svg>
-            </span>
-            <span id="pdf-link-label">PDF 버전</span>
-          </a>
+        <div class="education-list" aria-labelledby="education-title">
+          <p class="meta-label" id="education-title">Education</p>
+          <article class="education-item">
+            <span class="education-date" id="education-date-1">2025.02</span>
+            <span class="education-desc" id="education-desc-1">조선대학교 첨단에너지공학과 졸업</span>
+          </article>
+          <article class="education-item">
+            <span class="education-date" id="education-date-2">2026.06</span>
+            <span class="education-desc" id="education-desc-2">SSAFY 교육 이수</span>
+          </article>
         </div>
       </div>
     </section>
@@ -980,7 +1087,6 @@
         <div>
           <h2 class="section-title" id="competencies-title">Core Competencies</h2>
         </div>
-        <p class="section-note" id="competencies-note">프로젝트에서 반복적으로 드러난 주된 역량만 압축했습니다.</p>
       </div>
 
       <div class="competency-grid">
@@ -1003,6 +1109,25 @@
           <span class="competency-no">04</span>
           <h3 class="competency-title" id="competency-title-4">원인 중심 트러블슈팅</h3>
           <p class="competency-copy" id="competency-copy-4">배포 환경 차이, 인증/세션, API 데이터 불일치, 클릭 뎁스 문제를 원인 단위로 정리하고 개선합니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="certifications-title">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title" id="certifications-title">Certifications</h2>
+        </div>
+      </div>
+
+      <div class="certification-grid">
+        <article class="certification-card">
+          <span class="competency-no">01</span>
+          <h3 class="certification-title" id="certification-title-1">1종보통 운전면허</h3>
+        </article>
+        <article class="certification-card">
+          <span class="competency-no">02</span>
+          <h3 class="certification-title" id="certification-title-2">소방안전관리자 1급</h3>
         </article>
       </div>
     </section>
@@ -1069,6 +1194,10 @@
         </a>
       </div>
     </section>
+
+    <section class="section pdf-button-section" aria-label="PDF 버전 확인">
+      <a class="pdf-action" href="./portfolio-pdf.html" id="pdf-action-label">PDF 버전 확인</a>
+    </section>
   </main>
   <script>
     const rootTranslations = {
@@ -1077,9 +1206,13 @@
         profileName: "손지유",
         profileSubtitle: "sonjiyu",
         profileTagline: "AI와 함께 주어진 환경을 빠르게 파악하고,\n필요한 역할을 수행해 결과로 연결하는 개발자",
-        pdfLinkLabel: "PDF 버전",
+        educationTitle: "Education",
+        educationDate1: "2025.02",
+        educationDesc1: "조선대학교 첨단에너지공학과 졸업",
+        educationDate2: "2026.06",
+        educationDesc2: "SSAFY 교육 이수",
+        pdfActionLabel: "PDF 버전 확인",
         competenciesTitle: "Core Competencies",
-        competenciesNote: "프로젝트에서 반복적으로 드러난 주된 역량만 압축했습니다.",
         competencyTitle1: "AI 기반 빠른 도메인 적응",
         competencyCopy1: "낯선 요구사항과 코드 흐름을 AI와 함께 빠르게 구조화하고, 필요한 역할과 구현 범위를 정리합니다.",
         competencyTitle2: "웹·앱·AIoT 연결 구현",
@@ -1088,6 +1221,9 @@
         competencyCopy3: "인증, 대시보드, 리포트, 캘린더처럼 실제 사용자가 이동하는 경로를 기준으로 화면을 구성합니다.",
         competencyTitle4: "원인 중심 트러블슈팅",
         competencyCopy4: "배포 환경 차이, 인증/세션, API 데이터 불일치, 클릭 뎁스 문제를 원인 단위로 정리하고 개선합니다.",
+        certificationsTitle: "Certifications",
+        certificationTitle1: "1종보통 운전면허",
+        certificationTitle2: "소방안전관리자 1급",
         projectsTitle: "Projects",
         omnikitCopy: "OnRobot Korea와 함께한 연계 프로젝트로, STT를 이용해 협동 로봇팔을 제어하고 기존 티치펜던트를 대체할 웹 콘솔을 구현했습니다.",
         farmCopy: "병해충 감시 자율주행 로봇과 이와 연동된 웹 서비스로 농부의 노동시간을 줄여주는 AIoT 프로젝트입니다.",
@@ -1100,9 +1236,13 @@
         profileName: "Son Jiyu",
         profileSubtitle: "sonjiyu",
         profileTagline: "A developer who works with AI to quickly understand the environment,\ntake on the needed role, and turn it into results.",
-        pdfLinkLabel: "PDF Version",
+        educationTitle: "Education",
+        educationDate1: "Feb 2025",
+        educationDesc1: "B.S. in Advanced Energy Engineering, Chosun University",
+        educationDate2: "Jun 2026",
+        educationDesc2: "Completed SSAFY training",
+        pdfActionLabel: "View PDF",
         competenciesTitle: "Core Competencies",
-        competenciesNote: "A focused summary of the strengths repeated across the projects.",
         competencyTitle1: "AI-assisted domain adaptation",
         competencyCopy1: "I use AI to quickly structure unfamiliar requirements and code flows, then define the role and implementation scope.",
         competencyTitle2: "Web, app, and AIoT integration",
@@ -1111,6 +1251,9 @@
         competencyCopy3: "I design screens around real user paths such as authentication, dashboards, reports, and calendars.",
         competencyTitle4: "Root-cause troubleshooting",
         competencyCopy4: "I resolve deployment differences, auth/session issues, API data mismatches, and click-depth problems by tracing causes.",
+        certificationsTitle: "Certifications",
+        certificationTitle1: "Class 1 Normal Driver's License",
+        certificationTitle2: "Fire Safety Manager Level 1",
         projectsTitle: "Projects",
         omnikitCopy: "A collaboration project with OnRobot Korea that uses STT to control a collaborative robot arm and implements a web console intended to replace the traditional teach pendant.",
         farmCopy: "An AIoT project that reduces farmers' labor time through a pest-monitoring autonomous robot and a connected web service.",
@@ -1123,9 +1266,13 @@
         profileName: "ソン・ジユ",
         profileSubtitle: "sonjiyu",
         profileTagline: "AIとともに与えられた環境を素早く把握し、\n必要な役割を担って成果につなげる開発者",
-        pdfLinkLabel: "PDF版",
+        educationTitle: "Education",
+        educationDate1: "2025.02",
+        educationDesc1: "朝鮮大学校 先端エネルギー工学科 卒業",
+        educationDate2: "2026.06",
+        educationDesc2: "SSAFY教育 修了",
+        pdfActionLabel: "PDF版を確認",
         competenciesTitle: "Core Competencies",
-        competenciesNote: "各プロジェクトで繰り返し発揮した主要な強みだけをまとめました。",
         competencyTitle1: "AIを活用した素早いドメイン適応",
         competencyCopy1: "初めての要件やコードの流れをAIとともに素早く整理し、必要な役割と実装範囲を定義します。",
         competencyTitle2: "Web・アプリ・AIoTの連携実装",
@@ -1134,6 +1281,9 @@
         competencyCopy3: "認証、ダッシュボード、レポート、カレンダーなど実際の利用経路を基準に画面を構成します。",
         competencyTitle4: "原因に基づくトラブルシューティング",
         competencyCopy4: "デプロイ環境差、認証/セッション、APIデータ不一致、クリック階層の問題を原因から整理して改善します。",
+        certificationsTitle: "Certifications",
+        certificationTitle1: "第1種普通運転免許",
+        certificationTitle2: "消防安全管理者 1級",
         projectsTitle: "Projects",
         omnikitCopy: "OnRobot Koreaとの連携プロジェクトとして、STTで協働ロボットアームを制御し、従来のティーチペンダントを代替するWebコンソールを実装しました。",
         farmCopy: "病害虫監視の自律走行ロボットと連動Webサービスにより、農家の労働時間を減らすAIoTプロジェクトです。",
@@ -1148,9 +1298,13 @@
       "profile-name": "profileName",
       "profile-subtitle": "profileSubtitle",
       "profile-tagline": "profileTagline",
-      "pdf-link-label": "pdfLinkLabel",
+      "education-title": "educationTitle",
+      "education-date-1": "educationDate1",
+      "education-desc-1": "educationDesc1",
+      "education-date-2": "educationDate2",
+      "education-desc-2": "educationDesc2",
+      "pdf-action-label": "pdfActionLabel",
       "competencies-title": "competenciesTitle",
-      "competencies-note": "competenciesNote",
       "competency-title-1": "competencyTitle1",
       "competency-copy-1": "competencyCopy1",
       "competency-title-2": "competencyTitle2",
@@ -1159,11 +1313,20 @@
       "competency-copy-3": "competencyCopy3",
       "competency-title-4": "competencyTitle4",
       "competency-copy-4": "competencyCopy4",
+      "certifications-title": "certificationsTitle",
+      "certification-title-1": "certificationTitle1",
+      "certification-title-2": "certificationTitle2",
       "projects-title": "projectsTitle",
       "omnikit-copy": "omnikitCopy",
       "farm-copy": "farmCopy",
       "dailylog-copy": "dailylogCopy",
       "dailylog-award-label": "dailylogAwardLabel",
+    };
+
+    const pdfHrefByLang = {
+      ko: "./portfolio-pdf.html",
+      en: "./portfolio-pdf-en.html",
+      ja: "./portfolio-pdf-ja.html",
     };
 
     let currentLang = "ko";
@@ -1191,6 +1354,8 @@
         const node = document.getElementById(id);
         if (node) node.textContent = t[key];
       });
+      const pdfAction = document.getElementById("pdf-action-label");
+      if (pdfAction) pdfAction.href = pdfHrefByLang[lang] || pdfHrefByLang.ko;
       updateThemeToggle(document.body.dataset.theme || "day");
       document.querySelectorAll(".lang-button").forEach((node) => {
         node.classList.toggle("is-active", node.dataset.lang === lang);

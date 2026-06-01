@@ -1,0 +1,281 @@
+html[data-pdf-lang="en"] body {
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+html[data-pdf-lang="ja"] body {
+  word-break: normal;
+  line-break: strict;
+  overflow-wrap: break-word;
+}
+
+html[data-pdf-lang="en"] h1,
+html[data-pdf-lang="en"] h2,
+html[data-pdf-lang="en"] h3,
+html[data-pdf-lang="en"] p,
+html[data-pdf-lang="en"] li,
+html[data-pdf-lang="en"] span,
+html[data-pdf-lang="en"] strong,
+html[data-pdf-lang="ja"] h1,
+html[data-pdf-lang="ja"] h2,
+html[data-pdf-lang="ja"] h3,
+html[data-pdf-lang="ja"] p,
+html[data-pdf-lang="ja"] li,
+html[data-pdf-lang="ja"] span,
+html[data-pdf-lang="ja"] strong {
+  max-width: 100%;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+html[data-pdf-lang="en"] .card,
+html[data-pdf-lang="en"] .contents-item,
+html[data-pdf-lang="en"] .hero-copy,
+html[data-pdf-lang="en"] .snapshot,
+html[data-pdf-lang="en"] .stat,
+html[data-pdf-lang="en"] .screen-copy,
+html[data-pdf-lang="en"] .architecture-copy,
+html[data-pdf-lang="en"] .tech-group,
+html[data-pdf-lang="en"] .timeline-item,
+html[data-pdf-lang="ja"] .card,
+html[data-pdf-lang="ja"] .contents-item,
+html[data-pdf-lang="ja"] .hero-copy,
+html[data-pdf-lang="ja"] .snapshot,
+html[data-pdf-lang="ja"] .stat,
+html[data-pdf-lang="ja"] .screen-copy,
+html[data-pdf-lang="ja"] .architecture-copy,
+html[data-pdf-lang="ja"] .tech-group,
+html[data-pdf-lang="ja"] .timeline-item {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+html[data-pdf-lang="en"] .card h3,
+html[data-pdf-lang="en"] .card p,
+html[data-pdf-lang="en"] .contents-item h3,
+html[data-pdf-lang="en"] .contents-item p,
+html[data-pdf-lang="en"] .hero-copy p,
+html[data-pdf-lang="en"] .stat strong,
+html[data-pdf-lang="en"] .stat span,
+html[data-pdf-lang="en"] .screen-copy p,
+html[data-pdf-lang="en"] .screen-copy li,
+html[data-pdf-lang="en"] .architecture-copy h3,
+html[data-pdf-lang="en"] .architecture-copy p,
+html[data-pdf-lang="en"] .timeline-item h3,
+html[data-pdf-lang="en"] .timeline-item p,
+html[data-pdf-lang="en"] .tech-group h3,
+html[data-pdf-lang="en"] .chip,
+html[data-pdf-lang="ja"] .card h3,
+html[data-pdf-lang="ja"] .card p,
+html[data-pdf-lang="ja"] .contents-item h3,
+html[data-pdf-lang="ja"] .contents-item p,
+html[data-pdf-lang="ja"] .hero-copy p,
+html[data-pdf-lang="ja"] .stat strong,
+html[data-pdf-lang="ja"] .stat span,
+html[data-pdf-lang="ja"] .screen-copy p,
+html[data-pdf-lang="ja"] .screen-copy li,
+html[data-pdf-lang="ja"] .architecture-copy h3,
+html[data-pdf-lang="ja"] .architecture-copy p,
+html[data-pdf-lang="ja"] .timeline-item h3,
+html[data-pdf-lang="ja"] .timeline-item p,
+html[data-pdf-lang="ja"] .tech-group h3,
+html[data-pdf-lang="ja"] .chip {
+  min-width: 0;
+  max-width: 100%;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+html[data-pdf-lang="en"] .timeline-item > div,
+html[data-pdf-lang="ja"] .timeline-item > div {
+  min-width: 0;
+}
+
+html[data-pdf-lang="en"] .chip,
+html[data-pdf-lang="ja"] .chip {
+  display: inline-block;
+  height: auto;
+  min-height: 0.17in;
+}
+
+html[data-pdf-lang="en"] .contents-cover .contents-copy,
+html[data-pdf-lang="ja"] .contents-cover .contents-copy {
+  margin-bottom: 0.2in;
+  font-size: 14.2pt;
+  line-height: 1.38;
+}
+
+html[data-pdf-lang="en"] .contents-cover .contents-item,
+html[data-pdf-lang="ja"] .contents-cover .contents-item {
+  min-height: 3.2in;
+  gap: 0.09in;
+  padding: 0.16in;
+}
+
+html[data-pdf-lang="en"] .contents-cover .contents-item h3,
+html[data-pdf-lang="ja"] .contents-cover .contents-item h3 {
+  font-size: 20pt;
+  line-height: 1.14;
+}
+
+html[data-pdf-lang="en"] .contents-cover .contents-item p,
+html[data-pdf-lang="ja"] .contents-cover .contents-item p {
+  font-size: 12pt;
+  line-height: 1.34;
+}
+
+html[data-pdf-lang="en"] .hero-copy,
+html[data-pdf-lang="en"] .snapshot,
+html[data-pdf-lang="ja"] .hero-copy,
+html[data-pdf-lang="ja"] .snapshot {
+  padding: 0.25in;
+}
+
+html[data-pdf-lang="en"] .hero-copy p,
+html[data-pdf-lang="ja"] .hero-copy p {
+  font-size: 15.4pt;
+  line-height: 1.34;
+}
+
+html[data-pdf-lang="en"] .stat,
+html[data-pdf-lang="ja"] .stat {
+  padding: 0.1in;
+}
+
+html[data-pdf-lang="en"] .stat strong,
+html[data-pdf-lang="ja"] .stat strong {
+  font-size: 17pt;
+  line-height: 1.12;
+}
+
+html[data-pdf-lang="en"] .stat span,
+html[data-pdf-lang="ja"] .stat span {
+  font-size: 10.8pt;
+  line-height: 1.25;
+}
+
+html[data-pdf-lang="en"] .feature-slide .two-col,
+html[data-pdf-lang="ja"] .feature-slide .two-col {
+  flex-basis: 2.26in;
+}
+
+html[data-pdf-lang="en"] .feature-slide .four-col,
+html[data-pdf-lang="ja"] .feature-slide .four-col {
+  gap: 0.1in;
+  margin-top: 0.1in;
+}
+
+html[data-pdf-lang="en"] .feature-slide .card,
+html[data-pdf-lang="ja"] .feature-slide .card {
+  justify-content: flex-start;
+  padding: 0.11in;
+}
+
+html[data-pdf-lang="en"] .feature-slide .card h3,
+html[data-pdf-lang="ja"] .feature-slide .card h3 {
+  margin-bottom: 0.07in;
+  font-size: 15.8pt;
+  line-height: 1.14;
+}
+
+html[data-pdf-lang="en"] .feature-slide .card p,
+html[data-pdf-lang="ja"] .feature-slide .card p {
+  font-size: 10.8pt;
+  line-height: 1.3;
+}
+
+html[data-pdf-lang="en"] .feature-slide .feature-no,
+html[data-pdf-lang="ja"] .feature-slide .feature-no {
+  width: 0.4in;
+  height: 0.4in;
+  margin-bottom: 0.08in;
+  font-size: 10pt;
+}
+
+html[data-pdf-lang="en"] .screen-copy,
+html[data-pdf-lang="en"] .architecture-copy,
+html[data-pdf-lang="ja"] .screen-copy,
+html[data-pdf-lang="ja"] .architecture-copy {
+  padding: 0.12in;
+}
+
+html[data-pdf-lang="en"] .screen-copy p,
+html[data-pdf-lang="en"] .architecture-copy p,
+html[data-pdf-lang="ja"] .screen-copy p,
+html[data-pdf-lang="ja"] .architecture-copy p {
+  font-size: 11.2pt;
+  line-height: 1.3;
+}
+
+html[data-pdf-lang="en"] .combo-slide li,
+html[data-pdf-lang="ja"] .combo-slide li {
+  padding: 0.05in 0.07in;
+  font-size: 10.4pt;
+  line-height: 1.24;
+}
+
+html[data-pdf-lang="en"] .combo-slide .card h3,
+html[data-pdf-lang="en"] .combo-slide .timeline-item h3,
+html[data-pdf-lang="en"] .combo-slide .architecture-copy h3,
+html[data-pdf-lang="ja"] .combo-slide .card h3,
+html[data-pdf-lang="ja"] .combo-slide .timeline-item h3,
+html[data-pdf-lang="ja"] .combo-slide .architecture-copy h3 {
+  font-size: 13.4pt;
+  line-height: 1.16;
+}
+
+html[data-pdf-lang="en"] .work-section,
+html[data-pdf-lang="ja"] .work-section {
+  padding: 0.1in;
+}
+
+html[data-pdf-lang="en"] .work-section-title,
+html[data-pdf-lang="ja"] .work-section-title {
+  margin-bottom: 0.07in;
+  font-size: 18pt;
+}
+
+html[data-pdf-lang="en"] .role-section .four-col,
+html[data-pdf-lang="ja"] .role-section .four-col {
+  gap: 0.06in;
+}
+
+html[data-pdf-lang="en"] .role-section .card,
+html[data-pdf-lang="en"] .trouble-section .timeline-item,
+html[data-pdf-lang="en"] .tech-section .tech-group,
+html[data-pdf-lang="ja"] .role-section .card,
+html[data-pdf-lang="ja"] .trouble-section .timeline-item,
+html[data-pdf-lang="ja"] .tech-section .tech-group {
+  padding: 0.07in;
+}
+
+html[data-pdf-lang="en"] .work-slide .card h3,
+html[data-pdf-lang="en"] .work-slide .tech-group h3,
+html[data-pdf-lang="en"] .work-slide .timeline-item h3,
+html[data-pdf-lang="ja"] .work-slide .card h3,
+html[data-pdf-lang="ja"] .work-slide .tech-group h3,
+html[data-pdf-lang="ja"] .work-slide .timeline-item h3 {
+  font-size: 12.6pt;
+  line-height: 1.14;
+}
+
+html[data-pdf-lang="en"] .work-slide .card p,
+html[data-pdf-lang="en"] .work-slide .tech-group p,
+html[data-pdf-lang="en"] .work-slide .timeline-item p,
+html[data-pdf-lang="ja"] .work-slide .card p,
+html[data-pdf-lang="ja"] .work-slide .tech-group p,
+html[data-pdf-lang="ja"] .work-slide .timeline-item p {
+  font-size: 10.4pt;
+  line-height: 1.23;
+}
+
+html[data-pdf-lang="en"] .work-slide .chip,
+html[data-pdf-lang="ja"] .work-slide .chip {
+  min-height: 0.17in;
+  padding: 0 0.05in;
+  font-size: 9.4pt;
+  line-height: 1.15;
+}

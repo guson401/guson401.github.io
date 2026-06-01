@@ -290,6 +290,19 @@ body::before {
 .stack-card h3,
 .timeline-item h3 { margin: 0; font-size: 1.18rem; }
 
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #f8fbf0;
+  font-weight: 900;
+}
+
 .screen-explorer { display: block; }
 .screen-nav-panel { display: grid; gap: 12px; }
 .screen-filter { border: 1px solid rgba(70, 88, 51, 0.14); background: rgba(255, 255, 252, 0.8); color: var(--accent-strong); border-radius: 999px; padding: 10px 14px; cursor: pointer; font: inherit; }

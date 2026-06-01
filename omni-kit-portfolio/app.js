@@ -660,7 +660,7 @@ const TAB_KEY_BY_SCREEN = {
 };
 
 let currentLang = "ko";
-let currentCategory = "auth";
+let currentCategory = "realtime";
 
 const SCREEN_CATEGORY_ORDER = Object.keys(TAB_KEY_BY_SCREEN);
 const SCREEN_FRAMES = SCREEN_CATEGORY_ORDER.flatMap((category) => {
@@ -676,7 +676,7 @@ const SCREEN_FRAMES = SCREEN_CATEGORY_ORDER.flatMap((category) => {
   }));
 });
 
-let currentScreenKey = SCREEN_FRAMES[0]?.key || "";
+let currentScreenKey = SCREEN_FRAMES.find((screen) => screen.category === currentCategory)?.key || SCREEN_FRAMES[0]?.key || "";
 
 function getCategoryLabel(category) {
   const tabKey = TAB_KEY_BY_SCREEN[category];

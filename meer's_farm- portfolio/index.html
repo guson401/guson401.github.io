@@ -60,10 +60,10 @@
           <h2 id="highlights-title">핵심 기능</h2>
         </div>
         <div class="feature-grid">
-          <article class="feature-card glass-card"><h3 id="feature-1-title">통합 대시보드</h3><p id="feature-1-copy">전체 농장 보기와 개별 농장 보기를 나누어 온도, 습도, 조도, pH, NPK, 위험도 데이터를 빠르게 비교할 수 있게 했습니다.</p></article>
-          <article class="feature-card glass-card"><h3 id="feature-2-title">농장/섹터 관리</h3><p id="feature-2-copy">행, 열, 층수 기반 구조 데이터와 자동화 임계값을 함께 다루고, 섹터 단위 상태가 상위 대시보드에 반영되도록 설계했습니다.</p></article>
-          <article class="feature-card glass-card"><h3 id="feature-3-title">로봇 제어</h3><p id="feature-3-copy">로봇 등록, 상세 조회, 모드 전환, 정지, 복귀, 스케줄 타임라인까지 연결해 관제 기능을 강화했습니다.</p></article>
-          <article class="feature-card glass-card"><h3 id="feature-4-title">이미지/리포트 연계</h3><p id="feature-4-copy">병해충 이미지와 리포트를 시간 기준으로 매칭해 어떤 문제가 언제 발생했는지 함께 확인할 수 있게 구성했습니다.</p></article>
+          <article class="feature-card glass-card"><span class="feature-icon">01</span><h3 id="feature-1-title">통합 대시보드</h3><p id="feature-1-copy">전체 농장 보기와 개별 농장 보기를 나누어 온도, 습도, 조도, pH, NPK, 위험도 데이터를 빠르게 비교할 수 있게 했습니다.</p></article>
+          <article class="feature-card glass-card"><span class="feature-icon">02</span><h3 id="feature-2-title">농장/섹터 관리</h3><p id="feature-2-copy">행, 열, 층수 기반 구조 데이터와 자동화 임계값을 함께 다루고, 섹터 단위 상태가 상위 대시보드에 반영되도록 설계했습니다.</p></article>
+          <article class="feature-card glass-card"><span class="feature-icon">03</span><h3 id="feature-3-title">로봇 제어</h3><p id="feature-3-copy">로봇 등록, 상세 조회, 모드 전환, 정지, 복귀, 스케줄 타임라인까지 연결해 관제 기능을 강화했습니다.</p></article>
+          <article class="feature-card glass-card"><span class="feature-icon">04</span><h3 id="feature-4-title">이미지/리포트 연계</h3><p id="feature-4-copy">병해충 이미지와 리포트를 시간 기준으로 매칭해 어떤 문제가 언제 발생했는지 함께 확인할 수 있게 구성했습니다.</p></article>
         </div>
       </section>
 
@@ -110,7 +110,7 @@
               </li>
               <li>
                 <strong id="architecture-note-2-title">Robot & Vision</strong>
-                <span id="architecture-note-2-copy">카메라와 로봇암으로 농장 이미지를 수집하고, 이미지는 S3와 GPU 서버의 VLM 처리 흐름으로 연결되어 병해충 판단 근거가 됩니다.</span>
+                <span id="architecture-note-2-copy">카메라와 로봇암으로 농장 이미지를 수집하고, 이미지는 S3와 GPU 서버의 YOLO 기반 객체 탐지 및 세그멘테이션 흐름으로 연결되어 병해충 판단 근거가 됩니다.</span>
               </li>
               <li>
                 <strong id="architecture-note-3-title">Central Web</strong>
@@ -216,7 +216,7 @@
               <div class="stack-chip-row">
                 <button class="stack-chip is-highlight" type="button" data-reason-target="stack-reason-mqtt">MQTT</button>
                 <button class="stack-chip" type="button" data-reason-target="stack-reason-s3">S3</button>
-                <button class="stack-chip" type="button" data-reason-target="stack-reason-gpu">GPU Server / VLM</button>
+                <button class="stack-chip" type="button" data-reason-target="stack-reason-gpu">YOLO Detection / Segmentation</button>
                 <button class="stack-chip" type="button" data-reason-target="stack-reason-ec2">EC2</button>
                 <button class="stack-chip" type="button" data-reason-target="stack-reason-risk">Risk Data Sync</button>
               </div>
@@ -228,7 +228,7 @@
                   <p id="stack-reason-s3-copy">농장 이미지와 분석 대상 파일을 서버 처리 흐름에서 분리해 보관하고, GPU 서버 처리 결과와 리포트 흐름을 연결하기 위해 사용했습니다.</p>
                 </article>
                 <article class="stack-reason-panel" id="stack-reason-gpu">
-                  <p id="stack-reason-gpu-copy">로봇 카메라가 수집한 이미지를 VLM 처리 흐름으로 넘겨 병해충 판단과 리포트 생성의 근거 데이터로 활용했습니다.</p>
+                  <p id="stack-reason-gpu-copy">로봇 카메라가 수집한 이미지를 YOLO 기반 객체 탐지 및 세그멘테이션 흐름으로 넘겨 병해충 영역 검출과 면적 산출의 근거 데이터로 활용했습니다.</p>
                 </article>
                 <article class="stack-reason-panel" id="stack-reason-ec2">
                   <p id="stack-reason-ec2-copy">Django API, DB, MQTT 브로커, React 웹 서버를 운영하는 중앙 서버 환경으로 구성했습니다.</p>

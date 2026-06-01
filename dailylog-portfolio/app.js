@@ -502,9 +502,9 @@ const staticTranslations = {
       "Room DB와 Repository 구조를 통해 일기와 사용자 데이터를 안정적으로 저장하고, 화면 코드가 네트워크와 로컬 저장소에 직접 결합되지 않도록 계층을 분리했습니다.",
       "서버가 정상 동작하는 환경을 기준으로 일기 작성, 감정 분석, 추천, Calendar Provider 연동, 일정 수정/추가, 감정 그래프, 프로필 편집까지 실제 사용 흐름으로 검증했습니다.",
     ],
-    troubleTitles: ["클릭 뎁스를 줄이기 위한 UI 수정", "상호작용형 UI를 위한 튜토리얼 개발"],
+    troubleTitles: ["이미지 리소스 최적화로 렉 감소", "상호작용형 UI를 위한 튜토리얼 개발"],
     troubleCopies: [
-      "기존 흐름에서는 홈에서 핵심 기능으로 이동하기 위해 메뉴를 열고 다시 세부 항목을 선택하는 식으로 클릭 단계가 늘어났습니다. 실제 사용 빈도가 높은 일기 작성, 일기 확인, 캘린더 진입을 홈 메뉴에서 바로 선택하도록 재배치하고, 화면 내 후속 액션도 다음 화면으로 직접 이어지게 정리해 반복 사용 시 이동 부담을 줄였습니다.",
+      "고해상도 PNG 이미지 리소스가 많아 화면 전환과 렌더링 과정에서 불필요한 부하와 렉이 발생했습니다. 화면에 필요한 수준으로 해상도를 조절하고 PNG 파일을 WebP로 전환해 과도한 리소스 사용을 줄이고 앱의 반응성을 개선했습니다.",
       "오브젝트 기반 화면은 앱의 감성을 살리는 장점이 있었지만, 버튼처럼 보이지 않는 요소가 많아 첫 사용자가 이동 가능 영역을 놓칠 수 있었습니다. 튜토리얼에서 눌러야 하는 오브젝트와 다음 흐름을 단계별로 보여주고, 홈 메뉴에서 다시 열 수 있도록 연결해 초기 학습 비용을 낮췄습니다.",
     ],
     architectureSummary: "DailyLog는 Android 앱에서 음성 입력과 화면 흐름을 처리하고, 서버는 API 처리, 데이터 저장, AI 연동, 배포와 모니터링을 분리해 운영할 수 있도록 구성했습니다.",
@@ -558,9 +558,9 @@ const staticTranslations = {
       "Organized diary and user data through Room DB and a repository structure, separating screen code from networking and local storage.",
       "Validated the actual usage flow in a working server environment, from diary writing, emotion analysis, and recommendations to Calendar Provider, schedule add/edit, emotion graphs, and profile editing.",
     ],
-    troubleTitles: ["UI Revision to Reduce Click Depth", "Tutorial Development for Interactive UI"],
+    troubleTitles: ["Reduced Lag Through Image Resource Optimization", "Tutorial Development for Interactive UI"],
     troubleCopies: [
-      "The previous flow increased click depth because users had to open a menu and then choose another subitem to reach core features from the home screen. I moved high-frequency actions such as writing a diary, checking entries, and opening the calendar into the home menu, then connected follow-up actions directly to the next screen to reduce repeated navigation effort.",
+      "High-resolution PNG assets caused unnecessary load and lag during screen transitions and rendering. I resized images to the level needed on screen and converted PNG files to WebP to reduce excessive resource usage and improve app responsiveness.",
       "The object-based screen helped preserve the app mood, but many interactive elements did not look like standard buttons, so first-time users could miss where they could move. I added tutorial steps that show which objects to press and what flow comes next, then linked the tutorial from the home menu to lower the initial learning cost.",
     ],
     architectureSummary: "DailyLog handles voice input and screen flow in the Android app, while the server side separates API handling, data storage, AI integration, deployment, and monitoring.",
@@ -632,9 +632,9 @@ const staticTranslations = {
       "Room DBとRepository構造で日記とユーザーデータを安定して保存し、画面コードがネットワークやローカル保存層へ直接依存しないよう分離しました。",
       "サーバーが正常に動く環境を基準に、日記作成、感情分析、おすすめ提案、Calendar Provider連携、予定追加 / 修正、感情グラフ、プロフィール編集まで実使用フローで検証しました。",
     ],
-    troubleTitles: ["クリック深度を減らすUI修正", "インタラクティブUI向けチュートリアル開発"],
+    troubleTitles: ["画像リソース最適化によるラグ削減", "インタラクティブUI向けチュートリアル開発"],
     troubleCopies: [
-      "従来のフローでは、ホームから主要機能へ移動するためにメニューを開き、さらに詳細項目を選ぶ必要があり、クリック段階が増えていました。利用頻度の高い日記作成、日記確認、カレンダー移動をホームメニューから直接選べるよう再配置し、画面内の後続アクションも次の画面へ直接つなげることで、繰り返し利用時の移動負担を減らしました。",
+      "高解像度のPNG画像リソースが多く、画面遷移やレンダリング時に不要な負荷とラグが発生していました。画面表示に必要な水準まで解像度を調整し、PNGファイルをWebPへ変換することで過剰なリソース使用を抑え、アプリの応答性を改善しました。",
       "オブジェクト中心の画面はアプリの雰囲気を活かせる一方、通常のボタンに見えない要素が多く、初回ユーザーが移動できる場所を見落とす可能性がありました。押すべきオブジェクトと次の流れをチュートリアルで段階的に示し、ホームメニューから再確認できるようにして初期学習コストを下げました。",
     ],
     architectureSummary: "DailyLogはAndroidアプリで音声入力と画面フローを処理し、サーバー側ではAPI処理、データ保存、AI連携、デプロイ、モニタリングを分離して構成しました。",
@@ -779,8 +779,8 @@ const stageCanvasNode = document.getElementById("flow-stage-canvas");
 const flowTitleSequenceNode = document.getElementById("flow-title-sequence");
 
 let currentLang = "ko";
-let currentStep = "login";
-let currentPath = ["login"];
+let currentStep = "home";
+let currentPath = ["home"];
 
 const homeFlowSteps = new Set([
   "home",
@@ -1109,4 +1109,4 @@ function initStackReasons() {
 initStackReasons();
 setTheme(localStorage.getItem(themeStorageKey) || "day", false);
 applyStaticTranslations();
-renderStep("login");
+renderStep("home");

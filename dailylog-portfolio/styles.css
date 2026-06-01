@@ -346,6 +346,19 @@ body::before {
   padding: 24px 22px;
 }
 
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  color: #fff8ef;
+  font-weight: 900;
+}
+
 .feature-card h3,
 .timeline-item h3 {
   margin: 0;
