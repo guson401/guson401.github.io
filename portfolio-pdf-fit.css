@@ -109,28 +109,28 @@ html[data-pdf-lang="ja"] .chip {
 
 html[data-pdf-lang="en"] .contents-cover .contents-copy,
 html[data-pdf-lang="ja"] .contents-cover .contents-copy {
-  margin-bottom: 0.2in;
-  font-size: 14.2pt;
-  line-height: 1.38;
+  margin-bottom: 0.16in;
+  font-size: 12pt;
+  line-height: 1.32;
 }
 
 html[data-pdf-lang="en"] .contents-cover .contents-item,
 html[data-pdf-lang="ja"] .contents-cover .contents-item {
-  min-height: 2.05in;
-  gap: 0.09in;
-  padding: 0.14in;
+  min-height: 1.42in;
+  gap: 0.08in;
+  padding: 0.12in;
 }
 
 html[data-pdf-lang="en"] .contents-cover .contents-item h3,
 html[data-pdf-lang="ja"] .contents-cover .contents-item h3 {
-  font-size: 18.6pt;
-  line-height: 1.14;
+  font-size: 16.8pt;
+  line-height: 1.1;
 }
 
 html[data-pdf-lang="en"] .contents-cover .contents-item p,
 html[data-pdf-lang="ja"] .contents-cover .contents-item p {
-  font-size: 10.8pt;
-  line-height: 1.34;
+  font-size: 9.8pt;
+  line-height: 1.25;
 }
 
 html[data-pdf-lang="en"] .hero-copy,

@@ -303,7 +303,8 @@
     }
 
     .contents-cover .contents-title {
-      font-size: 51pt;
+      font-size: 43pt;
+      line-height: 1.02;
     }
 
     .contents-copy {
@@ -314,9 +315,9 @@
 
     .contents-cover .contents-copy {
       max-width: none;
-      margin-bottom: 0.28in;
-      font-size: 16.5pt;
-      line-height: 1.55;
+      margin-bottom: 0.16in;
+      font-size: 12.2pt;
+      line-height: 1.35;
     }
 
     .contents-grid {
@@ -326,7 +327,7 @@
 
     .contents-cover .contents-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.14in;
+      gap: 0.1in;
     }
 
     .contents-item {
@@ -340,25 +341,29 @@
     }
 
     .contents-cover .contents-item {
-      grid-template-columns: 1fr;
+      grid-template-columns: 0.62in minmax(0, 1fr);
       align-content: start;
-      gap: 0.12in;
-      min-height: 2.05in;
-      padding: 0.16in;
+      align-items: start;
+      gap: 0.1in;
+      min-height: 1.42in;
+      padding: 0.12in;
     }
 
     .contents-cover .contents-num {
-      width: 0.72in;
-      height: 0.72in;
-      font-size: 16pt;
+      width: 0.54in;
+      height: 0.54in;
+      font-size: 13pt;
     }
 
     .contents-cover .contents-item h3 {
-      font-size: 20.5pt;
+      margin: 0 0 0.03in;
+      font-size: 17.5pt;
+      line-height: 1.12;
     }
 
     .contents-cover .contents-item p {
-      font-size: 12.6pt;
+      font-size: 10.5pt;
+      line-height: 1.28;
     }
 
     .contents-num {
@@ -663,21 +668,23 @@
 
     .medical-screen-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 3.15in;
-      gap: 0.14in;
+      grid-template-columns: minmax(0, 1fr) 3.05in;
+      gap: 0.18in;
       align-items: stretch;
     }
 
     .medical-screen-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.08in;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
       min-width: 0;
     }
 
     .medical-screen-shot {
       margin: 0;
-      padding: 0.06in;
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
+      padding: 0.1in;
       border: 1px solid var(--line);
       background: #fff;
       overflow: hidden;
@@ -686,16 +693,16 @@
     .medical-screen-shot img {
       display: block;
       width: 100%;
-      aspect-ratio: 16 / 9;
+      height: 4.45in;
       object-fit: contain;
       border-radius: 6px;
       background: #f8fafc;
     }
 
     .medical-screen-shot figcaption {
-      margin-top: 0.04in;
+      margin-top: 0.06in;
       color: var(--medical);
-      font-size: 8.8pt;
+      font-size: 10.8pt;
       font-weight: 900;
       line-height: 1.15;
     }
@@ -1132,7 +1139,7 @@
             <span class="contents-num">04</span>
             <div>
               <h3>medicare</h3>
-              <p class="contents-period">SSAFY Full-Stack Web Project</p>
+              <p class="contents-period">2025.12</p>
               <p>AI 증상 분석, 진료과 추천, 위치 기반 병원 검색과 방문 기록을 연결한 헬스케어 플랫폼</p>
               <div class="chips"><span class="chip">Vue</span><span class="chip">Django</span><span class="chip">Kakao Map</span></div>
             </div>
@@ -1421,7 +1428,7 @@
         <article class="hero-copy">
           <p class="kicker">Project Overview</p>
           <h2>medicare</h2>
-          <span class="pdf-period-badge">SSAFY Full-Stack Web Project</span>
+          <span class="pdf-period-badge">2025.12</span>
           <p>사용자의 증상을 자연어로 입력받아 생성형 AI로 적절한 진료과를 추천하고, 위치 기반으로 실제 방문 가능한 병원을 안내하는 통합 헬스케어 플랫폼입니다. 병원 검색, 방문 기록, 즐겨찾기, 댓글과 커뮤니티 흐름을 하나의 서비스로 연결했습니다.</p>
         </article>
         <aside class="snapshot">
@@ -1451,21 +1458,15 @@
     <section class="slide accent-medical medical-screen-slide">
       <header class="slide-head"><h2 class="slide-title">화면구성</h2><p class="slide-meta">medicare</p></header>
       <div class="medical-screen-layout">
-        <div class="medical-screen-grid" aria-label="medicare 화면구성 대표 이미지">
-          <figure class="medical-screen-shot"><img src="./medicare-screenshots/main.png" alt="medicare 증상 입력 화면"><figcaption>증상 입력</figcaption></figure>
-          <figure class="medical-screen-shot"><img src="./medicare-screenshots/survey3.png" alt="medicare 증상 상세 설문 화면"><figcaption>상세 설문</figcaption></figure>
-          <figure class="medical-screen-shot"><img src="./medicare-screenshots/search.png" alt="medicare 병원 검색 화면"><figcaption>병원 검색</figcaption></figure>
-          <figure class="medical-screen-shot"><img src="./medicare-screenshots/map.png" alt="medicare 지도 기반 병원 탐색 화면"><figcaption>지도 탐색</figcaption></figure>
-          <figure class="medical-screen-shot"><img src="./medicare-screenshots/Profile.png" alt="medicare 프로필 화면"><figcaption>프로필</figcaption></figure>
-          <figure class="medical-screen-shot"><img src="./medicare-screenshots/Community_write.png" alt="medicare 게시글 작성 화면"><figcaption>커뮤니티 작성</figcaption></figure>
+        <div class="medical-screen-grid" aria-label="medicare 메인 화면 이미지">
+          <figure class="medical-screen-shot"><img src="./medicare-screenshots/main.png" alt="medicare 메인 화면"><figcaption>메인 화면</figcaption></figure>
         </div>
         <aside class="screen-copy">
-          <p>증상 입력, 상세 설문, 병원 검색, 지도 탐색, 프로필 위치 저장, 커뮤니티 작성까지 실제 서비스 화면을 기준으로 흐름을 재구성했습니다.</p>
+          <p>메인 화면은 증상 입력과 병원 검색 진입점을 한 화면에 배치해 사용자가 바로 필요한 흐름을 선택할 수 있게 구성했습니다.</p>
           <ul>
-            <li>메인 화면에서 자연어 증상 입력과 병원 검색 진입점을 제공</li>
-            <li>짧은 증상 입력은 상세 설문으로 보완한 뒤 AI 분석 요청으로 연결</li>
-            <li>진료과, 키워드, 위치 정보를 조합해 병원 목록과 지도를 함께 탐색</li>
-            <li>프로필 위치 저장과 커뮤니티 작성까지 후속 사용 흐름을 분리</li>
+            <li>자연어 증상 입력 영역과 AI 추천 흐름의 시작점을 상단에 배치</li>
+            <li>병원 검색, 방문 기록, 커뮤니티로 이어지는 주요 기능 진입점을 노출</li>
+            <li>의료 정보 탐색 전 단계에서 사용자의 다음 행동을 빠르게 선택하도록 구성</li>
           </ul>
         </aside>
       </div>
