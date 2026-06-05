@@ -451,6 +451,10 @@
       background: url("./omni-kit-screenshots/20_realtime-control_01_tcp-control.png") center 6% / cover no-repeat;
     }
 
+    .project-card.medicare .project-visual {
+      background: url("./medicare-screenshots/logo.png") center / cover no-repeat;
+    }
+
     .chip {
       display: inline-flex;
       align-items: center;
@@ -635,7 +639,7 @@
     }
 
     .project-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
     }
 
@@ -999,7 +1003,11 @@
         font-size: 20pt;
       }
 
-      .project-grid,
+      .project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.12in;
+      }
+
       .tech-stack-grid,
       .certification-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1259,6 +1267,20 @@
             </div>
           </div>
         </a>
+
+        <a class="project-card medicare" href="./medicare-portfolio/index.html">
+          <div class="project-visual" aria-hidden="true"></div>
+          <div class="project-body">
+            <h3 class="project-title">medicare</h3>
+            <p class="project-period">SSAFY Full-Stack Web Project</p>
+            <p class="project-copy" id="medicare-copy">사용자 증상을 AI로 분석해 진료과를 추천하고, 위치 기반 병원 검색과 방문 기록, 커뮤니티 기능을 제공하는 풀스택 헬스케어 플랫폼입니다.</p>
+            <div class="chip-row">
+              <span class="chip">Vue</span>
+              <span class="chip">Django</span>
+              <span class="chip">Kakao Map</span>
+            </div>
+          </div>
+        </a>
       </div>
     </section>
 
@@ -1300,6 +1322,7 @@
         omnikitCopy: "OnRobot Korea와 함께한 연계 프로젝트로, STT를 이용해 협동 로봇팔을 제어하고 기존 티치펜던트를 대체할 웹 콘솔을 구현했습니다.",
         farmCopy: "병해충 감시 자율주행 로봇과 이와 연동된 웹 서비스로 농부의 노동시간을 줄여주는 AIoT 프로젝트입니다.",
         dailylogCopy: "하루 기록이 번거롭거나 어려움을 겪는 사람들을 위한 대화형 일기 작성 앱 프로젝트입니다.",
+        medicareCopy: "사용자 증상을 AI로 분석해 진료과를 추천하고, 위치 기반 병원 검색과 방문 기록, 커뮤니티 기능을 제공하는 풀스택 헬스케어 플랫폼입니다.",
         dailylogAwardLabel: "동메달 · 3등 수상",
         themeLabels: { day: "주간", night: "야간" },
       },
@@ -1335,6 +1358,7 @@
         omnikitCopy: "A collaboration project with OnRobot Korea that uses STT to control a collaborative robot arm and implements a web console intended to replace the traditional teach pendant.",
         farmCopy: "An AIoT project that reduces farmers' labor time through a pest-monitoring autonomous robot and a connected web service.",
         dailylogCopy: "A conversational diary-writing app project for people who find daily journaling inconvenient or difficult.",
+        medicareCopy: "A full-stack healthcare platform that analyzes symptoms with AI, recommends departments, and supports location-based hospital search, visit records, and community features.",
         dailylogAwardLabel: "Bronze · 3rd Place",
         themeLabels: { day: "Day", night: "Night" },
       },
@@ -1370,6 +1394,7 @@
         omnikitCopy: "OnRobot Koreaとの連携プロジェクトとして、STTで協働ロボットアームを制御し、従来のティーチペンダントを代替するWebコンソールを実装しました。",
         farmCopy: "病害虫監視の自律走行ロボットと連動Webサービスにより、農家の労働時間を減らすAIoTプロジェクトです。",
         dailylogCopy: "毎日の記録が面倒だったり難しかったりする人のための会話型日記作成アプリプロジェクトです。",
+        medicareCopy: "症状をAIで分析して診療科を推薦し、位置情報ベースの病院検索、訪問記録、コミュニティ機能を提供するフルスタック医療プラットフォームです。",
         dailylogAwardLabel: "銅賞 · 3位受賞",
         themeLabels: { day: "昼間", night: "夜間" },
       },
@@ -1404,6 +1429,7 @@
       "omnikit-copy": "omnikitCopy",
       "farm-copy": "farmCopy",
       "dailylog-copy": "dailylogCopy",
+      "medicare-copy": "medicareCopy",
       "dailylog-award-label": "dailylogAwardLabel",
     };
 

@@ -116,20 +116,20 @@ html[data-pdf-lang="ja"] .contents-cover .contents-copy {
 
 html[data-pdf-lang="en"] .contents-cover .contents-item,
 html[data-pdf-lang="ja"] .contents-cover .contents-item {
-  min-height: 3.2in;
+  min-height: 2.05in;
   gap: 0.09in;
-  padding: 0.16in;
+  padding: 0.14in;
 }
 
 html[data-pdf-lang="en"] .contents-cover .contents-item h3,
 html[data-pdf-lang="ja"] .contents-cover .contents-item h3 {
-  font-size: 20pt;
+  font-size: 18.6pt;
   line-height: 1.14;
 }
 
 html[data-pdf-lang="en"] .contents-cover .contents-item p,
 html[data-pdf-lang="ja"] .contents-cover .contents-item p {
-  font-size: 12pt;
+  font-size: 10.8pt;
   line-height: 1.34;
 }
 

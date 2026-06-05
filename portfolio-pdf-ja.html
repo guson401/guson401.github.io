@@ -20,6 +20,7 @@
       --omni: #1f3d78;
       --daily: #6d3416;
       --farm: #2f4a23;
+      --medical: #2563eb;
     }
 
     * { box-sizing: border-box; }
@@ -324,7 +325,7 @@
     }
 
     .contents-cover .contents-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0.14in;
     }
 
@@ -342,8 +343,8 @@
       grid-template-columns: 1fr;
       align-content: start;
       gap: 0.12in;
-      min-height: 3.4in;
-      padding: 0.2in;
+      min-height: 2.05in;
+      padding: 0.16in;
     }
 
     .contents-cover .contents-num {
@@ -353,11 +354,11 @@
     }
 
     .contents-cover .contents-item h3 {
-      font-size: 22.5pt;
+      font-size: 20.5pt;
     }
 
     .contents-cover .contents-item p {
-      font-size: 14.1pt;
+      font-size: 12.6pt;
     }
 
     .contents-num {
@@ -660,6 +661,45 @@
       background: #fff;
     }
 
+    .medical-screen-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 3.15in;
+      gap: 0.14in;
+      align-items: stretch;
+    }
+
+    .medical-screen-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.08in;
+      min-width: 0;
+    }
+
+    .medical-screen-shot {
+      margin: 0;
+      padding: 0.06in;
+      border: 1px solid var(--line);
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .medical-screen-shot img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #f8fafc;
+    }
+
+    .medical-screen-shot figcaption {
+      margin-top: 0.04in;
+      color: var(--medical);
+      font-size: 8.8pt;
+      font-weight: 900;
+      line-height: 1.15;
+    }
+
     .combo-slide .image-frame img {
       height: 2.9in;
     }
@@ -948,9 +988,11 @@
     .accent-omni .slide-head { border-color: var(--omni); }
     .accent-daily .slide-head { border-color: var(--daily); }
     .accent-farm .slide-head { border-color: var(--farm); }
+    .accent-medical .slide-head { border-color: var(--medical); }
     .accent-omni .feature-no, .accent-omni .timeline-index { background: var(--omni); }
     .accent-daily .feature-no, .accent-daily .timeline-index { background: var(--daily); }
     .accent-farm .feature-no, .accent-farm .timeline-index { background: var(--farm); }
+    .accent-medical .feature-no, .accent-medical .timeline-index { background: var(--medical); }
 
     @page {
       size: 13.333in 7.5in;
@@ -1084,6 +1126,15 @@
               <p class="contents-period">2026.01 - 2026.02</p>
               <p>병해충 감시 자율주행 로봇과 농장 관제 웹 서비스를 연결한 AIoT 프로젝트</p>
               <div class="chips"><span class="chip">React</span><span class="chip">Django</span><span class="chip">MQTT</span></div>
+            </div>
+          </article>
+          <article class="contents-item">
+            <span class="contents-num">04</span>
+            <div>
+              <h3>medicare</h3>
+              <p class="contents-period">SSAFY Full-Stack Web Project</p>
+              <p>AI 증상 분석, 진료과 추천, 위치 기반 병원 검색과 방문 기록을 연결한 헬스케어 플랫폼</p>
+              <div class="chips"><span class="chip">Vue</span><span class="chip">Django</span><span class="chip">Kakao Map</span></div>
             </div>
           </article>
         </div>
@@ -1359,6 +1410,105 @@
             <article class="tech-group"><h3>Frontend / Web UI</h3><div class="chips"><span class="chip">React</span><span class="chip">Vite</span><span class="chip">React Router</span><span class="chip">Axios</span><span class="chip">Tailwind CSS</span></div></article>
             <article class="tech-group"><h3>Backend / API / Auth</h3><div class="chips"><span class="chip">Django</span><span class="chip">Django REST Framework</span><span class="chip">Simple JWT</span><span class="chip">SQLite</span></div></article>
             <article class="tech-group"><h3>Data / Robot / Infra</h3><div class="chips"><span class="chip">MQTT</span><span class="chip">S3</span><span class="chip">YOLO Detection / Segmentation</span><span class="chip">EC2</span></div></article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="slide accent-medical combo-slide">
+      <header class="slide-head"><h2 class="slide-title">medicare</h2><p class="slide-meta">AI Hospital Recommendation Platform</p></header>
+      <div class="hero-slide">
+        <article class="hero-copy">
+          <p class="kicker">Project Overview</p>
+          <h2>medicare</h2>
+          <span class="pdf-period-badge">SSAFY Full-Stack Web Project</span>
+          <p>사용자의 증상을 자연어로 입력받아 생성형 AI로 적절한 진료과를 추천하고, 위치 기반으로 실제 방문 가능한 병원을 안내하는 통합 헬스케어 플랫폼입니다. 병원 검색, 방문 기록, 즐겨찾기, 댓글과 커뮤니티 흐름을 하나의 서비스로 연결했습니다.</p>
+        </article>
+        <aside class="snapshot">
+          <p class="kicker">Project Snapshot</p>
+          <div class="stat"><strong>Vue 3</strong><span>Composition API · Router · Pinia</span></div>
+          <div class="stat"><strong>Django 5</strong><span>DRF · dj-rest-auth · Token Auth</span></div>
+          <div class="stat"><strong>AI Recommend</strong><span>증상 분석 · 진료과 추출</span></div>
+          <div class="stat"><strong>Location Search</strong><span>Kakao Map · Haversine 거리 계산</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide accent-medical feature-slide">
+      <header class="slide-head"><h2 class="slide-title">문제 정의 · 핵심 기능</h2><p class="slide-meta">medicare</p></header>
+      <div class="two-col">
+        <article class="card"><h3>문제 정의</h3><p>사용자는 증상은 설명할 수 있어도 어떤 진료과를 찾아야 하는지 판단하기 어렵습니다. medicare는 증상 입력부터 진료과 추천, 병원 탐색, 방문 기록까지 이어지는 의사결정 흐름을 서비스로 만들었습니다.</p></article>
+        <article class="card"><h3>핵심 구현 포인트</h3><p>Vue 화면은 로그인 상태, 증상 입력, 추천 결과, 병원 상세와 프로필 흐름을 담당하고, Django API는 사용자, 병원, 진료과, 즐겨찾기, 방문 기록, 커뮤니티 도메인을 처리합니다.</p></article>
+      </div>
+      <div class="four-col section-gap">
+        <article class="card"><span class="feature-no">01</span><h3>AI 진료과 추천</h3><p>자연어 증상을 AI로 분석하고 추천 진료과를 파싱해 병원 검색 기준으로 연결했습니다.</p></article>
+        <article class="card"><span class="feature-no">02</span><h3>위치 기반 검색</h3><p>추천 진료과와 사용자 기본 위치를 기준으로 병원을 필터링하고 가까운 순서로 정렬했습니다.</p></article>
+        <article class="card"><span class="feature-no">03</span><h3>방문 기록</h3><p>방문일, 증상, 진단, 대기시간, 평점, 메모를 저장해 병원 이용 경험을 관리합니다.</p></article>
+        <article class="card"><span class="feature-no">04</span><h3>커뮤니티</h3><p>게시글, 댓글, 대댓글, 좋아요와 병원 댓글을 통해 사용자 경험 공유를 지원했습니다.</p></article>
+      </div>
+    </section>
+
+    <section class="slide accent-medical medical-screen-slide">
+      <header class="slide-head"><h2 class="slide-title">화면구성</h2><p class="slide-meta">medicare</p></header>
+      <div class="medical-screen-layout">
+        <div class="medical-screen-grid" aria-label="medicare 화면구성 대표 이미지">
+          <figure class="medical-screen-shot"><img src="./medicare-screenshots/main.png" alt="medicare 증상 입력 화면"><figcaption>증상 입력</figcaption></figure>
+          <figure class="medical-screen-shot"><img src="./medicare-screenshots/survey3.png" alt="medicare 증상 상세 설문 화면"><figcaption>상세 설문</figcaption></figure>
+          <figure class="medical-screen-shot"><img src="./medicare-screenshots/search.png" alt="medicare 병원 검색 화면"><figcaption>병원 검색</figcaption></figure>
+          <figure class="medical-screen-shot"><img src="./medicare-screenshots/map.png" alt="medicare 지도 기반 병원 탐색 화면"><figcaption>지도 탐색</figcaption></figure>
+          <figure class="medical-screen-shot"><img src="./medicare-screenshots/Profile.png" alt="medicare 프로필 화면"><figcaption>프로필</figcaption></figure>
+          <figure class="medical-screen-shot"><img src="./medicare-screenshots/Community_write.png" alt="medicare 게시글 작성 화면"><figcaption>커뮤니티 작성</figcaption></figure>
+        </div>
+        <aside class="screen-copy">
+          <p>증상 입력, 상세 설문, 병원 검색, 지도 탐색, 프로필 위치 저장, 커뮤니티 작성까지 실제 서비스 화면을 기준으로 흐름을 재구성했습니다.</p>
+          <ul>
+            <li>메인 화면에서 자연어 증상 입력과 병원 검색 진입점을 제공</li>
+            <li>짧은 증상 입력은 상세 설문으로 보완한 뒤 AI 분석 요청으로 연결</li>
+            <li>진료과, 키워드, 위치 정보를 조합해 병원 목록과 지도를 함께 탐색</li>
+            <li>프로필 위치 저장과 커뮤니티 작성까지 후속 사용 흐름을 분리</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide accent-medical">
+      <header class="slide-head"><h2 class="slide-title">아키텍처</h2><p class="slide-meta">medicare</p></header>
+      <div class="architecture-layout">
+        <figure class="image-frame"><img src="./medicare-screenshots/erd.png" alt="medicare ERD"></figure>
+        <aside class="architecture-copy">
+          <p>accounts, hospitals, articles 도메인을 분리하고 병원 데이터, 진료과, 즐겨찾기, 댓글, 방문 기록, 사용자 저장 위치를 연결했습니다. 추천 결과는 사용자 위치와 병원 좌표를 함께 사용해 거리순으로 정렬됩니다.</p>
+          <div><h3>Frontend</h3><p>Vue Router와 Pinia를 사용해 로그인 상태, 추천 결과, 병원 검색, 프로필 화면 흐름을 관리했습니다.</p></div>
+          <div><h3>Backend</h3><p>Django REST Framework로 병원 검색, AI 추천, 방문 기록, 댓글, 즐겨찾기 API를 구성했습니다.</p></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide accent-medical work-slide">
+      <header class="slide-head"><h2 class="slide-title">프로젝트 수행 정리</h2><p class="slide-meta">medicare</p></header>
+      <div class="work-layout">
+        <section class="work-section role-section">
+          <h3 class="work-section-title">역할</h3>
+          <div class="four-col">
+            <article class="card"><h3>병원 데이터 전처리</h3><p>공공 병원 데이터와 진료과 정보를 병합하고 검색 가능한 형태로 정리했습니다.</p></article>
+            <article class="card"><h3>DB 모델링</h3><p>병원, 진료과, 즐겨찾기, 댓글, 방문 기록, 사용자 저장 위치 모델을 설계했습니다.</p></article>
+            <article class="card"><h3>추천 흐름 구현</h3><p>AI 분석 결과가 진료과 검색과 병원 목록으로 이어지도록 화면과 API 흐름을 연결했습니다.</p></article>
+            <article class="card"><h3>프로필/기록 화면</h3><p>즐겨찾기, 방문 이력, 내가 남긴 병원 댓글을 사용자 화면에서 확인할 수 있게 했습니다.</p></article>
+          </div>
+        </section>
+        <section class="work-section trouble-section">
+          <h3 class="work-section-title">트러블슈팅</h3>
+          <div class="timeline">
+            <article class="timeline-item"><span class="timeline-index">01</span><div><h3>AI 응답 파싱 안정화</h3><p>추천 진료과 문구를 정규표현식으로 추출하고 실패 케이스를 예외 처리했습니다.</p></div></article>
+            <article class="timeline-item"><span class="timeline-index">02</span><div><h3>거리 기반 정렬</h3><p>사용자 기본 위치와 병원 좌표를 하버사인 공식으로 계산해 추천 병원 순서를 정렬했습니다.</p></div></article>
+            <article class="timeline-item"><span class="timeline-index">03</span><div><h3>병원 데이터 구조화</h3><p>엑셀 기반 병원 데이터와 진료과 데이터를 모델 관계에 맞게 정리하고 fixture로 로딩했습니다.</p></div></article>
+          </div>
+        </section>
+        <section class="work-section tech-section">
+          <h3 class="work-section-title">사용기술</h3>
+          <div class="tech-layout">
+            <article class="tech-group"><h3>Frontend</h3><div class="chips"><span class="chip">Vue 3</span><span class="chip">Vue Router</span><span class="chip">Pinia</span><span class="chip">Axios</span></div></article>
+            <article class="tech-group"><h3>Backend / Data</h3><div class="chips"><span class="chip">Django 5</span><span class="chip">DRF</span><span class="chip">SQLite</span><span class="chip">Pandas</span></div></article>
+            <article class="tech-group"><h3>External API</h3><div class="chips"><span class="chip">GPT API</span><span class="chip">Kakao Map API</span><span class="chip">Token Auth</span></div></article>
           </div>
         </section>
       </div>

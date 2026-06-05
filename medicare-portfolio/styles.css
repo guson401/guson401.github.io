@@ -1,0 +1,99 @@
+@import url("../omni-kit-portfolio/styles.css");
+
+:root {
+  --bg: #edf5f6;
+  --surface: rgba(248, 252, 253, 0.78);
+  --surface-strong: rgba(255, 255, 255, 0.92);
+  --line: rgba(34, 74, 96, 0.14);
+  --text: #172633;
+  --muted: #526675;
+  --accent: #2f7dc8;
+  --accent-strong: #1f4f89;
+  --accent-soft: rgba(47, 125, 200, 0.14);
+  --accent-warm: #0f8f82;
+  --shadow: 0 24px 80px rgba(30, 65, 90, 0.14);
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.62), transparent 24%),
+    radial-gradient(circle at top right, rgba(61, 152, 214, 0.2), transparent 28%),
+    linear-gradient(180deg, #e7f0f4 0%, #edf5f6 48%, #d7e7ee 100%);
+}
+
+body::before {
+  background-image:
+    linear-gradient(rgba(46, 98, 130, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46, 98, 130, 0.035) 1px, transparent 1px);
+}
+
+.hero-copy {
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.88), transparent 34%),
+    linear-gradient(135deg, rgba(250, 253, 255, 0.94), rgba(219, 237, 246, 0.86));
+}
+
+.hero-panel {
+  background:
+    radial-gradient(circle at bottom right, rgba(15, 143, 130, 0.16), transparent 34%),
+    linear-gradient(180deg, rgba(253, 254, 255, 0.95), rgba(221, 239, 246, 0.88));
+}
+
+.project-logo-card {
+  display: grid;
+  place-items: center;
+  min-height: 220px;
+  margin-bottom: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.project-logo-card img {
+  display: block;
+  width: min(190px, 62%);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 22px;
+  box-shadow: 0 18px 42px rgba(47, 125, 200, 0.22);
+}
+
+.screen-image-frame {
+  aspect-ratio: 16 / 9;
+  background: #f8fafc;
+}
+
+.screen-image-frame img {
+  object-fit: contain;
+  background: #fff;
+}
+
+.architecture-figure img {
+  object-fit: contain;
+  background: #fff;
+}
+
+.architecture-flow {
+  margin-top: 20px;
+}
+
+.architecture-flow-card {
+  flex: 1 1 160px;
+}
+
+body[data-theme="theme"] {
+  --bg: #eef7f2;
+  --surface: rgba(247, 252, 249, 0.78);
+  --surface-strong: rgba(255, 255, 255, 0.92);
+  --line: rgba(28, 95, 80, 0.16);
+  --text: #18352f;
+  --muted: #536b64;
+  --accent: #0f8f82;
+  --accent-strong: #0d5f58;
+  --accent-soft: rgba(15, 143, 130, 0.14);
+  --accent-warm: #2f7dc8;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.62), transparent 24%),
+    radial-gradient(circle at top right, rgba(15, 143, 130, 0.18), transparent 28%),
+    linear-gradient(180deg, #e6f4ee 0%, #eef7f2 48%, #d7ebe4 100%);
+}

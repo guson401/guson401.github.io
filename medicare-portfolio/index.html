@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>medicare Portfolio</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <a class="back-link" href="../index.html">← Back</a>
+
+    <header class="hero">
+      <div class="hero-copy">
+        <div class="language-switch" aria-label="Language switcher">
+          <button class="lang-button is-active" type="button" data-lang="ko">KO</button>
+          <button class="lang-button" type="button" data-lang="en">EN</button>
+          <button class="lang-button" type="button" data-lang="ja">JP</button>
+        </div>
+        <div class="theme-switch" aria-label="Theme switcher">
+          <button class="theme-toggle is-active" type="button" aria-label="테마: 주간"></button>
+        </div>
+        <p class="eyebrow" id="eyebrow">AI Hospital Recommendation Platform</p>
+        <h1>medicare</h1>
+        <p class="hero-summary" id="hero-summary">
+          사용자의 증상을 자연어로 입력받아 생성형 AI로 적절한 진료과를 추천하고, 위치 기반으로 실제 방문 가능한 병원을 안내하는 풀스택 헬스케어 플랫폼입니다.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-link" href="#screens" id="hero-link-screens">화면 보기</a>
+          <a class="secondary-link" href="#role" id="hero-link-role">역할 정리</a>
+          <a class="secondary-link" href="https://github.com/guson401/find_medical" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <div class="project-logo-card">
+          <img src="../medicare-screenshots/logo.png" alt="medicare logo">
+        </div>
+        <p class="panel-label" id="snapshot-label">Project Snapshot</p>
+        <div class="hero-stat-grid">
+          <article class="hero-stat">
+            <span class="hero-stat-value">Vue 3</span>
+            <span class="hero-stat-label" id="snapshot-front">Composition API · Router · Pinia</span>
+          </article>
+          <article class="hero-stat">
+            <span class="hero-stat-value">Django 5</span>
+            <span class="hero-stat-label" id="snapshot-back">DRF · dj-rest-auth · Token Auth</span>
+          </article>
+          <article class="hero-stat">
+            <span class="hero-stat-value">AI Recommend</span>
+            <span class="hero-stat-label" id="snapshot-ai">증상 분석 · 진료과 추출</span>
+          </article>
+          <article class="hero-stat">
+            <span class="hero-stat-value">Map Search</span>
+            <span class="hero-stat-label" id="snapshot-map">Kakao Map · 거리순 병원 추천</span>
+          </article>
+          <article class="hero-stat">
+            <span class="hero-stat-value">SSAFY Project</span>
+            <span class="hero-stat-label" id="snapshot-period">풀스택 웹 프로젝트</span>
+          </article>
+        </div>
+      </aside>
+    </header>
+
+    <main>
+      <section class="section intro-grid" id="overview">
+        <article class="section-card">
+          <h2 id="overview-title">문제 정의</h2>
+          <p id="overview-copy">
+            사용자가 “어디가 아픈지”는 설명할 수 있어도 어떤 진료과를 찾아야 하는지 바로 판단하기는 어렵습니다. medicare는 증상 입력, AI 진료과 추천, 거리 기반 병원 탐색, 방문 기록까지 하나의 의사결정 흐름으로 묶었습니다.
+          </p>
+        </article>
+        <article class="section-card accent-card">
+          <h2 id="value-title">핵심 구현 포인트</h2>
+          <p id="value-copy">
+            병원 공공 데이터를 정리해 진료과별 검색이 가능하도록 모델링하고, 즐겨찾기, 댓글, 방문 이력, 저장 위치를 Django REST API로 구성했습니다. Vue 화면은 Pinia 상태와 Axios API 호출을 기반으로 로그인 이후의 실제 사용 흐름을 처리합니다.
+          </p>
+        </article>
+      </section>
+
+      <section class="section" id="highlights">
+        <div class="section-heading">
+          <h2 id="highlights-title">핵심 기능</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="feature-icon">01</span>
+            <h3 id="feature-1-title">AI 진료과 추천</h3>
+            <p id="feature-1-copy">자연어 증상이 충분히 길면 즉시 AI 분석을 수행하고, 짧은 입력은 추가 설문으로 보완해 추천 진료과를 도출했습니다.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">02</span>
+            <h3 id="feature-2-title">위치 기반 병원 탐색</h3>
+            <p id="feature-2-copy">추천 진료과와 사용자 기본 위치를 기준으로 병원을 필터링하고, 하버사인 거리 계산으로 가까운 병원을 정렬했습니다.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">03</span>
+            <h3 id="feature-3-title">방문 기록 관리</h3>
+            <p id="feature-3-copy">방문일, 증상, 진단, 대기시간, 평점과 메모를 남겨 개인 병원 이용 기록처럼 관리할 수 있게 했습니다.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">04</span>
+            <h3 id="feature-4-title">커뮤니티와 피드백</h3>
+            <p id="feature-4-copy">게시글, 댓글, 좋아요, 병원 댓글, 즐겨찾기를 연결해 병원 경험을 공유하고 다시 찾아볼 수 있도록 구성했습니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section screens-section" id="screens">
+        <div class="section-heading">
+          <h2 id="screens-title">화면구성</h2>
+        </div>
+
+        <div class="screen-explorer">
+          <section class="screen-preview">
+            <div class="screen-nav-panel">
+              <div class="screen-filter-group" id="screen-filter-group" aria-label="화면 카테고리"></div>
+              <div class="screen-list" id="screen-list" aria-label="화면 목록"></div>
+            </div>
+
+            <div class="screen-preview-body">
+              <div class="screen-media-column">
+                <div class="screen-image-frame">
+                  <img id="screen-image" src="../medicare-screenshots/main.png" alt="medicare symptom input screen">
+                </div>
+              </div>
+              <div class="screen-copy">
+                <p id="screen-description"></p>
+                <ul class="flat-list screen-points" id="screen-points"></ul>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="section" id="architecture">
+        <div class="section-heading">
+          <h2 id="architecture-title">아키텍처</h2>
+        </div>
+        <article class="architecture-card">
+          <p class="architecture-lead" id="architecture-lead">
+            accounts, hospitals, articles 도메인을 분리하고 병원 데이터, 진료과, 즐겨찾기, 댓글, 방문 기록, 사용자 저장 위치를 연결했습니다. 추천 결과는 사용자 위치와 병원 좌표를 함께 사용해 거리순으로 정렬됩니다.
+          </p>
+          <figure class="architecture-figure">
+            <img src="../medicare-screenshots/erd.png" alt="medicare ERD">
+          </figure>
+          <div class="architecture-explain">
+            <article>
+              <h3 id="architecture-front-title">프론트엔드 흐름</h3>
+              <p id="architecture-front-copy">Vue Router와 Pinia를 사용해 로그인 상태, 증상 입력, 추천 결과, 병원 검색, 프로필 화면 흐름을 관리했습니다.</p>
+            </article>
+            <article>
+              <h3 id="architecture-back-title">백엔드 API</h3>
+              <p id="architecture-back-copy">Django REST Framework로 병원 검색, AI 추천, 방문 기록, 댓글, 즐겨찾기 API를 구성했습니다.</p>
+            </article>
+            <article>
+              <h3 id="architecture-data-title">데이터 모델</h3>
+              <p id="architecture-data-copy">병원, 진료과, 사용자 위치, 병원 댓글, 방문 기록, 커뮤니티 모델을 분리해 검색과 기록 흐름을 유지했습니다.</p>
+            </article>
+          </div>
+          <p class="architecture-caption" id="architecture-caption">
+            핵심은 증상 분석 결과를 단순 텍스트로 끝내지 않고 진료과 검색, 병원 상세, 개인 기록으로 이어지게 만든 점입니다.
+          </p>
+        </article>
+      </section>
+
+      <section class="section" id="role">
+        <div class="section-heading">
+          <h2 id="role-title">역할 정리</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="feature-icon">A</span>
+            <h3 id="role-1-title">병원 데이터 전처리</h3>
+            <p id="role-1-copy">공공 병원 데이터와 진료과 정보를 병합하고, 검색과 추천에 필요한 필드 중심으로 정리했습니다.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">B</span>
+            <h3 id="role-2-title">DB 모델링과 API 구현</h3>
+            <p id="role-2-copy">병원, 진료과, 방문 기록, 즐겨찾기, 댓글, 사용자 저장 위치 모델을 설계하고 REST API로 연결했습니다.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">C</span>
+            <h3 id="role-3-title">추천 결과 화면 흐름</h3>
+            <p id="role-3-copy">증상 입력 결과가 추천 진료과와 병원 목록으로 이어지도록 라우팅, 쿼리 처리, 검색 UI를 구성했습니다.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon">D</span>
+            <h3 id="role-4-title">프로필/기록 화면</h3>
+            <p id="role-4-copy">즐겨찾기, 방문 이력, 내가 남긴 병원 댓글을 사용자 화면에서 확인할 수 있게 했습니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="troubleshooting">
+        <div class="section-heading">
+          <h2 id="trouble-title">트러블슈팅</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <span class="timeline-index">01</span>
+            <div>
+              <h3 id="trouble-1-title">AI 응답 파싱 안정화</h3>
+              <p id="trouble-1-copy">AI 응답에서 추천 진료과 문구가 매번 같은 형식으로 오지 않을 수 있어 정규표현식으로 핵심 진료과를 추출하고 실패 케이스를 예외 처리했습니다.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-index">02</span>
+            <div>
+              <h3 id="trouble-2-title">거리 기반 정렬</h3>
+              <p id="trouble-2-copy">사용자 기본 위치와 병원 좌표를 하버사인 공식으로 계산해 추천 병원 목록이 실제 방문 가능성에 맞춰 가까운 순서로 정렬되도록 했습니다.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-index">03</span>
+            <div>
+              <h3 id="trouble-3-title">병원 데이터 구조화</h3>
+              <p id="trouble-3-copy">엑셀 기반 병원 데이터와 진료과 데이터를 모델 관계에 맞게 정리하고 fixture로 로딩해 검색과 상세 조회가 같은 데이터 구조를 사용하도록 맞췄습니다.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section stack-section" id="stack">
+        <div class="section-heading">
+          <h2 id="stack-title">사용기술</h2>
+        </div>
+        <div class="stack-shell">
+          <details class="stack-group" open>
+            <summary id="stack-summary-front">Frontend / Web UI</summary>
+            <div class="stack-content">
+              <div class="stack-chip-row">
+                <button class="stack-chip is-highlight is-active" type="button" data-reason-target="stack-reason-vue">Vue 3</button>
+                <button class="stack-chip" type="button" data-reason-target="stack-reason-router">Vue Router</button>
+                <button class="stack-chip" type="button" data-reason-target="stack-reason-pinia">Pinia</button>
+                <button class="stack-chip" type="button" data-reason-target="stack-reason-axios">Axios</button>
+              </div>
+              <div class="stack-reason-display">
+                <article class="stack-reason-panel is-active" id="stack-reason-vue"><p id="stack-reason-vue-copy">증상 입력, 추천 결과, 병원 검색, 프로필처럼 상태가 이어지는 화면을 컴포넌트 단위로 구성하기 위해 사용했습니다.</p></article>
+                <article class="stack-reason-panel" id="stack-reason-router"><p id="stack-reason-router-copy">메인, 추천, 검색, 병원 상세, 방문 기록, 프로필 화면을 라우팅 기준으로 분리했습니다.</p></article>
+                <article class="stack-reason-panel" id="stack-reason-pinia"><p id="stack-reason-pinia-copy">로그인 상태와 토큰, 사용자 정보를 전역으로 유지해 API 요청과 화면 접근 흐름에 사용했습니다.</p></article>
+                <article class="stack-reason-panel" id="stack-reason-axios"><p id="stack-reason-axios-copy">Django REST API와 통신하는 요청 흐름을 정리하고 추천, 검색, 댓글, 방문 기록 데이터를 화면으로 가져왔습니다.</p></article>
+              </div>
+            </div>
+          </details>
+
+          <details class="stack-group">
+            <summary id="stack-summary-back">Backend / API / Auth</summary>
+            <div class="stack-content">
+              <div class="stack-chip-row">
+                <button class="stack-chip is-highlight" type="button" data-reason-target="stack-reason-django">Django</button>
+                <button class="stack-chip is-highlight" type="button" data-reason-target="stack-reason-drf">Django REST Framework</button>
+                <button class="stack-chip" type="button" data-reason-target="stack-reason-auth">dj-rest-auth</button>
+                <button class="stack-chip" type="button" data-reason-target="stack-reason-sqlite">SQLite</button>
+              </div>
+              <div class="stack-reason-display">
+                <article class="stack-reason-panel" id="stack-reason-django"><p id="stack-reason-django-copy">accounts, hospitals, articles 앱을 나누고 병원 검색과 사용자 기록 도메인을 관리하기 위해 사용했습니다.</p></article>
+                <article class="stack-reason-panel" id="stack-reason-drf"><p id="stack-reason-drf-copy">프론트엔드에서 필요한 병원 목록, 상세, 추천, 방문 기록, 댓글 데이터를 REST API로 제공했습니다.</p></article>
+                <article class="stack-reason-panel" id="stack-reason-auth"><p id="stack-reason-auth-copy">회원가입, 로그인, 토큰 기반 인증 흐름을 빠르게 구성하고 보호된 API 접근에 적용했습니다.</p></article>
+                <article class="stack-reason-panel" id="stack-reason-sqlite"><p id="stack-reason-sqlite-copy">프로젝트 개발 단계에서 병원 데이터와 사용자 기록을 빠르게 저장하고 검증하기 위한 데이터베이스로 사용했습니다.</p></article>
+              </div>
+            </div>
+          </details>
+
+          <details class="stack-group">
+            <summary id="stack-summary-external">Data / External API</summary>
+            <div class="stack-content">
+              <div class="stack-chip-row">
+                <button class="stack-chip is-highlight" type="button" data-reason-target="stack-reason-gpt">GPT API</button>
+                <button class="stack-chip is-highlight" type="button" data-reason-target="stack-reason-kakao">Kakao Map API</button>
+                <button class="stack-chip" type="button" data-reason-target="stack-reason-pandas">Pandas</button>
+                <button class="stack-chip" type="button" data-reason-target="stack-reason-fixture">Fixtures</button>
+              </div>
+              <div class="stack-reason-display">
+                <article class="stack-reason-panel" id="stack-reason-gpt"><p id="stack-reason-gpt-copy">사용자 증상과 설문 응답을 분석해 추천 진료과를 도출하는 서비스 로직에 사용했습니다.</p></article>
+                <article class="stack-reason-panel" id="stack-reason-kakao"><p id="stack-reason-kakao-copy">병원 위치 검색, 지도 마커, 장소 탐색 흐름을 웹 화면에 연결하기 위해 사용했습니다.</p></article>
+                <article class="stack-reason-panel" id="stack-reason-pandas"><p id="stack-reason-pandas-copy">엑셀 기반 병원 원천 데이터를 병합하고 정리하는 전처리 과정에 사용했습니다.</p></article>
+                <article class="stack-reason-panel" id="stack-reason-fixture"><p id="stack-reason-fixture-copy">정리된 병원, 진료과, 설문 데이터를 Django 모델에 반복 로딩하기 위해 fixture 형태로 구성했습니다.</p></article>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
