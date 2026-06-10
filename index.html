@@ -740,6 +740,12 @@
       gap: 14px;
     }
 
+    .award-history-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
     .tech-stack-grid {
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -771,6 +777,19 @@
       box-shadow: var(--shadow);
     }
 
+    .award-history-card {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+      min-height: 126px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
     .competency-no {
       display: inline-flex;
       align-items: center;
@@ -790,6 +809,39 @@
       color: var(--accent-2);
       font-size: 1.08rem;
       line-height: 1.35;
+    }
+
+    .award-history-body {
+      display: grid;
+      gap: 8px;
+    }
+
+    .award-history-title {
+      margin: 0;
+      color: var(--accent-2);
+      font-size: 1.08rem;
+      line-height: 1.35;
+    }
+
+    .award-history-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .award-history-meta span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 9px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fafc;
     }
 
     .tech-category {
@@ -844,6 +896,7 @@
     body[data-theme="night"] .glass,
     body[data-theme="night"] .project-card,
     body[data-theme="night"] .tech-stack-card,
+    body[data-theme="night"] .award-history-card,
     body[data-theme="night"] .certification-card,
     body[data-theme="night"] .hero-main,
     body[data-theme="night"] .hero-side {
@@ -854,6 +907,7 @@
 
     body[data-theme="night"] .chip,
     body[data-theme="night"] .tech-chip,
+    body[data-theme="night"] .award-history-meta span,
     body[data-theme="night"] .competency-no,
     body[data-theme="night"] .profile-photo,
     body[data-theme="night"] .profile-icon,
@@ -880,6 +934,7 @@
     @media (max-width: 960px) {
       .project-grid,
       .tech-stack-grid,
+      .award-history-grid,
       .certification-grid {
         grid-template-columns: 1fr;
       }
@@ -1009,6 +1064,7 @@
       }
 
       .tech-stack-grid,
+      .award-history-grid,
       .certification-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 0.12in;
@@ -1020,6 +1076,10 @@
       }
 
       .certification-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .award-history-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
@@ -1134,11 +1194,38 @@
       <div class="certification-grid">
         <article class="certification-card">
           <span class="competency-no">01</span>
-          <h3 class="certification-title" id="certification-title-1">1종보통 운전면허</h3>
+          <h3 class="certification-title" id="certification-title-1">소방안전관리자 1급</h3>
         </article>
-        <article class="certification-card">
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="awards-title">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title" id="awards-title">수상이력</h2>
+        </div>
+      </div>
+
+      <div class="award-history-grid">
+        <article class="award-history-card">
+          <span class="competency-no">01</span>
+          <div class="award-history-body">
+            <h3 class="award-history-title" id="award-title-1">삼성청년SW,AI아카데미 프로젝트 우수상(3등)</h3>
+            <p class="award-history-meta">
+              <span id="award-org-1">삼성전자</span>
+              <span id="award-date-1">2026.03</span>
+            </p>
+          </div>
+        </article>
+        <article class="award-history-card">
           <span class="competency-no">02</span>
-          <h3 class="certification-title" id="certification-title-2">소방안전관리자 1급</h3>
+          <div class="award-history-body">
+            <h3 class="award-history-title" id="award-title-2">삼성청년SW,AI아카데미 성적우수상</h3>
+            <p class="award-history-meta">
+              <span id="award-org-2">삼성전자</span>
+              <span id="award-date-2">2025.12</span>
+            </p>
+          </div>
         </article>
       </div>
     </section>
@@ -1243,7 +1330,7 @@
                   <path d="M10.3 14.4h1.7c.9 0 1.4.43 1.4 1.08 0 .68-.57 1.12-1.46 1.12-.75 0-1.28-.26-1.66-.72" fill="none" stroke="#fff7ed" stroke-width="1.35" stroke-linecap="round"/>
                   <path d="M10.6 12.3h2.58l-1.52 1.62" fill="none" stroke="#fff7ed" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                <span id="dailylog-award-label">동메달 · 3등 수상</span>
+                <span id="dailylog-award-label">3등 수상</span>
               </span>
             </div>
             <p class="project-period">2026.02 - 2026.04</p>
@@ -1271,8 +1358,8 @@
         <a class="project-card medicare" href="./medicare-portfolio/index.html">
           <div class="project-visual" aria-hidden="true"></div>
           <div class="project-body">
-            <h3 class="project-title">medicare</h3>
-            <p class="project-period">SSAFY Full-Stack Web Project</p>
+            <h3 class="project-title">Medicare</h3>
+            <p class="project-period">2025.12</p>
             <p class="project-copy" id="medicare-copy">사용자 증상을 AI로 분석해 진료과를 추천하고, 위치 기반 병원 검색과 방문 기록, 커뮤니티 기능을 제공하는 풀스택 헬스케어 플랫폼입니다.</p>
             <div class="chip-row">
               <span class="chip">Vue</span>
@@ -1305,8 +1392,14 @@
         languageSwitcherLabel: "언어 선택",
         themeSwitcherLabel: "테마 선택",
         certificationsTitle: "자격증",
-        certificationTitle1: "1종보통 운전면허",
-        certificationTitle2: "소방안전관리자 1급",
+        certificationTitle1: "소방안전관리자 1급",
+        awardsTitle: "수상이력",
+        awardTitle1: "삼성청년SW,AI아카데미 프로젝트 우수상(3등)",
+        awardOrg1: "삼성전자",
+        awardDate1: "2026.03",
+        awardTitle2: "삼성청년SW,AI아카데미 성적우수상",
+        awardOrg2: "삼성전자",
+        awardDate2: "2025.12",
         techStackTitle: "기술 스택",
         techTitle1: "언어",
         techCopy1: "웹 콘솔, 모바일 앱, AIoT 백엔드 구현에 맞춰 프로젝트별 언어를 선택해 사용했습니다.",
@@ -1323,7 +1416,7 @@
         farmCopy: "병해충 감시 자율주행 로봇과 이와 연동된 웹 서비스로 농부의 노동시간을 줄여주는 AIoT 프로젝트입니다.",
         dailylogCopy: "하루 기록이 번거롭거나 어려움을 겪는 사람들을 위한 대화형 일기 작성 앱 프로젝트입니다.",
         medicareCopy: "사용자 증상을 AI로 분석해 진료과를 추천하고, 위치 기반 병원 검색과 방문 기록, 커뮤니티 기능을 제공하는 풀스택 헬스케어 플랫폼입니다.",
-        dailylogAwardLabel: "동메달 · 3등 수상",
+        dailylogAwardLabel: "3등 수상",
         themeLabels: { day: "주간", night: "야간" },
       },
       en: {
@@ -1341,8 +1434,14 @@
         languageSwitcherLabel: "Language switcher",
         themeSwitcherLabel: "Theme switcher",
         certificationsTitle: "Certifications",
-        certificationTitle1: "Class 1 Normal Driver's License",
-        certificationTitle2: "Fire Safety Manager Level 1",
+        certificationTitle1: "Fire Safety Manager Level 1",
+        awardsTitle: "Awards",
+        awardTitle1: "Samsung Youth SW/AI Academy Project Excellence Award (3rd Place)",
+        awardOrg1: "Samsung Electronics",
+        awardDate1: "Mar 2026",
+        awardTitle2: "Samsung Youth SW/AI Academy Academic Excellence Award",
+        awardOrg2: "Samsung Electronics",
+        awardDate2: "Dec 2025",
         techStackTitle: "Tech Stack",
         techTitle1: "Languages",
         techCopy1: "Selected languages by project scope for the web console, mobile app, and AIoT backend implementation.",
@@ -1359,7 +1458,7 @@
         farmCopy: "An AIoT project that reduces farmers' labor time through a pest-monitoring autonomous robot and a connected web service.",
         dailylogCopy: "A conversational diary-writing app project for people who find daily journaling inconvenient or difficult.",
         medicareCopy: "A full-stack healthcare platform that analyzes symptoms with AI, recommends departments, and supports location-based hospital search, visit records, and community features.",
-        dailylogAwardLabel: "Bronze · 3rd Place",
+        dailylogAwardLabel: "3rd Place",
         themeLabels: { day: "Day", night: "Night" },
       },
       ja: {
@@ -1377,8 +1476,14 @@
         languageSwitcherLabel: "言語選択",
         themeSwitcherLabel: "テーマ選択",
         certificationsTitle: "資格",
-        certificationTitle1: "第1種普通運転免許",
-        certificationTitle2: "消防安全管理者 1級",
+        certificationTitle1: "消防安全管理者 1級",
+        awardsTitle: "受賞歴",
+        awardTitle1: "Samsung青年SW・AIアカデミー プロジェクト優秀賞（3位）",
+        awardOrg1: "サムスン電子",
+        awardDate1: "2026.03",
+        awardTitle2: "Samsung青年SW・AIアカデミー 成績優秀賞",
+        awardOrg2: "サムスン電子",
+        awardDate2: "2025.12",
         techStackTitle: "使用技術",
         techTitle1: "言語",
         techCopy1: "Webコンソール、モバイルアプリ、AIoTバックエンドの実装範囲に合わせて言語を選択して使いました。",
@@ -1395,7 +1500,7 @@
         farmCopy: "病害虫監視の自律走行ロボットと連動Webサービスにより、農家の労働時間を減らすAIoTプロジェクトです。",
         dailylogCopy: "毎日の記録が面倒だったり難しかったりする人のための会話型日記作成アプリプロジェクトです。",
         medicareCopy: "症状をAIで分析して診療科を推薦し、位置情報ベースの病院検索、訪問記録、コミュニティ機能を提供するフルスタック医療プラットフォームです。",
-        dailylogAwardLabel: "銅賞 · 3位受賞",
+        dailylogAwardLabel: "3位受賞",
         themeLabels: { day: "昼間", night: "夜間" },
       },
     };
@@ -1413,7 +1518,13 @@
       "pdf-action-label": "pdfActionLabel",
       "certifications-title": "certificationsTitle",
       "certification-title-1": "certificationTitle1",
-      "certification-title-2": "certificationTitle2",
+      "awards-title": "awardsTitle",
+      "award-title-1": "awardTitle1",
+      "award-org-1": "awardOrg1",
+      "award-date-1": "awardDate1",
+      "award-title-2": "awardTitle2",
+      "award-org-2": "awardOrg2",
+      "award-date-2": "awardDate2",
       "tech-stack-title": "techStackTitle",
       "tech-title-1": "techTitle1",
       "tech-copy-1": "techCopy1",

@@ -249,15 +249,21 @@
     }
 
     .education-list,
-    .certification-list {
+    .certification-list,
+    .award-list {
       display: grid;
       gap: 0.07in;
       margin: 0.14in 0 0.18in;
     }
 
-    .certification-list {
+    .certification-list,
+    .award-list {
       margin-top: 0;
       margin-bottom: 0;
+    }
+
+    .award-list {
+      margin-top: 0.14in;
     }
 
     .profile-certifications {
@@ -265,7 +271,8 @@
     }
 
     .education-item,
-    .certification-item {
+    .certification-item,
+    .award-item {
       display: grid;
       grid-template-columns: 0.92in minmax(0, 1fr);
       gap: 0.08in;
@@ -276,8 +283,21 @@
       font-size: 12pt;
     }
 
-    .certification-item {
+    .certification-item,
+    .award-item {
       grid-template-columns: minmax(0, 1fr);
+      font-weight: 800;
+    }
+
+    .award-item {
+      gap: 0.03in;
+      font-size: 10.6pt;
+      line-height: 1.28;
+    }
+
+    .award-meta {
+      color: var(--muted);
+      font-size: 9.4pt;
       font-weight: 800;
     }
 
@@ -1056,8 +1076,18 @@
           </div>
           <div class="certification-list profile-certifications">
             <p class="kicker">Certifications</p>
-            <div class="certification-item">1종보통 운전면허</div>
             <div class="certification-item">소방안전관리자 1급</div>
+            <div class="award-list">
+              <p class="kicker">Awards</p>
+              <div class="award-item">
+                <span>삼성청년SW,AI아카데미 프로젝트 우수상(3등)</span>
+                <span class="award-meta">삼성전자 · 2026.03</span>
+              </div>
+              <div class="award-item">
+                <span>삼성청년SW,AI아카데미 성적우수상</span>
+                <span class="award-meta">삼성전자 · 2025.12</span>
+              </div>
+            </div>
           </div>
         </div>
       </aside>
@@ -1138,7 +1168,7 @@
           <article class="contents-item">
             <span class="contents-num">04</span>
             <div>
-              <h3>medicare</h3>
+              <h3>Medicare</h3>
               <p class="contents-period">2025.12</p>
               <p>AI 증상 분석, 진료과 추천, 위치 기반 병원 검색과 방문 기록을 연결한 헬스케어 플랫폼</p>
               <div class="chips"><span class="chip">Vue</span><span class="chip">Django</span><span class="chip">Kakao Map</span></div>
@@ -1246,7 +1276,7 @@
           <p class="kicker">Project Overview</p>
           <h2>DailyLog</h2>
           <span class="pdf-period-badge">2026.02 - 2026.04</span>
-          <span class="pdf-award-badge">동메달 · 3등 수상</span>
+          <span class="pdf-award-badge">3등 수상</span>
           <p>STT/TTS 기반 일기 작성 애플리케이션 프로젝트입니다. 대화 기반으로 하루를 기록하고 감정 결과를 일정 추천과 캘린더 흐름으로 연결하는 Android 앱입니다.</p>
         </article>
         <aside class="snapshot">
@@ -1423,11 +1453,11 @@
     </section>
 
     <section class="slide accent-medical combo-slide">
-      <header class="slide-head"><h2 class="slide-title">medicare</h2><p class="slide-meta">AI Hospital Recommendation Platform</p></header>
+      <header class="slide-head"><h2 class="slide-title">Medicare</h2><p class="slide-meta">AI Hospital Recommendation Platform</p></header>
       <div class="hero-slide">
         <article class="hero-copy">
           <p class="kicker">Project Overview</p>
-          <h2>medicare</h2>
+          <h2>Medicare</h2>
           <span class="pdf-period-badge">2025.12</span>
           <p>사용자의 증상을 자연어로 입력받아 생성형 AI로 적절한 진료과를 추천하고, 위치 기반으로 실제 방문 가능한 병원을 안내하는 통합 헬스케어 플랫폼입니다. 병원 검색, 방문 기록, 즐겨찾기, 댓글과 커뮤니티 흐름을 하나의 서비스로 연결했습니다.</p>
         </article>
@@ -1442,9 +1472,9 @@
     </section>
 
     <section class="slide accent-medical feature-slide">
-      <header class="slide-head"><h2 class="slide-title">문제 정의 · 핵심 기능</h2><p class="slide-meta">medicare</p></header>
+      <header class="slide-head"><h2 class="slide-title">문제 정의 · 핵심 기능</h2><p class="slide-meta">Medicare</p></header>
       <div class="two-col">
-        <article class="card"><h3>문제 정의</h3><p>사용자는 증상은 설명할 수 있어도 어떤 진료과를 찾아야 하는지 판단하기 어렵습니다. medicare는 증상 입력부터 진료과 추천, 병원 탐색, 방문 기록까지 이어지는 의사결정 흐름을 서비스로 만들었습니다.</p></article>
+        <article class="card"><h3>문제 정의</h3><p>사용자는 증상은 설명할 수 있어도 어떤 진료과를 찾아야 하는지 판단하기 어렵습니다. Medicare는 증상 입력부터 진료과 추천, 병원 탐색, 방문 기록까지 이어지는 의사결정 흐름을 서비스로 만들었습니다.</p></article>
         <article class="card"><h3>핵심 구현 포인트</h3><p>Vue 화면은 로그인 상태, 증상 입력, 추천 결과, 병원 상세와 프로필 흐름을 담당하고, Django API는 사용자, 병원, 진료과, 즐겨찾기, 방문 기록, 커뮤니티 도메인을 처리합니다.</p></article>
       </div>
       <div class="four-col section-gap">
@@ -1456,10 +1486,10 @@
     </section>
 
     <section class="slide accent-medical medical-screen-slide">
-      <header class="slide-head"><h2 class="slide-title">화면구성</h2><p class="slide-meta">medicare</p></header>
+      <header class="slide-head"><h2 class="slide-title">화면구성</h2><p class="slide-meta">Medicare</p></header>
       <div class="medical-screen-layout">
-        <div class="medical-screen-grid" aria-label="medicare 메인 화면 이미지">
-          <figure class="medical-screen-shot"><img src="./medicare-screenshots/main.png" alt="medicare 메인 화면"><figcaption>메인 화면</figcaption></figure>
+        <div class="medical-screen-grid" aria-label="Medicare 메인 화면 이미지">
+          <figure class="medical-screen-shot"><img src="./medicare-screenshots/main.png" alt="Medicare 메인 화면"><figcaption>메인 화면</figcaption></figure>
         </div>
         <aside class="screen-copy">
           <p>메인 화면은 증상 입력과 병원 검색 진입점을 한 화면에 배치해 사용자가 바로 필요한 흐름을 선택할 수 있게 구성했습니다.</p>
@@ -1473,9 +1503,9 @@
     </section>
 
     <section class="slide accent-medical">
-      <header class="slide-head"><h2 class="slide-title">아키텍처</h2><p class="slide-meta">medicare</p></header>
+      <header class="slide-head"><h2 class="slide-title">아키텍처</h2><p class="slide-meta">Medicare</p></header>
       <div class="architecture-layout">
-        <figure class="image-frame"><img src="./medicare-screenshots/erd.png" alt="medicare ERD"></figure>
+        <figure class="image-frame"><img src="./medicare-screenshots/erd.png" alt="Medicare ERD"></figure>
         <aside class="architecture-copy">
           <p>accounts, hospitals, articles 도메인을 분리하고 병원 데이터, 진료과, 즐겨찾기, 댓글, 방문 기록, 사용자 저장 위치를 연결했습니다. 추천 결과는 사용자 위치와 병원 좌표를 함께 사용해 거리순으로 정렬됩니다.</p>
           <div><h3>Frontend</h3><p>Vue Router와 Pinia를 사용해 로그인 상태, 추천 결과, 병원 검색, 프로필 화면 흐름을 관리했습니다.</p></div>
@@ -1485,7 +1515,7 @@
     </section>
 
     <section class="slide accent-medical work-slide">
-      <header class="slide-head"><h2 class="slide-title">프로젝트 수행 정리</h2><p class="slide-meta">medicare</p></header>
+      <header class="slide-head"><h2 class="slide-title">프로젝트 수행 정리</h2><p class="slide-meta">Medicare</p></header>
       <div class="work-layout">
         <section class="work-section role-section">
           <h3 class="work-section-title">역할</h3>

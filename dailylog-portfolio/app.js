@@ -476,7 +476,7 @@ const staticTranslations = {
   ko: {
     heroEyebrow: "Emotion Diary Android Project",
     heroSummary: "STT/TTS 기반 일기 작성 애플리케이션 프로젝트입니다.",
-    awardLabel: "동메달 · 3등 수상",
+    awardLabel: "3등 수상",
     themeLabels: { day: "주간", night: "야간", theme: "테마" },
     currentPathLabel: "현재 화면 순차 경로",
     architectureAlt: "DailyLog Android 앱, EC2 서버, AI 서버, 데이터베이스, 외부 API 연결 아키텍처",
@@ -554,7 +554,7 @@ const staticTranslations = {
   en: {
     heroEyebrow: "Emotion Diary Android Project",
     heroSummary: "A diary-writing application project built around STT/TTS-based interaction.",
-    awardLabel: "Bronze · 3rd Place",
+    awardLabel: "3rd Place",
     themeLabels: { day: "Day", night: "Night", theme: "Theme" },
     currentPathLabel: "Current screen path",
     architectureAlt: "DailyLog architecture connecting Android app, EC2 server, AI server, database, and external APIs",
@@ -632,7 +632,7 @@ const staticTranslations = {
   ja: {
     heroEyebrow: "感情日記Androidプロジェクト",
     heroSummary: "STT/TTSベースの対話を中心に構成した日記作成アプリプロジェクトです。",
-    awardLabel: "銅賞 · 3位受賞",
+    awardLabel: "3位受賞",
     themeLabels: { day: "昼間", night: "夜間", theme: "テーマ" },
     currentPathLabel: "現在の画面順序",
     architectureAlt: "DailyLog Androidアプリ、EC2サーバー、AIサーバー、データベース、外部API接続アーキテクチャ",

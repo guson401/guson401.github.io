@@ -420,9 +420,9 @@ const TRANSLATIONS = {
     "snapshot-back": "DRF · dj-rest-auth · Token Auth",
     "snapshot-ai": "증상 분석 · 진료과 추출",
     "snapshot-map": "Kakao Map · 거리순 병원 추천",
-    "snapshot-period": "풀스택 웹 프로젝트",
+    "snapshot-period": "2025.12",
     "overview-title": "문제 정의",
-    "overview-copy": "사용자가 “어디가 아픈지”는 설명할 수 있어도 어떤 진료과를 찾아야 하는지 바로 판단하기는 어렵습니다. medicare는 증상 입력, AI 진료과 추천, 거리 기반 병원 탐색, 방문 기록까지 하나의 의사결정 흐름으로 묶었습니다.",
+    "overview-copy": "사용자가 “어디가 아픈지”는 설명할 수 있어도 어떤 진료과를 찾아야 하는지 바로 판단하기는 어렵습니다. Medicare는 증상 입력, AI 진료과 추천, 거리 기반 병원 탐색, 방문 기록까지 하나의 의사결정 흐름으로 묶었습니다.",
     "value-title": "핵심 구현 포인트",
     "value-copy": "병원 공공 데이터를 정리해 진료과별 검색이 가능하도록 모델링하고, 즐겨찾기, 댓글, 방문 이력, 저장 위치를 Django REST API로 구성했습니다. Vue 화면은 Pinia 상태와 Axios API 호출을 기반으로 로그인 이후의 실제 사용 흐름을 처리합니다.",
     "highlights-title": "핵심 기능",
@@ -481,7 +481,7 @@ const TRANSLATIONS = {
     "theme-day": "테마: 주간",
     "theme-night": "테마: 야간",
     "theme-theme": "테마: 의료",
-    "alt-architecture": "medicare ERD",
+    "alt-architecture": "Medicare ERD",
   },
   en: {
     eyebrow: "AI Hospital Recommendation Platform",
@@ -493,9 +493,9 @@ const TRANSLATIONS = {
     "snapshot-back": "DRF · dj-rest-auth · Token Auth",
     "snapshot-ai": "Symptom analysis · Department extraction",
     "snapshot-map": "Kakao Map · Distance-based recommendations",
-    "snapshot-period": "Full-stack web project",
+    "snapshot-period": "2025.12",
     "overview-title": "Problem Definition",
-    "overview-copy": "Users can describe where they feel pain, but it is hard to decide which department to visit. medicare connects symptom input, AI department recommendation, distance-based hospital search, and visit records into one decision flow.",
+    "overview-copy": "Users can describe where they feel pain, but it is hard to decide which department to visit. Medicare connects symptom input, AI department recommendation, distance-based hospital search, and visit records into one decision flow.",
     "value-title": "Core Implementation Points",
     "value-copy": "Public hospital data was organized for department-based search, while favorites, comments, visit history, and saved locations were implemented through Django REST APIs. Vue screens handle real post-login user flows through Pinia state and Axios API calls.",
     "highlights-title": "Core Features",
@@ -554,7 +554,7 @@ const TRANSLATIONS = {
     "theme-day": "Theme: Day",
     "theme-night": "Theme: Night",
     "theme-theme": "Theme: Medical",
-    "alt-architecture": "medicare ERD",
+    "alt-architecture": "Medicare ERD",
   },
   ja: {
     eyebrow: "AI病院推薦プラットフォーム",
@@ -566,9 +566,9 @@ const TRANSLATIONS = {
     "snapshot-back": "DRF · dj-rest-auth · Token Auth",
     "snapshot-ai": "症状分析 · 診療科抽出",
     "snapshot-map": "Kakao Map · 距離順病院推薦",
-    "snapshot-period": "フルスタックWebプロジェクト",
+    "snapshot-period": "2025.12",
     "overview-title": "問題定義",
-    "overview-copy": "ユーザーは「どこが痛いか」は説明できても、どの診療科に行くべきかすぐ判断するのは難しいです。medicareは症状入力、AI診療科推薦、距離ベース病院探索、訪問記録までを一つの意思決定フローとして結びました。",
+    "overview-copy": "ユーザーは「どこが痛いか」は説明できても、どの診療科に行くべきかすぐ判断するのは難しいです。Medicareは症状入力、AI診療科推薦、距離ベース病院探索、訪問記録までを一つの意思決定フローとして結びました。",
     "value-title": "核心実装ポイント",
     "value-copy": "公共病院データを整理して診療科別検索が可能なようにモデル化し、お気に入り、コメント、訪問履歴、保存位置をDjango REST APIで構成しました。Vue画面はPinia状態とAxios API呼び出しを基にログイン後の実使用フローを処理します。",
     "highlights-title": "主な機能",
@@ -627,7 +627,7 @@ const TRANSLATIONS = {
     "theme-day": "テーマ: 昼間",
     "theme-night": "テーマ: 夜間",
     "theme-theme": "テーマ: 医療",
-    "alt-architecture": "medicare ERD",
+    "alt-architecture": "Medicare ERD",
   },
 };
 
@@ -708,7 +708,7 @@ function renderScreen() {
   const image = document.getElementById("screen-image");
   if (image) {
     image.src = screen.src;
-    image.alt = `medicare ${getScreenTitle(screen)}`;
+    image.alt = `Medicare ${getScreenTitle(screen)}`;
   }
 
   const desc = document.getElementById("screen-description");
